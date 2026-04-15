@@ -11,7 +11,15 @@
       "Bash(cp c:/GitHub/promptukit/.claude/skills/write-questions.md c:/GitHub/promptukit/.claude/commands/write-questions.md)",
       "Bash(python -m promptukit.trivia_tool create --dest question_banks/general-water-management.json --categories 'water sources,water treatment,water conservation,water policy,water infrastructure')",
       "Bash(python -m promptukit.add_trivia --batch question_banks/_draft_general_water.json question_banks/general-water-management.json)",
-      "Bash(python -m promptukit.validate_trivia question_banks/general-water-management.json)"
+      "Bash(python -m promptukit.validate_trivia question_banks/general-water-management.json)",
+      "Bash(rm c:/GitHub/promptukit/question_banks/cven4333_metadata.json)",
+      "Bash(mkdir -p c:/GitHub/promptukit/exam_metadata)",
+      "Bash(mv exam_metadata/cven4333_metadata.json content/exam_metadata/)",
+      "Bash(mv exam_metadata/exam_metadata_schema.json content/exam_metadata/)",
+      "Bash(rmdir exam_metadata)",
+      "Bash(rmdir question_banks scripts)",
+      "Bash(rm -rf promptukit/__pycache__)",
+      "Bash(.venv/Scripts/python -m pytest dev/checks/ -v)"
     ]
   }
 }

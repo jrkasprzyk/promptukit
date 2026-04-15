@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Extract information from a trivia JSON file.
+"""Extract information from a question bank JSON file.
 
 Usage examples:
-  python scripts/extract_trivia.py --list-categories
-  python scripts/extract_trivia.py --file assets/trivia.json --category music --fields prompt,answer
-  python scripts/extract_trivia.py -i    # interactive picker
+  python -m promptukit.questions.extract_question --list-categories
+  python -m promptukit.questions.extract_question --file content/question_banks/block-doku-questions.json --category music --fields prompt,answer
+  python -m promptukit.questions.extract_question -i    # interactive picker
 
 The script is permissive about JSON shape: it supports the project's
 `{ "questions": [...] }` layout, a top-level mapping of categories -> list,
@@ -21,10 +21,10 @@ from collections import defaultdict
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Tuple
 
-from .cli_helpers import load, pick, confirm
+from promptukit.utils.cli_helpers import load, pick, confirm
 
 
-TRIVIA_PATH = Path(__file__).resolve().parent.parent / "question_banks" / "block-doku-questions.json"
+DEFAULT_BANK_PATH = Path(__file__).resolve().parent.parent.parent / "content" / "question_banks" / "block-doku-questions.json"
 
 
 def build_category_map(data: Any) -> Dict[str, List[dict]]:
@@ -266,7 +266,7 @@ def interactive_flow(path: Path, catmap: Dict[str, List[dict]]) -> int:
 def main(argv: List[str] | None = None) -> int:
     argv = argv if argv is not None else sys.argv[1:]
     p = argparse.ArgumentParser(description="Extract info from a trivia JSON file")
-    p.add_argument("--file", "-f", default=str(TRIVIA_PATH), help="Path to trivia JSON file")
+    p.add_argument("--file", "-f", default=str(DEFAULT_BANK_PATH), help="Path to question bank JSON file")
     p.add_argument("--list-categories", action="store_true", help="List categories and counts")
     p.add_argument("--category", "-c", help="Category name (or index) to extract from")
     p.add_argument("--fields", "-F", help="Comma-separated fields to extract (e.g. prompt,answer)")

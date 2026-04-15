@@ -354,8 +354,37 @@ questions = [
                  "E) Higher evapotranspiration rates"]},
 ]
 
+DEFAULT_METADATA = {
+    "title": "Exam Title",
+    "institution": "Your Institution",
+    "instructor": "Instructor Name",
+    "exam_type": "Multiple Choice Examination",
+    "header_fields": [
+        ["Name: ________________________________________", "Date: ___________________"],
+        ["Student ID: ___________________________________", "Version:  A  /  B  /  C  /  D  /  E"],
+    ],
+    "instructions": (
+        "<b>Instructions:</b> Record your answers on the answer sheet provided. "
+        "Each question has exactly one correct answer. There is no penalty for guessing."
+    ),
+    "footer": "<b>END OF EXAM</b>",
+}
+
+
+def load_metadata_from_json(path):
+    p = Path(path)
+    with p.open('r', encoding='utf-8') as fh:
+        data = json.load(fh)
+    if not isinstance(data, dict):
+        raise ValueError(f"Metadata file must be a JSON object, got {type(data).__name__}")
+    # Merge with defaults so omitted fields fall back gracefully
+    merged = dict(DEFAULT_METADATA)
+    merged.update({k: v for k, v in data.items() if v is not None})
+    return merged
+
+
 # --- Build PDF ---
-def build_exam_pdf(sections_or_questions, output_path):
+def build_exam_pdf(sections_or_questions, output_path, metadata=None):
     # Ensure output directory exists (creating it if necessary). This
     # protects against FileNotFoundError when writing to a new path.
     p = Path(output_path)
@@ -372,20 +401,22 @@ def build_exam_pdf(sections_or_questions, output_path):
         topMargin=0.6*inch, bottomMargin=0.6*inch,
         leftMargin=0.75*inch, rightMargin=0.75*inch)
 
+    meta = DEFAULT_METADATA.copy()
+    if metadata:
+        meta.update({k: v for k, v in metadata.items() if v is not None})
+
     story = []
 
     # Header
-    story.append(Paragraph("CVEN 4333: Engineering Hydrology", title_style))
-    story.append(Paragraph("University of Colorado Boulder &mdash; Prof. Joseph Kasprzyk", subtitle_style))
+    story.append(Paragraph(meta["title"], title_style))
+    subtitle_parts = [meta["institution"], meta["instructor"]]
+    story.append(Paragraph(" &mdash; ".join(part for part in subtitle_parts if part), subtitle_style))
     story.append(Spacer(1, 4))
-    story.append(Paragraph("Multiple Choice Examination &mdash; 60 Questions", subtitle_style))
+    story.append(Paragraph(meta["exam_type"], subtitle_style))
     story.append(Spacer(1, 10))
 
     # Name / ID box
-    header_data = [
-        ["Name: ________________________________________", "Date: ___________________"],
-        ["Student ID: ___________________________________", "Version:  A  /  B  /  C  /  D  /  E"],
-    ]
+    header_data = meta["header_fields"]
     header_table = Table(header_data, colWidths=[3.6*inch, 3.0*inch])
     header_table.setStyle(TableStyle([
         ('FONTNAME', (0,0), (-1,-1), 'Helvetica'),
@@ -400,15 +431,7 @@ def build_exam_pdf(sections_or_questions, output_path):
     story.append(Spacer(1, 10))
 
     # Instructions
-    instructions_text = (
-        "<b>Instructions:</b> Record your answers on the Gradescope Bubble Sheet provided. "
-        "Fill in the bubble completely using a dark pencil. Erase fully if you change an answer. "
-        "Each question has exactly one correct answer (A through E). Each correct answer is worth "
-        "1 point (60 points total). There is no penalty for guessing. "
-        "You may write on this exam booklet, but only the bubble sheet will be graded. "
-        "Calculators are permitted. No notes, textbooks, or electronic devices other than calculators."
-    )
-    story.append(Paragraph(instructions_text, instructions_style))
+    story.append(Paragraph(meta["instructions"], instructions_style))
     story.append(Spacer(1, 4))
     # If input provided as sections/categories, use them. Otherwise accept
     # a flat list of questions (optionally with 'category' keys) and group
@@ -470,7 +493,7 @@ def build_exam_pdf(sections_or_questions, output_path):
     # Footer
     story.append(Spacer(1, 20))
     story.append(Paragraph(
-        "<b>END OF EXAM</b> &mdash; Please verify that you have recorded all 60 answers on your Gradescope Bubble Sheet.",
+        meta["footer"],
         ParagraphStyle('EndNote', parent=styles['Normal'],
                        fontSize=10, alignment=TA_CENTER, fontName='Helvetica-Bold')
     ))
@@ -576,6 +599,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Create exam PDF with optional JSON question bank")
     parser.add_argument('-q', '--questions', help='Path to JSON question bank file', default=None)
     parser.add_argument('-o', '--output', help='Output PDF filename', default='cven4333_exam.pdf')
+    parser.add_argument('-m', '--metadata', help='Path to JSON exam metadata file', default=None)
     args = parser.parse_args()
     if args.questions:
         raw = load_questions_from_json(args.questions)
@@ -614,8 +638,10 @@ if __name__ == '__main__':
             formatted_sections.append({'title': title, 'questions': formatted_qs})
         questions_to_use = formatted_sections
 
+    exam_metadata = load_metadata_from_json(args.metadata) if args.metadata else None
+
     try:
-        build_exam_pdf(questions_to_use, args.output)
+        build_exam_pdf(questions_to_use, args.output, metadata=exam_metadata)
     except Exception as e:
         print(f"Error creating exam PDF: {e}")
         sys.exit(1)

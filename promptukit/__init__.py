@@ -1,14 +1,18 @@
-"""Package marker for the scripts module so it can be installed editable.
+"""promptukit — utilities for building question banks and exam documents."""
 
-This file intentionally left minimal.
-"""
+from promptukit.utils.cli_helpers import load, save, pick, confirm
+from promptukit import questions, exams, utils
 
 __all__ = [
-    "add_trivia",
-    "extract_trivia",
-    "cli_helpers",
+    # subpackages
+    "questions",
+    "exams",
+    "utils",
+    # flat re-exports from utils
+    "load",
+    "save",
+    "pick",
+    "confirm",
 ]
 
-# Package version. Kept here for simple runtime access; the canonical
-# version is managed in `pyproject.toml` for Poetry packaging.
 __version__ = "0.1.0"

@@ -1,0 +1,12 @@
+{
+  "title": "CVEN 4333: Engineering Hydrology",
+  "institution": "University of Colorado Boulder",
+  "instructor": "Prof. Joseph Kasprzyk",
+  "exam_type": "Multiple Choice Examination &mdash; 60 Questions",
+  "header_fields": [
+    ["Name: ________________________________________", "Date: ___________________"],
+    ["Student ID: ___________________________________", "Version:  A  /  B  /  C  /  D  /  E"]
+  ],
+  "instructions": "<b>Instructions:</b> Record your answers on the Gradescope Bubble Sheet provided. Fill in the bubble completely using a dark pencil. Erase fully if you change an answer. Each question has exactly one correct answer (A through E). Each correct answer is worth 1 point (60 points total). There is no penalty for guessing. You may write on this exam booklet, but only the bubble sheet will be graded. Calculators are permitted. No notes, textbooks, or electronic devices other than calculators.",
+  "footer": "<b>END OF EXAM</b> &mdash; Please verify that you have recorded all 60 answers on your Gradescope Bubble Sheet."
+}

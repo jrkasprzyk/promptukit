@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Manage trivia JSON files: create, copy, or extract subsets.
+"""Manage question bank JSON files: create, copy, or extract subsets.
 
 Usage examples:
-  python -m promptukit.trivia_tool create --dest question_banks/new.json --categories music,film-and-tv
-  python -m promptukit.trivia_tool copy --src question_banks/block-doku-questions.json --dest question_banks/backup.json
-  python -m promptukit.trivia_tool extract --src question_banks/block-doku-questions.json --dest question_banks/music_subset.json --categories music --difficulty easy
-  python -m promptukit.trivia_tool extract -i --src assets/trivia.json --dest question_banks/pick.json
+  python -m promptukit.questions.question_bank create --dest content/question_banks/new.json --categories music,film-and-tv
+  python -m promptukit.questions.question_bank copy --src content/question_banks/block-doku-questions.json --dest content/question_banks/backup.json
+  python -m promptukit.questions.question_bank extract --src content/question_banks/block-doku-questions.json --dest content/question_banks/music_subset.json --categories music --difficulty easy
+  python -m promptukit.questions.question_bank extract -i --src content/question_banks/block-doku-questions.json --dest content/question_banks/pick.json
 """
 
 from __future__ import annotations
@@ -17,7 +17,7 @@ import sys
 from pathlib import Path
 from typing import Any, List, Optional
 
-from promptukit.cli_helpers import load, save, pick, confirm
+from promptukit.utils.cli_helpers import load, save, pick, confirm
 
 
 def _load_questions(data: Any) -> List[dict]:
@@ -157,23 +157,23 @@ def cmd_extract(args: argparse.Namespace) -> int:
 
 def main(argv: List[str] | None = None) -> int:
     argv = argv if argv is not None else sys.argv[1:]
-    p = argparse.ArgumentParser(description="Create, copy, or extract trivia JSON files")
+    p = argparse.ArgumentParser(description="Create, copy, or extract question bank JSON files")
     sp = p.add_subparsers(dest="cmd", required=True)
 
-    p_create = sp.add_parser("create", help="Create a new trivia JSON file (template)")
+    p_create = sp.add_parser("create", help="Create a new question bank JSON file (template)")
     p_create.add_argument("--dest", required=True, help="Destination path for new JSON")
     p_create.add_argument("--categories", help="Comma-separated initial categories")
     p_create.add_argument("-f", "--force", action="store_true", help="Overwrite destination if exists")
     p_create.set_defaults(func=cmd_create)
 
-    p_copy = sp.add_parser("copy", help="Copy an existing trivia JSON file to a new path")
-    p_copy.add_argument("--src", required=True, help="Source trivia JSON")
+    p_copy = sp.add_parser("copy", help="Copy an existing question bank JSON file to a new path")
+    p_copy.add_argument("--src", required=True, help="Source question bank JSON")
     p_copy.add_argument("--dest", required=True, help="Destination path")
     p_copy.add_argument("-f", "--force", action="store_true", help="Overwrite destination if exists")
     p_copy.set_defaults(func=cmd_copy)
 
     p_extract = sp.add_parser("extract", help="Extract a subset of questions into a new file")
-    p_extract.add_argument("--src", required=True, help="Source trivia JSON")
+    p_extract.add_argument("--src", required=True, help="Source question bank JSON")
     p_extract.add_argument("--dest", required=True, help="Destination JSON file to write")
     p_extract.add_argument("--categories", help="Comma-separated category names (substring matches allowed)")
     p_extract.add_argument("--ids", help="Comma-separated question ids to include (exact match)")

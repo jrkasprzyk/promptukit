@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "promptukit"
 version = "0.1.0"
-description = "Utilities for editing and validating trivia question banks."
+description = "Utilities for building question banks and generating exam documents."
 authors = ["Your Name <you@example.com>"]
 readme = "README.md"
 packages = [ { include = "promptukit" } ]
@@ -11,10 +11,10 @@ python = "^3.10"
 reportlab = "^4.4.10"
 
 [tool.poetry.scripts]
-promptukit-add-trivia = "promptukit.add_trivia:main"
-promptukit-extract-trivia = "promptukit.extract_trivia:main"
-promptukit-validate-trivia = "promptukit.validate_trivia:main"
-promptukit-trivia-tool = "promptukit.trivia_tool:main"
+add-question = "promptukit.questions.add_question:main"
+extract-question = "promptukit.questions.extract_question:main"
+validate-question = "promptukit.questions.validate_question:main"
+question-bank = "promptukit.questions.question_bank:main"
 
 [build-system]
 requires = ["poetry-core>=1.5.0"]
@@ -24,3 +24,6 @@ build-backend = "poetry.core.masonry.api"
 dev = [
     "pytest (>=9.0.3,<10.0.0)"
 ]
+
+[tool.pytest.ini_options]
+testpaths = ["dev/checks"]

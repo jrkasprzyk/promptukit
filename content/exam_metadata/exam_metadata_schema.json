@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "PromptuKit Exam Metadata",
+  "description": "Schema for exam metadata files consumable by promptukit.create_exam via the --metadata flag. All fields are optional; omitted fields fall back to DEFAULT_METADATA in create_exam.py.",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Main exam title rendered at the top of the PDF (e.g. 'CVEN 4333: Engineering Hydrology')."
+    },
+    "institution": {
+      "type": "string",
+      "description": "Institution or department name shown in the subtitle line."
+    },
+    "instructor": {
+      "type": "string",
+      "description": "Instructor or professor name shown in the subtitle line alongside the institution."
+    },
+    "exam_type": {
+      "type": "string",
+      "description": "Short descriptor of the exam format shown below the subtitle (e.g. 'Multiple Choice Examination — 60 Questions')."
+    },
+    "header_fields": {
+      "type": "array",
+      "description": "Rows of the student info table printed beneath the title block. Each row is an array of cell strings.",
+      "items": {
+        "type": "array",
+        "items": { "type": "string" },
+        "minItems": 1
+      },
+      "minItems": 1
+    },
+    "instructions": {
+      "type": "string",
+      "description": "Instruction paragraph printed before the questions. Supports ReportLab HTML-like tags such as <b>, <i>, <sub>, <super>, and HTML entities like &mdash;."
+    },
+    "footer": {
+      "type": "string",
+      "description": "Text printed at the bottom of the last page. Supports the same ReportLab markup as 'instructions'."
+    }
+  },
+  "additionalProperties": false
+}

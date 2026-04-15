@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 
-import promptukit.trivia_tool as tt
+import promptukit.questions.question_bank as tt
 
 
 def _sample_questions():

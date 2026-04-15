@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Validate assets/trivia.json for schema correctness, answer distribution, and content quality."""
+"""Validate a question bank JSON file for schema correctness, answer distribution, and content quality."""
 
 import json
 import sys
 from collections import Counter
 from pathlib import Path
 
-TRIVIA_PATH = Path(__file__).resolve().parent.parent / "question_banks" / "block-doku-questions.json"
+DEFAULT_BANK_PATH = Path(__file__).resolve().parent.parent.parent / "content" / "question_banks" / "block-doku-questions.json"
 
 BLOCK_DOKU_CATEGORIES = {"motorsport", "music", "film-and-tv", "general", "meta", "asia", "books", "science and math", "linguistics", "pop"}
 VALID_DIFFICULTIES = {"easy", "medium", "hard"}
@@ -121,7 +121,7 @@ def print_stats(data: dict) -> None:
 
 
 def main() -> int:
-    path = Path(sys.argv[1]) if len(sys.argv) > 1 else TRIVIA_PATH
+    path = Path(sys.argv[1]) if len(sys.argv) > 1 else DEFAULT_BANK_PATH
     print(f"Validating: {path}")
 
     try:

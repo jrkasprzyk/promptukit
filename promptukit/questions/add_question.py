@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-"""Add trivia questions to a question bank.
+"""Add questions to a question bank.
 
 Interactive mode (default):
-  python -m promptukit.add_trivia [path/to/bank.json]
+  python -m promptukit.questions.add_question [path/to/bank.json]
 
 Batch mode — read a JSON array of partial question objects from a file or
 stdin, auto-assign IDs, and append to the bank without any prompts:
-  python -m promptukit.add_trivia --batch questions.json [path/to/bank.json]
-  cat questions.json | python -m promptukit.add_trivia --batch - [path/to/bank.json]
+  python -m promptukit.questions.add_question --batch questions.json [path/to/bank.json]
+  cat questions.json | python -m promptukit.questions.add_question --batch - [path/to/bank.json]
 
 Each object in the batch array must have: category, difficulty, prompt,
 choices (4 strings), answer (0-3 int).  Optional: quip_correct, quip_wrong.
@@ -20,9 +20,9 @@ import json
 import argparse
 from pathlib import Path
 
-from .cli_helpers import load, save, pick, confirm
+from promptukit.utils.cli_helpers import load, save, pick, confirm
 
-TRIVIA_PATH = Path(__file__).resolve().parent.parent / "question_banks" / "block-doku-questions.json"
+DEFAULT_BANK_PATH = Path(__file__).resolve().parent.parent.parent / "content" / "question_banks" / "block-doku-questions.json"
 DIFFICULTIES = ["easy", "medium", "hard"]
 
 
@@ -222,7 +222,7 @@ def main() -> int:
         sys.stdout.reconfigure(encoding="utf-8")
 
     p = argparse.ArgumentParser(description="Add trivia questions to a question bank")
-    p.add_argument("bank", nargs="?", default=str(TRIVIA_PATH), help="Path to the question bank JSON")
+    p.add_argument("bank", nargs="?", default=str(DEFAULT_BANK_PATH), help="Path to the question bank JSON")
     p.add_argument(
         "--batch", metavar="FILE",
         help="Batch mode: read a JSON array of questions from FILE (use '-' for stdin)"
