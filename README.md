@@ -94,3 +94,34 @@ python -m promptukit.add_trivia
 python -m promptukit.extract_trivia --help
 python -m promptukit.trivia_tool create --dest question_banks/new.json
 ```
+
+Running Tests
+-------------
+
+The test suite lives in the tests directory. The file [tests/test_trivia_tool.py](tests/test_trivia_tool.py)
+contains unit tests and a small integration-style test that exercise the CLI functions.
+
+What the test covers:
+
+- `test_filter_questions`: verifies `filter_questions()` handles category, `difficulty`, `ids`, and `match` filters.
+- `test_cmd_extract_and_create_and_copy`: writes temporary JSON files and invokes `promptukit.trivia_tool.main()` with
+   CLI-style arguments to test `extract`, `create`, and `copy`.
+
+Run the tests:
+
+Using Poetry (recommended):
+
+```bash
+poetry add --dev pytest
+poetry run pytest tests/test_trivia_tool.py -q
+```
+
+Or run directly if pytest is available on your PATH:
+
+```bash
+python -m pytest tests/test_trivia_tool.py -q
+```
+
+Notes:
+- Tests use pytest's `tmp_path` fixture and do not modify your repository files.
+
