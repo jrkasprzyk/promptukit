@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "promptukit"
+version = "0.1.0"
+description = "Utilities for editing and validating trivia question banks."
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+packages = [ { include = "promptukit" } ]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[tool.poetry.scripts]
+promptukit-add-trivia = "promptukit.add_trivia:main"
+promptukit-extract-trivia = "promptukit.extract_trivia:main"
+promptukit-validate-trivia = "promptukit.validate_trivia:main"
+
+[build-system]
+requires = ["poetry-core>=1.5.0"]
+build-backend = "poetry.core.masonry.api"
