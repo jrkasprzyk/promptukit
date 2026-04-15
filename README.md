@@ -26,6 +26,49 @@ Getting started (Poetry)
    poetry run promptukit-validate-trivia
    ```
 
+Activating the virtualenv
+-------------------------
+
+If Poetry is configured to create an in-project virtualenv, it will be placed in a `.venv` folder at the repository root. Activate that environment from the project root using the command for your shell:
+
+PowerShell (Windows):
+
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
+
+If script execution is blocked, temporarily allow it then activate:
+
+```powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+.\.venv\Scripts\Activate.ps1
+```
+
+Command Prompt (cmd.exe):
+
+```cmd
+.\.venv\Scripts\activate.bat
+```
+
+Git Bash / MSYS (Windows):
+
+```bash
+source .venv/Scripts/activate
+```
+
+macOS / Linux (POSIX):
+
+```bash
+source .venv/bin/activate
+```
+
+Alternatives (no manual activation required):
+
+```bash
+poetry shell        # spawn a shell inside the project's virtualenv
+poetry run <cmd>    # run a single command inside the virtualenv, e.g. `poetry run pytest`
+```
+
 Notes
 -----
 - The package entry points are defined in `pyproject.toml` and map
@@ -111,17 +154,6 @@ python -m promptukit.create_exam -q question_banks/block-doku-questions.json -o 
 
 # With Poetry (runs the module inside the virtualenv)
 poetry run python -m promptukit.create_exam -q question_banks/block-doku-questions.json -o cven4333_from_json.pdf
-```
-
-Dependencies
-------------
-
-- PDF generation requires `reportlab`. Install with Poetry or pip:
-
-```bash
-poetry add reportlab
-# or
-pip install reportlab
 ```
 
 Supported JSON formats
