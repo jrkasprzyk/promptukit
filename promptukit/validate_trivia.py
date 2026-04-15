@@ -6,7 +6,7 @@ import sys
 from collections import Counter
 from pathlib import Path
 
-TRIVIA_PATH = Path(__file__).resolve().parent.parent / "assets" / "trivia.json"
+TRIVIA_PATH = Path(__file__).resolve().parent.parent / "question_banks" / "block-doku-questions.json"
 
 VALID_CATEGORIES = {"motorsport", "music", "film-and-tv", "general", "meta", "asia", "books", "science and math", "linguistics", "pop"}
 VALID_DIFFICULTIES = {"easy", "medium", "hard"}

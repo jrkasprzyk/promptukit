@@ -7,7 +7,7 @@ from pathlib import Path
 
 from .cli_helpers import load, save, pick, confirm
 
-TRIVIA_PATH = Path(__file__).resolve().parent.parent / "assets" / "trivia.json"
+TRIVIA_PATH = Path(__file__).resolve().parent.parent / "question_banks" / "block-doku-questions.json"
 DIFFICULTIES = ["easy", "medium", "hard"]
 
 

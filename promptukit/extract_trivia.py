@@ -24,7 +24,7 @@ from typing import Any, Dict, Iterable, List, Tuple
 from .cli_helpers import load, pick, confirm
 
 
-TRIVIA_PATH = Path(__file__).resolve().parent.parent / "assets" / "trivia.json"
+TRIVIA_PATH = Path(__file__).resolve().parent.parent / "question_banks" / "block-doku-questions.json"
 
 
 def build_category_map(data: Any) -> Dict[str, List[dict]]:
