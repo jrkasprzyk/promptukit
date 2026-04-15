@@ -1,8 +1,23 @@
 #!/usr/bin/env python3
-"""Interactively add a trivia question to assets/trivia.json."""
+"""Add trivia questions to a question bank.
 
+Interactive mode (default):
+  python -m promptukit.add_trivia [path/to/bank.json]
+
+Batch mode — read a JSON array of partial question objects from a file or
+stdin, auto-assign IDs, and append to the bank without any prompts:
+  python -m promptukit.add_trivia --batch questions.json [path/to/bank.json]
+  cat questions.json | python -m promptukit.add_trivia --batch - [path/to/bank.json]
+
+Each object in the batch array must have: category, difficulty, prompt,
+choices (4 strings), answer (0-3 int).  Optional: quip_correct, quip_wrong.
+IDs are auto-generated; any "id" field in the input is ignored.
+"""
+
+import io
 import sys
 import json
+import argparse
 from pathlib import Path
 
 from .cli_helpers import load, save, pick, confirm
@@ -127,15 +142,102 @@ def collect_question(categories: list[str], questions: list[dict]) -> dict:
 
 
 # ---------------------------------------------------------------------------
+# Batch mode
+# ---------------------------------------------------------------------------
+
+BATCH_REQUIRED = {"category", "difficulty", "prompt", "choices", "answer"}
+
+
+def _load_batch(source: str) -> list[dict]:
+    """Read a JSON array of partial question objects from a file path or '-' for stdin."""
+    if source == "-":
+        raw = sys.stdin.read()
+    else:
+        raw = Path(source).read_text(encoding="utf-8")
+    data = json.loads(raw)
+    if not isinstance(data, list):
+        raise ValueError("Batch input must be a JSON array of question objects")
+    return data
+
+
+def cmd_batch(bank_path: Path, batch_source: str) -> int:
+    print(f"Loading bank: {bank_path}")
+    try:
+        data = load(bank_path)
+    except json.JSONDecodeError as e:
+        print(f"FATAL: invalid JSON in bank — {e}")
+        return 1
+
+    try:
+        incoming = _load_batch(batch_source)
+    except (json.JSONDecodeError, ValueError) as e:
+        print(f"FATAL: invalid batch input — {e}")
+        return 1
+    except FileNotFoundError as e:
+        print(f"FATAL: {e}")
+        return 1
+
+    questions: list[dict] = data.get("questions", [])
+    added = 0
+    errors = 0
+
+    for i, raw in enumerate(incoming):
+        missing = BATCH_REQUIRED - set(raw.keys())
+        if missing:
+            print(f"  SKIP item[{i}]: missing fields {missing}")
+            errors += 1
+            continue
+
+        qid = next_id(questions, raw["category"])
+        q: dict = {
+            "id":         qid,
+            "category":   raw["category"],
+            "difficulty": raw["difficulty"],
+            "prompt":     raw["prompt"],
+            "choices":    raw["choices"],
+            "answer":     raw["answer"],
+        }
+        for opt in ("quip_correct", "quip_wrong"):
+            if raw.get(opt):
+                q[opt] = raw[opt]
+
+        preview(q)
+        questions = insert_after_category(questions, q)
+        added += 1
+
+    data["questions"] = questions
+    if added:
+        save(bank_path, data)
+
+    print(f"\nDone. {added} question(s) added, {errors} skipped.")
+    return 0 if not errors else 1
+
+
+# ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
 
 def main() -> int:
-    path = Path(sys.argv[1]) if len(sys.argv) > 1 else TRIVIA_PATH
-    print(f"Loading: {path}")
+    if isinstance(sys.stdout, io.TextIOWrapper):
+        sys.stdout.reconfigure(encoding="utf-8")
 
+    p = argparse.ArgumentParser(description="Add trivia questions to a question bank")
+    p.add_argument("bank", nargs="?", default=str(TRIVIA_PATH), help="Path to the question bank JSON")
+    p.add_argument(
+        "--batch", metavar="FILE",
+        help="Batch mode: read a JSON array of questions from FILE (use '-' for stdin)"
+    )
+    args = p.parse_args()
+
+    bank_path = Path(args.bank)
+
+    if args.batch:
+        return cmd_batch(bank_path, args.batch)
+
+    # --- interactive mode ---
+    print(f"Loading: {bank_path}")
     try:
-        data = load(path)
+        data = load(bank_path)
     except json.JSONDecodeError as e:
         print(f"FATAL: invalid JSON — {e}")
         return 1
@@ -151,7 +253,7 @@ def main() -> int:
         if confirm("Save this question?"):
             questions = insert_after_category(questions, q)
             data["questions"] = questions
-            save(path, data)
+            save(bank_path, data)
             added += 1
             print(f"\n  Saved — {q['id']} added ({len(questions)} questions total).")
         else:

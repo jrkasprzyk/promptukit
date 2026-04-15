@@ -8,7 +8,7 @@ from pathlib import Path
 
 TRIVIA_PATH = Path(__file__).resolve().parent.parent / "question_banks" / "block-doku-questions.json"
 
-VALID_CATEGORIES = {"motorsport", "music", "film-and-tv", "general", "meta", "asia", "books", "science and math", "linguistics", "pop"}
+BLOCK_DOKU_CATEGORIES = {"motorsport", "music", "film-and-tv", "general", "meta", "asia", "books", "science and math", "linguistics", "pop"}
 VALID_DIFFICULTIES = {"easy", "medium", "hard"}
 REQUIRED_FIELDS = {"id", "category", "difficulty", "prompt", "choices", "answer"}
 
@@ -16,6 +16,19 @@ REQUIRED_FIELDS = {"id", "category", "difficulty", "prompt", "choices", "answer"
 def load(path: Path) -> dict:
     with open(path, encoding="utf-8") as f:
         return json.load(f)
+
+
+def _valid_categories(data: dict) -> set[str]:
+    """Return the set of allowed categories for this file.
+
+    If the file declares a top-level ``"categories"`` list, that list is used.
+    Otherwise fall back to the block-doku hardcoded set so the original
+    behaviour is preserved for files that predate the ``"categories"`` key.
+    """
+    declared = data.get("categories")
+    if declared and isinstance(declared, list):
+        return set(declared)
+    return BLOCK_DOKU_CATEGORIES
 
 
 def validate(data: dict) -> list[str]:
@@ -26,6 +39,7 @@ def validate(data: dict) -> list[str]:
         errors.append("Missing top-level 'questions' array")
         return errors
 
+    valid_categories = _valid_categories(data)
     questions = data["questions"]
     ids_seen: set[str] = set()
 
@@ -44,8 +58,8 @@ def validate(data: dict) -> list[str]:
         ids_seen.add(q["id"])
 
         # --- category / difficulty ---
-        if q["category"] not in VALID_CATEGORIES:
-            errors.append(f"{label}: unknown category '{q['category']}'")
+        if q["category"] not in valid_categories:
+            errors.append(f"{label}: unknown category '{q['category']}' (not in file's categories list)")
         if q["difficulty"] not in VALID_DIFFICULTIES:
             errors.append(f"{label}: unknown difficulty '{q['difficulty']}'")
 
@@ -75,9 +89,14 @@ def print_stats(data: dict) -> None:
 
     print(f"\n  Total questions: {len(questions)}")
 
+    # Use the file's own category list (insertion order) when available,
+    # otherwise fall back to the sorted block-doku set.
+    declared = data.get("categories")
+    display_cats = declared if (declared and isinstance(declared, list)) else sorted(BLOCK_DOKU_CATEGORIES)
+
     print("\n  By category:")
-    for cat in sorted(VALID_CATEGORIES):
-        print(f"    {cat:<12} {cats.get(cat, 0)}")
+    for cat in display_cats:
+        print(f"    {cat:<24} {cats.get(cat, 0)}")
 
     print("\n  By difficulty:")
     for diff in ["easy", "medium", "hard"]:
