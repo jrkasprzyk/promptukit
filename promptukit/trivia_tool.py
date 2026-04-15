@@ -17,7 +17,7 @@ import sys
 from pathlib import Path
 from typing import Any, List, Optional
 
-from .cli_helpers import load, save, pick, confirm
+from promptukit.cli_helpers import load, save, pick, confirm
 
 
 def _load_questions(data: Any) -> List[dict]:
@@ -59,7 +59,7 @@ def _parse_csv(s: Optional[str]) -> List[str]:
     return [p.strip() for p in s.split(",") if p.strip()]
 
 
-def filter_questions(questions: List[dict], categories: List[str] = None, ids: List[str] = None,
+def filter_questions(questions: List[dict], categories: Optional[List[str]] = None, ids: Optional[List[str]] = None,
                      difficulty: Optional[str] = None, match: Optional[str] = None) -> List[dict]:
     categories = categories or []
     ids = ids or []

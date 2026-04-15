@@ -463,8 +463,9 @@ def build_exam_pdf(sections_or_questions, output_path):
                 else:
                     block.append(Paragraph(f"{chr(ord('A') + j)}) {chs}", choice_style))
             # KeepTogether prevents a question from breaking across pages
-            # ReportLab's KeepTogether may mutate the sequence, so pass a list.
-            story.append(KeepTogether(block))
+            # ReportLab's KeepTogether may mutate the sequence; pass a tuple
+            # to satisfy static type checkers (lists are invariant).
+            story.append(KeepTogether(tuple(block)))
 
     # Footer
     story.append(Spacer(1, 20))
