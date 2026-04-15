@@ -95,6 +95,78 @@ python -m promptukit.extract_trivia --help
 python -m promptukit.trivia_tool create --dest question_banks/new.json
 ```
 
+Create exam PDF
+---------------
+
+The `create_exam.py` script can generate a printable exam PDF. It now accepts an external JSON question bank so you can build exams from your existing `question_banks/` files.
+
+Usage (from the repository root):
+
+```bash
+# Use the built-in hard-coded exam
+python -m promptukit.create_exam
+
+# Load questions from a JSON bank and write a PDF
+python -m promptukit.create_exam -q question_banks/block-doku-questions.json -o cven4333_from_json.pdf
+
+# With Poetry (runs the module inside the virtualenv)
+poetry run python -m promptukit.create_exam -q question_banks/block-doku-questions.json -o cven4333_from_json.pdf
+```
+
+Dependencies
+------------
+
+- PDF generation requires `reportlab`. Install with Poetry or pip:
+
+```bash
+poetry add reportlab
+# or
+pip install reportlab
+```
+
+Supported JSON formats
+----------------------
+
+- Top-level `sections` (preferred):
+
+   ```json
+   {
+      "sections": [
+         {
+            "title": "Section title",
+            "questions": [ { "prompt": "...", "choices": ["...", "..."] }, ... ]
+         }
+      ]
+   }
+   ```
+
+- `categories` is an alias for `sections` and is also accepted.
+
+- Flat list of questions (top-level array) or top-level object with `questions` array:
+
+   ```json
+   {
+      "questions": [ { "prompt": "...", "choices": ["...", "..."], "category": "Section title" }, ... ]
+   }
+   ```
+
+- Question objects support multiple common field names: `prompt`, `q`, `question`, or `text` for the question text; `choices` or `answers` for the answer options; optional `category` to group flat lists into sections.
+
+- If choices are not already labeled (for example `"Oceans"` instead of `"A) Oceans"`), the script will prefix them with `A)`, `B)`, etc. Prompts without a leading number will be auto-numbered sequentially.
+
+Example files
+-------------
+
+- Example section-based bank: [question_banks/example_sections.json](question_banks/example_sections.json)
+- JSON Schema describing accepted layouts: [question_banks/question_schema.json](question_banks/question_schema.json)
+
+Behavior notes
+--------------
+
+- If no `-q/--questions` file is provided, the script falls back to the built-in hard-coded 60-question exam and preserves its original 8-section breakdown.
+- When you provide a section-based JSON file the PDF's section headings will be taken from each section's `title` (or `name` / `label` if present). When you provide a flat list with `category` fields, the loader will group questions by category to build sections automatically.
+
+
 Running Tests
 -------------
 

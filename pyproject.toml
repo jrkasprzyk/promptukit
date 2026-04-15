@@ -8,6 +8,7 @@ packages = [ { include = "promptukit" } ]
 
 [tool.poetry.dependencies]
 python = "^3.10"
+reportlab = "^4.4.10"
 
 [tool.poetry.scripts]
 promptukit-add-trivia = "promptukit.add_trivia:main"
