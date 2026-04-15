@@ -65,9 +65,30 @@ source .venv/bin/activate
 Alternatives (no manual activation required):
 
 ```bash
-poetry shell        # spawn a shell inside the project's virtualenv
-poetry run <cmd>    # run a single command inside the virtualenv, e.g. `poetry run pytest`
+# Run a single command inside the virtualenv without activating it
+poetry run <cmd>    # e.g. poetry run pytest
 ```
+
+Poetry 2.x note:
+
+- The `poetry shell` command (which previously spawned a new shell) is not installed by default in Poetry 2.0+. You can either:
+   - Prefer `poetry env activate`, which prints a shell-specific activation command you can evaluate in your current shell. For example, in a POSIX shell:
+
+      ```bash
+      eval "$(poetry env activate)"
+      ```
+
+      In PowerShell you can evaluate the output with `Invoke-Expression`:
+
+      ```powershell
+      Invoke-Expression (poetry env activate)
+      ```
+
+      Note: `poetry env activate` prints an activation command for your shell; it is not a direct replacement for the old `poetry shell` behavior.
+
+   - Or install the shell plugin to restore the `poetry shell` command (see https://github.com/python-poetry/poetry-plugin-shell).
+
+See the Poetry docs for details: https://python-poetry.org/docs/managing-environments/#activating-the-environment
 
 Notes
 -----
