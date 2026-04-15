@@ -2939,6 +2939,21 @@
       "quip_wrong": "The Crossbuster â€” designed in the early '80s and still on every album."
     },
     {
+      "id": "pop_041",
+      "category": "pop",
+      "difficulty": "easy",
+      "prompt": "Hit Me Baby, One More Time is by whom?",
+      "choices": [
+        "Aguilera",
+        "Spears",
+        "Sheen",
+        "Aliyah"
+      ],
+      "answer": 1,
+      "quip_correct": "comma Britney",
+      "quip_wrong": "This is a song by the singer Britney Spears."
+    },
+    {
       "id": "music_013",
       "category": "music",
       "difficulty": "easy",
