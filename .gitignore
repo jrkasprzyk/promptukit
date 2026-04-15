@@ -11,7 +11,11 @@ build/
 .vscode/
 .idea/
 .DS_Store
-Thumbs.db# Byte-compiled / optimized / DLL files
+Thumbs.db
+
+.private/
+
+# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
 *$py.class
