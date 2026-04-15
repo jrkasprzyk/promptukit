@@ -1,0 +1,161 @@
+{
+  "categories": [
+    "water sources",
+    "water treatment",
+    "water conservation",
+    "water policy",
+    "water infrastructure"
+  ],
+  "questions": [
+    {
+      "id": "water sources_001",
+      "category": "water sources",
+      "difficulty": "easy",
+      "prompt": "What is the largest source of freshwater on Earth?",
+      "choices": [
+        "Glaciers and ice caps",
+        "Rivers and lakes",
+        "Groundwater aquifers",
+        "Atmospheric water vapor"
+      ],
+      "answer": 0,
+      "quip_correct": "About 69% of Earth's freshwater is locked in glaciers and ice caps.",
+      "quip_wrong": "Glaciers and ice caps hold ~69% of all freshwater — far more than lakes or aquifers."
+    },
+    {
+      "id": "water sources_002",
+      "category": "water sources",
+      "difficulty": "medium",
+      "prompt": "What term describes an underground layer of rock or sediment that holds and transmits groundwater?",
+      "choices": [
+        "Watershed",
+        "Aquifer",
+        "Floodplain",
+        "Riparian zone"
+      ],
+      "answer": 1,
+      "quip_correct": "Aquifers supply roughly half the world's drinking water.",
+      "quip_wrong": "An aquifer is the underground formation — a watershed is the surface drainage area."
+    },
+    {
+      "id": "water treatment_001",
+      "category": "water treatment",
+      "difficulty": "easy",
+      "prompt": "What chemical is most commonly added to municipal drinking water to kill pathogens?",
+      "choices": [
+        "Fluoride",
+        "Ozone",
+        "Sodium",
+        "Chlorine"
+      ],
+      "answer": 3,
+      "quip_correct": "Chlorination has been used since the early 1900s and remains the global standard.",
+      "quip_wrong": "Chlorine is the primary disinfectant — fluoride is added separately for dental health."
+    },
+    {
+      "id": "water treatment_002",
+      "category": "water treatment",
+      "difficulty": "hard",
+      "prompt": "Which water treatment process uses a semi-permeable membrane to remove dissolved salts from seawater?",
+      "choices": [
+        "Flocculation",
+        "Activated sludge",
+        "Reverse osmosis",
+        "Slow sand filtration"
+      ],
+      "answer": 2,
+      "quip_correct": "RO pushes water through membranes at high pressure, leaving salts behind.",
+      "quip_wrong": "Reverse osmosis (RO) is the key desalination technology — the others are conventional treatment steps."
+    },
+    {
+      "id": "water conservation_001",
+      "category": "water conservation",
+      "difficulty": "easy",
+      "prompt": "Which sector accounts for the largest share of global freshwater withdrawals?",
+      "choices": [
+        "Municipal (household) use",
+        "Industrial use",
+        "Agriculture",
+        "Energy production"
+      ],
+      "answer": 2,
+      "quip_correct": "Agriculture uses roughly 70% of all freshwater withdrawn globally.",
+      "quip_wrong": "Agriculture accounts for ~70% of global freshwater use — mostly for irrigation."
+    },
+    {
+      "id": "water conservation_002",
+      "category": "water conservation",
+      "difficulty": "medium",
+      "prompt": "Drip irrigation conserves water compared to flood irrigation primarily by doing what?",
+      "choices": [
+        "Delivering water directly to plant root zones, minimizing evaporation and runoff",
+        "Cooling the air around crops to reduce evaporation",
+        "Recycling wastewater before it reaches the field",
+        "Using underground pipes to pressurize soil moisture"
+      ],
+      "answer": 0,
+      "quip_correct": "Drip systems can cut agricultural water use by 30–50% versus flood irrigation.",
+      "quip_wrong": "The key advantage is targeted delivery to roots — cutting evaporation and surface runoff."
+    },
+    {
+      "id": "water policy_001",
+      "category": "water policy",
+      "difficulty": "medium",
+      "prompt": "The 'prior appropriation' doctrine of water law is best described as:",
+      "choices": [
+        "Water belongs to the land it flows through",
+        "First in time, first in right — senior users take priority in dry years",
+        "Water is shared equally among all users in a basin",
+        "Federal government owns all navigable waterways"
+      ],
+      "answer": 1,
+      "quip_correct": "Prior appropriation dominates water law in the western United States.",
+      "quip_wrong": "'First in time, first in right' — senior rights holders get water before junior holders in a shortage."
+    },
+    {
+      "id": "water policy_002",
+      "category": "water policy",
+      "difficulty": "hard",
+      "prompt": "The UN Sustainable Development Goal 6 (SDG 6) targets universal access to what by 2030?",
+      "choices": [
+        "Desalination plants in every coastal nation",
+        "Zero groundwater depletion globally",
+        "A 50% reduction in industrial water use",
+        "Safe drinking water and sanitation for all people"
+      ],
+      "answer": 3,
+      "quip_correct": "SDG 6 covers clean water AND sanitation — about 2 billion people still lack safe drinking water.",
+      "quip_wrong": "SDG 6 targets clean water and sanitation for all — a foundational human development goal."
+    },
+    {
+      "id": "water infrastructure_001",
+      "category": "water infrastructure",
+      "difficulty": "easy",
+      "prompt": "What is the primary purpose of a dam's spillway?",
+      "choices": [
+        "Generate hydroelectric power",
+        "Measure flow rate downstream",
+        "Safely release excess water to prevent dam overtopping",
+        "Filter sediment before water enters the reservoir"
+      ],
+      "answer": 2,
+      "quip_correct": "Spillways are the dam's safety valve — critical during high-inflow flood events.",
+      "quip_wrong": "The spillway safely diverts floodwater — overtopping can erode and fail even concrete dams."
+    },
+    {
+      "id": "water infrastructure_002",
+      "category": "water infrastructure",
+      "difficulty": "medium",
+      "prompt": "What does the term 'non-revenue water' (NRW) refer to in urban water systems?",
+      "choices": [
+        "Water used by non-profit organizations",
+        "Treated water that is lost or unaccounted for before reaching paying customers",
+        "Stormwater that bypasses the treatment plant",
+        "Water traded without a financial contract"
+      ],
+      "answer": 1,
+      "quip_correct": "Global NRW losses average ~30% — representing billions of dollars of wasted treated water.",
+      "quip_wrong": "NRW is treated water lost to leaks, theft, or meter errors — a major efficiency challenge worldwide."
+    }
+  ]
+}

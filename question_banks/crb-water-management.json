@@ -1,0 +1,173 @@
+{
+  "categories": [
+    "science and math",
+    "general"
+  ],
+  "questions": [
+    {
+      "id": "general_001",
+      "category": "general",
+      "difficulty": "easy",
+      "prompt": "Which of the following is NOT one of the Upper Basin states of the Colorado River Basin?",
+      "choices": [
+        "Arizona",
+        "Colorado",
+        "Wyoming",
+        "New Mexico"
+      ],
+      "answer": 0,
+      "quip_correct": "AZ is Lower Basin — along with CA and NV.",
+      "quip_wrong": "Upper Basin: CO, NM, UT, WY. Arizona is Lower Basin."
+    },
+    {
+      "id": "general_002",
+      "category": "general",
+      "difficulty": "easy",
+      "prompt": "What geographic point divides the Colorado River Basin into the Upper and Lower Basins?",
+      "choices": [
+        "Hoover Dam",
+        "Lees Ferry",
+        "Glen Canyon Dam",
+        "Imperial Dam"
+      ],
+      "answer": 1,
+      "quip_correct": "Lees Ferry, Arizona — the legal and hydrologic dividing line.",
+      "quip_wrong": "It's Lees Ferry, AZ — set by the 1922 Colorado River Compact."
+    },
+    {
+      "id": "general_003",
+      "category": "general",
+      "difficulty": "easy",
+      "prompt": "Approximately what fraction of the Colorado River Basin's water supply originates in the Upper Basin?",
+      "choices": [
+        "50%",
+        "75%",
+        "99%",
+        "92%"
+      ],
+      "answer": 3,
+      "quip_correct": "~92% — the mountains of CO, WY, UT, and NM do the heavy lifting.",
+      "quip_wrong": "About 92% — the Upper Basin snowpack is the basin's water tower."
+    },
+    {
+      "id": "general_004",
+      "category": "general",
+      "difficulty": "easy",
+      "prompt": "The 2007 Interim Guidelines established shortage operations for Lake Mead. In what year were they set to expire?",
+      "choices": [
+        "2026",
+        "2023",
+        "2020",
+        "2030"
+      ],
+      "answer": 0,
+      "quip_correct": "2026 — triggering the Post-2026 Operations renegotiation process.",
+      "quip_wrong": "They expire in 2026, which is why the renegotiation process began in 2023."
+    },
+    {
+      "id": "general_005",
+      "category": "general",
+      "difficulty": "easy",
+      "prompt": "Approximately what percentage of America's winter leafy greens come from the Yuma, Arizona area?",
+      "choices": [
+        "50%",
+        "75%",
+        "90%",
+        "100%"
+      ],
+      "answer": 2,
+      "quip_correct": "90% — Colorado River water grows your winter salad.",
+      "quip_wrong": "About 90% of winter leafy greens come from Yuma, irrigated by the Colorado."
+    },
+    {
+      "category": "general",
+      "difficulty": "easy",
+      "prompt": "What federal agency operates the major dams of the Colorado River Basin?",
+      "choices": [
+        "Army Corps of Engineers",
+        "Bureau of Reclamation",
+        "EPA",
+        "USGS"
+      ],
+      "answer": 1,
+      "id": "general_006",
+      "quip_correct": "Reclamation â€” Hoover, Glen Canyon, and many more.",
+      "quip_wrong": "The Bureau of Reclamation builds and operates the big dams."
+    },
+    {
+      "id": "science and math_001",
+      "category": "science and math",
+      "difficulty": "medium",
+      "prompt": "In the simulation-based optimization framework for Colorado River Basin management, which simulation software is used to model reservoir operations?",
+      "choices": [
+        "HEC-RAS",
+        "SWAT",
+        "MODFLOW",
+        "RiverWare"
+      ],
+      "answer": 3,
+      "quip_correct": "RiverWare — developed right at CU Boulder's CADSWES.",
+      "quip_wrong": "RiverWare (riverware.org) is the river/reservoir simulation engine used."
+    },
+    {
+      "id": "science and math_002",
+      "category": "science and math",
+      "difficulty": "medium",
+      "prompt": "What multi-objective evolutionary algorithm (MOEA) is coupled with RiverWare to search for optimal operating policies in this Colorado River research?",
+      "choices": [
+        "NSGA-II",
+        "Borg MOEA",
+        "SPEA2",
+        "epsilon-NSGA"
+      ],
+      "answer": 1,
+      "quip_correct": "Borg MOEA — an adaptive, many-objective optimizer.",
+      "quip_wrong": "Borg MOEA is the optimizer — it drives the search for Pareto-optimal policies."
+    },
+    {
+      "id": "science and math_003",
+      "category": "science and math",
+      "difficulty": "medium",
+      "prompt": "What does DMDU stand for in the context of Colorado River Basin water management?",
+      "choices": [
+        "Dynamic Management of Dam Utilization",
+        "Decision Making Under Deep Uncertainty",
+        "Distributed Model of Demand and Use",
+        "Data-Managed Drought Uncertainty"
+      ],
+      "answer": 1,
+      "quip_correct": "Deep Uncertainty — when you don't even know the probability distribution of futures.",
+      "quip_wrong": "DMDU = Decision Making Under Deep Uncertainty — stress-testing policies across many futures."
+    },
+    {
+      "id": "science and math_004",
+      "category": "science and math",
+      "difficulty": "hard",
+      "prompt": "In the Post-MORDM framework (Bonham et al. 2022), what unsupervised machine learning method organizes policies into a 2D map where nearby policies perform similarly?",
+      "choices": [
+        "k-means clustering",
+        "Principal Component Analysis (PCA)",
+        "Self-Organizing Map (SOM)",
+        "t-SNE"
+      ],
+      "answer": 2,
+      "quip_correct": "SOM (Kohonen 1990) — topology-preserving dimensionality reduction.",
+      "quip_wrong": "The Self-Organizing Map (SOM) arranges policies so similar ones cluster together."
+    },
+    {
+      "id": "science and math_005",
+      "category": "science and math",
+      "difficulty": "hard",
+      "prompt": "In the MOEA policy representation for Lake Mead shortage operations, what is the maximum number of discrete shortage tiers that can be defined by the shortage elevation variables?",
+      "choices": [
+        "3",
+        "4",
+        "8",
+        "6"
+      ],
+      "answer": 3,
+      "quip_correct": "6 tiers — variables e1 through e6 each set a shortage elevation threshold.",
+      "quip_wrong": "Up to 6 shortage tiers (e1–e6), each with a corresponding volume reduction (V1–V6)."
+    }
+  ]
+}
