@@ -13,6 +13,7 @@ python = "^3.10"
 promptukit-add-trivia = "promptukit.add_trivia:main"
 promptukit-extract-trivia = "promptukit.extract_trivia:main"
 promptukit-validate-trivia = "promptukit.validate_trivia:main"
+promptukit-trivia-tool = "promptukit.trivia_tool:main"
 
 [build-system]
 requires = ["poetry-core>=1.5.0"]
