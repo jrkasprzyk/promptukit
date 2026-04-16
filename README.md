@@ -34,6 +34,48 @@ If Poetry is configured to create an in-project virtualenv, it will be placed in
 PowerShell (Windows):
 
 ```powershell
+Update README to reflect new CLI names and module paths.
+
+PromptuKit
+==========
+
+Utilities for building and managing multiple-choice question banks and
+generating exam PDFs.
+
+Getting started (Poetry)
+------------------------
+
+1. Install Poetry (if you don't have it):
+
+   ```bash
+   pip install --user poetry
+   ```
+
+2. Create the virtual environment and install dependencies:
+
+   ```bash
+   poetry install
+   ```
+
+3. Run the CLI tools via Poetry (console scripts / entry points):
+
+   ```bash
+   poetry run add-question
+   poetry run extract-question --help
+   poetry run validate-question
+   poetry run question-bank --help
+   ```
+
+Activating the virtualenv
+-------------------------
+
+If Poetry is configured to create an in-project virtualenv, it will be
+placed in a `.venv` folder at the repository root. Activate that
+environment from the project root using the command for your shell.
+
+PowerShell (Windows):
+
+```powershell
 .\.venv\Scripts\Activate.ps1
 ```
 
@@ -71,110 +113,104 @@ poetry run <cmd>    # e.g. poetry run pytest
 
 Poetry 2.x note:
 
-- The `poetry shell` command (which previously spawned a new shell) is not installed by default in Poetry 2.0+. You can either:
-   - Prefer `poetry env activate`, which prints a shell-specific activation command you can evaluate in your current shell. For example, in a POSIX shell:
-
-      ```bash
-      eval "$(poetry env activate)"
-      ```
-
-      In PowerShell you can evaluate the output with `Invoke-Expression`:
-
-      ```powershell
-      Invoke-Expression (poetry env activate)
-      ```
-
-      Note: `poetry env activate` prints an activation command for your shell; it is not a direct replacement for the old `poetry shell` behavior.
-
-   - Or install the shell plugin to restore the `poetry shell` command (see https://github.com/python-poetry/poetry-plugin-shell).
-
-See the Poetry docs for details: https://python-poetry.org/docs/managing-environments/#activating-the-environment
+- The `poetry shell` command (which previously spawned a new shell) is not
+  installed by default in Poetry 2.0+. You can either use
+  `poetry env activate` (then evaluate the printed activation command in
+  your shell) or install the shell plugin to restore `poetry shell`.
 
 Notes
 -----
-- The package entry points are defined in `pyproject.toml` and map
-  to the `main()` functions in the modules under the `promptukit`
-  package.
-- If you prefer an interactive shell, use `poetry shell` then invoke
-  the commands directly.
+- The package entry points are defined in `pyproject.toml` under
+  `[tool.poetry.scripts]` and map console script names to the
+  `main()` functions in the modules under the `promptukit` package.
 
 Usage Examples
 --------------
 
-Here are a few concrete examples showing the included CLI tools. Replace
-the paths shown with your own files when needed.
-
 Quick (Poetry):
 
 ```bash
-poetry run promptukit-add-trivia
-poetry run promptukit-extract-trivia --list-categories
-poetry run promptukit-validate-trivia
+poetry run add-question
+poetry run extract-question --list-categories
+poetry run validate-question
+poetry run question-bank extract --help
 ```
 
 Extracting data:
 
 ```bash
 # List categories and available fields
-poetry run promptukit-extract-trivia --list-categories
+poetry run extract-question --list-categories
 
 # Print prompt and answer fields for the 'music' category
-poetry run promptukit-extract-trivia --file question_banks/block-doku-questions.json --category music --fields prompt,answer
+poetry run extract-question --file content/question_banks/block-doku-questions.json --category music --fields prompt,answer
 
 # Interactive picker
-poetry run promptukit-extract-trivia -i
+poetry run extract-question -i
+```
+
+Add questions:
+
+```bash
+# Interactive add
+poetry run add-question
+
+# Batch mode
+poetry run add-question --batch new_questions.json content/question_banks/mybank.json
 ```
 
 Validate a trivia file:
 
 ```bash
 # Validate the default question bank
-poetry run promptukit-validate-trivia
+poetry run validate-question
 
 # Validate a specific file
-poetry run promptukit-validate-trivia question_banks/block-doku-questions.json
+poetry run validate-question content/question_banks/block-doku-questions.json
 ```
 
-Manage files with `trivia_tool` (create/copy/extract):
+Manage files with `question-bank` (create/copy/extract):
 
 ```bash
 # Create a new template JSON file
-poetry run promptukit-trivia-tool create --dest question_banks/new.json --categories music,film-and-tv
+poetry run question-bank create --dest content/question_banks/new.json --categories music,film-and-tv
 
 # Copy an existing file
-poetry run promptukit-trivia-tool copy --src question_banks/block-doku-questions.json --dest question_banks/backup.json
+poetry run question-bank copy --src content/question_banks/block-doku-questions.json --dest content/question_banks/backup.json
 
 # Extract a subset (easy music questions)
-poetry run promptukit-trivia-tool extract --src question_banks/block-doku-questions.json --dest question_banks/music_easy.json --categories music --difficulty easy
+poetry run question-bank extract --src content/question_banks/block-doku-questions.json --dest content/question_banks/music_easy.json --categories music --difficulty easy
 
 # Interactive extract
-poetry run promptukit-trivia-tool extract -i --src question_banks/block-doku-questions.json --dest question_banks/pick.json
+poetry run question-bank extract -i --src content/question_banks/block-doku-questions.json --dest content/question_banks/pick.json
 ```
 
 Alternative: run modules with `python -m` when not using Poetry:
 
 ```bash
-python -m promptukit.add_trivia
-python -m promptukit.extract_trivia --help
-python -m promptukit.trivia_tool create --dest question_banks/new.json
+python -m promptukit.questions.add_question
+python -m promptukit.questions.extract_question --help
+python -m promptukit.questions.question_bank create --dest content/question_banks/new.json
 ```
 
 Create exam PDF
 ---------------
 
-The `create_exam.py` script can generate a printable exam PDF. It now accepts an external JSON question bank so you can build exams from your existing `question_banks/` files.
+The `create_exam.py` script can generate a printable exam PDF. It accepts
+an external JSON question bank so you can build exams from your existing
+`content/question_banks/` files.
 
 Usage (from the repository root):
 
 ```bash
 # Use the built-in hard-coded exam
-python -m promptukit.create_exam
+python -m promptukit.exams.create_exam
 
 # Load questions from a JSON bank and write a PDF
-python -m promptukit.create_exam -q question_banks/block-doku-questions.json -o cven4333_from_json.pdf
+python -m promptukit.exams.create_exam -q content/question_banks/block-doku-questions.json -o cven4333_from_json.pdf
 
 # With Poetry (runs the module inside the virtualenv)
-poetry run python -m promptukit.create_exam -q question_banks/block-doku-questions.json -o cven4333_from_json.pdf
+poetry run python -m promptukit.exams.create_exam -q content/question_banks/block-doku-questions.json -o cven4333_from_json.pdf
 ```
 
 Supported JSON formats
@@ -182,71 +218,71 @@ Supported JSON formats
 
 - Top-level `sections` (preferred):
 
-   ```json
-   {
-      "sections": [
-         {
-            "title": "Section title",
-            "questions": [ { "prompt": "...", "choices": ["...", "..."] }, ... ]
-         }
-      ]
-   }
-   ```
+  ```json
+  {
+     "sections": [
+        {
+           "title": "Section title",
+           "questions": [ { "prompt": "...", "choices": ["...", "..."] }, ... ]
+        }
+     ]
+  }
+  ```
 
 - `categories` is an alias for `sections` and is also accepted.
 
 - Flat list of questions (top-level array) or top-level object with `questions` array:
 
-   ```json
-   {
-      "questions": [ { "prompt": "...", "choices": ["...", "..."], "category": "Section title" }, ... ]
-   }
-   ```
+  ```json
+  {
+     "questions": [ { "prompt": "...", "choices": ["...", "..."], "category": "Section title" }, ... ]
+  }
+  ```
 
 - Question objects support multiple common field names: `prompt`, `q`, `question`, or `text` for the question text; `choices` or `answers` for the answer options; optional `category` to group flat lists into sections.
 
-- If choices are not already labeled (for example `"Oceans"` instead of `"A) Oceans"`), the script will prefix them with `A)`, `B)`, etc. Prompts without a leading number will be auto-numbered sequentially.
+- If choices are not already labeled (for example "Oceans" instead of "A) Oceans"), the script will prefix them with `A)`, `B)`, etc. Prompts without a leading number will be auto-numbered sequentially.
 
 Example files
 -------------
 
-- Example section-based bank: [question_banks/example_sections.json](question_banks/example_sections.json)
-- JSON Schema describing accepted layouts: [question_banks/question_schema.json](question_banks/question_schema.json)
+- Example section-based bank: [content/question_banks/example_sections.json](content/question_banks/example_sections.json)
+- JSON Schema describing accepted layouts: [content/question_banks/question_schema.json](content/question_banks/question_schema.json)
 
 Behavior notes
 --------------
 
-- If no `-q/--questions` file is provided, the script falls back to the built-in hard-coded 60-question exam and preserves its original 8-section breakdown.
-- When you provide a section-based JSON file the PDF's section headings will be taken from each section's `title` (or `name` / `label` if present). When you provide a flat list with `category` fields, the loader will group questions by category to build sections automatically.
-
+- If no `-q/--questions` file is provided to the exam generator, the script
+  falls back to the built-in hard-coded 60-question exam and preserves its
+  original 8-section breakdown.
+- When you provide a section-based JSON file the PDF's section headings will
+  be taken from each section's `title` (or `name` / `label` if present). When
+  you provide a flat list with `category` fields, the loader will group
+  questions by category to build sections automatically.
 
 Running Tests
 -------------
 
-The test suite lives in the tests directory. The file [tests/test_trivia_tool.py](tests/test_trivia_tool.py)
-contains unit tests and a small integration-style test that exercise the CLI functions.
-
-What the test covers:
-
-- `test_filter_questions`: verifies `filter_questions()` handles category, `difficulty`, `ids`, and `match` filters.
-- `test_cmd_extract_and_create_and_copy`: writes temporary JSON files and invokes `promptukit.trivia_tool.main()` with
-   CLI-style arguments to test `extract`, `create`, and `copy`.
+The test suite lives under `dev/checks`. The file
+`dev/checks/test_question_tool.py` contains unit tests that exercise the
+question-bank helpers and CLI-style interfaces.
 
 Run the tests:
 
 Using Poetry (recommended):
 
 ```bash
-poetry add --dev pytest
-poetry run pytest tests/test_trivia_tool.py -q
+poetry install
+poetry run pytest -q
 ```
 
-Or run directly if pytest is available on your PATH:
+Or run a single file directly:
 
 ```bash
-python -m pytest tests/test_trivia_tool.py -q
+poetry run pytest dev/checks/test_question_tool.py -q
 ```
 
 Notes:
+
 - Tests use pytest's `tmp_path` fixture and do not modify your repository files.
 
