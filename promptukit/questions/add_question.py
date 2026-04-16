@@ -95,7 +95,24 @@ def collect_question(categories: list[str], questions: list[dict]) -> dict:
     print("  NEW QUESTION")
     print("=" * 62)
 
-    category = pick("Category", categories)
+    # Allow creating a new category interactively. If no categories exist,
+    # prompt the user to create one immediately. Otherwise offer an extra
+    # menu entry to create a new category.
+    if not categories:
+        print("  No categories defined — please create a new category.")
+        category = prompt("New category name")
+        categories.append(category)
+    else:
+        NEW_CATEGORY_MARKER = "Create new category"
+        options = categories + [NEW_CATEGORY_MARKER]
+        choice = pick("Category", options)
+        if choice == NEW_CATEGORY_MARKER:
+            new_cat = prompt("New category name")
+            if new_cat not in categories:
+                categories.append(new_cat)
+            category = new_cat
+        else:
+            category = choice
     difficulty = pick("Difficulty", DIFFICULTIES)
 
     print()
@@ -178,6 +195,8 @@ def cmd_batch(bank_path: Path, batch_source: str) -> int:
         return 1
 
     questions: list[dict] = data.get("questions", [])
+    categories: list[str] = data.get("categories", [])
+    initial_categories = list(categories)
     added = 0
     errors = 0
 
@@ -188,10 +207,15 @@ def cmd_batch(bank_path: Path, batch_source: str) -> int:
             errors += 1
             continue
 
-        qid = next_id(questions, raw["category"])
+        cat = raw["category"]
+        if cat not in categories:
+            print(f"  Adding new category: {cat}")
+            categories.append(cat)
+
+        qid = next_id(questions, cat)
         q: dict = {
             "id":         qid,
-            "category":   raw["category"],
+            "category":   cat,
             "difficulty": raw["difficulty"],
             "prompt":     raw["prompt"],
             "choices":    raw["choices"],
@@ -206,7 +230,9 @@ def cmd_batch(bank_path: Path, batch_source: str) -> int:
         added += 1
 
     data["questions"] = questions
-    if added:
+    # Save if questions added or categories were updated by the batch
+    if added or categories != initial_categories:
+        data["categories"] = categories
         save(bank_path, data)
 
     print(f"\nDone. {added} question(s) added, {errors} skipped.")
@@ -253,6 +279,8 @@ def main() -> int:
         if confirm("Save this question?"):
             questions = insert_after_category(questions, q)
             data["questions"] = questions
+            # Persist any newly-added categories as well
+            data["categories"] = categories
             save(bank_path, data)
             added += 1
             print(f"\n  Saved — {q['id']} added ({len(questions)} questions total).")
