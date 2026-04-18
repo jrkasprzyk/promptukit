@@ -41,8 +41,16 @@ import promptukit as pk
 from promptukit.questions import validate_question
 from promptukit.exams import create_exam
 
-# 2) Load a question bank (path relative to the repository root)
-data = pk.load('content/question_banks/example_sections.json')
+# 2) Load a question bank (path relative to the repository root). If you're
+# running outside the repository (for example from an installed package),
+# fall back to the packaged sample dataset that ships with `promptukit`.
+import os
+bank_path = 'content/question_banks/example_sections.json'
+if os.path.exists(bank_path):
+   data = pk.load(bank_path)
+else:
+   # load packaged sample included with the installed package
+   data = pk.load_resource('question_banks/example_sections.json')
 
 # 3) Inspect the file (section-based vs flat list)
 if 'sections' in data:
@@ -61,10 +69,10 @@ if errors:
 else:
    print('Bank valid — warnings:', warnings)
 
-# 5) Generate a PDF exam from the same bank
-# Note: PDF generation requires the `reportlab` package: `pip install reportlab`
-structured = create_exam.load_questions_from_json('content/question_banks/example_sections.json')
-create_exam.build_exam_pdf(structured, 'notebooks/output_exam.pdf')
+# 5) Generate a PDF exam from the same bank (we already have `data` loaded
+# above as a dict, so pass it directly). Note: PDF generation requires
+# the `reportlab` package: `pip install reportlab`.
+create_exam.build_exam_pdf(data, 'notebooks/output_exam.pdf')
 
 ```
 

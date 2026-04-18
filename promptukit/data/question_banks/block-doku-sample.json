@@ -1,0 +1,21 @@
+{
+  "categories": ["music", "film-and-tv", "general"],
+  "questions": [
+    {
+      "id": "sample_b_001",
+      "category": "music",
+      "difficulty": "easy",
+      "prompt": "Which instrument has a keyboard and strings?",
+      "choices": ["Guitar", "Piano", "Violin", "Drums"],
+      "answer": 1
+    },
+    {
+      "id": "sample_b_002",
+      "category": "film-and-tv",
+      "difficulty": "easy",
+      "prompt": "Which movie features the character 'Forrest Gump'?",
+      "choices": ["Titanic", "Forrest Gump", "The Matrix", "Gladiator"],
+      "answer": 1
+    }
+  ]
+}

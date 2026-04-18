@@ -1,0 +1,20 @@
+{
+  "questions": [
+    {
+      "id": "gw_001",
+      "category": "general",
+      "difficulty": "easy",
+      "prompt": "Approximately what percentage of Earth's water is fresh?",
+      "choices": ["50%", "25%", "10%", "2.5%"],
+      "answer": 3
+    },
+    {
+      "id": "gw_002",
+      "category": "general",
+      "difficulty": "medium",
+      "prompt": "Which of the following is typically the largest fresh-water reservoir?",
+      "choices": ["Rivers", "Lakes", "Groundwater", "Atmosphere"],
+      "answer": 2
+    }
+  ]
+}

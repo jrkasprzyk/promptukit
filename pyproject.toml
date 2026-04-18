@@ -21,6 +21,13 @@ classifiers = [
 ]
 packages = [ { include = "promptukit" } ]
 
+# Include packaged data files so example datasets are available from an
+# installed distribution. This pattern includes the `promptukit/data/**`
+# directory in source distributions and wheels.
+include = [
+    { path = "promptukit/data/**", format = "sdist" }
+]
+
 [tool.poetry.dependencies]
 python = "^3.10"
 reportlab = "^4.4.10"
