@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "promptukit"
-version = "0.1.2"
+version = "0.1.267"
 description = "Utilities for building question banks and generating exam documents."
 authors = ["Joseph Kasprzyk <jkasprzyk@gmail.com>"]
 license = "MIT"
