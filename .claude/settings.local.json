@@ -21,7 +21,9 @@
       "Bash(rm -rf promptukit/__pycache__)",
       "Bash(.venv/Scripts/python -m pytest dev/checks/ -v)",
       "Bash(git -C c:/GitHub/promptukit remote -v)",
-      "Bash(chmod +x c:/GitHub/promptukit/scripts/release.sh)"
+      "Bash(chmod +x c:/GitHub/promptukit/scripts/release.sh)",
+      "Bash(./scripts/release.sh 0.1.2)",
+      "Bash(git stash *)"
     ]
   }
 }
