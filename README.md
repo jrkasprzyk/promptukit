@@ -83,6 +83,33 @@ Notes
   `python -m promptukit.exams.create_exam` as shown elsewhere in this README.
 - Generating PDFs requires `reportlab` (install with `pip install reportlab`).
 
+Try the interactive Colab demo
+------------------------------
+
+If you'd like a runnable notebook that demonstrates the Quick Notebook
+Walkthrough, open the Colab demo:
+
+https://colab.research.google.com/drive/1vzaUML_8nkWKhOfauv5MXPE-dQ5sXFF_?usp=sharing
+
+Quick tips for Colab:
+
+- To use the published package on PyPI:
+
+```python
+!pip install promptukit reportlab
+```
+
+- To run the repository version (latest changes), clone and install from GitHub:
+
+```python
+!git clone https://github.com/jrkasprzyk/promptukit.git
+%cd promptukit
+!pip install -e .
+```
+
+- The Colab notebook includes cells that use `pk.load_resource(...)` as a
+   fallback when local `content/` files aren't available.
+
 Getting started (Poetry, for development)
 -----------------------------------------
 
