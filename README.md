@@ -24,9 +24,56 @@ question-bank --help
 You can also import the library in Python or a Jupyter notebook:
 
 ```python
-from promptukit.exams import create_exam
-from promptukit.questions import extract_question, validate_question
+import promptukit as pk
+# Top-level helpers: pk.load(path), pk.save(path, data), pk.pick(), pk.confirm()
+# Subpackages are available as `pk.exams`, `pk.questions`, and `pk.utils`.
 ```
+
+Quick Notebook Walkthrough
+-------------------------
+
+Here are short, copy-pasteable examples you can run inside a Jupyter notebook to
+load a question bank, validate it, and generate a PDF exam.
+
+```python
+# 1) Import helpers
+import promptukit as pk
+from promptukit.questions import validate_question
+from promptukit.exams import create_exam
+
+# 2) Load a question bank (path relative to the repository root)
+data = pk.load('content/question_banks/example_sections.json')
+
+# 3) Inspect the file (section-based vs flat list)
+if 'sections' in data:
+   print('Sections:', [s.get('title') for s in data['sections']])
+   print('First question:', data['sections'][0]['questions'][0])
+elif 'questions' in data:
+   print('Total questions:', len(data['questions']))
+   print('First question:', data['questions'][0])
+else:
+   print('Unexpected file shape:', type(data))
+
+# 4) Validate programmatically
+errors, warnings = validate_question.validate(data)
+if errors:
+   print('Validation errors:', errors)
+else:
+   print('Bank valid — warnings:', warnings)
+
+# 5) Generate a PDF exam from the same bank
+# Note: PDF generation requires the `reportlab` package: `pip install reportlab`
+structured = create_exam.load_questions_from_json('content/question_banks/example_sections.json')
+create_exam.build_exam_pdf(structured, 'notebooks/output_exam.pdf')
+
+```
+
+Notes
+-----
+- If you only want to run the library functions without Poetry activation, you
+  can run modules with `python -m promptukit.questions.extract_question` or
+  `python -m promptukit.exams.create_exam` as shown elsewhere in this README.
+- Generating PDFs requires `reportlab` (install with `pip install reportlab`).
 
 Getting started (Poetry, for development)
 -----------------------------------------
