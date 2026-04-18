@@ -31,13 +31,13 @@ def _valid_categories(data: dict) -> set[str]:
     return BLOCK_DOKU_CATEGORIES
 
 
-def validate(data: dict) -> list[str]:
+def validate(data: dict) -> tuple[list[str], list[str]]:
     errors: list[str] = []
     warnings: list[str] = []
 
     if "questions" not in data:
         errors.append("Missing top-level 'questions' array")
-        return errors
+        return errors, warnings
 
     valid_categories = _valid_categories(data)
     questions = data["questions"]
