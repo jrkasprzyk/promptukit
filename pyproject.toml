@@ -1,14 +1,31 @@
 [tool.poetry]
 name = "promptukit"
-version = "0.1.0"
+version = "0.1.1"
 description = "Utilities for building question banks and generating exam documents."
-authors = ["Your Name <you@example.com>"]
+authors = ["Joseph Kasprzyk <jkasprzyk@gmail.com>"]
+license = "MIT"
 readme = "README.md"
+homepage = "https://github.com/jrkasprzyk/promptukit"
+repository = "https://github.com/jrkasprzyk/promptukit"
+keywords = ["questions", "exams", "education", "pdf", "question-bank"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Education",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Education",
+]
 packages = [ { include = "promptukit" } ]
 
 [tool.poetry.dependencies]
 python = "^3.10"
 reportlab = "^4.4.10"
+twine = "^6.2.0"
+build = "^1.4.3"
 
 [tool.poetry.scripts]
 add-question = "promptukit.questions.add_question:main"

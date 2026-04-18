@@ -19,7 +19,8 @@
       "Bash(rmdir exam_metadata)",
       "Bash(rmdir question_banks scripts)",
       "Bash(rm -rf promptukit/__pycache__)",
-      "Bash(.venv/Scripts/python -m pytest dev/checks/ -v)"
+      "Bash(.venv/Scripts/python -m pytest dev/checks/ -v)",
+      "Bash(git -C c:/GitHub/promptukit remote -v)"
     ]
   }
 }
