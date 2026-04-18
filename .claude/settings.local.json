@@ -23,7 +23,9 @@
       "Bash(git -C c:/GitHub/promptukit remote -v)",
       "Bash(chmod +x c:/GitHub/promptukit/scripts/release.sh)",
       "Bash(./scripts/release.sh 0.1.2)",
-      "Bash(git stash *)"
+      "Bash(git stash *)",
+      "Bash(git push *)",
+      "Bash(./scripts/release.sh 0.1.267)"
     ]
   }
 }
