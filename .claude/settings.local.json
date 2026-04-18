@@ -25,7 +25,12 @@
       "Bash(./scripts/release.sh 0.1.2)",
       "Bash(git stash *)",
       "Bash(git push *)",
-      "Bash(./scripts/release.sh 0.1.267)"
+      "Bash(./scripts/release.sh 0.1.267)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(./scripts/release.sh 0.1.270)",
+      "Bash(git tag *)",
+      "Bash(./scripts/release.sh 0.1.280)"
     ]
   }
 }
