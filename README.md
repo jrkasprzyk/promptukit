@@ -1,49 +1,35 @@
 PromptuKit
-=========
-
-Small utilities for working with trivia question banks.
-
-Getting started (Poetry)
-------------------------
-
-1. Install Poetry (if you don't have it).
-
-   ```bash
-   pip install --user poetry
-   ```
-
-2. Create the virtual environment and install dependencies:
-
-   ```bash
-   poetry install
-   ```
-
-3. Run the CLI tools via Poetry:
-
-   ```bash
-   poetry run promptukit-add-trivia
-   poetry run promptukit-extract-trivia --help
-   poetry run promptukit-validate-trivia
-   ```
-
-Activating the virtualenv
--------------------------
-
-If Poetry is configured to create an in-project virtualenv, it will be placed in a `.venv` folder at the repository root. Activate that environment from the project root using the command for your shell:
-
-PowerShell (Windows):
-
-```powershell
-Update README to reflect new CLI names and module paths.
-
-PromptuKit
 ==========
 
 Utilities for building and managing multiple-choice question banks and
 generating exam PDFs.
 
-Getting started (Poetry)
-------------------------
+Install from PyPI
+-----------------
+
+```bash
+pip install promptukit
+```
+
+The package is published at https://pypi.org/project/promptukit/. After
+installing you get the CLI entry points on your PATH:
+
+```bash
+add-question
+extract-question --help
+validate-question
+question-bank --help
+```
+
+You can also import the library in Python or a Jupyter notebook:
+
+```python
+from promptukit.exams import create_exam
+from promptukit.questions import extract_question, validate_question
+```
+
+Getting started (Poetry, for development)
+-----------------------------------------
 
 1. Install Poetry (if you don't have it):
 
