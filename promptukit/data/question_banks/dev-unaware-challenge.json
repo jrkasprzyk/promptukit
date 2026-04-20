@@ -1,0 +1,4517 @@
+{
+  "categories": [
+    "History",
+    "Geography",
+    "Pop Culture",
+    "Science & Nature",
+    "Sports",
+    "Food & Cooking",
+    "Literature",
+    "Art & Music",
+    "Social Skills & Etiquette",
+    "The Great Outdoors",
+    "Finance & Economics"
+  ],
+  "questions": [
+    {
+      "id": "History_001",
+      "category": "History",
+      "difficulty": "easy",
+      "prompt": "Which ancient wonder was located in Alexandria, Egypt?",
+      "choices": [
+        "The Colossus of Rhodes",
+        "The Hanging Gardens",
+        "The Lighthouse of Alexandria",
+        "The Temple of Artemis"
+      ],
+      "answer": 2,
+      "quip_correct": "It guided sailors for centuries before collapsing in an earthquake.",
+      "quip_wrong": "Alexandria's wonder was its famous lighthouse — the Pharos."
+    },
+    {
+      "id": "History_002",
+      "category": "History",
+      "difficulty": "easy",
+      "prompt": "Who was the first Roman emperor?",
+      "choices": [
+        "Julius Caesar",
+        "Augustus",
+        "Nero",
+        "Caligula"
+      ],
+      "answer": 1,
+      "quip_correct": "Augustus ruled from 27 BC — Caesar was dictator, not emperor.",
+      "quip_wrong": "Julius Caesar was assassinated before becoming emperor. Augustus took the title."
+    },
+    {
+      "id": "History_003",
+      "category": "History",
+      "difficulty": "easy",
+      "prompt": "The Berlin Wall fell in which year?",
+      "choices": [
+        "1987",
+        "1991",
+        "1989",
+        "1985"
+      ],
+      "answer": 2,
+      "quip_correct": "November 9, 1989 — one of history's most televised nights.",
+      "quip_wrong": "The wall came down in 1989, not when the USSR dissolved."
+    },
+    {
+      "id": "History_004",
+      "category": "History",
+      "difficulty": "easy",
+      "prompt": "Which country did Napoleon Bonaparte come from originally?",
+      "choices": [
+        "France",
+        "Corsica",
+        "Italy",
+        "Spain"
+      ],
+      "answer": 1,
+      "quip_correct": "Born in Ajaccio, Corsica — French by one year of annexation.",
+      "quip_wrong": "Napoleon was Corsican by birth, not mainland French."
+    },
+    {
+      "id": "History_005",
+      "category": "History",
+      "difficulty": "easy",
+      "prompt": "The Magna Carta was signed in which century?",
+      "choices": [
+        "11th",
+        "12th",
+        "13th",
+        "14th"
+      ],
+      "answer": 2,
+      "quip_correct": "King John signed it in 1215 — a cornerstone of constitutional law.",
+      "quip_wrong": "Magna Carta was 1215, firmly in the 13th century."
+    },
+    {
+      "id": "History_006",
+      "category": "History",
+      "difficulty": "easy",
+      "prompt": "Which empire built Machu Picchu?",
+      "choices": [
+        "Aztec",
+        "Maya",
+        "Olmec",
+        "Inca"
+      ],
+      "answer": 3,
+      "quip_correct": "The Inca built it around 1450 — abandoned within a century.",
+      "quip_wrong": "Machu Picchu is Inca, not Aztec or Maya."
+    },
+    {
+      "id": "History_007",
+      "category": "History",
+      "difficulty": "easy",
+      "prompt": "The Titanic sank in which year?",
+      "choices": [
+        "1914",
+        "1912",
+        "1910",
+        "1916"
+      ],
+      "answer": 1,
+      "quip_correct": "April 15, 1912 — over 1,500 lives lost.",
+      "quip_wrong": "The Titanic sank in 1912, two years before WWI began."
+    },
+    {
+      "id": "History_008",
+      "category": "History",
+      "difficulty": "easy",
+      "prompt": "Who delivered the 'I Have a Dream' speech?",
+      "choices": [
+        "Malcolm X",
+        "Thurgood Marshall",
+        "Martin Luther King Jr.",
+        "John Lewis"
+      ],
+      "answer": 2,
+      "quip_correct": "August 28, 1963, at the Lincoln Memorial — a defining moment.",
+      "quip_wrong": "It was Martin Luther King Jr., at the March on Washington."
+    },
+    {
+      "id": "History_009",
+      "category": "History",
+      "difficulty": "easy",
+      "prompt": "The French Revolution began in which year?",
+      "choices": [
+        "1776",
+        "1799",
+        "1789",
+        "1804"
+      ],
+      "answer": 2,
+      "quip_correct": "1789 — the storming of the Bastille on July 14 is still a French holiday.",
+      "quip_wrong": "1776 was the American Revolution. France's was 1789."
+    },
+    {
+      "id": "History_010",
+      "category": "History",
+      "difficulty": "easy",
+      "prompt": "Which country was first to grant women the right to vote nationally?",
+      "choices": [
+        "United States",
+        "United Kingdom",
+        "New Zealand",
+        "Australia"
+      ],
+      "answer": 2,
+      "quip_correct": "New Zealand did it in 1893 — the US didn't follow until 1920.",
+      "quip_wrong": "New Zealand led the world on women's suffrage in 1893."
+    },
+    {
+      "id": "History_011",
+      "category": "History",
+      "difficulty": "easy",
+      "prompt": "Who wrote the Communist Manifesto?",
+      "choices": [
+        "Vladimir Lenin",
+        "Leon Trotsky",
+        "Karl Marx and Friedrich Engels",
+        "Joseph Stalin"
+      ],
+      "answer": 2,
+      "quip_correct": "Published in 1848 — Marx and Engels wrote it in just a few weeks.",
+      "quip_wrong": "The Communist Manifesto was co-authored by Marx and Engels, not Lenin."
+    },
+    {
+      "id": "History_012",
+      "category": "History",
+      "difficulty": "easy",
+      "prompt": "The construction of the Great Wall of China began under which dynasty?",
+      "choices": [
+        "Tang",
+        "Han",
+        "Ming",
+        "Qin"
+      ],
+      "answer": 3,
+      "quip_correct": "The Qin dynasty under Emperor Qin Shi Huang started it around 221 BC.",
+      "quip_wrong": "Early walls began under the Qin — the Ming later rebuilt much of what you see today."
+    },
+    {
+      "id": "History_013",
+      "category": "History",
+      "difficulty": "medium",
+      "prompt": "The 'War of Jenkin's Ear' was fought between Britain and which nation?",
+      "choices": [
+        "France",
+        "Portugal",
+        "Spain",
+        "The Netherlands"
+      ],
+      "answer": 2,
+      "quip_correct": "Named after a British captain whose ear was cut off by Spanish coastguards in 1731.",
+      "quip_wrong": "Spain and Britain fought over Caribbean trade rights — sparked by a severed ear."
+    },
+    {
+      "id": "History_014",
+      "category": "History",
+      "difficulty": "medium",
+      "prompt": "Which US president authorized the dropping of atomic bombs on Japan?",
+      "choices": [
+        "Franklin Roosevelt",
+        "Harry Truman",
+        "Dwight Eisenhower",
+        "Herbert Hoover"
+      ],
+      "answer": 1,
+      "quip_correct": "Truman made the call in August 1945 — Roosevelt had died months before.",
+      "quip_wrong": "FDR died in April 1945. It was Truman who authorized the bombs."
+    },
+    {
+      "id": "History_015",
+      "category": "History",
+      "difficulty": "medium",
+      "prompt": "The 'Shot Heard Round the World' refers to the opening of which conflict?",
+      "choices": [
+        "The War of 1812",
+        "The Civil War",
+        "The American Revolutionary War",
+        "The French and Indian War"
+      ],
+      "answer": 2,
+      "quip_correct": "The Battle of Lexington and Concord, April 19, 1775 — the first shots of the Revolution.",
+      "quip_wrong": "Emerson coined the phrase for the 1775 battles that opened the American Revolution."
+    },
+    {
+      "id": "History_016",
+      "category": "History",
+      "difficulty": "medium",
+      "prompt": "Vlad the Impaler ruled which medieval territory?",
+      "choices": [
+        "Bulgaria",
+        "Wallachia",
+        "Transylvania",
+        "Moldova"
+      ],
+      "answer": 1,
+      "quip_correct": "Wallachia — Vlad was prince there three times. Dracula's castle is in Transylvania, though.",
+      "quip_wrong": "Vlad III ruled Wallachia, not Transylvania, despite the Dracula connection."
+    },
+    {
+      "id": "History_017",
+      "category": "History",
+      "difficulty": "medium",
+      "prompt": "Which country lost the most soldiers in World War I?",
+      "choices": [
+        "France",
+        "United Kingdom",
+        "Germany",
+        "Russia"
+      ],
+      "answer": 3,
+      "quip_correct": "Russia suffered over 1.7 million military deaths before the Revolution pulled them out.",
+      "quip_wrong": "Russia's losses were staggering — contributing to the revolution that ended tsarist rule."
+    },
+    {
+      "id": "History_018",
+      "category": "History",
+      "difficulty": "medium",
+      "prompt": "The Scramble for Africa primarily occurred in which decade?",
+      "choices": [
+        "1850s",
+        "1870s",
+        "1880s",
+        "1900s"
+      ],
+      "answer": 2,
+      "quip_correct": "European powers carved up Africa mostly between 1881 and 1914.",
+      "quip_wrong": "The Berlin Conference of 1884 kicked off the formal scramble."
+    },
+    {
+      "id": "History_019",
+      "category": "History",
+      "difficulty": "medium",
+      "prompt": "Which civilization built the city of Teotihuacan?",
+      "choices": [
+        "Aztec",
+        "Toltec",
+        "Maya",
+        "Unknown — predates named records"
+      ],
+      "answer": 3,
+      "quip_correct": "Teotihuacan's builders remain unidentified — the Aztecs named it but didn't build it.",
+      "quip_wrong": "No one knows for certain who built Teotihuacan. The Aztecs found it already in ruins."
+    },
+    {
+      "id": "History_020",
+      "category": "History",
+      "difficulty": "medium",
+      "prompt": "The Treaty of Westphalia in 1648 ended which war?",
+      "choices": [
+        "The Hundred Years' War",
+        "The Thirty Years' War",
+        "The Seven Years' War",
+        "The War of Spanish Succession"
+      ],
+      "answer": 1,
+      "quip_correct": "The Thirty Years' War devasted Central Europe. Westphalia established modern state sovereignty.",
+      "quip_wrong": "The Thirty Years' War (1618–1648) concluded with the Peace of Westphalia."
+    },
+    {
+      "id": "History_021",
+      "category": "History",
+      "difficulty": "medium",
+      "prompt": "Which explorer first circumnavigated the globe, completing the voyage in 1522?",
+      "choices": [
+        "Ferdinand Magellan",
+        "Juan Sebastián Elcano",
+        "Vasco da Gama",
+        "Francis Drake"
+      ],
+      "answer": 1,
+      "quip_correct": "Magellan died in the Philippines — Elcano captained the Victoria home.",
+      "quip_wrong": "Magellan died en route. Elcano completed the first circumnavigation in his place."
+    },
+    {
+      "id": "History_022",
+      "category": "History",
+      "difficulty": "hard",
+      "prompt": "The Defenestration of Prague in 1618 is considered the trigger for which conflict?",
+      "choices": [
+        "The War of Austrian Succession",
+        "The Thirty Years' War",
+        "The Seven Years' War",
+        "The Hussite Wars"
+      ],
+      "answer": 1,
+      "quip_correct": "Bohemian Protestant nobles threw Catholic governors out of a window — sparking 30 years of war.",
+      "quip_wrong": "The 1618 defenestration — literally throwing people out windows — ignited the Thirty Years' War."
+    },
+    {
+      "id": "History_023",
+      "category": "History",
+      "difficulty": "hard",
+      "prompt": "Which general defeated Hannibal Barca at the Battle of Zama in 202 BC?",
+      "choices": [
+        "Gaius Marius",
+        "Pompey",
+        "Scipio Africanus",
+        "Marcus Crassus"
+      ],
+      "answer": 2,
+      "quip_correct": "Scipio earned his cognomen 'Africanus' by beating Hannibal on his own turf.",
+      "quip_wrong": "Scipio Africanus ended the Second Punic War by defeating Hannibal in North Africa."
+    },
+    {
+      "id": "History_024",
+      "category": "History",
+      "difficulty": "hard",
+      "prompt": "The Meiji Restoration in Japan occurred in which year?",
+      "choices": [
+        "1853",
+        "1868",
+        "1876",
+        "1894"
+      ],
+      "answer": 1,
+      "quip_correct": "1868 — Emperor Meiji was restored to power, ending 265 years of Tokugawa shogunate.",
+      "quip_wrong": "The Meiji Restoration was 1868, not when Perry's ships arrived in 1853."
+    },
+    {
+      "id": "History_025",
+      "category": "History",
+      "difficulty": "hard",
+      "prompt": "Which Byzantine emperor issued the Justinian Code?",
+      "choices": [
+        "Constantine I",
+        "Theodosius II",
+        "Justinian I",
+        "Heraclius"
+      ],
+      "answer": 2,
+      "quip_correct": "Justinian I's Corpus Juris Civilis became the foundation of civil law in most of Europe.",
+      "quip_wrong": "Emperor Justinian I codified Roman law in 529 AD — a legal landmark."
+    },
+    {
+      "id": "History_026",
+      "category": "History",
+      "difficulty": "hard",
+      "prompt": "The Haitian Revolution resulted in independence from which colonial power?",
+      "choices": [
+        "Spain",
+        "Britain",
+        "France",
+        "Portugal"
+      ],
+      "answer": 2,
+      "quip_correct": "Haiti declared independence from France in 1804 — the only successful slave-led revolution in history.",
+      "quip_wrong": "Haiti overthrew French colonial rule, becoming the first Black republic in 1804."
+    },
+    {
+      "id": "History_027",
+      "category": "History",
+      "difficulty": "hard",
+      "prompt": "Timur (Tamerlane) founded which dynasty?",
+      "choices": [
+        "Ilkhanate",
+        "Timurid",
+        "Safavid",
+        "Mughal"
+      ],
+      "answer": 1,
+      "quip_correct": "The Timurid dynasty flourished in Central Asia and Persia — Babur, a descendant, founded the Mughal Empire.",
+      "quip_wrong": "Timur founded the Timurid dynasty; his descendant Babur went on to found the Mughals."
+    },
+    {
+      "id": "History_028",
+      "category": "History",
+      "difficulty": "hard",
+      "prompt": "Which African empire controlled the trans-Saharan gold trade at its height in the 14th century?",
+      "choices": [
+        "Ghana Empire",
+        "Songhai Empire",
+        "Benin Kingdom",
+        "Mali Empire"
+      ],
+      "answer": 3,
+      "quip_correct": "Mansa Musa's Mali Empire was so wealthy his 1324 hajj pilgrimage crashed gold prices in Cairo.",
+      "quip_wrong": "The Mali Empire under Mansa Musa was the wealthiest state in the medieval world."
+    },
+    {
+      "id": "History_029",
+      "category": "History",
+      "difficulty": "hard",
+      "prompt": "The Zimmermann Telegram proposed an alliance between Germany and which nation against the US?",
+      "choices": [
+        "Austria-Hungary",
+        "Ottoman Empire",
+        "Mexico",
+        "Japan"
+      ],
+      "answer": 2,
+      "quip_correct": "Germany offered Mexico its lost territories in exchange for attacking the US — the telegram backfired spectacularly.",
+      "quip_wrong": "The 1917 Zimmermann Telegram was sent to Mexico, proposing a wartime alliance."
+    },
+    {
+      "id": "History_030",
+      "category": "History",
+      "difficulty": "hard",
+      "prompt": "Which Roman emperor split the empire into Eastern and Western halves in 285 AD?",
+      "choices": [
+        "Constantine I",
+        "Theodosius I",
+        "Diocletian",
+        "Commodus"
+      ],
+      "answer": 2,
+      "quip_correct": "Diocletian created the Tetrarchy — rule by four — dividing the empire for administrative efficiency.",
+      "quip_wrong": "Diocletian split the empire in 285 AD. Constantine later briefly reunified it."
+    },
+    {
+      "id": "History_031",
+      "category": "History",
+      "difficulty": "hard",
+      "prompt": "The Sykes-Picot Agreement secretly divided the Middle East between which two powers?",
+      "choices": [
+        "Britain and France",
+        "Britain and Russia",
+        "France and Italy",
+        "US and Britain"
+      ],
+      "answer": 0,
+      "quip_correct": "The 1916 Sykes-Picot Agreement drew borders that still cause conflict today.",
+      "quip_wrong": "Britain and France carved up the Ottoman Middle East in the secret 1916 Sykes-Picot Agreement."
+    },
+    {
+      "id": "History_032",
+      "category": "History",
+      "difficulty": "medium",
+      "prompt": "The 'Long March' of 1934–1935 was a defining moment for which political movement?",
+      "choices": [
+        "The Kuomintang",
+        "The Chinese Communist Party",
+        "Japanese nationalism",
+        "Vietnamese independence"
+      ],
+      "answer": 1,
+      "quip_correct": "Mao Zedong's Red Army marched over 9,000 km to escape Nationalist forces — cementing Communist leadership.",
+      "quip_wrong": "The Long March established Mao's leadership of the Chinese Communist Party."
+    },
+    {
+      "id": "History_033",
+      "category": "History",
+      "difficulty": "hard",
+      "prompt": "The 'Scramble for Africa' left only two African nations never colonized by Europeans. Name one: Ethiopia and which other?",
+      "choices": [
+        "Nigeria",
+        "Morocco",
+        "Liberia",
+        "Ghana"
+      ],
+      "answer": 2,
+      "quip_correct": "Liberia was founded by freed American slaves in 1822 — technically independent but heavily US-influenced.",
+      "quip_wrong": "Liberia and Ethiopia were the only African nations never formally colonized by European powers."
+    },
+    {
+      "id": "Geography_001",
+      "category": "Geography",
+      "difficulty": "easy",
+      "prompt": "What is the capital of Australia?",
+      "choices": [
+        "Sydney",
+        "Melbourne",
+        "Canberra",
+        "Brisbane"
+      ],
+      "answer": 2,
+      "quip_correct": "Canberra — chosen as a compromise between rival cities Sydney and Melbourne.",
+      "quip_wrong": "Not Sydney! Canberra was purpose-built as a compromise capital."
+    },
+    {
+      "id": "Geography_002",
+      "category": "Geography",
+      "difficulty": "easy",
+      "prompt": "Which river is the longest in the world?",
+      "choices": [
+        "Amazon",
+        "Mississippi",
+        "Yangtze",
+        "Nile"
+      ],
+      "answer": 3,
+      "quip_correct": "The Nile stretches ~6,650 km — though the Amazon disputes the title depending on measurement.",
+      "quip_wrong": "The Nile is traditionally considered longest at ~6,650 km."
+    },
+    {
+      "id": "Geography_003",
+      "category": "Geography",
+      "difficulty": "easy",
+      "prompt": "Which country has the most natural lakes?",
+      "choices": [
+        "Russia",
+        "USA",
+        "Brazil",
+        "Canada"
+      ],
+      "answer": 3,
+      "quip_correct": "Canada has over 2 million lakes — more than all other countries combined.",
+      "quip_wrong": "Canada claims more lakes than any other country — about 60% of the world's total."
+    },
+    {
+      "id": "Geography_004",
+      "category": "Geography",
+      "difficulty": "easy",
+      "prompt": "What is the smallest country in the world by area?",
+      "choices": [
+        "Monaco",
+        "Liechtenstein",
+        "San Marino",
+        "Vatican City"
+      ],
+      "answer": 3,
+      "quip_correct": "Vatican City is just 0.44 km² — smaller than many city blocks.",
+      "quip_wrong": "Vatican City, at 0.44 km², edges out Monaco for the title."
+    },
+    {
+      "id": "Geography_005",
+      "category": "Geography",
+      "difficulty": "easy",
+      "prompt": "Which desert is the largest in the world?",
+      "choices": [
+        "Gobi",
+        "Sahara",
+        "Arabian",
+        "Antarctic"
+      ],
+      "answer": 3,
+      "quip_correct": "Antarctica is a cold desert — the Sahara is the largest *hot* desert.",
+      "quip_wrong": "The Antarctic Desert covers 14.2 million km². The Sahara is the largest hot desert."
+    },
+    {
+      "id": "Geography_006",
+      "category": "Geography",
+      "difficulty": "easy",
+      "prompt": "The Amazon River flows through which continent?",
+      "choices": [
+        "Africa",
+        "Asia",
+        "South America",
+        "North America"
+      ],
+      "answer": 2,
+      "quip_correct": "The Amazon basin holds about 20% of the world's fresh water.",
+      "quip_wrong": "The Amazon is entirely in South America, mostly in Brazil."
+    },
+    {
+      "id": "Geography_007",
+      "category": "Geography",
+      "difficulty": "easy",
+      "prompt": "Which country shares the longest land border with the United States?",
+      "choices": [
+        "Mexico",
+        "Russia",
+        "Canada",
+        "Cuba"
+      ],
+      "answer": 2,
+      "quip_correct": "The US-Canada border is 8,891 km — the longest undefended international border in the world.",
+      "quip_wrong": "Canada's border with the US is the world's longest at nearly 9,000 km."
+    },
+    {
+      "id": "Geography_008",
+      "category": "Geography",
+      "difficulty": "easy",
+      "prompt": "Mount Everest sits on the border of which two countries?",
+      "choices": [
+        "India and China",
+        "Nepal and Tibet (China)",
+        "Bhutan and China",
+        "Nepal and India"
+      ],
+      "answer": 1,
+      "quip_correct": "The summit lies on the Nepal-Tibet border — Tibet being administered by China.",
+      "quip_wrong": "Everest straddles Nepal and the Tibet Autonomous Region of China."
+    },
+    {
+      "id": "Geography_009",
+      "category": "Geography",
+      "difficulty": "easy",
+      "prompt": "Which ocean is the largest?",
+      "choices": [
+        "Atlantic",
+        "Indian",
+        "Arctic",
+        "Pacific"
+      ],
+      "answer": 3,
+      "quip_correct": "The Pacific covers more area than all land on Earth combined.",
+      "quip_wrong": "The Pacific Ocean is the largest — nearly twice the size of the Atlantic."
+    },
+    {
+      "id": "Geography_010",
+      "category": "Geography",
+      "difficulty": "easy",
+      "prompt": "What country has the most coastline in the world?",
+      "choices": [
+        "Norway",
+        "Russia",
+        "Australia",
+        "Canada"
+      ],
+      "answer": 3,
+      "quip_correct": "Canada's coastline is about 202,080 km — longer than any other nation.",
+      "quip_wrong": "Canada's intricate coastline is the world's longest at over 200,000 km."
+    },
+    {
+      "id": "Geography_011",
+      "category": "Geography",
+      "difficulty": "easy",
+      "prompt": "The Strait of Gibraltar connects the Atlantic Ocean to which sea?",
+      "choices": [
+        "Red Sea",
+        "Black Sea",
+        "Caspian Sea",
+        "Mediterranean Sea"
+      ],
+      "answer": 3,
+      "quip_correct": "Just 14 km wide at its narrowest — a critical chokepoint for millennia.",
+      "quip_wrong": "Gibraltar connects the Atlantic to the Mediterranean, separating Spain from Morocco."
+    },
+    {
+      "id": "Geography_012",
+      "category": "Geography",
+      "difficulty": "easy",
+      "prompt": "Which country contains the most of the Amazon rainforest?",
+      "choices": [
+        "Peru",
+        "Colombia",
+        "Venezuela",
+        "Brazil"
+      ],
+      "answer": 3,
+      "quip_correct": "Brazil holds about 60% of the Amazon — the rest spans 8 other countries.",
+      "quip_wrong": "Brazil is home to roughly 60% of the Amazon rainforest."
+    },
+    {
+      "id": "Geography_013",
+      "category": "Geography",
+      "difficulty": "medium",
+      "prompt": "Lake Baikal in Russia holds approximately what fraction of the world's unfrozen fresh surface water?",
+      "choices": [
+        "One tenth",
+        "One fifth",
+        "One quarter",
+        "One third"
+      ],
+      "answer": 1,
+      "quip_correct": "Baikal holds ~20% of Earth's liquid fresh surface water — and is the deepest lake at 1,642 m.",
+      "quip_wrong": "Lake Baikal holds about 20% of all unfrozen surface fresh water on Earth."
+    },
+    {
+      "id": "Geography_014",
+      "category": "Geography",
+      "difficulty": "medium",
+      "prompt": "Which country has the most time zones?",
+      "choices": [
+        "Russia",
+        "USA",
+        "China",
+        "France"
+      ],
+      "answer": 3,
+      "quip_correct": "France counts 12 time zones across its overseas territories — Russia has 11.",
+      "quip_wrong": "France's overseas territories spread it across 12 time zones — more than Russia."
+    },
+    {
+      "id": "Geography_015",
+      "category": "Geography",
+      "difficulty": "medium",
+      "prompt": "The Strait of Malacca separates which two landmasses?",
+      "choices": [
+        "Java and Borneo",
+        "Sumatra and the Malay Peninsula",
+        "Sri Lanka and India",
+        "Singapore and Borneo"
+      ],
+      "answer": 1,
+      "quip_correct": "One of the world's busiest shipping lanes — over 80,000 vessels per year.",
+      "quip_wrong": "The Malacca Strait runs between Sumatra and the Malay Peninsula."
+    },
+    {
+      "id": "Geography_016",
+      "category": "Geography",
+      "difficulty": "medium",
+      "prompt": "Which African country has the largest population?",
+      "choices": [
+        "Ethiopia",
+        "South Africa",
+        "Egypt",
+        "Nigeria"
+      ],
+      "answer": 3,
+      "quip_correct": "Nigeria surpassed 200 million people — projected to be the third most populous nation by 2050.",
+      "quip_wrong": "Nigeria is Africa's most populous country with over 200 million people."
+    },
+    {
+      "id": "Geography_017",
+      "category": "Geography",
+      "difficulty": "medium",
+      "prompt": "The Atacama Desert sits primarily in which country?",
+      "choices": [
+        "Peru",
+        "Argentina",
+        "Bolivia",
+        "Chile"
+      ],
+      "answer": 3,
+      "quip_correct": "The Atacama is the driest non-polar desert — some areas have never recorded rainfall.",
+      "quip_wrong": "The Atacama runs mostly through northern Chile, one of the driest places on Earth."
+    },
+    {
+      "id": "Geography_018",
+      "category": "Geography",
+      "difficulty": "medium",
+      "prompt": "Which two continents does the Ural Mountains range help divide?",
+      "choices": [
+        "Europe and Asia",
+        "Asia and Africa",
+        "North America and South America",
+        "Europe and Africa"
+      ],
+      "answer": 0,
+      "quip_correct": "The Urals are the traditional boundary between Europe and Asia — running north-south through Russia.",
+      "quip_wrong": "The Ural Mountains mark the Europe-Asia boundary through western Russia."
+    },
+    {
+      "id": "Geography_019",
+      "category": "Geography",
+      "difficulty": "medium",
+      "prompt": "The island of Borneo is shared by how many countries?",
+      "choices": [
+        "Two",
+        "Three",
+        "Four",
+        "Five"
+      ],
+      "answer": 1,
+      "quip_correct": "Malaysia, Brunei, and Indonesia all share Borneo — the world's third-largest island.",
+      "quip_wrong": "Borneo is divided between Malaysia, Indonesia, and Brunei — three nations."
+    },
+    {
+      "id": "Geography_020",
+      "category": "Geography",
+      "difficulty": "medium",
+      "prompt": "Which landlocked country is completely surrounded by another single country?",
+      "choices": [
+        "Vatican City",
+        "Lesotho",
+        "San Marino",
+        "Both A and C"
+      ],
+      "answer": 3,
+      "quip_correct": "Vatican City and San Marino are both surrounded entirely by Italy.",
+      "quip_wrong": "Vatican City and San Marino are both enclaved entirely within Italy."
+    },
+    {
+      "id": "Geography_021",
+      "category": "Geography",
+      "difficulty": "medium",
+      "prompt": "The Danube River empties into which body of water?",
+      "choices": [
+        "Mediterranean Sea",
+        "Adriatic Sea",
+        "Black Sea",
+        "Caspian Sea"
+      ],
+      "answer": 2,
+      "quip_correct": "Europe's second-longest river flows through 10 countries before reaching the Black Sea.",
+      "quip_wrong": "The Danube ends at the Black Sea, flowing through more countries than any other river."
+    },
+    {
+      "id": "Geography_022",
+      "category": "Geography",
+      "difficulty": "hard",
+      "prompt": "The Wakhan Corridor is a narrow strip of Afghanistan that was created to ensure Afghanistan bordered which country?",
+      "choices": [
+        "India",
+        "Russia",
+        "China",
+        "Persia"
+      ],
+      "answer": 2,
+      "quip_correct": "Britain and Russia created it as a buffer so their empires wouldn't share a border.",
+      "quip_wrong": "The Wakhan was designed to give Afghanistan a border with China, buffering British India from Russia."
+    },
+    {
+      "id": "Geography_023",
+      "category": "Geography",
+      "difficulty": "hard",
+      "prompt": "Which country has the most UNESCO World Heritage Sites?",
+      "choices": [
+        "China",
+        "Italy",
+        "Spain",
+        "France"
+      ],
+      "answer": 1,
+      "quip_correct": "Italy leads with 58 UNESCO sites as of 2024 — China and Germany are close behind.",
+      "quip_wrong": "Italy tops the list with the most UNESCO World Heritage Sites in the world."
+    },
+    {
+      "id": "Geography_024",
+      "category": "Geography",
+      "difficulty": "hard",
+      "prompt": "The Mariana Trench's deepest point, Challenger Deep, reaches approximately how deep?",
+      "choices": [
+        "7 km",
+        "9 km",
+        "11 km",
+        "13 km"
+      ],
+      "answer": 2,
+      "quip_correct": "About 11 km — if Everest were dropped in, its peak would still be over 2 km underwater.",
+      "quip_wrong": "Challenger Deep is approximately 11 km below sea level — the deepest known point on Earth."
+    },
+    {
+      "id": "Geography_025",
+      "category": "Geography",
+      "difficulty": "hard",
+      "prompt": "Which country is home to the most of the world's active volcanoes?",
+      "choices": [
+        "Japan",
+        "Indonesia",
+        "USA",
+        "Philippines"
+      ],
+      "answer": 1,
+      "quip_correct": "Indonesia has over 130 active volcanoes — sitting on the Ring of Fire's most volatile stretch.",
+      "quip_wrong": "Indonesia's 130+ active volcanoes make it the most volcanically active country."
+    },
+    {
+      "id": "Geography_026",
+      "category": "Geography",
+      "difficulty": "hard",
+      "prompt": "The 'Dallol' hydrothermal field — one of the lowest and hottest places on Earth — is located in which country?",
+      "choices": [
+        "Somalia",
+        "Sudan",
+        "Djibouti",
+        "Ethiopia"
+      ],
+      "answer": 3,
+      "quip_correct": "Dallol in Ethiopia's Danakil Depression averages 34°C and sits 48 m below sea level.",
+      "quip_wrong": "Dallol is in Ethiopia's Danakil Depression — one of the most extreme environments on Earth."
+    },
+    {
+      "id": "Geography_027",
+      "category": "Geography",
+      "difficulty": "hard",
+      "prompt": "Point Nemo is famous for being the most remote location from land on Earth. It lies in which ocean?",
+      "choices": [
+        "Atlantic",
+        "Indian",
+        "Southern",
+        "Pacific"
+      ],
+      "answer": 3,
+      "quip_correct": "Point Nemo in the South Pacific is 2,688 km from the nearest land — closer to the ISS than to humans.",
+      "quip_wrong": "Point Nemo sits in the South Pacific Ocean, equidistant from three island points."
+    },
+    {
+      "id": "Geography_028",
+      "category": "Geography",
+      "difficulty": "hard",
+      "prompt": "The Sahel region separates the Sahara Desert from which geographic zone?",
+      "choices": [
+        "Tropical rainforest",
+        "Equatorial wetlands",
+        "Sub-Saharan savanna",
+        "Mediterranean coast"
+      ],
+      "answer": 2,
+      "quip_correct": "The Sahel is a semi-arid transition belt between the Sahara and the wetter savanna to the south.",
+      "quip_wrong": "The Sahel is a semi-arid band that transitions from Sahara to sub-Saharan savanna."
+    },
+    {
+      "id": "Geography_029",
+      "category": "Geography",
+      "difficulty": "hard",
+      "prompt": "Which country has the highest average elevation above sea level?",
+      "choices": [
+        "Nepal",
+        "Bhutan",
+        "Bolivia",
+        "China"
+      ],
+      "answer": 1,
+      "quip_correct": "Bhutan's average elevation is about 3,280 m — even higher than Tibet on average.",
+      "quip_wrong": "Bhutan's average elevation (~3,280 m) edges out even Nepal and Bolivia."
+    },
+    {
+      "id": "Geography_030",
+      "category": "Geography",
+      "difficulty": "hard",
+      "prompt": "The Mozambique Channel separates Madagascar from which mainland country?",
+      "choices": [
+        "Tanzania",
+        "Kenya",
+        "Mozambique",
+        "South Africa"
+      ],
+      "answer": 2,
+      "quip_correct": "The channel between Madagascar and Mozambique is about 400 km at its narrowest.",
+      "quip_wrong": "The Mozambique Channel lies between Madagascar and the country of Mozambique."
+    },
+    {
+      "id": "Geography_031",
+      "category": "Geography",
+      "difficulty": "hard",
+      "prompt": "Which river forms part of the boundary between the United States and Mexico?",
+      "choices": [
+        "Colorado River",
+        "Rio Grande",
+        "Pecos River",
+        "Gila River"
+      ],
+      "answer": 1,
+      "quip_correct": "The Rio Grande (known as Río Bravo in Mexico) forms about 1,900 km of the border.",
+      "quip_wrong": "The Rio Grande defines much of the US-Mexico border from Texas to New Mexico."
+    },
+    {
+      "id": "Geography_032",
+      "category": "Geography",
+      "difficulty": "medium",
+      "prompt": "Which country is home to the ancient city of Petra, carved into rose-red cliffs?",
+      "choices": [
+        "Israel",
+        "Egypt",
+        "Jordan",
+        "Saudi Arabia"
+      ],
+      "answer": 2,
+      "quip_correct": "Petra was the Nabataean capital in Jordan — the Treasury (Al-Khazneh) is carved from a single sandstone cliff face.",
+      "quip_wrong": "Petra is in Jordan — a UNESCO World Heritage Site and one of the New Seven Wonders."
+    },
+    {
+      "id": "Geography_033",
+      "category": "Geography",
+      "difficulty": "hard",
+      "prompt": "The Fergana Valley, one of Central Asia's most densely populated areas, is divided among how many countries?",
+      "choices": [
+        "Two",
+        "Three",
+        "Four",
+        "Five"
+      ],
+      "answer": 1,
+      "quip_correct": "Uzbekistan, Tajikistan, and Kyrgyzstan share the Fergana Valley — with enclaves creating some of the world's strangest borders.",
+      "quip_wrong": "The Fergana Valley is split between Uzbekistan, Tajikistan, and Kyrgyzstan — three countries with complex enclaves."
+    },
+    {
+      "id": "Pop Culture_001",
+      "category": "Pop Culture",
+      "difficulty": "easy",
+      "prompt": "Which TV show features the fictional paper company Dunder Mifflin?",
+      "choices": [
+        "Parks and Recreation",
+        "30 Rock",
+        "The Office",
+        "Arrested Development"
+      ],
+      "answer": 2,
+      "quip_correct": "Scranton, Pennsylvania's finest paper company — and weirdest coworkers.",
+      "quip_wrong": "Dunder Mifflin is from The Office — both the US and UK versions."
+    },
+    {
+      "id": "Pop Culture_002",
+      "category": "Pop Culture",
+      "difficulty": "easy",
+      "prompt": "Which artist released the album 'Thriller' in 1982?",
+      "choices": [
+        "Prince",
+        "David Bowie",
+        "Michael Jackson",
+        "Stevie Wonder"
+      ],
+      "answer": 2,
+      "quip_correct": "Thriller remains the best-selling album of all time at over 70 million copies.",
+      "quip_wrong": "Michael Jackson's Thriller is the best-selling album in history."
+    },
+    {
+      "id": "Pop Culture_003",
+      "category": "Pop Culture",
+      "difficulty": "easy",
+      "prompt": "In the Marvel Cinematic Universe, what is the name of Thor's hammer?",
+      "choices": [
+        "Gungnir",
+        "Mjolnir",
+        "Stormbreaker",
+        "Jarnbjorn"
+      ],
+      "answer": 1,
+      "quip_correct": "Mjolnir — 'only those worthy may lift it,' as the inscription says.",
+      "quip_wrong": "Thor's hammer is Mjolnir. Stormbreaker is his later axe."
+    },
+    {
+      "id": "Pop Culture_004",
+      "category": "Pop Culture",
+      "difficulty": "easy",
+      "prompt": "Which film series features the character Jack Sparrow?",
+      "choices": [
+        "Pirates of the Caribbean",
+        "Treasure Island",
+        "The Mummy",
+        "National Treasure"
+      ],
+      "answer": 0,
+      "quip_correct": "Captain Jack Sparrow — Johnny Depp's Oscar-nominated rum-loving anti-hero.",
+      "quip_wrong": "Jack Sparrow sails in Pirates of the Caribbean."
+    },
+    {
+      "id": "Pop Culture_005",
+      "category": "Pop Culture",
+      "difficulty": "easy",
+      "prompt": "'Friends' is set primarily in which US city?",
+      "choices": [
+        "Boston",
+        "Chicago",
+        "Los Angeles",
+        "New York City"
+      ],
+      "answer": 3,
+      "quip_correct": "Central Perk coffee shop is in Manhattan — though real Manhattan rents would be impossible on their incomes.",
+      "quip_wrong": "Friends is set in New York City, specifically Manhattan."
+    },
+    {
+      "id": "Pop Culture_006",
+      "category": "Pop Culture",
+      "difficulty": "easy",
+      "prompt": "Which streaming service originally produced 'Stranger Things'?",
+      "choices": [
+        "Hulu",
+        "Amazon Prime",
+        "HBO Max",
+        "Netflix"
+      ],
+      "answer": 3,
+      "quip_correct": "Netflix's 2016 breakout hit — it put the Duffer Brothers on the map.",
+      "quip_wrong": "Stranger Things is a Netflix original, debuting in July 2016."
+    },
+    {
+      "id": "Pop Culture_007",
+      "category": "Pop Culture",
+      "difficulty": "easy",
+      "prompt": "What color is the fictional 'Blue's Clues' dog, Blue?",
+      "choices": [
+        "Purple",
+        "Cyan",
+        "Blue",
+        "Teal"
+      ],
+      "answer": 2,
+      "quip_correct": "Blue is a blue puppy — the show's title is pretty transparent on this one.",
+      "quip_wrong": "Blue is, in fact, blue. Named accordingly."
+    },
+    {
+      "id": "Pop Culture_008",
+      "category": "Pop Culture",
+      "difficulty": "easy",
+      "prompt": "Who played Tony Stark / Iron Man in the Marvel Cinematic Universe?",
+      "choices": [
+        "Chris Evans",
+        "Mark Ruffalo",
+        "Robert Downey Jr.",
+        "Chris Pratt"
+      ],
+      "answer": 2,
+      "quip_correct": "RDJ launched the MCU in 2008 and defined Tony Stark for over a decade.",
+      "quip_wrong": "Robert Downey Jr. played Iron Man — Chris Evans was Captain America."
+    },
+    {
+      "id": "Pop Culture_009",
+      "category": "Pop Culture",
+      "difficulty": "easy",
+      "prompt": "Which video game franchise features the character Master Chief?",
+      "choices": [
+        "Gears of War",
+        "Call of Duty",
+        "Halo",
+        "Destiny"
+      ],
+      "answer": 2,
+      "quip_correct": "Master Chief — John-117 — has been Halo's protagonist since 2001.",
+      "quip_wrong": "Master Chief is the iconic Spartan from the Halo franchise."
+    },
+    {
+      "id": "Pop Culture_010",
+      "category": "Pop Culture",
+      "difficulty": "easy",
+      "prompt": "'Game of Thrones' is based on the book series by which author?",
+      "choices": [
+        "J.R.R. Tolkien",
+        "George R.R. Martin",
+        "Robert Jordan",
+        "Brandon Sanderson"
+      ],
+      "answer": 1,
+      "quip_correct": "George R.R. Martin's 'A Song of Ice and Fire' — still waiting on Winds of Winter.",
+      "quip_wrong": "GoT is based on George R.R. Martin's A Song of Ice and Fire series."
+    },
+    {
+      "id": "Pop Culture_011",
+      "category": "Pop Culture",
+      "difficulty": "easy",
+      "prompt": "Which pop star is known as 'Queen Bey'?",
+      "choices": [
+        "Rihanna",
+        "Ariana Grande",
+        "Beyoncé",
+        "Lady Gaga"
+      ],
+      "answer": 2,
+      "quip_correct": "Beyoncé Knowles-Carter — Bey is short for Beyoncé, hence 'Queen Bey'.",
+      "quip_wrong": "Queen Bey is Beyoncé. The nickname is hard to miss."
+    },
+    {
+      "id": "Pop Culture_012",
+      "category": "Pop Culture",
+      "difficulty": "easy",
+      "prompt": "Which animated film features the song 'Let It Go'?",
+      "choices": [
+        "Moana",
+        "Tangled",
+        "Brave",
+        "Frozen"
+      ],
+      "answer": 3,
+      "quip_correct": "Idina Menzel sang Let It Go in Frozen (2013) — it was inescapable for years.",
+      "quip_wrong": "'Let It Go' is from Disney's Frozen, sung by Elsa."
+    },
+    {
+      "id": "Pop Culture_013",
+      "category": "Pop Culture",
+      "difficulty": "medium",
+      "prompt": "Which band performed at the most Super Bowl halftime shows as of 2024?",
+      "choices": [
+        "Beyoncé",
+        "Bruno Mars",
+        "Madonna",
+        "Prince"
+      ],
+      "answer": 1,
+      "quip_correct": "Bruno Mars headlined in 2014 and 2016 and appeared again in 2020 — most appearances by any act.",
+      "quip_wrong": "Bruno Mars has performed at more Super Bowl halftime shows than any other artist."
+    },
+    {
+      "id": "Pop Culture_014",
+      "category": "Pop Culture",
+      "difficulty": "medium",
+      "prompt": "The TV show 'Breaking Bad' is set in which US city?",
+      "choices": [
+        "Phoenix, Arizona",
+        "El Paso, Texas",
+        "Las Vegas, Nevada",
+        "Albuquerque, New Mexico"
+      ],
+      "answer": 3,
+      "quip_correct": "Albuquerque, New Mexico — the show turned it into a pilgrimage destination for fans.",
+      "quip_wrong": "Breaking Bad is set in Albuquerque, New Mexico."
+    },
+    {
+      "id": "Pop Culture_015",
+      "category": "Pop Culture",
+      "difficulty": "medium",
+      "prompt": "What is the name of the coffee shop in 'Friends'?",
+      "choices": [
+        "The Perch",
+        "Central Perk",
+        "Java Junction",
+        "Daily Grind"
+      ],
+      "answer": 1,
+      "quip_correct": "Central Perk — a pun on Central Park. The gang's orange couch is iconic.",
+      "quip_wrong": "The Friends hangout is Central Perk — a play on Central Park."
+    },
+    {
+      "id": "Pop Culture_016",
+      "category": "Pop Culture",
+      "difficulty": "medium",
+      "prompt": "Which film won the first Academy Award for Best Picture in 1928?",
+      "choices": [
+        "The Jazz Singer",
+        "Sunrise",
+        "Wings",
+        "Ben-Hur"
+      ],
+      "answer": 2,
+      "quip_correct": "Wings (1927) won the inaugural Best Picture Oscar — a silent WWI aerial combat film.",
+      "quip_wrong": "Wings won the first Best Picture Oscar at the inaugural 1929 ceremony."
+    },
+    {
+      "id": "Pop Culture_017",
+      "category": "Pop Culture",
+      "difficulty": "medium",
+      "prompt": "The fictional land of Westeros is inspired primarily by which real-world region?",
+      "choices": [
+        "Scandinavia",
+        "Medieval France",
+        "Medieval Britain",
+        "The Roman Empire"
+      ],
+      "answer": 2,
+      "quip_correct": "George R.R. Martin drew heavily on the Wars of the Roses in medieval England for Westeros.",
+      "quip_wrong": "Westeros maps loosely onto Britain — Martin cited the Wars of the Roses as a key inspiration."
+    },
+    {
+      "id": "Pop Culture_018",
+      "category": "Pop Culture",
+      "difficulty": "medium",
+      "prompt": "Which musician's tour, 'The Eras Tour,' became the first to gross over $1 billion?",
+      "choices": [
+        "Beyoncé",
+        "Taylor Swift",
+        "Coldplay",
+        "Bad Bunny"
+      ],
+      "answer": 1,
+      "quip_correct": "Taylor Swift's Eras Tour (2023–2024) became the highest-grossing concert tour in history.",
+      "quip_wrong": "Taylor Swift's Eras Tour broke all records, becoming the first billion-dollar concert tour."
+    },
+    {
+      "id": "Pop Culture_019",
+      "category": "Pop Culture",
+      "difficulty": "medium",
+      "prompt": "In 'The Simpsons', what is the name of the nuclear power plant where Homer works?",
+      "choices": [
+        "Springfield Nuclear",
+        "Atomic Power Co.",
+        "Springfield Power and Light",
+        "Springfield Nuclear Power Plant"
+      ],
+      "answer": 3,
+      "quip_correct": "Mr. Burns's pride and joy — Springfield Nuclear Power Plant, safety record optional.",
+      "quip_wrong": "Homer works at the Springfield Nuclear Power Plant, owned by Montgomery Burns."
+    },
+    {
+      "id": "Pop Culture_020",
+      "category": "Pop Culture",
+      "difficulty": "hard",
+      "prompt": "Which David Bowie alter ego appeared on the 'Ziggy Stardust' album?",
+      "choices": [
+        "Aladdin Sane",
+        "The Thin White Duke",
+        "Ziggy Stardust",
+        "Major Tom"
+      ],
+      "answer": 2,
+      "quip_correct": "Ziggy Stardust was Bowie's alien rock star persona — debuted on the 1972 album.",
+      "quip_wrong": "The album is named for Ziggy Stardust — Bowie's androgynous alien glam persona."
+    },
+    {
+      "id": "Pop Culture_021",
+      "category": "Pop Culture",
+      "difficulty": "hard",
+      "prompt": "The character Atticus Finch is a lawyer in which US state?",
+      "choices": [
+        "Georgia",
+        "Alabama",
+        "Mississippi",
+        "Louisiana"
+      ],
+      "answer": 1,
+      "quip_correct": "To Kill a Mockingbird is set in Maycomb, Alabama — Harper Lee's fictionalized hometown.",
+      "quip_wrong": "Atticus Finch lives in Maycomb, Alabama, in Harper Lee's To Kill a Mockingbird."
+    },
+    {
+      "id": "Pop Culture_022",
+      "category": "Pop Culture",
+      "difficulty": "hard",
+      "prompt": "Which Tarantino film was originally released as two parts in the US?",
+      "choices": [
+        "Pulp Fiction",
+        "Inglourious Basterds",
+        "Kill Bill",
+        "Jackie Brown"
+      ],
+      "answer": 2,
+      "quip_correct": "Kill Bill Vol. 1 (2003) and Vol. 2 (2004) — Tarantino later released a single 4-hour cut.",
+      "quip_wrong": "Kill Bill was split into two volumes for US release in 2003 and 2004."
+    },
+    {
+      "id": "Pop Culture_023",
+      "category": "Pop Culture",
+      "difficulty": "hard",
+      "prompt": "What was the first video ever uploaded to YouTube?",
+      "choices": [
+        "Charlie Bit My Finger",
+        "Evolution of Dance",
+        "Me at the Zoo",
+        "Numa Numa"
+      ],
+      "answer": 2,
+      "quip_correct": "'Me at the Zoo' was uploaded by co-founder Jawed Karim on April 23, 2005 — 18 seconds long.",
+      "quip_wrong": "'Me at the zoo' — uploaded by YouTube co-founder Jawed Karim — was the site's first video."
+    },
+    {
+      "id": "Pop Culture_024",
+      "category": "Pop Culture",
+      "difficulty": "hard",
+      "prompt": "Which rock band was originally named 'The Polka Tulk Blues Band'?",
+      "choices": [
+        "Led Zeppelin",
+        "Black Sabbath",
+        "Deep Purple",
+        "Cream"
+      ],
+      "answer": 1,
+      "quip_correct": "Black Sabbath went through Polka Tulk Blues Band and then Earth before settling on their iconic name.",
+      "quip_wrong": "Black Sabbath started life as the Polka Tulk Blues Band in Birmingham, 1968."
+    },
+    {
+      "id": "Pop Culture_025",
+      "category": "Pop Culture",
+      "difficulty": "hard",
+      "prompt": "The term 'podcasting' was coined primarily by which journalist in 2004?",
+      "choices": [
+        "Malcolm Gladwell",
+        "Ben Hammersley",
+        "Kevin Rose",
+        "Chris Anderson"
+      ],
+      "answer": 1,
+      "quip_correct": "Ben Hammersley coined 'podcasting' in a February 2004 Guardian article about audio blogging.",
+      "quip_wrong": "Ben Hammersley of The Guardian invented the term 'podcast' in 2004."
+    },
+    {
+      "id": "Pop Culture_026",
+      "category": "Pop Culture",
+      "difficulty": "hard",
+      "prompt": "Which country produces the most films annually by volume?",
+      "choices": [
+        "USA",
+        "China",
+        "India",
+        "Nigeria"
+      ],
+      "answer": 2,
+      "quip_correct": "India's film industry — Bollywood plus regional industries — produces over 2,000 films per year.",
+      "quip_wrong": "India leads global film production by volume, with Bollywood plus many regional industries."
+    },
+    {
+      "id": "Pop Culture_027",
+      "category": "Pop Culture",
+      "difficulty": "hard",
+      "prompt": "In 'The Wire,' Baltimore drug dealer Omar Little is known for carrying which unusual item?",
+      "choices": [
+        "A crossbow",
+        "A machete",
+        "A sawed-off shotgun",
+        "A Louisville Slugger"
+      ],
+      "answer": 2,
+      "quip_correct": "Omar's sawed-off shotgun and whistling of 'The Farmer in the Dell' made him iconic TV.",
+      "quip_wrong": "Omar always walked with his sawed-off shotgun — and you could hear him coming from his whistle."
+    },
+    {
+      "id": "Pop Culture_028",
+      "category": "Pop Culture",
+      "difficulty": "hard",
+      "prompt": "What 1999 film popularized the concept of the 'bullet time' visual effect?",
+      "choices": [
+        "Dark City",
+        "The Matrix",
+        "Strange Days",
+        "eXistenZ"
+      ],
+      "answer": 1,
+      "quip_correct": "The Wachowskis used multiple cameras and CGI to achieve The Matrix's bullet-time sequences.",
+      "quip_wrong": "The Matrix (1999) invented the bullet-time effect that countless films later copied."
+    },
+    {
+      "id": "Pop Culture_029",
+      "category": "Pop Culture",
+      "difficulty": "hard",
+      "prompt": "The HBO show 'The Sopranos' ended its run in which year?",
+      "choices": [
+        "2005",
+        "2006",
+        "2007",
+        "2008"
+      ],
+      "answer": 2,
+      "quip_correct": "The finale aired June 10, 2007 — ending on a cut to black that divided audiences for years.",
+      "quip_wrong": "The Sopranos ended in 2007 with one of TV's most debated finales."
+    },
+    {
+      "id": "Pop Culture_030",
+      "category": "Pop Culture",
+      "difficulty": "medium",
+      "prompt": "Which actress played Katniss Everdeen in 'The Hunger Games' film series?",
+      "choices": [
+        "Shailene Woodley",
+        "Emma Stone",
+        "Jennifer Lawrence",
+        "Saoirse Ronan"
+      ],
+      "answer": 2,
+      "quip_correct": "Jennifer Lawrence won an Oscar at 22 for Silver Linings Playbook, then headlined Hunger Games.",
+      "quip_wrong": "Jennifer Lawrence played Katniss Everdeen in all four Hunger Games films."
+    },
+    {
+      "id": "Pop Culture_031",
+      "category": "Pop Culture",
+      "difficulty": "hard",
+      "prompt": "The TV show 'The Wire' takes place in which US city?",
+      "choices": [
+        "Philadelphia",
+        "Detroit",
+        "Baltimore",
+        "Chicago"
+      ],
+      "answer": 2,
+      "quip_correct": "Baltimore — the show explored its drug trade, docks, schools, and city hall with documentary-like realism.",
+      "quip_wrong": "The Wire is set in Baltimore, Maryland — often called the most realistic portrayal of urban American institutions."
+    },
+    {
+      "id": "Science & Nature_001",
+      "category": "Science & Nature",
+      "difficulty": "easy",
+      "prompt": "What is the chemical symbol for gold?",
+      "choices": [
+        "Go",
+        "Gd",
+        "Ag",
+        "Au"
+      ],
+      "answer": 3,
+      "quip_correct": "Au comes from 'Aurum' — Latin for gold.",
+      "quip_wrong": "Gold's symbol is Au, from the Latin 'aurum'."
+    },
+    {
+      "id": "Science & Nature_002",
+      "category": "Science & Nature",
+      "difficulty": "easy",
+      "prompt": "How many bones are in the adult human body?",
+      "choices": [
+        "196",
+        "206",
+        "216",
+        "226"
+      ],
+      "answer": 1,
+      "quip_correct": "Adults have 206 bones — babies are born with ~270 that fuse over time.",
+      "quip_wrong": "The adult human body has 206 bones."
+    },
+    {
+      "id": "Science & Nature_003",
+      "category": "Science & Nature",
+      "difficulty": "easy",
+      "prompt": "What planet is known as the Red Planet?",
+      "choices": [
+        "Jupiter",
+        "Venus",
+        "Saturn",
+        "Mars"
+      ],
+      "answer": 3,
+      "quip_correct": "Mars gets its red color from iron oxide — rust — on its surface.",
+      "quip_wrong": "Mars is the Red Planet, named for the Roman god of war."
+    },
+    {
+      "id": "Science & Nature_004",
+      "category": "Science & Nature",
+      "difficulty": "easy",
+      "prompt": "What is the powerhouse of the cell?",
+      "choices": [
+        "Nucleus",
+        "Golgi apparatus",
+        "Ribosome",
+        "Mitochondria"
+      ],
+      "answer": 3,
+      "quip_correct": "The mitochondria produce ATP — the cell's energy currency.",
+      "quip_wrong": "The mitochondria is the powerhouse of the cell. This one lives rent-free in every biology student's head."
+    },
+    {
+      "id": "Science & Nature_005",
+      "category": "Science & Nature",
+      "difficulty": "easy",
+      "prompt": "Water is composed of how many atoms per molecule?",
+      "choices": [
+        "Two",
+        "Three",
+        "Four",
+        "Five"
+      ],
+      "answer": 1,
+      "quip_correct": "H₂O: two hydrogen atoms and one oxygen atom — three atoms total.",
+      "quip_wrong": "Water (H₂O) has three atoms per molecule: two hydrogen and one oxygen."
+    },
+    {
+      "id": "Science & Nature_006",
+      "category": "Science & Nature",
+      "difficulty": "easy",
+      "prompt": "Which gas do plants absorb during photosynthesis?",
+      "choices": [
+        "Oxygen",
+        "Nitrogen",
+        "Carbon dioxide",
+        "Hydrogen"
+      ],
+      "answer": 2,
+      "quip_correct": "Plants take in CO₂ and release O₂ — the reverse of animal respiration.",
+      "quip_wrong": "Plants absorb carbon dioxide (CO₂) and produce oxygen during photosynthesis."
+    },
+    {
+      "id": "Science & Nature_007",
+      "category": "Science & Nature",
+      "difficulty": "easy",
+      "prompt": "What force keeps planets in orbit around the sun?",
+      "choices": [
+        "Electromagnetism",
+        "Strong nuclear force",
+        "Gravity",
+        "Centrifugal force"
+      ],
+      "answer": 2,
+      "quip_correct": "Gravity — described by Newton and refined by Einstein's general relativity.",
+      "quip_wrong": "Gravity is what keeps planets in orbit. Centrifugal force is a fictional force felt in a rotating frame."
+    },
+    {
+      "id": "Science & Nature_008",
+      "category": "Science & Nature",
+      "difficulty": "easy",
+      "prompt": "Which element has the atomic number 1?",
+      "choices": [
+        "Helium",
+        "Oxygen",
+        "Carbon",
+        "Hydrogen"
+      ],
+      "answer": 3,
+      "quip_correct": "Hydrogen — the lightest and most abundant element in the universe.",
+      "quip_wrong": "Hydrogen is element #1 — one proton, the simplest atom."
+    },
+    {
+      "id": "Science & Nature_009",
+      "category": "Science & Nature",
+      "difficulty": "easy",
+      "prompt": "What is the speed of light in a vacuum, approximately?",
+      "choices": [
+        "300,000 km/s",
+        "30,000 km/s",
+        "3,000,000 km/s",
+        "3,000 km/s"
+      ],
+      "answer": 0,
+      "quip_correct": "299,792,458 m/s exactly — 'c' in physics equations.",
+      "quip_wrong": "Light travels at about 300,000 km/s in a vacuum."
+    },
+    {
+      "id": "Science & Nature_010",
+      "category": "Science & Nature",
+      "difficulty": "easy",
+      "prompt": "DNA stands for what?",
+      "choices": [
+        "Deoxyribonucleic Acid",
+        "Dinucleotide Acid",
+        "Deoxyribonutrient Acid",
+        "Dinitrogen Acid"
+      ],
+      "answer": 0,
+      "quip_correct": "Deoxyribonucleic acid — the blueprint of life, discovered in 1953 by Watson and Crick (and Franklin).",
+      "quip_wrong": "DNA is deoxyribonucleic acid — the molecule that carries genetic information."
+    },
+    {
+      "id": "Science & Nature_011",
+      "category": "Science & Nature",
+      "difficulty": "easy",
+      "prompt": "What is the largest organ of the human body?",
+      "choices": [
+        "Liver",
+        "Lungs",
+        "Brain",
+        "Skin"
+      ],
+      "answer": 3,
+      "quip_correct": "The skin weighs about 3-4 kg and covers ~2 m² — the body's first line of defense.",
+      "quip_wrong": "Skin is the body's largest organ — easy to forget since it's also external."
+    },
+    {
+      "id": "Science & Nature_012",
+      "category": "Science & Nature",
+      "difficulty": "easy",
+      "prompt": "How many planets are in our solar system?",
+      "choices": [
+        "Seven",
+        "Eight",
+        "Nine",
+        "Ten"
+      ],
+      "answer": 1,
+      "quip_correct": "Eight since 2006, when Pluto was reclassified as a dwarf planet. Sorry, Pluto.",
+      "quip_wrong": "Since 2006 there are officially eight planets. Pluto is now a dwarf planet."
+    },
+    {
+      "id": "Science & Nature_013",
+      "category": "Science & Nature",
+      "difficulty": "medium",
+      "prompt": "Which element is the most abundant in Earth's crust?",
+      "choices": [
+        "Silicon",
+        "Iron",
+        "Aluminum",
+        "Oxygen"
+      ],
+      "answer": 3,
+      "quip_correct": "Oxygen makes up ~46% of Earth's crust by mass — mostly locked up in oxides and silicates.",
+      "quip_wrong": "Oxygen (~46%) is the most abundant element in Earth's crust, mostly in mineral form."
+    },
+    {
+      "id": "Science & Nature_014",
+      "category": "Science & Nature",
+      "difficulty": "medium",
+      "prompt": "What type of bond holds the two strands of a DNA double helix together?",
+      "choices": [
+        "Covalent bonds",
+        "Ionic bonds",
+        "Hydrogen bonds",
+        "Van der Waals forces"
+      ],
+      "answer": 2,
+      "quip_correct": "Hydrogen bonds — weak individually, but collectively strong enough to hold the helix stable.",
+      "quip_wrong": "DNA's strands are joined by hydrogen bonds between complementary base pairs."
+    },
+    {
+      "id": "Science & Nature_015",
+      "category": "Science & Nature",
+      "difficulty": "medium",
+      "prompt": "Which planet has the most moons?",
+      "choices": [
+        "Jupiter",
+        "Saturn",
+        "Uranus",
+        "Neptune"
+      ],
+      "answer": 1,
+      "quip_correct": "Saturn surpassed Jupiter in 2023 with 146 confirmed moons — and counting.",
+      "quip_wrong": "Saturn recently overtook Jupiter with 146 confirmed moons as of 2023."
+    },
+    {
+      "id": "Science & Nature_016",
+      "category": "Science & Nature",
+      "difficulty": "medium",
+      "prompt": "The Richter scale measures the magnitude of what?",
+      "choices": [
+        "Wind speed",
+        "Ocean currents",
+        "Earthquakes",
+        "Volcanic eruptions"
+      ],
+      "answer": 2,
+      "quip_correct": "The Richter scale was developed by Charles Richter in 1935 — now mostly replaced by the moment magnitude scale.",
+      "quip_wrong": "The Richter scale measures earthquake magnitude — though seismologists now prefer the moment magnitude scale."
+    },
+    {
+      "id": "Science & Nature_017",
+      "category": "Science & Nature",
+      "difficulty": "medium",
+      "prompt": "What particle gives an atom its positive charge?",
+      "choices": [
+        "Neutron",
+        "Electron",
+        "Proton",
+        "Quark"
+      ],
+      "answer": 2,
+      "quip_correct": "Protons in the nucleus give atoms their positive charge — equal to the number of electrons in neutral atoms.",
+      "quip_wrong": "Protons carry the positive charge. Electrons are negative. Neutrons are neutral."
+    },
+    {
+      "id": "Science & Nature_018",
+      "category": "Science & Nature",
+      "difficulty": "medium",
+      "prompt": "Which vitamin does the human body produce when exposed to sunlight?",
+      "choices": [
+        "Vitamin A",
+        "Vitamin C",
+        "Vitamin D",
+        "Vitamin K"
+      ],
+      "answer": 2,
+      "quip_correct": "UV-B light triggers vitamin D synthesis in skin — explaining why winter causes deficiency at high latitudes.",
+      "quip_wrong": "Sunlight triggers Vitamin D production in the skin."
+    },
+    {
+      "id": "Science & Nature_019",
+      "category": "Science & Nature",
+      "difficulty": "medium",
+      "prompt": "The Coriolis effect causes cyclones to rotate in which direction in the Northern Hemisphere?",
+      "choices": [
+        "Clockwise",
+        "Counterclockwise",
+        "Alternating",
+        "Radially outward"
+      ],
+      "answer": 1,
+      "quip_correct": "Low-pressure systems (cyclones) rotate counterclockwise in the north, clockwise in the south.",
+      "quip_wrong": "The Coriolis effect makes Northern Hemisphere cyclones rotate counterclockwise."
+    },
+    {
+      "id": "Science & Nature_020",
+      "category": "Science & Nature",
+      "difficulty": "medium",
+      "prompt": "What is the half-life of Carbon-14, used in radiocarbon dating?",
+      "choices": [
+        "1,400 years",
+        "5,730 years",
+        "14,000 years",
+        "57,300 years"
+      ],
+      "answer": 1,
+      "quip_correct": "C-14's 5,730-year half-life makes it useful for dating organic matter up to about 50,000 years old.",
+      "quip_wrong": "Carbon-14 has a half-life of ~5,730 years, limiting dating to about 50,000 years back."
+    },
+    {
+      "id": "Science & Nature_021",
+      "category": "Science & Nature",
+      "difficulty": "medium",
+      "prompt": "Which scientist proposed the theory of natural selection?",
+      "choices": [
+        "Gregor Mendel",
+        "Louis Pasteur",
+        "Charles Darwin",
+        "Thomas Huxley"
+      ],
+      "answer": 2,
+      "quip_correct": "Darwin published 'On the Origin of Species' in 1859 — one of the most consequential books ever written.",
+      "quip_wrong": "Charles Darwin proposed natural selection in 1859's On the Origin of Species."
+    },
+    {
+      "id": "Science & Nature_022",
+      "category": "Science & Nature",
+      "difficulty": "hard",
+      "prompt": "What is the Chandrasekhar limit?",
+      "choices": [
+        "Maximum size of a neutron star",
+        "The critical mass at which a white dwarf collapses",
+        "The event horizon radius of a black hole",
+        "The minimum mass for nuclear fusion"
+      ],
+      "answer": 1,
+      "quip_correct": "~1.4 solar masses — exceed it and a white dwarf collapses into a neutron star or triggers a supernova.",
+      "quip_wrong": "The Chandrasekhar limit (~1.4 solar masses) is the maximum mass a white dwarf can have before collapsing."
+    },
+    {
+      "id": "Science & Nature_023",
+      "category": "Science & Nature",
+      "difficulty": "hard",
+      "prompt": "Which quantum effect allows electrons to pass through energy barriers they classically shouldn't?",
+      "choices": [
+        "Superposition",
+        "Entanglement",
+        "Tunneling",
+        "Decoherence"
+      ],
+      "answer": 2,
+      "quip_correct": "Quantum tunneling enables nuclear fusion in the sun and is exploited in tunnel diodes and flash memory.",
+      "quip_wrong": "Quantum tunneling lets particles pass through classically forbidden barriers — essential to nuclear fusion."
+    },
+    {
+      "id": "Science & Nature_024",
+      "category": "Science & Nature",
+      "difficulty": "hard",
+      "prompt": "What is the approximate age of the universe?",
+      "choices": [
+        "4.5 billion years",
+        "10.2 billion years",
+        "13.8 billion years",
+        "27.4 billion years"
+      ],
+      "answer": 2,
+      "quip_correct": "~13.8 billion years, inferred from cosmic microwave background radiation measurements.",
+      "quip_wrong": "The universe is approximately 13.8 billion years old based on CMB data."
+    },
+    {
+      "id": "Science & Nature_025",
+      "category": "Science & Nature",
+      "difficulty": "hard",
+      "prompt": "Which amino acid is the most common in the human body?",
+      "choices": [
+        "Glycine",
+        "Alanine",
+        "Glutamine",
+        "Leucine"
+      ],
+      "answer": 0,
+      "quip_correct": "Glycine is the simplest and most abundant amino acid — it makes up ~35% of collagen.",
+      "quip_wrong": "Glycine is the most abundant amino acid, dominant in collagen which makes up much of the body."
+    },
+    {
+      "id": "Science & Nature_026",
+      "category": "Science & Nature",
+      "difficulty": "hard",
+      "prompt": "The Krebs cycle takes place in which part of the cell?",
+      "choices": [
+        "Cytoplasm",
+        "Nucleus",
+        "Mitochondrial matrix",
+        "Endoplasmic reticulum"
+      ],
+      "answer": 2,
+      "quip_correct": "The citric acid (Krebs) cycle runs in the mitochondrial matrix, producing electron carriers for the ETC.",
+      "quip_wrong": "The Krebs cycle occurs in the mitochondrial matrix — the inner compartment of the mitochondria."
+    },
+    {
+      "id": "Science & Nature_027",
+      "category": "Science & Nature",
+      "difficulty": "hard",
+      "prompt": "What physical constant relates energy to frequency in quantum mechanics?",
+      "choices": [
+        "Boltzmann constant",
+        "Avogadro's number",
+        "Planck's constant",
+        "The fine-structure constant"
+      ],
+      "answer": 2,
+      "quip_correct": "E=hf — Planck's constant h = 6.626×10⁻³⁴ J·s, the quantum of action.",
+      "quip_wrong": "Planck's constant (h) relates a photon's energy to its frequency: E = hf."
+    },
+    {
+      "id": "Science & Nature_028",
+      "category": "Science & Nature",
+      "difficulty": "hard",
+      "prompt": "Which element was the first to be discovered on the Sun before it was found on Earth?",
+      "choices": [
+        "Neon",
+        "Argon",
+        "Xenon",
+        "Helium"
+      ],
+      "answer": 3,
+      "quip_correct": "Helium was spotted in solar spectral lines in 1868 — 27 years before it was isolated on Earth.",
+      "quip_wrong": "Helium (from 'Helios') was found in the Sun's spectrum in 1868, before being isolated on Earth in 1895."
+    },
+    {
+      "id": "Science & Nature_029",
+      "category": "Science & Nature",
+      "difficulty": "hard",
+      "prompt": "What is the name of the layer of Earth's atmosphere that contains the ozone layer?",
+      "choices": [
+        "Troposphere",
+        "Mesosphere",
+        "Thermosphere",
+        "Stratosphere"
+      ],
+      "answer": 3,
+      "quip_correct": "The ozone layer sits in the stratosphere, 15–35 km up, blocking UV-B radiation.",
+      "quip_wrong": "The ozone layer is in the stratosphere, about 15-35 km above Earth's surface."
+    },
+    {
+      "id": "Science & Nature_030",
+      "category": "Science & Nature",
+      "difficulty": "hard",
+      "prompt": "The phenomenon of 'sonoluminescence' involves which unusual combination?",
+      "choices": [
+        "Light from chemical reactions in water",
+        "Sound waves producing flashes of light",
+        "Electrical fields ionizing gases",
+        "Magnetic fields producing visible light"
+      ],
+      "answer": 1,
+      "quip_correct": "Collapsing bubbles from ultrasonic waves produce brief flashes of light — temperatures may exceed 10,000 K.",
+      "quip_wrong": "Sonoluminescence is sound-induced light — collapsing bubbles briefly reach star-like temperatures."
+    },
+    {
+      "id": "Science & Nature_031",
+      "category": "Science & Nature",
+      "difficulty": "medium",
+      "prompt": "What is 'absolute zero' in Celsius?",
+      "choices": [
+        "-100°C",
+        "-173°C",
+        "-273°C",
+        "-373°C"
+      ],
+      "answer": 2,
+      "quip_correct": "Absolute zero is 0 Kelvin = -273.15°C — the point at which all thermal motion theoretically stops.",
+      "quip_wrong": "Absolute zero is -273.15°C — the lowest theoretically possible temperature."
+    },
+    {
+      "id": "Science & Nature_032",
+      "category": "Science & Nature",
+      "difficulty": "hard",
+      "prompt": "What is the name of the protein structure that folds improperly and causes diseases like BSE (mad cow disease)?",
+      "choices": [
+        "Amyloid",
+        "Prion",
+        "Lipid aggregate",
+        "Tau protein"
+      ],
+      "answer": 1,
+      "quip_correct": "Prions are misfolded proteins that convert normal proteins to misfolded forms — no DNA needed to replicate.",
+      "quip_wrong": "Prions are misfolded proteins responsible for BSE, CJD, and scrapie — they propagate without genetic material."
+    },
+    {
+      "id": "Sports_001",
+      "category": "Sports",
+      "difficulty": "easy",
+      "prompt": "How many players are on a standard basketball team on the court at one time?",
+      "choices": [
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "answer": 1,
+      "quip_correct": "Five players per team — point guard, shooting guard, small forward, power forward, center.",
+      "quip_wrong": "Basketball is played 5-on-5."
+    },
+    {
+      "id": "Sports_002",
+      "category": "Sports",
+      "difficulty": "easy",
+      "prompt": "What sport is played at Wimbledon?",
+      "choices": [
+        "Cricket",
+        "Squash",
+        "Tennis",
+        "Badminton"
+      ],
+      "answer": 2,
+      "quip_correct": "Wimbledon is the oldest Grand Slam — played on grass since 1877.",
+      "quip_wrong": "Wimbledon is the world's most prestigious tennis tournament."
+    },
+    {
+      "id": "Sports_003",
+      "category": "Sports",
+      "difficulty": "easy",
+      "prompt": "How many holes are played in a standard round of golf?",
+      "choices": [
+        "9",
+        "12",
+        "18",
+        "21"
+      ],
+      "answer": 2,
+      "quip_correct": "18 holes — standardized by the Royal and Ancient Golf Club of St Andrews in 1764.",
+      "quip_wrong": "A standard golf round is 18 holes. Nine-hole rounds are also common but not standard."
+    },
+    {
+      "id": "Sports_004",
+      "category": "Sports",
+      "difficulty": "easy",
+      "prompt": "In which country did the Olympic Games originate?",
+      "choices": [
+        "Italy",
+        "Egypt",
+        "Rome",
+        "Greece"
+      ],
+      "answer": 3,
+      "quip_correct": "The ancient Olympics began in Olympia, Greece in 776 BC.",
+      "quip_wrong": "The Olympics originated in ancient Olympia, Greece."
+    },
+    {
+      "id": "Sports_005",
+      "category": "Sports",
+      "difficulty": "easy",
+      "prompt": "How many points is a touchdown worth in American football?",
+      "choices": [
+        "4",
+        "6",
+        "7",
+        "8"
+      ],
+      "answer": 1,
+      "quip_correct": "Six points for the TD — plus kicking a PAT adds one, or a two-point conversion adds two.",
+      "quip_wrong": "A touchdown is worth 6 points. The extra point comes after."
+    },
+    {
+      "id": "Sports_006",
+      "category": "Sports",
+      "difficulty": "easy",
+      "prompt": "Which country has won the most FIFA World Cup titles?",
+      "choices": [
+        "Germany",
+        "Argentina",
+        "Italy",
+        "Brazil"
+      ],
+      "answer": 3,
+      "quip_correct": "Brazil has won 5 World Cups — 1958, 1962, 1970, 1994, and 2002.",
+      "quip_wrong": "Brazil leads with 5 World Cup titles."
+    },
+    {
+      "id": "Sports_007",
+      "category": "Sports",
+      "difficulty": "easy",
+      "prompt": "What is the diameter of a basketball hoop in inches?",
+      "choices": [
+        "14 inches",
+        "16 inches",
+        "18 inches",
+        "20 inches"
+      ],
+      "answer": 2,
+      "quip_correct": "The rim is 18 inches in diameter — a standard ball is about 9.4 inches, so two balls could fit side by side.",
+      "quip_wrong": "A regulation basketball hoop is 18 inches in diameter."
+    },
+    {
+      "id": "Sports_008",
+      "category": "Sports",
+      "difficulty": "easy",
+      "prompt": "A 'hat trick' in soccer means a player scored how many goals in one game?",
+      "choices": [
+        "Two",
+        "Three",
+        "Four",
+        "Five"
+      ],
+      "answer": 1,
+      "quip_correct": "Three goals in one match earns a hat trick — traditionally players keep the match ball.",
+      "quip_wrong": "A hat trick is three goals by the same player in a single game."
+    },
+    {
+      "id": "Sports_009",
+      "category": "Sports",
+      "difficulty": "easy",
+      "prompt": "The Super Bowl is the championship game of which league?",
+      "choices": [
+        "NBA",
+        "MLB",
+        "NHL",
+        "NFL"
+      ],
+      "answer": 3,
+      "quip_correct": "Super Bowl I was played January 15, 1967 — Green Bay Packers beat the Kansas City Chiefs.",
+      "quip_wrong": "The Super Bowl is the NFL championship game."
+    },
+    {
+      "id": "Sports_010",
+      "category": "Sports",
+      "difficulty": "easy",
+      "prompt": "In tennis, what do you call a score of 40-40?",
+      "choices": [
+        "Tie",
+        "Deuce",
+        "Break",
+        "Set point"
+      ],
+      "answer": 1,
+      "quip_correct": "Deuce — from the French 'deux' meaning two, as two consecutive points are needed to win.",
+      "quip_wrong": "40-40 in tennis is called 'deuce'."
+    },
+    {
+      "id": "Sports_011",
+      "category": "Sports",
+      "difficulty": "easy",
+      "prompt": "How long is a marathon race in kilometers (approximately)?",
+      "choices": [
+        "30 km",
+        "35 km",
+        "42 km",
+        "50 km"
+      ],
+      "answer": 2,
+      "quip_correct": "A marathon is exactly 42.195 km (26.2 miles) — set in the 1908 London Olympics.",
+      "quip_wrong": "A marathon is 42.195 km — the distance from Windsor Castle to Olympic Stadium in 1908."
+    },
+    {
+      "id": "Sports_012",
+      "category": "Sports",
+      "difficulty": "easy",
+      "prompt": "Which country invented the sport of sumo wrestling?",
+      "choices": [
+        "China",
+        "Mongolia",
+        "South Korea",
+        "Japan"
+      ],
+      "answer": 3,
+      "quip_correct": "Sumo dates back over 1,500 years in Japan — it has deep Shinto religious roots.",
+      "quip_wrong": "Sumo is a Japanese tradition, practiced for over 1,500 years."
+    },
+    {
+      "id": "Sports_013",
+      "category": "Sports",
+      "difficulty": "medium",
+      "prompt": "What is the only combat sport in which you can win by pinning your opponent's shoulders to the mat for two seconds?",
+      "choices": [
+        "Judo",
+        "Freestyle wrestling",
+        "Greco-Roman wrestling",
+        "Both B and C"
+      ],
+      "answer": 3,
+      "quip_correct": "Both freestyle and Greco-Roman wrestling use the pin — judo uses ippon for different throws.",
+      "quip_wrong": "Both freestyle and Greco-Roman wrestling use the two-second pin to win."
+    },
+    {
+      "id": "Sports_014",
+      "category": "Sports",
+      "difficulty": "medium",
+      "prompt": "The 'Miracle on Ice' at the 1980 Winter Olympics involved the US defeating which country in hockey?",
+      "choices": [
+        "Canada",
+        "Finland",
+        "Sweden",
+        "Soviet Union"
+      ],
+      "answer": 3,
+      "quip_correct": "The US amateur team beat the heavily favored Soviet professionals 4-3 — called the greatest sports moment of the 20th century.",
+      "quip_wrong": "The 1980 US hockey team defeated the Soviet Union in one of sports' greatest upsets."
+    },
+    {
+      "id": "Sports_015",
+      "category": "Sports",
+      "difficulty": "medium",
+      "prompt": "In the 100m sprint, what percentage of elite sprinters are left-foot dominant at the starting block?",
+      "choices": [
+        "About 10%",
+        "About 25%",
+        "About 50%",
+        "About 75%"
+      ],
+      "answer": 2,
+      "quip_correct": "Roughly 50% of elite sprinters use their left foot as the rear (drive) foot — dominance varies widely.",
+      "quip_wrong": "Elite sprinters split roughly evenly on starting-block foot preference."
+    },
+    {
+      "id": "Sports_016",
+      "category": "Sports",
+      "difficulty": "medium",
+      "prompt": "Which golfer holds the record for the most major championship victories?",
+      "choices": [
+        "Tiger Woods",
+        "Arnold Palmer",
+        "Gary Player",
+        "Jack Nicklaus"
+      ],
+      "answer": 3,
+      "quip_correct": "Jack Nicklaus won 18 majors — Tiger Woods is at 15 and counting.",
+      "quip_wrong": "Jack Nicklaus has 18 major titles — the most in golf history, with Tiger at 15."
+    },
+    {
+      "id": "Sports_017",
+      "category": "Sports",
+      "difficulty": "medium",
+      "prompt": "In cricket, how many balls are bowled per 'over'?",
+      "choices": [
+        "4",
+        "5",
+        "6",
+        "8"
+      ],
+      "answer": 2,
+      "quip_correct": "Six balls per over — standard worldwide since 1979.",
+      "quip_wrong": "An over in cricket consists of six balls."
+    },
+    {
+      "id": "Sports_018",
+      "category": "Sports",
+      "difficulty": "medium",
+      "prompt": "What country is home to the annual Tour de France cycling race (where it finishes)?",
+      "choices": [
+        "Belgium",
+        "Italy",
+        "France",
+        "Spain"
+      ],
+      "answer": 2,
+      "quip_correct": "The Tour traditionally finishes on the Champs-Élysées in Paris.",
+      "quip_wrong": "The Tour de France is a French race that traditionally finishes in Paris."
+    },
+    {
+      "id": "Sports_019",
+      "category": "Sports",
+      "difficulty": "medium",
+      "prompt": "At the 1968 Olympics, Tommie Smith and John Carlos raised fists on the podium as a protest against what?",
+      "choices": [
+        "The Vietnam War",
+        "Apartheid",
+        "Racial inequality in the US",
+        "Olympic commercialism"
+      ],
+      "answer": 2,
+      "quip_correct": "The Black Power salute — Smith and Carlos were suspended from the US team for their protest.",
+      "quip_wrong": "Smith and Carlos raised gloved fists to protest racial inequality in the United States."
+    },
+    {
+      "id": "Sports_020",
+      "category": "Sports",
+      "difficulty": "hard",
+      "prompt": "What is the maximum number of clubs allowed in a golfer's bag in PGA Tour competition?",
+      "choices": [
+        "12",
+        "14",
+        "16",
+        "18"
+      ],
+      "answer": 1,
+      "quip_correct": "Fourteen clubs — a penalty applies for each extra club carried.",
+      "quip_wrong": "PGA rules allow a maximum of 14 clubs in a bag."
+    },
+    {
+      "id": "Sports_021",
+      "category": "Sports",
+      "difficulty": "hard",
+      "prompt": "Which tennis player has won the most Grand Slam singles titles in history (men's)?",
+      "choices": [
+        "Roger Federer",
+        "Rafael Nadal",
+        "Novak Djokovic",
+        "Pete Sampras"
+      ],
+      "answer": 2,
+      "quip_correct": "Novak Djokovic surpassed both Federer and Nadal, reaching 24 Grand Slam titles.",
+      "quip_wrong": "Novak Djokovic holds the men's record with 24 Grand Slam titles."
+    },
+    {
+      "id": "Sports_022",
+      "category": "Sports",
+      "difficulty": "hard",
+      "prompt": "In the original Olympic Games, athletes competed in the 'stadion' race — how long was this race?",
+      "choices": [
+        "One stade (~192 m)",
+        "Two stades (~384 m)",
+        "400 m",
+        "One mile"
+      ],
+      "answer": 0,
+      "quip_correct": "The stadion was ~192 m — the length of the stadium at Olympia. It's where 'stadium' comes from.",
+      "quip_wrong": "The stadion was one stade (~192 m) — the origin of the word 'stadium'."
+    },
+    {
+      "id": "Sports_023",
+      "category": "Sports",
+      "difficulty": "hard",
+      "prompt": "Which horse won the first Triple Crown of horse racing in the US?",
+      "choices": [
+        "Man o' War",
+        "Secretariat",
+        "Sir Barton",
+        "Citation"
+      ],
+      "answer": 2,
+      "quip_correct": "Sir Barton won in 1919 — though 'Triple Crown' wasn't the name for it yet.",
+      "quip_wrong": "Sir Barton won the three races in 1919, retroactively named the first Triple Crown winner."
+    },
+    {
+      "id": "Sports_024",
+      "category": "Sports",
+      "difficulty": "hard",
+      "prompt": "The 'Fosbury Flop' revolutionized which track and field event at the 1968 Olympics?",
+      "choices": [
+        "Pole vault",
+        "Long jump",
+        "Triple jump",
+        "High jump"
+      ],
+      "answer": 3,
+      "quip_correct": "Dick Fosbury's backward technique was mocked, then universally adopted — now everyone does it.",
+      "quip_wrong": "Dick Fosbury's backward high jump technique debuted at Mexico City in 1968."
+    },
+    {
+      "id": "Sports_025",
+      "category": "Sports",
+      "difficulty": "hard",
+      "prompt": "In American football, a 'safety' scores how many points for the defensive team?",
+      "choices": [
+        "1",
+        "2",
+        "3",
+        "6"
+      ],
+      "answer": 1,
+      "quip_correct": "A safety scores 2 points AND gives the defense the ball — the rarest scoring play.",
+      "quip_wrong": "A safety scores 2 points for the defense and also gives them a free kick."
+    },
+    {
+      "id": "Sports_026",
+      "category": "Sports",
+      "difficulty": "hard",
+      "prompt": "What is the regulation height of a volleyball net for men's indoor play?",
+      "choices": [
+        "2.24 m",
+        "2.43 m",
+        "2.58 m",
+        "2.72 m"
+      ],
+      "answer": 1,
+      "quip_correct": "Men's net is 2.43 m (about 7'11⅝\") — women's is 2.24 m.",
+      "quip_wrong": "Men's indoor volleyball nets are set at 2.43 meters."
+    },
+    {
+      "id": "Sports_027",
+      "category": "Sports",
+      "difficulty": "hard",
+      "prompt": "Which country has won the most Rugby World Cup titles?",
+      "choices": [
+        "England",
+        "Australia",
+        "New Zealand",
+        "South Africa"
+      ],
+      "answer": 2,
+      "quip_correct": "New Zealand's All Blacks have won in 1987, 2011, and 2015 — more than any other nation.",
+      "quip_wrong": "New Zealand has won the Rugby World Cup three times — more than anyone else."
+    },
+    {
+      "id": "Sports_028",
+      "category": "Sports",
+      "difficulty": "hard",
+      "prompt": "The 'Immaculate Reception' in 1972 was an iconic play in which sport?",
+      "choices": [
+        "Baseball",
+        "Basketball",
+        "American Football",
+        "Ice Hockey"
+      ],
+      "answer": 2,
+      "quip_correct": "Franco Harris of the Pittsburgh Steelers caught the deflected ball off the turf — its legality still debated.",
+      "quip_wrong": "The Immaculate Reception was a 1972 Pittsburgh Steelers playoff play — one of NFL history's most disputed moments."
+    },
+    {
+      "id": "Sports_029",
+      "category": "Sports",
+      "difficulty": "hard",
+      "prompt": "At the 1904 St. Louis Olympics, which marathon runner was initially awarded gold but later disqualified for taking a carriage?",
+      "choices": [
+        "Thomas Hicks",
+        "Fred Lorz",
+        "William Garcia",
+        "Felix Carvajal"
+      ],
+      "answer": 1,
+      "quip_correct": "Fred Lorz hitched a car ride for 11 miles, accepted the medal, then admitted it — banned for a year.",
+      "quip_wrong": "Fred Lorz rode in a car for 11 miles of the 1904 marathon — he was found out and disqualified."
+    },
+    {
+      "id": "Sports_030",
+      "category": "Sports",
+      "difficulty": "hard",
+      "prompt": "In professional boxing, how many rounds are in a world championship fight?",
+      "choices": [
+        "10",
+        "12",
+        "15",
+        "20"
+      ],
+      "answer": 1,
+      "quip_correct": "World title bouts have been 12 rounds since 1982, reduced from 15 after Duk Koo Kim's death.",
+      "quip_wrong": "Championship boxing is 12 rounds since 1982 — previously 15 rounds."
+    },
+    {
+      "id": "Sports_031",
+      "category": "Sports",
+      "difficulty": "medium",
+      "prompt": "In Olympic swimming, what is the order of strokes in an individual medley?",
+      "choices": [
+        "Freestyle, backstroke, breaststroke, butterfly",
+        "Butterfly, backstroke, breaststroke, freestyle",
+        "Breaststroke, butterfly, backstroke, freestyle",
+        "Backstroke, breaststroke, butterfly, freestyle"
+      ],
+      "answer": 1,
+      "quip_correct": "IM order: butterfly, backstroke, breaststroke, freestyle. Remember: Best Backstroke Before Freestyle.",
+      "quip_wrong": "Individual medley order is butterfly → backstroke → breaststroke → freestyle."
+    },
+    {
+      "id": "Sports_032",
+      "category": "Sports",
+      "difficulty": "hard",
+      "prompt": "In baseball, a 'perfect game' requires a pitcher to do what?",
+      "choices": [
+        "Strike out all 27 batters",
+        "Allow no runs",
+        "Retire all 27 batters with no base runners",
+        "Pitch all nine innings without substitution"
+      ],
+      "answer": 2,
+      "quip_correct": "No hits, no walks, no errors — all 27 batters retired in order. Only 23 perfect games in MLB history.",
+      "quip_wrong": "A perfect game means retiring all 27 batters with no one reaching base — no hits, no walks, no errors."
+    },
+    {
+      "id": "Food & Cooking_001",
+      "category": "Food & Cooking",
+      "difficulty": "easy",
+      "prompt": "Which country is the origin of sushi?",
+      "choices": [
+        "China",
+        "Japan",
+        "Korea",
+        "Thailand"
+      ],
+      "answer": 1,
+      "quip_correct": "Sushi evolved in Japan — originally fermented fish in rice to preserve it.",
+      "quip_wrong": "Sushi originated in Japan, though the fermentation technique came from Southeast Asia."
+    },
+    {
+      "id": "Food & Cooking_002",
+      "category": "Food & Cooking",
+      "difficulty": "easy",
+      "prompt": "What is the main ingredient in guacamole?",
+      "choices": [
+        "Mango",
+        "Avocado",
+        "Lime",
+        "Cilantro"
+      ],
+      "answer": 1,
+      "quip_correct": "Avocado is the base — guacamole means 'avocado sauce' in Nahuatl.",
+      "quip_wrong": "Guacamole is built on avocado — from the Nahuatl 'ahuacamolli'."
+    },
+    {
+      "id": "Food & Cooking_003",
+      "category": "Food & Cooking",
+      "difficulty": "easy",
+      "prompt": "What Italian dish consists of egg-based pasta with cured pork and cheese?",
+      "choices": [
+        "Alfredo",
+        "Amatriciana",
+        "Carbonara",
+        "Cacio e Pepe"
+      ],
+      "answer": 2,
+      "quip_correct": "Carbonara uses guanciale, pecorino, and eggs — no cream, despite what many restaurants add.",
+      "quip_wrong": "Carbonara is egg, cured pork, and cheese. Traditional recipes never include cream."
+    },
+    {
+      "id": "Food & Cooking_004",
+      "category": "Food & Cooking",
+      "difficulty": "easy",
+      "prompt": "How many teaspoons are in one tablespoon?",
+      "choices": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "answer": 1,
+      "quip_correct": "Three teaspoons per tablespoon — a kitchen essential to memorize.",
+      "quip_wrong": "There are 3 teaspoons in 1 tablespoon."
+    },
+    {
+      "id": "Food & Cooking_005",
+      "category": "Food & Cooking",
+      "difficulty": "easy",
+      "prompt": "What type of milk is traditionally used to make mozzarella di bufala?",
+      "choices": [
+        "Cow milk",
+        "Goat milk",
+        "Sheep milk",
+        "Buffalo milk"
+      ],
+      "answer": 3,
+      "quip_correct": "Buffalo mozzarella (mozzarella di bufala) is made from Italian water buffalo milk — richer and creamier than cow's.",
+      "quip_wrong": "True mozzarella di bufala is made from water buffalo milk, not cow's milk."
+    },
+    {
+      "id": "Food & Cooking_006",
+      "category": "Food & Cooking",
+      "difficulty": "easy",
+      "prompt": "What cooking technique involves submerging food in hot oil?",
+      "choices": [
+        "Braising",
+        "Roasting",
+        "Deep frying",
+        "Poaching"
+      ],
+      "answer": 2,
+      "quip_correct": "Deep frying uses oil at 350–375°F — the hot oil creates steam inside the food, keeping it moist.",
+      "quip_wrong": "Deep frying submerges food in hot oil — the key to French fries, tempura, and doughnuts."
+    },
+    {
+      "id": "Food & Cooking_007",
+      "category": "Food & Cooking",
+      "difficulty": "easy",
+      "prompt": "Which nut is used to make marzipan?",
+      "choices": [
+        "Walnut",
+        "Hazelnut",
+        "Cashew",
+        "Almond"
+      ],
+      "answer": 3,
+      "quip_correct": "Marzipan is ground almonds and sugar — used in many European confections.",
+      "quip_wrong": "Marzipan is made from ground almonds — specifically almond flour and sugar."
+    },
+    {
+      "id": "Food & Cooking_008",
+      "category": "Food & Cooking",
+      "difficulty": "easy",
+      "prompt": "What is the primary ingredient in hummus?",
+      "choices": [
+        "Lentils",
+        "Black beans",
+        "Chickpeas",
+        "White beans"
+      ],
+      "answer": 2,
+      "quip_correct": "Chickpeas (garbanzo beans) are blended with tahini, lemon, and garlic to make hummus.",
+      "quip_wrong": "Hummus is made primarily from chickpeas (garbanzo beans)."
+    },
+    {
+      "id": "Food & Cooking_009",
+      "category": "Food & Cooking",
+      "difficulty": "easy",
+      "prompt": "Balsamic vinegar is traditionally produced in which Italian region?",
+      "choices": [
+        "Tuscany",
+        "Lombardy",
+        "Modena (Emilia-Romagna)",
+        "Sicily"
+      ],
+      "answer": 2,
+      "quip_correct": "True balsamic vinegar comes from Modena or Reggio Emilia — aged in wooden barrels for years.",
+      "quip_wrong": "Authentic balsamic vinegar comes from Modena, Emilia-Romagna — aged up to 25 years."
+    },
+    {
+      "id": "Food & Cooking_010",
+      "category": "Food & Cooking",
+      "difficulty": "easy",
+      "prompt": "What is the Maillard reaction?",
+      "choices": [
+        "Sugar caramelizing under heat",
+        "Browning of proteins and sugars under heat",
+        "Yeast converting sugar to CO₂",
+        "Fat emulsifying with water"
+      ],
+      "answer": 1,
+      "quip_correct": "The Maillard reaction creates hundreds of flavor compounds — it's why seared meat and toast taste so good.",
+      "quip_wrong": "The Maillard reaction browns proteins and sugars, creating the complex flavors of seared, roasted, and baked foods."
+    },
+    {
+      "id": "Food & Cooking_011",
+      "category": "Food & Cooking",
+      "difficulty": "medium",
+      "prompt": "What is the difference between a jam and a jelly?",
+      "choices": [
+        "Jam is cooked longer",
+        "Jelly uses juice only, jam uses crushed fruit",
+        "Jam is seedless, jelly has seeds",
+        "Jelly has more sugar"
+      ],
+      "answer": 1,
+      "quip_correct": "Jelly is made from strained fruit juice — clear and firm. Jam uses crushed or chopped fruit — chunkier.",
+      "quip_wrong": "Jelly is made from fruit juice (no pulp). Jam uses crushed fruit, including pulp."
+    },
+    {
+      "id": "Food & Cooking_012",
+      "category": "Food & Cooking",
+      "difficulty": "medium",
+      "prompt": "Which cooking fat has the highest smoke point among common options?",
+      "choices": [
+        "Butter",
+        "Extra virgin olive oil",
+        "Avocado oil",
+        "Coconut oil"
+      ],
+      "answer": 2,
+      "quip_correct": "Avocado oil has a smoke point around 270°C — ideal for high-heat cooking like searing.",
+      "quip_wrong": "Avocado oil's smoke point (~270°C) is the highest among common cooking fats."
+    },
+    {
+      "id": "Food & Cooking_013",
+      "category": "Food & Cooking",
+      "difficulty": "medium",
+      "prompt": "What is 'umami' often described as?",
+      "choices": [
+        "Sour and tangy",
+        "Sweet and bitter",
+        "Savory and meaty",
+        "Spicy and aromatic"
+      ],
+      "answer": 2,
+      "quip_correct": "Umami, identified by Kikunae Ikeda in 1908, is the savory taste associated with glutamate — found in aged cheese, soy sauce, and meat.",
+      "quip_wrong": "Umami is the fifth taste — savory, brothy, meaty. Triggered by glutamate."
+    },
+    {
+      "id": "Food & Cooking_014",
+      "category": "Food & Cooking",
+      "difficulty": "medium",
+      "prompt": "What is the name for the culinary technique of cooking food in vacuum-sealed bags in temperature-controlled water?",
+      "choices": [
+        "Confit",
+        "Braising",
+        "Sous vide",
+        "En papillote"
+      ],
+      "answer": 2,
+      "quip_correct": "Sous vide means 'under vacuum' in French — precise temperature control creates perfectly even cooking.",
+      "quip_wrong": "Sous vide cooks food in sealed bags submerged in precisely heated water."
+    },
+    {
+      "id": "Food & Cooking_015",
+      "category": "Food & Cooking",
+      "difficulty": "medium",
+      "prompt": "Kimchi is a traditional fermented vegetable dish from which country?",
+      "choices": [
+        "Japan",
+        "Vietnam",
+        "China",
+        "Korea"
+      ],
+      "answer": 3,
+      "quip_correct": "Korean kimchi — most commonly fermented napa cabbage with gochugaru — is a UNESCO Intangible Cultural Heritage.",
+      "quip_wrong": "Kimchi is a Korean staple — fermented vegetables (usually cabbage) with chili, garlic, and ginger."
+    },
+    {
+      "id": "Food & Cooking_016",
+      "category": "Food & Cooking",
+      "difficulty": "medium",
+      "prompt": "Which country consumes the most cheese per capita?",
+      "choices": [
+        "France",
+        "Greece",
+        "Germany",
+        "Denmark"
+      ],
+      "answer": 0,
+      "quip_correct": "France consumes about 27 kg of cheese per person per year — with over 1,000 varieties produced.",
+      "quip_wrong": "France leads cheese consumption per capita at around 27 kg per person annually."
+    },
+    {
+      "id": "Food & Cooking_017",
+      "category": "Food & Cooking",
+      "difficulty": "medium",
+      "prompt": "What is the approximate internal temperature for a medium-rare steak in Celsius?",
+      "choices": [
+        "49°C",
+        "57°C",
+        "63°C",
+        "71°C"
+      ],
+      "answer": 1,
+      "quip_correct": "57°C (135°F) — warm red center, maximum juiciness. Above 63°C is medium.",
+      "quip_wrong": "Medium-rare is around 57°C (135°F) internally — a warm red center."
+    },
+    {
+      "id": "Food & Cooking_018",
+      "category": "Food & Cooking",
+      "difficulty": "hard",
+      "prompt": "What molecule primarily gives chili peppers their heat?",
+      "choices": [
+        "Piperine",
+        "Curcumin",
+        "Capsaicin",
+        "Allicin"
+      ],
+      "answer": 2,
+      "quip_correct": "Capsaicin binds to TRPV1 receptors, triggering the sensation of burning heat. Milk's casein washes it away better than water.",
+      "quip_wrong": "Capsaicin is the compound responsible for chili pepper heat — and why milk helps, not water."
+    },
+    {
+      "id": "Food & Cooking_019",
+      "category": "Food & Cooking",
+      "difficulty": "hard",
+      "prompt": "What is the Japanese technique 'katsuobushi' primarily used for?",
+      "choices": [
+        "A fermented soybean paste",
+        "Dried, fermented, and smoked skipjack tuna",
+        "A type of seaweed broth",
+        "Seasoned rice vinegar"
+      ],
+      "answer": 1,
+      "quip_correct": "Katsuobushi is the shaved fermented tuna used in dashi broth — it's one of the hardest foods in the world.",
+      "quip_wrong": "Katsuobushi is dried, smoked, fermented skipjack tuna — shaved into thin flakes for dashi and garnish."
+    },
+    {
+      "id": "Food & Cooking_020",
+      "category": "Food & Cooking",
+      "difficulty": "hard",
+      "prompt": "'Rancidity' in fats is primarily caused by which chemical process?",
+      "choices": [
+        "Maillard reaction",
+        "Hydrolysis or oxidation",
+        "Fermentation",
+        "Polymerization"
+      ],
+      "answer": 1,
+      "quip_correct": "Fats turn rancid through hydrolysis (moisture breaks ester bonds) or oxidation (oxygen attacks double bonds).",
+      "quip_wrong": "Fat rancidity is caused by hydrolysis or oxidation — both break down fat molecules."
+    },
+    {
+      "id": "Food & Cooking_021",
+      "category": "Food & Cooking",
+      "difficulty": "hard",
+      "prompt": "The spice saffron comes from which part of the plant?",
+      "choices": [
+        "Seed",
+        "Root",
+        "Leaf",
+        "Stigma of the flower"
+      ],
+      "answer": 3,
+      "quip_correct": "Saffron stigmas are hand-harvested from Crocus sativus — ~150,000 flowers yield just 1 kg of saffron.",
+      "quip_wrong": "Saffron is the dried stigma of Crocus sativus — the most expensive spice by weight."
+    },
+    {
+      "id": "Food & Cooking_022",
+      "category": "Food & Cooking",
+      "difficulty": "hard",
+      "prompt": "Which cooking technique involves briefly blanching herbs and then shocking them in ice water to preserve color?",
+      "choices": [
+        "Brunoise",
+        "Chiffonade",
+        "Chlorophyll preservation",
+        "Blanch and shock"
+      ],
+      "answer": 3,
+      "quip_correct": "Blanching deactivates enzymes that degrade chlorophyll — ice water halts cooking instantly.",
+      "quip_wrong": "Blanching and shocking in ice water preserves the vivid green color of herbs and vegetables."
+    },
+    {
+      "id": "Food & Cooking_023",
+      "category": "Food & Cooking",
+      "difficulty": "hard",
+      "prompt": "What is the primary difference between stock and broth?",
+      "choices": [
+        "Stock uses vegetables only",
+        "Broth is made with bones, stock with meat",
+        "Stock is made with bones and gelatin, broth is made primarily with meat",
+        "Broth is thicker due to starch"
+      ],
+      "answer": 2,
+      "quip_correct": "Bone-extracted collagen gives stock its thick, gelatinous texture. Broth is lighter, from meat — and more flavorful on its own.",
+      "quip_wrong": "Stock is bone-based and gelatinous from collagen; broth is meat-based and more directly flavorful."
+    },
+    {
+      "id": "Food & Cooking_024",
+      "category": "Food & Cooking",
+      "difficulty": "hard",
+      "prompt": "'Garum' was a fermented condiment widely used in ancient Roman cooking — what was it made from?",
+      "choices": [
+        "Fermented grapes",
+        "Fermented fish viscera",
+        "Fermented olives",
+        "Fermented legumes"
+      ],
+      "answer": 1,
+      "quip_correct": "Garum was fermented fish guts and salt — an umami-rich sauce analogous to modern fish sauce or Worcestershire.",
+      "quip_wrong": "Garum was a pungent Roman sauce made from fermented fish innards — the Worcestershire sauce of antiquity."
+    },
+    {
+      "id": "Food & Cooking_025",
+      "category": "Food & Cooking",
+      "difficulty": "medium",
+      "prompt": "What is the French technique 'en papillote' used for?",
+      "choices": [
+        "Deep-frying in a paper cone",
+        "Cooking food sealed in parchment paper",
+        "Wrapping food in pastry",
+        "Steaming with aromatic herbs"
+      ],
+      "answer": 1,
+      "quip_correct": "En papillote traps steam inside the parchment — foods cook in their own juices with intense flavor.",
+      "quip_wrong": "En papillote means cooking food sealed inside parchment paper, steaming it in its own aromatics."
+    },
+    {
+      "id": "Food & Cooking_026",
+      "category": "Food & Cooking",
+      "difficulty": "hard",
+      "prompt": "What is 'transglutaminase' sometimes called in the food industry?",
+      "choices": [
+        "Meat cement",
+        "Meat glue",
+        "Protein paste",
+        "Myosin binder"
+      ],
+      "answer": 1,
+      "quip_correct": "Transglutaminase (meat glue) bonds proteins together — used to create seamless cuts from meat scraps.",
+      "quip_wrong": "Transglutaminase is known as 'meat glue' — it bonds proteins so tightly the seam is invisible."
+    },
+    {
+      "id": "Literature_001",
+      "category": "Literature",
+      "difficulty": "easy",
+      "prompt": "Who wrote '1984'?",
+      "choices": [
+        "Aldous Huxley",
+        "Ray Bradbury",
+        "George Orwell",
+        "Philip K. Dick"
+      ],
+      "answer": 2,
+      "quip_correct": "George Orwell published 1984 in 1949 — terms like 'doublethink' and 'Big Brother' entered everyday language.",
+      "quip_wrong": "George Orwell wrote 1984. Aldous Huxley wrote Brave New World — often confused."
+    },
+    {
+      "id": "Literature_002",
+      "category": "Literature",
+      "difficulty": "easy",
+      "prompt": "Which Shakespeare play features the line 'To be or not to be'?",
+      "choices": [
+        "Macbeth",
+        "King Lear",
+        "Othello",
+        "Hamlet"
+      ],
+      "answer": 3,
+      "quip_correct": "Hamlet's soliloquy in Act 3 Scene 1 is the most famous speech in English literature.",
+      "quip_wrong": "'To be or not to be' is Hamlet's famous soliloquy in Shakespeare's Hamlet."
+    },
+    {
+      "id": "Literature_003",
+      "category": "Literature",
+      "difficulty": "easy",
+      "prompt": "What is the name of the whale in Herman Melville's 'Moby-Dick'?",
+      "choices": [
+        "Leviathan",
+        "White Fang",
+        "Moby Dick",
+        "Old Tom"
+      ],
+      "answer": 2,
+      "quip_correct": "Moby Dick is a white sperm whale — the White Whale that Captain Ahab obsessively pursues.",
+      "quip_wrong": "The whale is named Moby Dick — an albino sperm whale."
+    },
+    {
+      "id": "Literature_004",
+      "category": "Literature",
+      "difficulty": "easy",
+      "prompt": "Who wrote 'Pride and Prejudice'?",
+      "choices": [
+        "Charlotte Brontë",
+        "George Eliot",
+        "Emily Brontë",
+        "Jane Austen"
+      ],
+      "answer": 3,
+      "quip_correct": "Jane Austen published Pride and Prejudice in 1813 — originally titled 'First Impressions'.",
+      "quip_wrong": "Pride and Prejudice was written by Jane Austen — not the Brontë sisters."
+    },
+    {
+      "id": "Literature_005",
+      "category": "Literature",
+      "difficulty": "easy",
+      "prompt": "'Don Quixote' is considered the first modern novel. Who wrote it?",
+      "choices": [
+        "Francisco de Quevedo",
+        "Miguel de Cervantes",
+        "Lope de Vega",
+        "Tirso de Molina"
+      ],
+      "answer": 1,
+      "quip_correct": "Miguel de Cervantes published Part I in 1605 — the most widely translated book after the Bible.",
+      "quip_wrong": "Don Quixote was written by Miguel de Cervantes, published in two parts in 1605 and 1615."
+    },
+    {
+      "id": "Literature_006",
+      "category": "Literature",
+      "difficulty": "easy",
+      "prompt": "In J.R.R. Tolkien's 'The Lord of the Rings', who is the ring-bearer who carries the One Ring into Mordor?",
+      "choices": [
+        "Gandalf",
+        "Aragorn",
+        "Bilbo Baggins",
+        "Frodo Baggins"
+      ],
+      "answer": 3,
+      "quip_correct": "Frodo Baggins carries the One Ring — guided by Sam Gamgee, who many argue is the true hero.",
+      "quip_wrong": "Frodo Baggins is the ring-bearer in LOTR. Bilbo is his uncle, who found the ring in The Hobbit."
+    },
+    {
+      "id": "Literature_007",
+      "category": "Literature",
+      "difficulty": "easy",
+      "prompt": "What is the name of the fictional detective created by Arthur Conan Doyle?",
+      "choices": [
+        "Hercule Poirot",
+        "Philip Marlowe",
+        "Sherlock Holmes",
+        "Miss Marple"
+      ],
+      "answer": 2,
+      "quip_correct": "Sherlock Holmes first appeared in 1887's A Study in Scarlet — Poirot is Agatha Christie's creation.",
+      "quip_wrong": "Sherlock Holmes is Arthur Conan Doyle's creation. Poirot and Marple are Agatha Christie's."
+    },
+    {
+      "id": "Literature_008",
+      "category": "Literature",
+      "difficulty": "easy",
+      "prompt": "Which novel begins with 'Call me Ishmael'?",
+      "choices": [
+        "Moby-Dick",
+        "Billy Budd",
+        "The Old Man and the Sea",
+        "Lord Jim"
+      ],
+      "answer": 0,
+      "quip_correct": "Melville's Moby-Dick opens with one of literature's most famous lines.",
+      "quip_wrong": "'Call me Ishmael' is the opening of Herman Melville's Moby-Dick (1851)."
+    },
+    {
+      "id": "Literature_009",
+      "category": "Literature",
+      "difficulty": "easy",
+      "prompt": "'The Hunger Games' series is set in a dystopian nation called what?",
+      "choices": [
+        "Gilead",
+        "Panem",
+        "Oceania",
+        "Discordia"
+      ],
+      "answer": 1,
+      "quip_correct": "Panem — from the Latin 'panem et circenses' (bread and circuses), referencing Roman control tactics.",
+      "quip_wrong": "The Hunger Games takes place in Panem — named after the Roman 'bread and circuses'."
+    },
+    {
+      "id": "Literature_010",
+      "category": "Literature",
+      "difficulty": "easy",
+      "prompt": "Who wrote 'The Great Gatsby'?",
+      "choices": [
+        "Ernest Hemingway",
+        "John Steinbeck",
+        "F. Scott Fitzgerald",
+        "William Faulkner"
+      ],
+      "answer": 3,
+      "quip_correct": "F. Scott Fitzgerald published The Great Gatsby in 1925 — a symbol of the Jazz Age.",
+      "quip_wrong": "F. Scott Fitzgerald wrote The Great Gatsby. It was a commercial disappointment in his lifetime."
+    },
+    {
+      "id": "Literature_011",
+      "category": "Literature",
+      "difficulty": "medium",
+      "prompt": "Which poet wrote 'The Waste Land' in 1922?",
+      "choices": [
+        "Ezra Pound",
+        "W.B. Yeats",
+        "T.S. Eliot",
+        "Wallace Stevens"
+      ],
+      "answer": 2,
+      "quip_correct": "T.S. Eliot's The Waste Land was heavily edited by Ezra Pound — a landmark of modernist poetry.",
+      "quip_wrong": "T.S. Eliot wrote The Waste Land — Ezra Pound edited it significantly."
+    },
+    {
+      "id": "Literature_012",
+      "category": "Literature",
+      "difficulty": "medium",
+      "prompt": "What narrative technique is used in William Faulkner's 'The Sound and the Fury'?",
+      "choices": [
+        "Third-person omniscient",
+        "Epistolary",
+        "Stream of consciousness with multiple narrators",
+        "Unreliable first-person"
+      ],
+      "answer": 2,
+      "quip_correct": "Faulkner uses multiple unreliable narrators including Benjy, Quentin, Jason, and Dilsey — four radically different perspectives on the same events.",
+      "quip_wrong": "The Sound and the Fury uses stream-of-consciousness narration from four characters with different perspectives."
+    },
+    {
+      "id": "Literature_013",
+      "category": "Literature",
+      "difficulty": "medium",
+      "prompt": "Fyodor Dostoevsky wrote 'Crime and Punishment' — in which Russian city is it primarily set?",
+      "choices": [
+        "Moscow",
+        "Kiev",
+        "Odessa",
+        "St. Petersburg"
+      ],
+      "answer": 3,
+      "quip_correct": "The novel is drenched in St. Petersburg's humid, claustrophobic streets — the city is almost a character.",
+      "quip_wrong": "Crime and Punishment takes place in the oppressive streets of St. Petersburg."
+    },
+    {
+      "id": "Literature_014",
+      "category": "Literature",
+      "difficulty": "medium",
+      "prompt": "Which children's book character lives in a hole in the ground called Bag End?",
+      "choices": [
+        "Frodo Baggins",
+        "Peter Rabbit",
+        "Bilbo Baggins",
+        "Paddington Bear"
+      ],
+      "answer": 2,
+      "quip_correct": "Bilbo Baggins of Bag End is the protagonist of The Hobbit — Frodo inherits the hole later.",
+      "quip_wrong": "Bag End belongs to Bilbo Baggins — the hobbit hero of The Hobbit, later passed to Frodo."
+    },
+    {
+      "id": "Literature_015",
+      "category": "Literature",
+      "difficulty": "medium",
+      "prompt": "'Lolita' was written by which author?",
+      "choices": [
+        "Henry Miller",
+        "Vladimir Nabokov",
+        "John Updike",
+        "Philip Roth"
+      ],
+      "answer": 1,
+      "quip_correct": "Vladimir Nabokov's Lolita (1955) is considered one of the finest examples of prose in the English language despite its disturbing subject.",
+      "quip_wrong": "Lolita was written by Vladimir Nabokov — a Russian-American novelist famous for his lush prose style."
+    },
+    {
+      "id": "Literature_016",
+      "category": "Literature",
+      "difficulty": "medium",
+      "prompt": "What genre does Gabriel García Márquez's 'One Hundred Years of Solitude' belong to?",
+      "choices": [
+        "Magical realism",
+        "Surrealism",
+        "Gothic fiction",
+        "Historical fiction"
+      ],
+      "answer": 0,
+      "quip_correct": "Magical realism — everyday life blended seamlessly with fantastical elements without comment.",
+      "quip_wrong": "One Hundred Years of Solitude is the defining magical realism novel — fantasy treated as mundane fact."
+    },
+    {
+      "id": "Literature_017",
+      "category": "Literature",
+      "difficulty": "medium",
+      "prompt": "Who wrote 'Beloved,' winner of the 1988 Pulitzer Prize?",
+      "choices": [
+        "Maya Angelou",
+        "Zora Neale Hurston",
+        "Alice Walker",
+        "Toni Morrison"
+      ],
+      "answer": 3,
+      "quip_correct": "Toni Morrison's Beloved is based on the true story of Margaret Garner, an escaped enslaved woman.",
+      "quip_wrong": "Beloved was written by Toni Morrison — she later won the Nobel Prize in Literature."
+    },
+    {
+      "id": "Literature_018",
+      "category": "Literature",
+      "difficulty": "hard",
+      "prompt": "In Dante's 'Inferno,' what is the name of the river of forgetfulness in Hell?",
+      "choices": [
+        "Styx",
+        "Lethe",
+        "Acheron",
+        "Phlegethon"
+      ],
+      "answer": 1,
+      "quip_correct": "The Lethe is the river of oblivion — drinking from it erases memory of one's earthly life.",
+      "quip_wrong": "Lethe is the river of forgetfulness in Dante's underworld — and in Greek mythology."
+    },
+    {
+      "id": "Literature_019",
+      "category": "Literature",
+      "difficulty": "hard",
+      "prompt": "James Joyce's 'Ulysses' takes place over what period of time?",
+      "choices": [
+        "One week",
+        "One month",
+        "One year",
+        "One day"
+      ],
+      "answer": 3,
+      "quip_correct": "June 16, 1904 — Bloomsday. All 700+ pages take place in a single day in Dublin.",
+      "quip_wrong": "Ulysses covers a single day — June 16, 1904, now celebrated worldwide as Bloomsday."
+    },
+    {
+      "id": "Literature_020",
+      "category": "Literature",
+      "difficulty": "hard",
+      "prompt": "The narrator of Cormac McCarthy's 'Blood Meridian' is referred to only as what?",
+      "choices": [
+        "The Stranger",
+        "The Kid",
+        "The Man",
+        "The Judge"
+      ],
+      "answer": 1,
+      "quip_correct": "The unnamed protagonist is simply 'the kid' — the towering antagonist Judge Holden dominates the novel.",
+      "quip_wrong": "Blood Meridian's protagonist is known only as 'the kid' — the Judge is its most memorable character."
+    },
+    {
+      "id": "Literature_021",
+      "category": "Literature",
+      "difficulty": "hard",
+      "prompt": "Which Virginia Woolf novel uses the stream-of-consciousness technique across a single day in 1923 London?",
+      "choices": [
+        "To the Lighthouse",
+        "Orlando",
+        "The Waves",
+        "Mrs Dalloway"
+      ],
+      "answer": 3,
+      "quip_correct": "Mrs Dalloway (1925) follows Clarissa Dalloway's day in London — mirroring Ulysses' single-day structure.",
+      "quip_wrong": "Mrs Dalloway unfolds across a single June day in London through stream-of-consciousness narration."
+    },
+    {
+      "id": "Literature_022",
+      "category": "Literature",
+      "difficulty": "hard",
+      "prompt": "Which literary movement is associated with writers like Jack Kerouac, Allen Ginsberg, and William S. Burroughs?",
+      "choices": [
+        "Lost Generation",
+        "Harlem Renaissance",
+        "Beat Generation",
+        "New York School"
+      ],
+      "answer": 2,
+      "quip_correct": "The Beat Generation wrote in the 1950s–60s — rejecting materialism and celebrating nonconformity.",
+      "quip_wrong": "Kerouac, Ginsberg, and Burroughs were the Beat Generation — countercultural writers of the 1950s."
+    },
+    {
+      "id": "Literature_023",
+      "category": "Literature",
+      "difficulty": "hard",
+      "prompt": "'The Aleph,' a short story about a point that contains all other points simultaneously, was written by which author?",
+      "choices": [
+        "Italo Calvino",
+        "Umberto Eco",
+        "Jorge Luis Borges",
+        "Julio Cortázar"
+      ],
+      "answer": 2,
+      "quip_correct": "Jorge Luis Borges wrote The Aleph (1945) — an exploration of infinity contained in a single point.",
+      "quip_wrong": "The Aleph is by Jorge Luis Borges — the Argentine master of labyrinths, mirrors, and infinities."
+    },
+    {
+      "id": "Literature_024",
+      "category": "Literature",
+      "difficulty": "hard",
+      "prompt": "In Homer's 'Odyssey,' the Lotus-Eaters cause Odysseus's men to forget what?",
+      "choices": [
+        "Their families",
+        "Their names",
+        "Their desire to return home",
+        "The location of Troy"
+      ],
+      "answer": 2,
+      "quip_correct": "The lotus plant induces a narcotic torpor — those who eat it lose all desire to leave.",
+      "quip_wrong": "The Lotus-Eaters drug that eliminates the desire to return home — Odysseus must force his men away."
+    },
+    {
+      "id": "Literature_025",
+      "category": "Literature",
+      "difficulty": "medium",
+      "prompt": "Which Dickens novel features the character Miss Havisham, a jilted bride frozen in time?",
+      "choices": [
+        "Oliver Twist",
+        "Bleak House",
+        "Our Mutual Friend",
+        "Great Expectations"
+      ],
+      "answer": 3,
+      "quip_correct": "Miss Havisham stopped all the clocks at 9:20 — the moment she was jilted — and never changed her dress.",
+      "quip_wrong": "Miss Havisham appears in Great Expectations — still in her wedding dress, clock stopped at 9:20."
+    },
+    {
+      "id": "Literature_026",
+      "category": "Literature",
+      "difficulty": "hard",
+      "prompt": "Which philosopher wrote 'Thus Spoke Zarathustra,' introducing the concept of the Übermensch?",
+      "choices": [
+        "Arthur Schopenhauer",
+        "Søren Kierkegaard",
+        "Friedrich Nietzsche",
+        "Martin Heidegger"
+      ],
+      "answer": 2,
+      "quip_correct": "Nietzsche wrote Thus Spoke Zarathustra (1883–1885) — the Übermensch (overman) transcends conventional morality.",
+      "quip_wrong": "Friedrich Nietzsche introduced the Übermensch in Thus Spoke Zarathustra."
+    },
+    {
+      "id": "Art & Music_001",
+      "category": "Art & Music",
+      "difficulty": "easy",
+      "prompt": "Who painted the Mona Lisa?",
+      "choices": [
+        "Michelangelo",
+        "Raphael",
+        "Leonardo da Vinci",
+        "Caravaggio"
+      ],
+      "answer": 2,
+      "quip_correct": "Leonardo da Vinci painted it c.1503–1519 — now behind bulletproof glass at the Louvre.",
+      "quip_wrong": "The Mona Lisa is by Leonardo da Vinci — Michelangelo was his contemporary rival."
+    },
+    {
+      "id": "Art & Music_002",
+      "category": "Art & Music",
+      "difficulty": "easy",
+      "prompt": "Which composer wrote 'Für Elise'?",
+      "choices": [
+        "Frédéric Chopin",
+        "Wolfgang Mozart",
+        "Ludwig van Beethoven",
+        "Franz Schubert"
+      ],
+      "answer": 2,
+      "quip_correct": "Beethoven composed Für Elise in 1810 — the identity of 'Elise' remains disputed.",
+      "quip_wrong": "Für Elise is by Beethoven — the most recognizable piano piece ever written."
+    },
+    {
+      "id": "Art & Music_003",
+      "category": "Art & Music",
+      "difficulty": "easy",
+      "prompt": "The Sistine Chapel ceiling was painted by which artist?",
+      "choices": [
+        "Leonardo da Vinci",
+        "Raphael",
+        "Donatello",
+        "Michelangelo"
+      ],
+      "answer": 3,
+      "quip_correct": "Michelangelo painted the Sistine Chapel ceiling between 1508 and 1512 — largely while lying on scaffolding.",
+      "quip_wrong": "Michelangelo painted the Sistine Chapel. He found the commission annoying — he preferred sculpture."
+    },
+    {
+      "id": "Art & Music_004",
+      "category": "Art & Music",
+      "difficulty": "easy",
+      "prompt": "What instrument did Jimi Hendrix primarily play?",
+      "choices": [
+        "Bass guitar",
+        "Drums",
+        "Electric guitar",
+        "Keyboard"
+      ],
+      "answer": 2,
+      "quip_correct": "Hendrix revolutionized electric guitar — often considered the greatest guitarist in rock history.",
+      "quip_wrong": "Jimi Hendrix played electric guitar — left-handed, strung upside down."
+    },
+    {
+      "id": "Art & Music_005",
+      "category": "Art & Music",
+      "difficulty": "easy",
+      "prompt": "What artistic movement is Salvador Dalí associated with?",
+      "choices": [
+        "Impressionism",
+        "Cubism",
+        "Surrealism",
+        "Abstract Expressionism"
+      ],
+      "answer": 2,
+      "quip_correct": "Dalí's dreamlike imagery — melting clocks, impossible landscapes — defined Surrealism.",
+      "quip_wrong": "Salvador Dalí is the most famous Surrealist. The Persistence of Memory (melting clocks) is his masterpiece."
+    },
+    {
+      "id": "Art & Music_006",
+      "category": "Art & Music",
+      "difficulty": "easy",
+      "prompt": "Which classical music period did Johann Sebastian Bach belong to?",
+      "choices": [
+        "Renaissance",
+        "Baroque",
+        "Classical",
+        "Romantic"
+      ],
+      "answer": 1,
+      "quip_correct": "Bach (1685–1750) is the towering figure of the Baroque era — contrapuntal master.",
+      "quip_wrong": "Bach composed in the Baroque period. Mozart and Haydn were the Classical era."
+    },
+    {
+      "id": "Art & Music_007",
+      "category": "Art & Music",
+      "difficulty": "easy",
+      "prompt": "'Starry Night' was painted by which artist?",
+      "choices": [
+        "Claude Monet",
+        "Paul Gauguin",
+        "Vincent van Gogh",
+        "Paul Cézanne"
+      ],
+      "answer": 2,
+      "quip_correct": "Van Gogh painted Starry Night in 1889 while at the Saint-Paul-de-Mausole asylum.",
+      "quip_wrong": "Starry Night is Van Gogh's — painted from his asylum room window."
+    },
+    {
+      "id": "Art & Music_008",
+      "category": "Art & Music",
+      "difficulty": "easy",
+      "prompt": "What is the lowest male vocal range in classical music?",
+      "choices": [
+        "Baritone",
+        "Bass",
+        "Tenor",
+        "Countertenor"
+      ],
+      "answer": 1,
+      "quip_correct": "Bass is the lowest male voice — baritone sits between bass and tenor.",
+      "quip_wrong": "Bass is the lowest male vocal range. Bass-baritone is in between."
+    },
+    {
+      "id": "Art & Music_009",
+      "category": "Art & Music",
+      "difficulty": "easy",
+      "prompt": "Which band released 'Abbey Road' in 1969?",
+      "choices": [
+        "The Rolling Stones",
+        "Led Zeppelin",
+        "The Doors",
+        "The Beatles"
+      ],
+      "answer": 3,
+      "quip_correct": "Abbey Road was the last recorded Beatles album — Let It Be was released later but recorded earlier.",
+      "quip_wrong": "Abbey Road is by The Beatles — the last album they recorded together."
+    },
+    {
+      "id": "Art & Music_010",
+      "category": "Art & Music",
+      "difficulty": "easy",
+      "prompt": "Impressionism as an art movement originated in which country?",
+      "choices": [
+        "England",
+        "Italy",
+        "Spain",
+        "France"
+      ],
+      "answer": 3,
+      "quip_correct": "French Impressionism emerged in the 1860s–70s — Monet, Renoir, and Degas led the movement.",
+      "quip_wrong": "Impressionism began in France — the name came from a critic mocking Monet's 'Impression, Sunrise'."
+    },
+    {
+      "id": "Art & Music_011",
+      "category": "Art & Music",
+      "difficulty": "medium",
+      "prompt": "What is the term for the Italian musical instruction meaning 'gradually becoming louder'?",
+      "choices": [
+        "Decrescendo",
+        "Crescendo",
+        "Fortissimo",
+        "Accelerando"
+      ],
+      "answer": 1,
+      "quip_correct": "Crescendo (< ) means getting louder — decrescendo means getting softer.",
+      "quip_wrong": "Crescendo means gradually getting louder in music notation."
+    },
+    {
+      "id": "Art & Music_012",
+      "category": "Art & Music",
+      "difficulty": "medium",
+      "prompt": "Which artist's retrospective at the 1913 Armory Show shocked American audiences with 'Nude Descending a Staircase'?",
+      "choices": [
+        "Pablo Picasso",
+        "Henri Matisse",
+        "Marcel Duchamp",
+        "Wassily Kandinsky"
+      ],
+      "answer": 2,
+      "quip_correct": "Duchamp's cubist-futurist painting was called 'an explosion in a shingle factory' by a critic.",
+      "quip_wrong": "Marcel Duchamp's Nude Descending a Staircase caused a scandal at the 1913 Armory Show."
+    },
+    {
+      "id": "Art & Music_013",
+      "category": "Art & Music",
+      "difficulty": "medium",
+      "prompt": "What does 'a cappella' mean in music?",
+      "choices": [
+        "Without rhythm",
+        "Without instruments",
+        "Without a conductor",
+        "At a slow tempo"
+      ],
+      "answer": 1,
+      "quip_correct": "A cappella means 'in the manner of the chapel' in Italian — voices only, no instruments.",
+      "quip_wrong": "A cappella literally means 'as in the chapel' — singing with voices only, no instrumental accompaniment."
+    },
+    {
+      "id": "Art & Music_014",
+      "category": "Art & Music",
+      "difficulty": "medium",
+      "prompt": "The musical genre 'bebop' developed in which decade?",
+      "choices": [
+        "1920s",
+        "1930s",
+        "1940s",
+        "1950s"
+      ],
+      "answer": 2,
+      "quip_correct": "Bebop emerged in NYC in the early 1940s — Charlie Parker and Dizzy Gillespie led the revolution.",
+      "quip_wrong": "Bebop jazz developed in the 1940s — a reaction to the commercialism of swing."
+    },
+    {
+      "id": "Art & Music_015",
+      "category": "Art & Music",
+      "difficulty": "medium",
+      "prompt": "'The Rite of Spring' by Igor Stravinsky famously caused a riot at its 1913 premiere in which city?",
+      "choices": [
+        "London",
+        "Vienna",
+        "Moscow",
+        "Paris"
+      ],
+      "answer": 3,
+      "quip_correct": "The dissonant score and provocative choreography by Nijinsky incited the audience to riot — now considered a masterpiece.",
+      "quip_wrong": "Stravinsky's Rite of Spring caused a literal riot at its 1913 Paris premiere."
+    },
+    {
+      "id": "Art & Music_016",
+      "category": "Art & Music",
+      "difficulty": "medium",
+      "prompt": "Which art style is characterized by non-geometric abstract forms and spontaneous painting techniques, associated with Pollock and de Kooning?",
+      "choices": [
+        "Minimalism",
+        "Fauvism",
+        "Abstract Expressionism",
+        "Color Field Painting"
+      ],
+      "answer": 2,
+      "quip_correct": "Abstract Expressionism was the first major American art movement — centered in post-war New York.",
+      "quip_wrong": "Abstract Expressionism (Pollock, de Kooning) was the post-war American movement of spontaneous, large-scale abstraction."
+    },
+    {
+      "id": "Art & Music_017",
+      "category": "Art & Music",
+      "difficulty": "medium",
+      "prompt": "What does 'BPM' stand for in music production?",
+      "choices": [
+        "Beats Per Measure",
+        "Bass Per Mix",
+        "Beats Per Minute",
+        "Balanced Pulse Modulation"
+      ],
+      "answer": 2,
+      "quip_correct": "BPM measures tempo — 120 BPM is common pop tempo, 140+ BPM is dance/EDM territory.",
+      "quip_wrong": "BPM is Beats Per Minute — the standard measure of music tempo."
+    },
+    {
+      "id": "Art & Music_018",
+      "category": "Art & Music",
+      "difficulty": "medium",
+      "prompt": "Gustav Klimt's famous painting 'The Kiss' uses which decorative material to create its gold effect?",
+      "choices": [
+        "Yellow paint",
+        "Gold leaf",
+        "Metallic ink",
+        "Varnish"
+      ],
+      "answer": 1,
+      "quip_correct": "Klimt incorporated real gold and silver leaf — part of his 'Golden Phase' 1907–1909.",
+      "quip_wrong": "Klimt used real gold leaf in The Kiss — part of his Golden Phase influenced by Byzantine mosaics."
+    },
+    {
+      "id": "Art & Music_019",
+      "category": "Art & Music",
+      "difficulty": "hard",
+      "prompt": "Which artist created 'The Persistence of Memory' featuring melting clocks?",
+      "choices": [
+        "Max Ernst",
+        "René Magritte",
+        "Frida Kahlo",
+        "Salvador Dalí"
+      ],
+      "answer": 3,
+      "quip_correct": "Dalí painted it in 1931 — reportedly inspired by a melting Camembert cheese he was eating.",
+      "quip_wrong": "Salvador Dalí painted The Persistence of Memory in 1931 — those melting watches are pure Surrealism."
+    },
+    {
+      "id": "Art & Music_020",
+      "category": "Art & Music",
+      "difficulty": "hard",
+      "prompt": "What is the name of the 12-tone composition technique developed by Arnold Schoenberg?",
+      "choices": [
+        "Polytonality",
+        "Serialism",
+        "Microtonality",
+        "Spectralism"
+      ],
+      "answer": 1,
+      "quip_correct": "Serialism uses all 12 chromatic tones in a fixed sequence — no note repeated before the others, eliminating tonal hierarchy.",
+      "quip_wrong": "Schoenberg developed serialism (twelve-tone technique) — treating all 12 notes as equal, abandoning tonality."
+    },
+    {
+      "id": "Art & Music_021",
+      "category": "Art & Music",
+      "difficulty": "hard",
+      "prompt": "The 'Camera degli Sposi' fresco by Mantegna in Mantua is notable for pioneering what technique?",
+      "choices": [
+        "Chiaroscuro",
+        "Trompe l'oeil ceiling illusionism",
+        "Fresco secco on panel",
+        "Encaustic on marble"
+      ],
+      "answer": 1,
+      "quip_correct": "Mantegna's 1473 oculus creates an illusion of the ceiling opening to the sky — pioneering illusionistic ceiling painting.",
+      "quip_wrong": "Mantegna's Camera degli Sposi pioneered trompe l'oeil ceiling painting — an illusion of open sky."
+    },
+    {
+      "id": "Art & Music_022",
+      "category": "Art & Music",
+      "difficulty": "hard",
+      "prompt": "Which composer wrote 'The Well-Tempered Clavier'?",
+      "choices": [
+        "Georg Handel",
+        "Franz Joseph Haydn",
+        "Johann Sebastian Bach",
+        "Domenico Scarlatti"
+      ],
+      "answer": 2,
+      "quip_correct": "Bach's WTC (1722 and 1742) demonstrated the viability of equal temperament — 48 preludes and fugues in all keys.",
+      "quip_wrong": "J.S. Bach wrote The Well-Tempered Clavier — demonstrating all 24 major and minor keys."
+    },
+    {
+      "id": "Art & Music_023",
+      "category": "Art & Music",
+      "difficulty": "hard",
+      "prompt": "What technique did Georges Seurat use, painting in tiny dots of pure color?",
+      "choices": [
+        "Impasto",
+        "Pointillism",
+        "Encaustic",
+        "Sfumato"
+      ],
+      "answer": 1,
+      "quip_correct": "Pointillism (or divisionism) uses small dots that the eye mixes optically — Seurat's Sunday on La Grande Jatte is its masterpiece.",
+      "quip_wrong": "Seurat's technique is pointillism — tiny dots of color that blend in the viewer's eye."
+    },
+    {
+      "id": "Art & Music_024",
+      "category": "Art & Music",
+      "difficulty": "hard",
+      "prompt": "Which composer was almost entirely deaf when he wrote his Ninth Symphony?",
+      "choices": [
+        "Franz Schubert",
+        "Robert Schumann",
+        "Ludwig van Beethoven",
+        "Johannes Brahms"
+      ],
+      "answer": 2,
+      "quip_correct": "Beethoven completed his Ninth in 1824 — deaf for years, he allegedly had to be turned to see the audience's applause.",
+      "quip_wrong": "Beethoven composed his Ninth Symphony while profoundly deaf — never hearing it performed."
+    },
+    {
+      "id": "Art & Music_025",
+      "category": "Art & Music",
+      "difficulty": "hard",
+      "prompt": "The art concept of 'chiaroscuro' refers to the contrast between what?",
+      "choices": [
+        "Warm and cool colors",
+        "Line and form",
+        "Light and shadow",
+        "Texture and surface"
+      ],
+      "answer": 2,
+      "quip_correct": "Chiaroscuro (Italian: 'light-dark') is the use of strong tonal contrast — perfected by Caravaggio and Rembrandt.",
+      "quip_wrong": "Chiaroscuro is the Italian technique of using dramatic light and shadow contrasts."
+    },
+    {
+      "id": "Art & Music_026",
+      "category": "Art & Music",
+      "difficulty": "medium",
+      "prompt": "Hip-hop is generally considered to have originated in which New York City borough in the early 1970s?",
+      "choices": [
+        "Brooklyn",
+        "Queens",
+        "Harlem",
+        "The Bronx"
+      ],
+      "answer": 3,
+      "quip_correct": "DJ Kool Herc's 1973 party in the Bronx is cited as hip-hop's birth — extending breaks by alternating two turntables.",
+      "quip_wrong": "Hip-hop originated in the South Bronx — born at DJ Kool Herc's 1973 block party."
+    },
+    {
+      "id": "Art & Music_027",
+      "category": "Art & Music",
+      "difficulty": "hard",
+      "prompt": "Which musical key has no sharps or flats?",
+      "choices": [
+        "G major",
+        "D major",
+        "C major",
+        "A major"
+      ],
+      "answer": 2,
+      "quip_correct": "C major has no sharps or flats — it uses only the white keys on a piano.",
+      "quip_wrong": "C major is the only major key with no sharps or flats — all white keys on the piano."
+    },
+    {
+      "id": "Social Skills & Etiquette_001",
+      "category": "Social Skills & Etiquette",
+      "difficulty": "easy",
+      "prompt": "When meeting someone for the first time, what is the appropriate handshake duration?",
+      "choices": [
+        "One firm pump",
+        "Two to three pumps",
+        "Five or more pumps",
+        "Hold until they let go"
+      ],
+      "answer": 1,
+      "quip_correct": "Two to three pumps — firm but brief is the Western business standard.",
+      "quip_wrong": "A professional handshake is two to three firm pumps — not too long, not too brief."
+    },
+    {
+      "id": "Social Skills & Etiquette_002",
+      "category": "Social Skills & Etiquette",
+      "difficulty": "easy",
+      "prompt": "When attending a formal dinner, which side is the bread plate typically placed?",
+      "choices": [
+        "Right side",
+        "Left side",
+        "Above the plate",
+        "Varies by host"
+      ],
+      "answer": 1,
+      "quip_correct": "Bread is always to the LEFT — drinks are to the RIGHT. Remember: BMW (Bread-Meal-Water).",
+      "quip_wrong": "Bread plate is on the LEFT, drinks on the RIGHT. The BMW mnemonic helps: Bread, Meal, Water."
+    },
+    {
+      "id": "Social Skills & Etiquette_003",
+      "category": "Social Skills & Etiquette",
+      "difficulty": "easy",
+      "prompt": "In most Western cultures, it is considered rude to do what on your phone during a one-on-one conversation?",
+      "choices": [
+        "Take a photo",
+        "Look at the screen",
+        "Answer a call",
+        "All of the above in most contexts"
+      ],
+      "answer": 3,
+      "quip_correct": "All of these signal disengagement — phone-checking during conversation is one of the most-cited modern rudeness.",
+      "quip_wrong": "Checking your phone, answering calls, or photographing someone without consent all violate conversational norms."
+    },
+    {
+      "id": "Social Skills & Etiquette_004",
+      "category": "Social Skills & Etiquette",
+      "difficulty": "easy",
+      "prompt": "What is the appropriate response time for a professional email in a business context?",
+      "choices": [
+        "Same day or within 24 hours",
+        "Within a week",
+        "Whenever convenient",
+        "Only if urgent"
+      ],
+      "answer": 0,
+      "quip_correct": "24 hours is the professional standard — same day is ideal for anything time-sensitive.",
+      "quip_wrong": "Professional emails should be answered within 24 hours — same day for anything urgent."
+    },
+    {
+      "id": "Social Skills & Etiquette_005",
+      "category": "Social Skills & Etiquette",
+      "difficulty": "easy",
+      "prompt": "When someone sneezes in most Western cultures, the polite response is?",
+      "choices": [
+        "Silence",
+        "Bless you",
+        "Gesundheit",
+        "Either B or C"
+      ],
+      "answer": 3,
+      "quip_correct": "'Bless you' (English) or 'Gesundheit' (German/American) — both are appropriate responses.",
+      "quip_wrong": "Either 'bless you' or 'gesundheit' are polite responses to a sneeze in Western culture."
+    },
+    {
+      "id": "Social Skills & Etiquette_006",
+      "category": "Social Skills & Etiquette",
+      "difficulty": "easy",
+      "prompt": "In Japan, it is considered polite to do what when entering someone's home?",
+      "choices": [
+        "Announce yourself loudly",
+        "Remove your shoes",
+        "Bring a gift every time",
+        "Bow three times"
+      ],
+      "answer": 1,
+      "quip_correct": "Removing shoes (and putting on guest slippers) is standard in Japan — the genkan entrance area is a transition zone.",
+      "quip_wrong": "Removing shoes before entering a Japanese home is mandatory — the genkan is the dedicated transition area."
+    },
+    {
+      "id": "Social Skills & Etiquette_007",
+      "category": "Social Skills & Etiquette",
+      "difficulty": "easy",
+      "prompt": "Active listening involves which of the following?",
+      "choices": [
+        "Planning your response while they speak",
+        "Looking around the room periodically",
+        "Nodding, maintaining eye contact, and paraphrasing",
+        "Interrupting to show you understand"
+      ],
+      "answer": 2,
+      "quip_correct": "Active listening requires full attention, non-verbal feedback, and paraphrasing to confirm understanding.",
+      "quip_wrong": "Active listening means full attention, eye contact, nodding, and paraphrasing what you heard."
+    },
+    {
+      "id": "Social Skills & Etiquette_008",
+      "category": "Social Skills & Etiquette",
+      "difficulty": "easy",
+      "prompt": "At a formal place setting, where is the dinner fork located?",
+      "choices": [
+        "Right of the plate",
+        "Left of the plate",
+        "Above the plate",
+        "Across from the plate"
+      ],
+      "answer": 1,
+      "quip_correct": "Forks go on the LEFT — knives and spoons on the RIGHT. 'Fork' and 'left' have the same number of letters.",
+      "quip_wrong": "Forks are always to the LEFT of the plate — knives and spoons to the right."
+    },
+    {
+      "id": "Social Skills & Etiquette_009",
+      "category": "Social Skills & Etiquette",
+      "difficulty": "medium",
+      "prompt": "In business card exchange etiquette in Japan, which of the following is most important?",
+      "choices": [
+        "Present and receive with both hands and examine respectfully",
+        "Present quickly and pocket immediately",
+        "Only executives exchange cards",
+        "Cards should be given face-down"
+      ],
+      "answer": 0,
+      "quip_correct": "Japanese meishi exchange is a ritual — present with both hands, bow, and study the card before setting it down carefully.",
+      "quip_wrong": "Japanese business card exchange requires both hands, a small bow, and careful examination — never write on or pocket it quickly."
+    },
+    {
+      "id": "Social Skills & Etiquette_010",
+      "category": "Social Skills & Etiquette",
+      "difficulty": "medium",
+      "prompt": "When writing a condolence message, which tone is most appropriate?",
+      "choices": [
+        "Upbeat and positive",
+        "Brief acknowledgment of loss with warmth",
+        "Religious reassurances",
+        "Comparing the death to others you've experienced"
+      ],
+      "answer": 1,
+      "quip_correct": "Acknowledge the loss, express sympathy, offer specific help. Don't minimize or compare.",
+      "quip_wrong": "Condolence messages should acknowledge the loss warmly and briefly — avoid advice, comparisons, or silver linings."
+    },
+    {
+      "id": "Social Skills & Etiquette_011",
+      "category": "Social Skills & Etiquette",
+      "difficulty": "medium",
+      "prompt": "The 'reciprocity' principle in social psychology means people tend to do what?",
+      "choices": [
+        "Mirror body language unconsciously",
+        "Return favors given to them",
+        "Prefer those who are similar to them",
+        "Obey authority figures"
+      ],
+      "answer": 1,
+      "quip_correct": "Reciprocity is one of Cialdini's six principles of influence — gifts create social obligation.",
+      "quip_wrong": "Reciprocity means people feel compelled to return favors — a foundational social norm."
+    },
+    {
+      "id": "Social Skills & Etiquette_012",
+      "category": "Social Skills & Etiquette",
+      "difficulty": "medium",
+      "prompt": "In public speaking, what is the most common fear associated with it, and what technique helps most?",
+      "choices": [
+        "Being judged; memorize the speech",
+        "Forgetting words; practice deep breathing and pausing",
+        "Making mistakes; speak faster",
+        "Audience size; avoid eye contact"
+      ],
+      "answer": 1,
+      "quip_correct": "Forgetting and losing composure are top fears — controlled breathing reduces cortisol and slows anxious pace.",
+      "quip_wrong": "Breath control and deliberate pausing reduce speaking anxiety more effectively than rushing or memorization."
+    },
+    {
+      "id": "Social Skills & Etiquette_013",
+      "category": "Social Skills & Etiquette",
+      "difficulty": "hard",
+      "prompt": "The Johari Window model divides self-awareness into how many quadrants?",
+      "choices": [
+        "Two",
+        "Three",
+        "Four",
+        "Six"
+      ],
+      "answer": 2,
+      "quip_correct": "The Johari Window has four: Open, Blind, Hidden, and Unknown — mapping what self and others know.",
+      "quip_wrong": "The Johari Window has four quadrants: Open, Blind, Hidden, and Unknown — a model of self and social awareness."
+    },
+    {
+      "id": "Social Skills & Etiquette_014",
+      "category": "Social Skills & Etiquette",
+      "difficulty": "hard",
+      "prompt": "'Mirroring' in social psychology involves which behavior?",
+      "choices": [
+        "Offering the same gift you were given",
+        "Unconsciously copying another's gestures and speech patterns",
+        "Reflecting criticism back to the speaker",
+        "Making eye contact for exactly as long as they do"
+      ],
+      "answer": 1,
+      "quip_correct": "Mirroring signals rapport — people unconsciously synchronize posture, pace, and expressions with those they trust.",
+      "quip_wrong": "Mirroring is unconsciously copying another person's body language — a sign of rapport and connection."
+    },
+    {
+      "id": "Social Skills & Etiquette_015",
+      "category": "Social Skills & Etiquette",
+      "difficulty": "hard",
+      "prompt": "In negotiation theory, what does 'BATNA' stand for?",
+      "choices": [
+        "Best Alternative To a Negotiated Agreement",
+        "Basic Approach To Negotiation Analytics",
+        "Balanced Agreement Through Non-Adversarial Action",
+        "Bilateral Agreement Treaty Negotiation Act"
+      ],
+      "answer": 0,
+      "quip_correct": "BATNA (Fisher & Ury) is your fallback option — knowing it gives you real negotiating power.",
+      "quip_wrong": "BATNA is your Best Alternative To a Negotiated Agreement — your walk-away option."
+    },
+    {
+      "id": "Social Skills & Etiquette_016",
+      "category": "Social Skills & Etiquette",
+      "difficulty": "hard",
+      "prompt": "The 'bystander effect' predicts that the more people witness an emergency, the less likely any individual is to help. This is explained primarily by what?",
+      "choices": [
+        "Diffusion of responsibility",
+        "Conformity to inaction",
+        "Fear of embarrassment",
+        "Both A and B"
+      ],
+      "answer": 3,
+      "quip_correct": "Diffusion of responsibility and conformity to inaction both drive the bystander effect — naming someone to act breaks it.",
+      "quip_wrong": "The bystander effect results from both diffusion of responsibility and conformity to others' inaction."
+    },
+    {
+      "id": "Social Skills & Etiquette_017",
+      "category": "Social Skills & Etiquette",
+      "difficulty": "hard",
+      "prompt": "What psychological term describes our tendency to seek out information that confirms our existing beliefs?",
+      "choices": [
+        "Cognitive dissonance",
+        "Availability heuristic",
+        "Confirmation bias",
+        "Anchoring effect"
+      ],
+      "answer": 2,
+      "quip_correct": "Confirmation bias causes us to interpret evidence selectively — a root cause of polarization and bad decision-making.",
+      "quip_wrong": "Confirmation bias is seeking info that confirms what we already believe — and dismissing what contradicts it."
+    },
+    {
+      "id": "Social Skills & Etiquette_018",
+      "category": "Social Skills & Etiquette",
+      "difficulty": "hard",
+      "prompt": "Which non-verbal cue is most strongly associated with deception according to research?",
+      "choices": [
+        "Avoiding eye contact",
+        "Touching the face",
+        "Inconsistency between words and microexpressions",
+        "Speaking faster"
+      ],
+      "answer": 2,
+      "quip_correct": "Microexpression inconsistency is the most reliable signal — the eye-avoidance myth is popular but not well-supported.",
+      "quip_wrong": "Research shows microexpression-verbal mismatch is the most reliable deception cue — not eye contact avoidance."
+    },
+    {
+      "id": "Social Skills & Etiquette_019",
+      "category": "Social Skills & Etiquette",
+      "difficulty": "hard",
+      "prompt": "The 'foot-in-the-door' persuasion technique involves what initial strategy?",
+      "choices": [
+        "Making a large request upfront",
+        "Offering a favor first",
+        "Starting with a small, easily agreed-to request",
+        "Issuing a deadline for compliance"
+      ],
+      "answer": 2,
+      "quip_correct": "Small initial compliance increases likelihood of agreeing to a larger request — people align actions with self-image.",
+      "quip_wrong": "Foot-in-the-door starts with a small yes, then escalates — people feel committed to consistency."
+    },
+    {
+      "id": "Social Skills & Etiquette_020",
+      "category": "Social Skills & Etiquette",
+      "difficulty": "hard",
+      "prompt": "'Thin-slicing' in social psychology refers to the ability to make accurate judgments about others based on what?",
+      "choices": [
+        "Extended observation over time",
+        "Very brief exposures to behavior",
+        "Written descriptions alone",
+        "Mutual acquaintances' opinions"
+      ],
+      "answer": 1,
+      "quip_correct": "Nalini Ambady's research showed 30-second 'thin slices' of behavior predict long-term outcomes — blink judgments can be accurate.",
+      "quip_wrong": "Thin-slicing is making accurate social judgments from brief exposures — studied by Ambady and popularized by Gladwell."
+    },
+    {
+      "id": "Social Skills & Etiquette_021",
+      "category": "Social Skills & Etiquette",
+      "difficulty": "medium",
+      "prompt": "When delivering negative feedback professionally, the 'sandwich method' involves what structure?",
+      "choices": [
+        "Start negative, end positive, summarize",
+        "Positive, negative, positive",
+        "Neutral, negative, neutral",
+        "Fact, opinion, fact"
+      ],
+      "answer": 1,
+      "quip_correct": "The feedback sandwich: positive → criticism → positive — softens the blow though critics say it dilutes the message.",
+      "quip_wrong": "The sandwich method wraps criticism between two positive comments."
+    },
+    {
+      "id": "The Great Outdoors_001",
+      "category": "The Great Outdoors",
+      "difficulty": "easy",
+      "prompt": "What is the process by which a caterpillar transforms into a butterfly?",
+      "choices": [
+        "Molting",
+        "Metamorphosis",
+        "Pupation",
+        "All of the above"
+      ],
+      "answer": 3,
+      "quip_correct": "All three — the caterpillar molts into a pupa (pupation) during metamorphosis.",
+      "quip_wrong": "Metamorphosis, pupation, and molting all describe parts of the caterpillar-to-butterfly process."
+    },
+    {
+      "id": "The Great Outdoors_002",
+      "category": "The Great Outdoors",
+      "difficulty": "easy",
+      "prompt": "Which tree produces acorns?",
+      "choices": [
+        "Maple",
+        "Birch",
+        "Elm",
+        "Oak"
+      ],
+      "answer": 3,
+      "quip_correct": "Acorns are the nuts of oak trees — a single oak can produce up to 20,000 acorns per year.",
+      "quip_wrong": "Acorns are produced by oak trees — used as food by deer, squirrels, and historically, humans."
+    },
+    {
+      "id": "The Great Outdoors_003",
+      "category": "The Great Outdoors",
+      "difficulty": "easy",
+      "prompt": "What does 'Leave No Trace' mean in outdoor ethics?",
+      "choices": [
+        "Never make campfires",
+        "Avoid leaving any human impact on the environment",
+        "Always hike in groups",
+        "Stay on marked trails only"
+      ],
+      "answer": 1,
+      "quip_correct": "Leave No Trace has 7 principles — pack out what you pack in, camp on durable surfaces, and respect wildlife.",
+      "quip_wrong": "Leave No Trace means minimizing your environmental impact in wild places."
+    },
+    {
+      "id": "The Great Outdoors_004",
+      "category": "The Great Outdoors",
+      "difficulty": "easy",
+      "prompt": "What is the name of the star used for navigation in the Northern Hemisphere?",
+      "choices": [
+        "Sirius",
+        "Betelgeuse",
+        "Polaris",
+        "Vega"
+      ],
+      "answer": 2,
+      "quip_correct": "Polaris (the North Star) sits nearly directly above Earth's North Pole — it barely moves in the sky.",
+      "quip_wrong": "Polaris is the North Star — it points almost exactly north, making it essential for navigation."
+    },
+    {
+      "id": "The Great Outdoors_005",
+      "category": "The Great Outdoors",
+      "difficulty": "easy",
+      "prompt": "Which cloud type is associated with thunderstorms?",
+      "choices": [
+        "Stratus",
+        "Cumulus",
+        "Cirrus",
+        "Cumulonimbus"
+      ],
+      "answer": 3,
+      "quip_correct": "Cumulonimbus clouds tower up to 75,000 feet — they produce lightning, hail, and tornadoes.",
+      "quip_wrong": "Cumulonimbus clouds are the thunderstorm giants — they can tower into the stratosphere."
+    },
+    {
+      "id": "The Great Outdoors_006",
+      "category": "The Great Outdoors",
+      "difficulty": "easy",
+      "prompt": "What should you do if you are caught in an open field during a lightning storm?",
+      "choices": [
+        "Lie flat on the ground",
+        "Crouch low with feet together",
+        "Seek shelter under a tree",
+        "Run toward lower ground"
+      ],
+      "answer": 1,
+      "quip_correct": "Crouch with feet together on the balls of your feet — minimize contact and height.",
+      "quip_wrong": "Crouch low with feet together — never lie flat or seek trees, which attract lightning."
+    },
+    {
+      "id": "The Great Outdoors_007",
+      "category": "The Great Outdoors",
+      "difficulty": "easy",
+      "prompt": "Which animal is a 'keystone species' famously important to river ecosystems?",
+      "choices": [
+        "Salmon",
+        "Deer",
+        "Rabbit",
+        "Duck"
+      ],
+      "answer": 0,
+      "quip_correct": "Salmon carcasses fertilize forests with marine nutrients — bears, eagles, and even trees depend on their run.",
+      "quip_wrong": "Salmon are keystone species — they bring ocean nutrients upstream, feeding entire forest ecosystems."
+    },
+    {
+      "id": "The Great Outdoors_008",
+      "category": "The Great Outdoors",
+      "difficulty": "easy",
+      "prompt": "When hiking, what is the recommended minimum distance from a water source to set up a camp or dig a cat hole?",
+      "choices": [
+        "30 m",
+        "60 m",
+        "100 m",
+        "200 m"
+      ],
+      "answer": 0,
+      "quip_correct": "Leave No Trace recommends at least 60 m (200 feet) from water for camping, cooking, and waste.",
+      "quip_wrong": "LNT recommends camping and burying waste at least 60 meters from water sources."
+    },
+    {
+      "id": "The Great Outdoors_009",
+      "category": "The Great Outdoors",
+      "difficulty": "medium",
+      "prompt": "What is the name for the zone between the treeline and permanent snowline on a mountain?",
+      "choices": [
+        "Boreal zone",
+        "Tundra",
+        "Alpine meadow",
+        "Krummholz zone"
+      ],
+      "answer": 2,
+      "quip_correct": "Alpine meadows above treeline are fragile ecosystems — foot traffic can damage plants that take decades to recover.",
+      "quip_wrong": "The zone above treeline and below permanent snow is called the alpine meadow."
+    },
+    {
+      "id": "The Great Outdoors_010",
+      "category": "The Great Outdoors",
+      "difficulty": "medium",
+      "prompt": "The rule of threes in wilderness survival states you can survive 3 minutes without what?",
+      "choices": [
+        "Food",
+        "Water",
+        "Air",
+        "Shelter"
+      ],
+      "answer": 2,
+      "quip_correct": "3 minutes without air, 3 hours without shelter in extreme cold, 3 days without water, 3 weeks without food.",
+      "quip_wrong": "The rule of threes: 3 minutes without air, 3 hours in harsh weather without shelter, 3 days without water."
+    },
+    {
+      "id": "The Great Outdoors_011",
+      "category": "The Great Outdoors",
+      "difficulty": "medium",
+      "prompt": "What is 'deadfall' in an outdoor context?",
+      "choices": [
+        "A type of trap",
+        "Fallen logs and branches",
+        "Dry leaves on a forest floor",
+        "A cliff face"
+      ],
+      "answer": 1,
+      "quip_correct": "Deadfall is fallen or dead timber — it provides critical habitat for insects, birds, and mammals.",
+      "quip_wrong": "Deadfall is fallen dead timber. It's essential wildlife habitat, not just a hiking obstacle."
+    },
+    {
+      "id": "The Great Outdoors_012",
+      "category": "The Great Outdoors",
+      "difficulty": "medium",
+      "prompt": "What plant is the primary food source for giant pandas?",
+      "choices": [
+        "Bamboo grass",
+        "Reed grass",
+        "Elephant grass",
+        "Sugarcane"
+      ],
+      "answer": 0,
+      "quip_correct": "Giant pandas eat almost exclusively bamboo — up to 38 kg per day, spending 10-16 hours eating.",
+      "quip_wrong": "Pandas subsist almost entirely on bamboo — their gut is poorly adapted to it, so they must eat massive amounts."
+    },
+    {
+      "id": "The Great Outdoors_013",
+      "category": "The Great Outdoors",
+      "difficulty": "hard",
+      "prompt": "What is the ecological term for the gradual process by which ecosystems change and develop over time?",
+      "choices": [
+        "Eutrophication",
+        "Succession",
+        "Biomagnification",
+        "Resilience"
+      ],
+      "answer": 1,
+      "quip_correct": "Succession describes ecosystem progression — primary succession starts on bare rock, secondary on disturbed soil.",
+      "quip_wrong": "Ecological succession is the sequence of changes in an ecosystem over time — from bare rock to mature forest."
+    },
+    {
+      "id": "The Great Outdoors_014",
+      "category": "The Great Outdoors",
+      "difficulty": "hard",
+      "prompt": "Which gas is the primary component of the air we breathe?",
+      "choices": [
+        "Oxygen",
+        "Carbon dioxide",
+        "Argon",
+        "Nitrogen"
+      ],
+      "answer": 3,
+      "quip_correct": "Nitrogen makes up ~78% of the atmosphere — oxygen is only ~21%.",
+      "quip_wrong": "Nitrogen (~78%) dominates the atmosphere. Oxygen is only ~21% — despite its importance."
+    },
+    {
+      "id": "The Great Outdoors_015",
+      "category": "The Great Outdoors",
+      "difficulty": "hard",
+      "prompt": "What is 'biophilia' as defined by E.O. Wilson?",
+      "choices": [
+        "Fear of biological hazards",
+        "The human emotional affiliation with other organisms",
+        "A type of ecological survey method",
+        "Allergic reaction to plant matter"
+      ],
+      "answer": 1,
+      "quip_correct": "Wilson coined biophilia in 1984 — humans have an innate need to connect with other living systems.",
+      "quip_wrong": "Biophilia (E.O. Wilson, 1984) is humanity's innate need to connect with nature and other life forms."
+    },
+    {
+      "id": "The Great Outdoors_016",
+      "category": "The Great Outdoors",
+      "difficulty": "hard",
+      "prompt": "What is the name for the study of the timing of seasonal events in relation to climate?",
+      "choices": [
+        "Chronobiology",
+        "Phenology",
+        "Climatology",
+        "Seasonology"
+      ],
+      "answer": 1,
+      "quip_correct": "Phenology studies seasonal biological events — first bloom, migration, first frost. Critical for tracking climate change.",
+      "quip_wrong": "Phenology tracks seasonal biological events like flowering and migration — a key tool in climate science."
+    },
+    {
+      "id": "The Great Outdoors_017",
+      "category": "The Great Outdoors",
+      "difficulty": "hard",
+      "prompt": "In orienteering, magnetic north differs from true north by an angle called what?",
+      "choices": [
+        "Declination",
+        "Bearing",
+        "Azimuth",
+        "Deviation"
+      ],
+      "answer": 0,
+      "quip_correct": "Magnetic declination varies by location and changes over time — ignoring it leads navigators astray.",
+      "quip_wrong": "Magnetic declination is the angular difference between magnetic north and true north."
+    },
+    {
+      "id": "The Great Outdoors_018",
+      "category": "The Great Outdoors",
+      "difficulty": "hard",
+      "prompt": "The Amazon basin contains what percentage of all species on Earth (estimated)?",
+      "choices": [
+        "5%",
+        "10%",
+        "15%",
+        "20%"
+      ],
+      "answer": 1,
+      "quip_correct": "About 10% of all species on Earth live in the Amazon — many still undiscovered.",
+      "quip_wrong": "The Amazon basin is home to roughly 10% of all species on Earth — most still undescribed by science."
+    },
+    {
+      "id": "The Great Outdoors_019",
+      "category": "The Great Outdoors",
+      "difficulty": "hard",
+      "prompt": "Which migratory bird travels the longest annual distance?",
+      "choices": [
+        "Bar-tailed godwit",
+        "Ruby-throated hummingbird",
+        "Arctic tern",
+        "Wandering albatross"
+      ],
+      "answer": 2,
+      "quip_correct": "Arctic terns migrate pole to pole — up to 90,000 km round trip per year, seeing two summers annually.",
+      "quip_wrong": "The Arctic tern has the longest migration — up to 90,000 km round-trip, from pole to pole."
+    },
+    {
+      "id": "The Great Outdoors_020",
+      "category": "The Great Outdoors",
+      "difficulty": "hard",
+      "prompt": "What is the term for animals that are active at dawn and dusk?",
+      "choices": [
+        "Nocturnal",
+        "Diurnal",
+        "Crepuscular",
+        "Cathemeral"
+      ],
+      "answer": 2,
+      "quip_correct": "Crepuscular animals — deer, rabbits, many cats — are most active in the twilight hours.",
+      "quip_wrong": "Crepuscular animals are active at dawn and dusk — unlike nocturnal (night) or diurnal (day) species."
+    },
+    {
+      "id": "The Great Outdoors_021",
+      "category": "The Great Outdoors",
+      "difficulty": "medium",
+      "prompt": "What is the purpose of 'tinder' in fire-starting?",
+      "choices": [
+        "The initial large fuel logs",
+        "Small material to catch and hold the first spark",
+        "Kindling to produce sustained flame",
+        "Accelerant to start a fire faster"
+      ],
+      "answer": 1,
+      "quip_correct": "Tinder catches the first spark — then kindling grows the flame — then fuel sustains it. Three-tier fire hierarchy.",
+      "quip_wrong": "Tinder is the finest fire-starting material — dry grass, bark, or fluff — that catches the first spark."
+    },
+    {
+      "id": "Finance & Economics_001",
+      "category": "Finance & Economics",
+      "difficulty": "easy",
+      "prompt": "What does GDP stand for?",
+      "choices": [
+        "General Domestic Product",
+        "Gross Domestic Product",
+        "Government Development Plan",
+        "Gross Development Percentage"
+      ],
+      "answer": 1,
+      "quip_correct": "GDP measures the total monetary value of goods and services produced in a country in a given year.",
+      "quip_wrong": "GDP is Gross Domestic Product — the total economic output of a country."
+    },
+    {
+      "id": "Finance & Economics_002",
+      "category": "Finance & Economics",
+      "difficulty": "easy",
+      "prompt": "What is 'inflation' in economics?",
+      "choices": [
+        "A decrease in money supply",
+        "A rise in the general price level over time",
+        "A fall in economic output",
+        "An increase in unemployment"
+      ],
+      "answer": 1,
+      "quip_correct": "Inflation erodes purchasing power — at 7% inflation, prices double in about 10 years.",
+      "quip_wrong": "Inflation is a sustained rise in the general price level — reducing what your money can buy."
+    },
+    {
+      "id": "Finance & Economics_003",
+      "category": "Finance & Economics",
+      "difficulty": "easy",
+      "prompt": "What does it mean to 'diversify' an investment portfolio?",
+      "choices": [
+        "Investing only in stocks",
+        "Spreading investments across different asset types",
+        "Concentrating in high-growth sectors",
+        "Rebalancing annually"
+      ],
+      "answer": 1,
+      "quip_correct": "Diversification reduces risk — different assets tend to react differently to the same economic event.",
+      "quip_wrong": "Diversification means spreading investments across asset classes to reduce risk."
+    },
+    {
+      "id": "Finance & Economics_004",
+      "category": "Finance & Economics",
+      "difficulty": "easy",
+      "prompt": "What does 'compound interest' mean?",
+      "choices": [
+        "Interest paid on the original principal only",
+        "Interest paid on both principal and previously earned interest",
+        "Interest that decreases over time",
+        "Interest paid annually only"
+      ],
+      "answer": 1,
+      "quip_correct": "Compound interest is interest on interest — Einstein allegedly called it 'the eighth wonder of the world'.",
+      "quip_wrong": "Compound interest means earning interest on your original principal AND on accumulated interest."
+    },
+    {
+      "id": "Finance & Economics_005",
+      "category": "Finance & Economics",
+      "difficulty": "easy",
+      "prompt": "A 'bull market' describes stock market conditions where prices are generally doing what?",
+      "choices": [
+        "Falling",
+        "Rising",
+        "Stagnant",
+        "Highly volatile"
+      ],
+      "answer": 1,
+      "quip_correct": "Bull market = rising. Bear market = falling. Remember: a bull thrusts its horns upward.",
+      "quip_wrong": "A bull market is a rising market. A bear market is a falling one."
+    },
+    {
+      "id": "Finance & Economics_006",
+      "category": "Finance & Economics",
+      "difficulty": "easy",
+      "prompt": "What is a 'stock dividend'?",
+      "choices": [
+        "A fee for trading stocks",
+        "A payment made to shareholders from company profits",
+        "A tax on capital gains",
+        "A bond payment"
+      ],
+      "answer": 1,
+      "quip_correct": "Dividends distribute a portion of company earnings to shareholders — typically quarterly.",
+      "quip_wrong": "A dividend is a company paying shareholders a portion of its profits."
+    },
+    {
+      "id": "Finance & Economics_007",
+      "category": "Finance & Economics",
+      "difficulty": "medium",
+      "prompt": "What economic theory argues that government spending can stimulate growth during recessions?",
+      "choices": [
+        "Monetarism",
+        "Supply-side economics",
+        "Keynesian economics",
+        "Laissez-faire economics"
+      ],
+      "answer": 2,
+      "quip_correct": "John Maynard Keynes argued that government spending fills the gap when private demand collapses.",
+      "quip_wrong": "Keynesian economics holds that government spending can boost growth during economic downturns."
+    },
+    {
+      "id": "Finance & Economics_008",
+      "category": "Finance & Economics",
+      "difficulty": "medium",
+      "prompt": "What is the 'Rule of 72' in finance?",
+      "choices": [
+        "72% of portfolios outperform the market",
+        "Divide 72 by interest rate to estimate years to double an investment",
+        "72 hours to settle stock trades",
+        "A tax rate threshold"
+      ],
+      "answer": 1,
+      "quip_correct": "Rule of 72: at 6% annual return, money doubles in ~12 years. At 12%, about 6 years.",
+      "quip_wrong": "The Rule of 72 says: divide 72 by annual return rate to estimate how many years until your money doubles."
+    },
+    {
+      "id": "Finance & Economics_009",
+      "category": "Finance & Economics",
+      "difficulty": "medium",
+      "prompt": "What does a central bank do when it raises interest rates?",
+      "choices": [
+        "Stimulates borrowing and spending",
+        "Encourages inflation",
+        "Reduces borrowing and cools inflation",
+        "Prints more money"
+      ],
+      "answer": 2,
+      "quip_correct": "Higher rates make borrowing more expensive — reducing spending and investment, cooling inflationary pressure.",
+      "quip_wrong": "Central banks raise rates to make borrowing costlier — slowing demand and reining in inflation."
+    },
+    {
+      "id": "Finance & Economics_010",
+      "category": "Finance & Economics",
+      "difficulty": "medium",
+      "prompt": "Which economic concept describes the hidden cost of choosing one option over alternatives?",
+      "choices": [
+        "Sunk cost",
+        "Opportunity cost",
+        "Marginal cost",
+        "Fixed cost"
+      ],
+      "answer": 1,
+      "quip_correct": "Opportunity cost is what you give up when you choose — the road not taken, quantified.",
+      "quip_wrong": "Opportunity cost is the value of the best alternative you forego when making a choice."
+    },
+    {
+      "id": "Finance & Economics_011",
+      "category": "Finance & Economics",
+      "difficulty": "medium",
+      "prompt": "The 2008 financial crisis was primarily triggered by the collapse of which market?",
+      "choices": [
+        "Dot-com technology stocks",
+        "US subprime mortgage securities",
+        "European sovereign debt",
+        "Commodity futures"
+      ],
+      "answer": 1,
+      "quip_correct": "Mortgage-backed securities tied to subprime loans collapsed — spreading through interconnected financial institutions worldwide.",
+      "quip_wrong": "The 2008 crisis was triggered by the collapse of subprime mortgage-backed securities."
+    },
+    {
+      "id": "Finance & Economics_012",
+      "category": "Finance & Economics",
+      "difficulty": "hard",
+      "prompt": "What is the 'Gini coefficient' used to measure?",
+      "choices": [
+        "Economic growth rate",
+        "Income or wealth inequality",
+        "Inflation adjusted for purchasing power",
+        "National debt relative to GDP"
+      ],
+      "answer": 0,
+      "quip_correct": "A Gini coefficient of 0 is perfect equality; 1 is one person owning everything. The US is around 0.41.",
+      "quip_wrong": "The Gini coefficient measures income or wealth inequality — 0 is perfect equality, 1 is total concentration."
+    },
+    {
+      "id": "Finance & Economics_013",
+      "category": "Finance & Economics",
+      "difficulty": "hard",
+      "prompt": "What does 'quantitative easing' involve?",
+      "choices": [
+        "Raising interest rates rapidly",
+        "A central bank buying financial assets to inject money into the economy",
+        "Reducing government spending",
+        "Increasing bank reserve requirements"
+      ],
+      "answer": 1,
+      "quip_correct": "QE has central banks buying bonds to lower long-term rates and inject liquidity — used after 2008 and during COVID.",
+      "quip_wrong": "Quantitative easing is a central bank buying assets (usually bonds) to increase money supply and lower rates."
+    },
+    {
+      "id": "Finance & Economics_014",
+      "category": "Finance & Economics",
+      "difficulty": "hard",
+      "prompt": "Which economic framework models how prices and quantities in multiple markets are simultaneously determined?",
+      "choices": [
+        "Partial equilibrium analysis",
+        "Game theory",
+        "General equilibrium theory",
+        "Behavioral economics"
+      ],
+      "answer": 2,
+      "quip_correct": "General equilibrium (Walras) models interconnected markets — a change in one market ripples through all others.",
+      "quip_wrong": "General equilibrium theory (Walrasian) models how all markets simultaneously reach price and quantity equilibrium."
+    },
+    {
+      "id": "Finance & Economics_015",
+      "category": "Finance & Economics",
+      "difficulty": "hard",
+      "prompt": "The 'liquidity trap' describes a situation where monetary policy becomes ineffective because what?",
+      "choices": [
+        "Banks stop lending despite low rates",
+        "Interest rates cannot go below zero",
+        "All savings are held in non-bank assets",
+        "Inflation is too high for rate cuts to matter"
+      ],
+      "answer": 0,
+      "quip_correct": "At near-zero rates, people hoard cash expecting deflation — so rate cuts don't stimulate spending.",
+      "quip_wrong": "A liquidity trap occurs when low rates fail to stimulate because people and banks hoard cash."
+    },
+    {
+      "id": "Finance & Economics_016",
+      "category": "Finance & Economics",
+      "difficulty": "hard",
+      "prompt": "Paul Volcker's strategy to fight 1970s US inflation involved doing what?",
+      "choices": [
+        "Cutting taxes sharply",
+        "Dramatically raising interest rates even through recession",
+        "Expanding money supply",
+        "Imposing price controls"
+      ],
+      "answer": 1,
+      "quip_correct": "Volcker raised the federal funds rate above 20% — causing severe recession but breaking 1970s stagflation.",
+      "quip_wrong": "Volcker crushed 1970s inflation by pushing rates above 20%, accepting deep recession as the price."
+    },
+    {
+      "id": "Finance & Economics_017",
+      "category": "Finance & Economics",
+      "difficulty": "medium",
+      "prompt": "What does 'P/E ratio' stand for in stock analysis?",
+      "choices": [
+        "Profit/Earnings",
+        "Price/Earnings",
+        "Performance/Equity",
+        "Projected/Estimated earnings"
+      ],
+      "answer": 1,
+      "quip_correct": "P/E is the price you pay per dollar of earnings — a high P/E means the market expects future growth.",
+      "quip_wrong": "P/E is Price-to-Earnings ratio — a key stock valuation metric."
+    },
+    {
+      "id": "Finance & Economics_018",
+      "category": "Finance & Economics",
+      "difficulty": "hard",
+      "prompt": "The 'Dutch Disease' economic phenomenon refers to what?",
+      "choices": [
+        "Hyperinflation caused by resource wealth",
+        "A banking crisis spreading across borders",
+        "Currency appreciation harming other export sectors after resource discovery",
+        "Mass unemployment following industrialization"
+      ],
+      "answer": 2,
+      "quip_correct": "Named after Netherlands' natural gas discovery — the windfall strengthened the guilder, hurting manufacturing exports.",
+      "quip_wrong": "Dutch Disease: a resource windfall raises currency value, making other exports uncompetitive."
+    }
+  ]
+}
