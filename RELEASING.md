@@ -66,15 +66,21 @@ Release checklist
 Shortcut
 --------
 
-Steps 2, 3, and 5 are automated by [scripts/release.sh](scripts/release.sh):
+Steps 2, 3, and 5 are automated by a release script that bumps `pyproject.toml`,
+commits, pushes, and creates + pushes the matching `v0.1.2` tag. You still need
+to publish the GitHub Release (step 6) manually — that's the deliberate "go" button.
+
+Git Bash / macOS / Linux:
 
 ```bash
 ./scripts/release.sh 0.1.2
 ```
 
-The script bumps `pyproject.toml`, commits, pushes, and creates + pushes
-the matching `v0.1.2` tag. You still need to publish the GitHub Release
-(step 6) manually — that's the deliberate "go" button.
+PowerShell / Windows (works anywhere Python is available):
+
+```powershell
+python scripts/release.py 0.1.2
+```
 
 One-time setup (already done)
 -----------------------------
