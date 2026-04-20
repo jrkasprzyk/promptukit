@@ -1,9 +1,9 @@
 {
   "_schema_notes": [
     "Each question has: id, category, difficulty (easy|medium|hard), prompt, choices (array of 4 strings), answer (0-3 index into choices).",
-    "Optional: quip_correct, quip_wrong â€” shown in the modal after answering. If absent, the game falls back to generic quips.",
+    "Optional: quip_correct, quip_wrong — shown in the modal after answering. If absent, the game falls back to generic quips.",
     "Scoring multipliers by difficulty: easy 1.5x, medium 2.0x, hard 3.0x. Configurable in Scoring.h.",
-    "The 'meta' category is for questions about the game itself â€” rules, mechanics, what a stone block does. These are always fair game.",
+    "The 'meta' category is for questions about the game itself — rules, mechanics, what a stone block does. These are always fair game.",
     "Add as many questions as you like. The loader shuffles at startup and tracks what's been asked this session so repeats are rare."
   ],
   "categories": [
@@ -47,7 +47,7 @@
       ],
       "answer": 1,
       "quip_correct": "Ray Harroun won it in a Marmon Wasp.",
-      "quip_wrong": "May 30, 1911 â€” mark it down."
+      "quip_wrong": "May 30, 1911 — mark it down."
     },
     {
       "id": "motorsport_003",
@@ -62,7 +62,7 @@
       ],
       "answer": 3,
       "quip_correct": "Everyone pit, party's over.",
-      "quip_wrong": "Red flag â€” race suspended, everyone slows and pits."
+      "quip_wrong": "Red flag — race suspended, everyone slows and pits."
     },
     {
       "id": "motorsport_004",
@@ -92,7 +92,7 @@
       ],
       "answer": 3,
       "quip_correct": "Open the wing, close the gap.",
-      "quip_wrong": "Drag Reduction System â€” opens the rear wing to cut drag."
+      "quip_wrong": "Drag Reduction System — opens the rear wing to cut drag."
     },
     {
       "id": "motorsport_006",
@@ -102,12 +102,12 @@
       "choices": [
         "Michael Schumacher",
         "Fernando Alonso",
-        "Kimi RÃ¤ikkÃ¶nen",
+        "Kimi Räikkönen",
         "Sebastian Vettel"
       ],
       "answer": 2,
       "quip_correct": "Iceman, 2007.",
-      "quip_wrong": "Kimi RÃ¤ikkÃ¶nen, 2007 â€” the Iceman cometh."
+      "quip_wrong": "Kimi Räikkönen, 2007 — the Iceman cometh."
     },
     {
       "id": "motorsport_007",
@@ -122,7 +122,7 @@
       ],
       "answer": 0,
       "quip_correct": "104 poles and counting.",
-      "quip_wrong": "Lewis Hamilton â€” 104 poles as of 2024."
+      "quip_wrong": "Lewis Hamilton — 104 poles as of 2024."
     },
     {
       "id": "motorsport_008",
@@ -181,7 +181,7 @@
       ],
       "answer": 3,
       "quip_correct": "67 million copies and climbing.",
-      "quip_wrong": "Spooky, that you don't know Thriller â€” Michael Jackson, 1982."
+      "quip_wrong": "Spooky, that you don't know Thriller — Michael Jackson, 1982."
     },
     {
       "id": "music_003",
@@ -192,10 +192,10 @@
         "YHLQMDLG",
         "X 100PRE",
         "Un Verano Sin Ti",
-        "El Ãšltimo Tour Del Mundo"
+        "El Último Tour Del Mundo"
       ],
       "answer": 1,
-      "quip_correct": "December 24, 2018 â€” his debut.",
+      "quip_correct": "December 24, 2018 — his debut.",
       "quip_wrong": "X 100PRE dropped Christmas Eve 2018."
     },
     {
@@ -211,7 +211,7 @@
       ],
       "answer": 2,
       "quip_correct": "September 24, 1991.",
-      "quip_wrong": "1991 â€” it knocked Michael Jackson off the top spot."
+      "quip_wrong": "1991 — it knocked Michael Jackson off the top spot."
     },
     {
       "id": "music_005",
@@ -226,7 +226,7 @@
       ],
       "answer": 0,
       "quip_correct": "Home demos that became the album.",
-      "quip_wrong": "A Tascam Portastudio â€” he handed the tape to the label."
+      "quip_wrong": "A Tascam Portastudio — he handed the tape to the label."
     },
     {
       "id": "music_006",
@@ -241,7 +241,7 @@
       ],
       "answer": 3,
       "quip_correct": "Kind of Blue. Birth of the Cool.",
-      "quip_wrong": "Trumpet â€” muted, breathy, unmistakable."
+      "quip_wrong": "Trumpet — muted, breathy, unmistakable."
     },
     {
       "id": "music_007",
@@ -255,8 +255,8 @@
         "6/8"
       ],
       "answer": 2,
-      "quip_correct": "Five beats per measure â€” feel it.",
-      "quip_wrong": "5/4 â€” five beats per measure, written by Paul Desmond."
+      "quip_correct": "Five beats per measure — feel it.",
+      "quip_wrong": "5/4 — five beats per measure, written by Paul Desmond."
     },
     {
       "id": "music_008",
@@ -271,7 +271,7 @@
       ],
       "answer": 2,
       "quip_correct": "FAC 10. Peter Saville's pulsar.",
-      "quip_wrong": "Factory Records â€” Tony Wilson's Manchester label."
+      "quip_wrong": "Factory Records — Tony Wilson's Manchester label."
     },
     {
       "id": "music_009",
@@ -360,7 +360,7 @@
       ],
       "answer": 3,
       "quip_correct": "Anyone can cook.",
-      "quip_wrong": "Ratatouille â€” Remy the rat, Gusteau's restaurant."
+      "quip_wrong": "Ratatouille — Remy the rat, Gusteau's restaurant."
     },
     {
       "id": "film_003",
@@ -375,7 +375,7 @@
       ],
       "answer": 0,
       "quip_correct": "First non-English film to win Best Picture.",
-      "quip_wrong": "Bong Joon-ho â€” four Oscars in one night."
+      "quip_wrong": "Bong Joon-ho — four Oscars in one night."
     },
     {
       "id": "film_004",
@@ -390,7 +390,7 @@
       ],
       "answer": 3,
       "quip_correct": "He woke up screaming.",
-      "quip_wrong": "A horse's head â€” Jack Woltz found it in the sheets."
+      "quip_wrong": "A horse's head — Jack Woltz found it in the sheets."
     },
     {
       "id": "film_005",
@@ -405,7 +405,7 @@
       ],
       "answer": 0,
       "quip_correct": "First Academy Awards, 1929.",
-      "quip_wrong": "Wings (1927) â€” WWI aerial combat drama."
+      "quip_wrong": "Wings (1927) — WWI aerial combat drama."
     },
     {
       "id": "film_006",
@@ -420,7 +420,7 @@
       ],
       "answer": 2,
       "quip_correct": "Daisy, Daisy, give me your answer do.",
-      "quip_wrong": "'Daisy Bell' â€” the first song ever sung by a computer, in 1961."
+      "quip_wrong": "'Daisy Bell' — the first song ever sung by a computer, in 1961."
     },
     {
       "id": "film_007",
@@ -434,8 +434,8 @@
         "Madrid"
       ],
       "answer": 2,
-      "quip_correct": "Buzz, your girlfriend â€” woof.",
-      "quip_wrong": "Paris â€” Kevin gets left behind at the house in Winnetka."
+      "quip_correct": "Buzz, your girlfriend — woof.",
+      "quip_wrong": "Paris — Kevin gets left behind at the house in Winnetka."
     },
     {
       "id": "film_008",
@@ -450,7 +450,7 @@
       ],
       "answer": 1,
       "quip_correct": "It's a strange world, Sandy.",
-      "quip_wrong": "David Lynch â€” surrealism, small towns, red curtains."
+      "quip_wrong": "David Lynch — surrealism, small towns, red curtains."
     },
     {
       "id": "general_001",
@@ -458,10 +458,10 @@
       "difficulty": "easy",
       "prompt": "At roughly 5,400 ft elevation, water boils at approximately what temperature?",
       "choices": [
-        "212Â°F",
-        "208Â°F",
-        "202Â°F",
-        "196Â°F"
+        "212 degF",
+        "208 degF",
+        "202 degF",
+        "196 degF"
       ],
       "answer": 2,
       "quip_correct": "Why your cakes need an altitude adjustment."
@@ -479,7 +479,7 @@
       ],
       "answer": 0,
       "quip_correct": "From the Latin aurum.",
-      "quip_wrong": "Gold â€” aurum in Latin, hence Au."
+      "quip_wrong": "Gold — aurum in Latin, hence Au."
     },
     {
       "id": "general_003",
@@ -494,7 +494,7 @@
       ],
       "answer": 3,
       "quip_correct": "Bees figured this out millions of years ago.",
-      "quip_wrong": "Six â€” hex comes from the Greek for six."
+      "quip_wrong": "Six — hex comes from the Greek for six."
     },
     {
       "id": "general_004",
@@ -509,7 +509,7 @@
       ],
       "answer": 2,
       "quip_correct": "You're born with ~270; they fuse as you grow.",
-      "quip_wrong": "206 â€” you fuse from ~270 at birth."
+      "quip_wrong": "206 — you fuse from ~270 at birth."
     },
     {
       "id": "general_005",
@@ -524,7 +524,7 @@
       ],
       "answer": 1,
       "quip_correct": "November 9, 1989.",
-      "quip_wrong": "1989 â€” November 9th, crowds tore it down."
+      "quip_wrong": "1989 — November 9th, crowds tore it down."
     },
     {
       "id": "general_006",
@@ -539,7 +539,7 @@
       ],
       "answer": 3,
       "quip_correct": "Close enough to see with the naked eye.",
-      "quip_wrong": "About 384,000 km â€” it varies as the Moon's orbit is elliptical."
+      "quip_wrong": "About 384,000 km — it varies as the Moon's orbit is elliptical."
     },
     {
       "id": "general_007",
@@ -554,7 +554,7 @@
       ],
       "answer": 1,
       "quip_correct": "146 confirmed moons and counting.",
-      "quip_wrong": "Saturn â€” it overtook Jupiter in 2023 with confirmed new moons."
+      "quip_wrong": "Saturn — it overtook Jupiter in 2023 with confirmed new moons."
     },
     {
       "id": "general_008",
@@ -569,7 +569,7 @@
       ],
       "answer": 2,
       "quip_correct": "One small step, one giant leap.",
-      "quip_wrong": "Neil Armstrong â€” July 20, 1969."
+      "quip_wrong": "Neil Armstrong — July 20, 1969."
     },
     {
       "id": "general_009",
@@ -584,7 +584,7 @@
       ],
       "answer": 0,
       "quip_correct": "The beep heard around the world.",
-      "quip_wrong": "Sputnik 1 â€” October 4, 1957, kicked off the space race."
+      "quip_wrong": "Sputnik 1 — October 4, 1957, kicked off the space race."
     },
     {
       "id": "general_010",
@@ -599,7 +599,7 @@
       ],
       "answer": 1,
       "quip_correct": "Still transmitting from interstellar space.",
-      "quip_wrong": "1977 â€” now the farthest human-made object from Earth."
+      "quip_wrong": "1977 — now the farthest human-made object from Earth."
     },
     {
       "id": "general_011",
@@ -614,7 +614,7 @@
       ],
       "answer": 3,
       "quip_correct": "Launched 1973, fell back to Earth in 1979.",
-      "quip_wrong": "Skylab â€” it orbited from 1973 to 1979."
+      "quip_wrong": "Skylab — it orbited from 1973 to 1979."
     },
     {
       "id": "general_012",
@@ -629,7 +629,7 @@
       ],
       "answer": 2,
       "quip_correct": "The Eagle has landed.",
-      "quip_wrong": "Eagle â€” Columbia was the command module that stayed in orbit."
+      "quip_wrong": "Eagle — Columbia was the command module that stayed in orbit."
     },
     {
       "id": "general_013",
@@ -659,7 +659,7 @@
       ],
       "answer": 1,
       "quip_correct": "The game developer won a competition about this in elementary school. Easy points.",
-      "quip_wrong": "Tokyo â€” even the dev's fifth-grade self knew that one."
+      "quip_wrong": "Tokyo — even the dev's fifth-grade self knew that one."
     },
     {
       "id": "asia_002",
@@ -674,7 +674,7 @@
       ],
       "answer": 0,
       "quip_correct": "Round one material at the dev's elementary school competition.",
-      "quip_wrong": "Beijing â€” Shanghai is the biggest city, but not the capital."
+      "quip_wrong": "Beijing — Shanghai is the biggest city, but not the capital."
     },
     {
       "id": "asia_003",
@@ -689,7 +689,7 @@
       ],
       "answer": 3,
       "quip_correct": "The dev nailed this one in elementary school and never forgot it.",
-      "quip_wrong": "New Delhi â€” Mumbai is the financial capital, not the political one."
+      "quip_wrong": "New Delhi — Mumbai is the financial capital, not the political one."
     },
     {
       "id": "asia_004",
@@ -704,7 +704,7 @@
       ],
       "answer": 2,
       "quip_correct": "The dev's elementary school competition glory started with questions like this.",
-      "quip_wrong": "South Korea â€” Pyongyang is the North Korean capital."
+      "quip_wrong": "South Korea — Pyongyang is the North Korean capital."
     },
     {
       "id": "asia_005",
@@ -719,7 +719,7 @@
       ],
       "answer": 2,
       "quip_correct": "The dev's elementary school competition training is paying off for you.",
-      "quip_wrong": "Bangkok â€” its ceremonial name is 168 letters long."
+      "quip_wrong": "Bangkok — its ceremonial name is 168 letters long."
     },
     {
       "id": "asia_006",
@@ -734,7 +734,7 @@
       ],
       "answer": 0,
       "quip_correct": "This was a clutch answer at the dev's elementary school competition.",
-      "quip_wrong": "Hanoi â€” Ho Chi Minh City is larger, but Hanoi is the capital."
+      "quip_wrong": "Hanoi — Ho Chi Minh City is larger, but Hanoi is the capital."
     },
     {
       "id": "asia_007",
@@ -749,13 +749,13 @@
       ],
       "answer": 3,
       "quip_correct": "The dev's elementary school competition judges would be proud.",
-      "quip_wrong": "Manila â€” Quezon City is actually more populous, but Manila is the capital."
+      "quip_wrong": "Manila — Quezon City is actually more populous, but Manila is the capital."
     },
     {
       "id": "asia_008",
       "category": "asia",
       "difficulty": "medium",
-      "prompt": "As of 2026, Indonesia is mid-move to a jungle capital called Nusantara â€” but what is still the current official capital?",
+      "prompt": "As of 2026, Indonesia is mid-move to a jungle capital called Nusantara  -  but what is still the current official capital?",
       "choices": [
         "Bali",
         "Jakarta",
@@ -763,8 +763,8 @@
         "Bandung"
       ],
       "answer": 1,
-      "quip_correct": "Jakarta â€” for now. Nusantara has 10,000 residents and a half-built palace.",
-      "quip_wrong": "Jakarta â€” still the capital, but Indonesia is mid-move. Nusantara won't be ready until at least 2028."
+      "quip_correct": "Jakarta — for now. Nusantara has 10,000 residents and a half-built palace.",
+      "quip_wrong": "Jakarta — still the capital, but Indonesia is mid-move. Nusantara won't be ready until at least 2028."
     },
     {
       "id": "asia_009",
@@ -779,7 +779,7 @@
       ],
       "answer": 2,
       "quip_correct": "This one stumped half the kids at the dev's elementary school competition.",
-      "quip_wrong": "Naypyidaw â€” moved from Yangon in 2006. A real competition curveball."
+      "quip_wrong": "Naypyidaw — moved from Yangon in 2006. A real competition curveball."
     },
     {
       "id": "asia_010",
@@ -794,7 +794,7 @@
       ],
       "answer": 0,
       "quip_correct": "The dev won the elementary school competition partly by memorizing this name.",
-      "quip_wrong": "Sri Lanka â€” Colombo is the commercial capital, but Kotte is the official one."
+      "quip_wrong": "Sri Lanka — Colombo is the commercial capital, but Kotte is the official one."
     },
     {
       "id": "asia_011",
@@ -809,7 +809,7 @@
       ],
       "answer": 3,
       "quip_correct": "Renamed twice since 1997. The dev's competition flashcards are outdated.",
-      "quip_wrong": "Astana â€” it was Almaty until 1997. The name has changed multiple times since."
+      "quip_wrong": "Astana — it was Almaty until 1997. The name has changed multiple times since."
     },
     {
       "id": "asia_012",
@@ -824,7 +824,7 @@
       ],
       "answer": 1,
       "quip_correct": "Deep cut. The dev's elementary school competition prep finally justified.",
-      "quip_wrong": "Vientiane â€” right on the Mekong River, bordering Thailand."
+      "quip_wrong": "Vientiane — right on the Mekong River, bordering Thailand."
     },
     {
       "id": "asia_013",
@@ -854,7 +854,7 @@
       ],
       "answer": 2,
       "quip_correct": "C++17 to be precise.",
-      "quip_wrong": "C++ â€” built with CMake and raylib."
+      "quip_wrong": "C++ — built with CMake and raylib."
     },
     {
       "id": "meta_005",
@@ -869,7 +869,7 @@
       ],
       "answer": 3,
       "quip_correct": "Simple, clean, and zero drama.",
-      "quip_wrong": "raylib â€” Renderer.h is the only file that includes it."
+      "quip_wrong": "raylib — Renderer.h is the only file that includes it."
     },
     {
       "id": "meta_006",
@@ -883,8 +883,8 @@
         "9"
       ],
       "answer": 3,
-      "quip_correct": "The 3x3 square â€” good luck placing that one.",
-      "quip_wrong": "9 â€” it's the 3x3 square. Hope you've got room."
+      "quip_correct": "The 3x3 square — good luck placing that one.",
+      "quip_wrong": "9 — it's the 3x3 square. Hope you've got room."
     },
     {
       "id": "meta_007",
@@ -899,7 +899,7 @@
       ],
       "answer": 0,
       "quip_correct": "One in five. Enough to keep you honest.",
-      "quip_wrong": "20% â€” each slot rolls independently."
+      "quip_wrong": "20% — each slot rolls independently."
     },
     {
       "id": "meta_008",
@@ -914,7 +914,7 @@
       ],
       "answer": 3,
       "quip_correct": "Anthropic's finest, at your service.",
-      "quip_wrong": "Claude â€” by Anthropic. Who else would write quips this good?"
+      "quip_wrong": "Claude — by Anthropic. Who else would write quips this good?"
     },
     {
       "id": "meta_001",
@@ -937,7 +937,7 @@
       "difficulty": "medium",
       "prompt": "What happens to a row, column, or 3x3 square that contains a stone block?",
       "choices": [
-        "Nothing â€” stones clear normally",
+        "Nothing  -  stones clear normally",
         "It can never clear until the stone is removed",
         "It clears for double points",
         "The whole board resets"
@@ -1001,7 +1001,7 @@
       ],
       "answer": 0,
       "quip_correct": "KACL 780, Seattle.",
-      "quip_wrong": "Seattle â€” he left Boston (and Cheers) behind."
+      "quip_wrong": "Seattle — he left Boston (and Cheers) behind."
     },
     {
       "id": "film-and-tv_010",
@@ -1016,7 +1016,7 @@
       ],
       "answer": 3,
       "quip_correct": "I'm listening.",
-      "quip_wrong": "The Dr. Frasier Crane Show â€” on KACL 780 AM."
+      "quip_wrong": "The Dr. Frasier Crane Show — on KACL 780 AM."
     },
     {
       "id": "film-and-tv_011",
@@ -1031,7 +1031,7 @@
       ],
       "answer": 1,
       "quip_correct": "Dad, that chair is an eyesore.",
-      "quip_wrong": "Martin Crane â€” played by John Mahoney."
+      "quip_wrong": "Martin Crane — played by John Mahoney."
     },
     {
       "id": "film-and-tv_012",
@@ -1046,7 +1046,7 @@
       ],
       "answer": 2,
       "quip_correct": "Eddie stared. Frasier stared back. Eddie won.",
-      "quip_wrong": "Jack Russell Terrier â€” played by Moose, and later his son Enzo."
+      "quip_wrong": "Jack Russell Terrier — played by Moose, and later his son Enzo."
     },
     {
       "id": "film-and-tv_013",
@@ -1054,14 +1054,14 @@
       "difficulty": "hard",
       "prompt": "What is the name of the coffee shop where Frasier and Niles are regulars?",
       "choices": [
-        "CafÃ© Nervosa",
-        "CafÃ© Tosca",
+        "Café Nervosa",
+        "Café Tosca",
         "The Grind",
         "Beantown"
       ],
       "answer": 0,
       "quip_correct": "Double tall latte, no foam.",
-      "quip_wrong": "CafÃ© Nervosa â€” their natural habitat."
+      "quip_wrong": "Café Nervosa — their natural habitat."
     },
     {
       "id": "film-and-tv_014",
@@ -1076,7 +1076,7 @@
       ],
       "answer": 2,
       "quip_correct": "Penthouse. Of course it's the penthouse.",
-      "quip_wrong": "Elliott Bay Towers â€” with a view of the Space Needle, naturally."
+      "quip_wrong": "Elliott Bay Towers — with a view of the Space Needle, naturally."
     },
     {
       "id": "film-and-tv_015",
@@ -1091,7 +1091,7 @@
       ],
       "answer": 1,
       "quip_correct": "She once got a paper cut from a strong breeze.",
-      "quip_wrong": "Maris is reed-thin â€” practically a running gag for eleven seasons."
+      "quip_wrong": "Maris is reed-thin — practically a running gag for eleven seasons."
     },
     {
       "id": "film-and-tv_016",
@@ -1106,7 +1106,7 @@
       ],
       "answer": 2,
       "quip_correct": "780 AM. Good radio.",
-      "quip_wrong": "KACL 780 AM â€” home of the Dr. Frasier Crane Show."
+      "quip_wrong": "KACL 780 AM — home of the Dr. Frasier Crane Show."
     },
     {
       "id": "film-and-tv_017",
@@ -1121,7 +1121,7 @@
       ],
       "answer": 0,
       "quip_correct": "Go Badgers.",
-      "quip_wrong": "University of Wisconsin â€” she mentions it more than once."
+      "quip_wrong": "University of Wisconsin — she mentions it more than once."
     },
     {
       "id": "film-and-tv_018",
@@ -1136,7 +1136,7 @@
       ],
       "answer": 2,
       "quip_correct": "Dr. Hester Crane. The apple didn't fall far.",
-      "quip_wrong": "Hester Crane â€” seen only in home movies, but her influence looms large."
+      "quip_wrong": "Hester Crane — seen only in home movies, but her influence looms large."
     },
     {
       "id": "books_001",
@@ -1151,7 +1151,7 @@
       ],
       "answer": 2,
       "quip_correct": "Atticus Finch, one of fiction's great fathers.",
-      "quip_wrong": "Harper Lee â€” published 1960, Pulitzer the year after."
+      "quip_wrong": "Harper Lee — published 1960, Pulitzer the year after."
     },
     {
       "id": "books_002",
@@ -1165,8 +1165,8 @@
         "Ilvermorny"
       ],
       "answer": 0,
-      "quip_correct": "Platform 9Â¾, don't be late.",
-      "quip_wrong": "Hogwarts â€” school of witchcraft and wizardry."
+      "quip_correct": "Platform 9¾, don't be late.",
+      "quip_wrong": "Hogwarts — school of witchcraft and wizardry."
     },
     {
       "id": "books_003",
@@ -1181,7 +1181,7 @@
       ],
       "answer": 3,
       "quip_correct": "Big Brother is watching.",
-      "quip_wrong": "Oceania â€” Airstrip One is what they call Britain within it."
+      "quip_wrong": "Oceania — Airstrip One is what they call Britain within it."
     },
     {
       "id": "books_004",
@@ -1196,7 +1196,7 @@
       ],
       "answer": 1,
       "quip_correct": "Act III, Scene I. Classic.",
-      "quip_wrong": "Hamlet â€” the most quoted line in the English language."
+      "quip_wrong": "Hamlet — the most quoted line in the English language."
     },
     {
       "id": "books_005",
@@ -1211,7 +1211,7 @@
       ],
       "answer": 0,
       "quip_correct": "Three of the most famous words in American literature.",
-      "quip_wrong": "Moby-Dick â€” Melville, 1851. The whale wins."
+      "quip_wrong": "Moby-Dick — Melville, 1851. The whale wins."
     },
     {
       "id": "books_006",
@@ -1222,11 +1222,11 @@
         "Pablo Neruda",
         "Octavio Paz",
         "Mario Vargas Llosa",
-        "Gabriel GarcÃ­a MÃ¡rquez"
+        "Gabriel García Márquez"
       ],
       "answer": 3,
       "quip_correct": "Macondo. Magical realism. Nobel Prize.",
-      "quip_wrong": "GarcÃ­a MÃ¡rquez â€” the founding text of magical realism."
+      "quip_wrong": "García Márquez — the founding text of magical realism."
     },
     {
       "id": "books_007",
@@ -1241,7 +1241,7 @@
       ],
       "answer": 2,
       "quip_correct": "Bree. Strider in the corner, pipe in hand.",
-      "quip_wrong": "The Prancing Pony â€” in the town of Bree."
+      "quip_wrong": "The Prancing Pony — in the town of Bree."
     },
     {
       "id": "books_008",
@@ -1256,7 +1256,7 @@
       ],
       "answer": 1,
       "quip_correct": "So we beat on, boats against the current.",
-      "quip_wrong": "Green â€” Gatsby reaches for it every night across the bay."
+      "quip_wrong": "Green — Gatsby reaches for it every night across the bay."
     },
     {
       "id": "books_009",
@@ -1271,7 +1271,7 @@
       ],
       "answer": 0,
       "quip_correct": "He convinced himself murder could be justified. It couldn't.",
-      "quip_wrong": "Crime and Punishment â€” St. Petersburg, an axe, and a lot of guilt."
+      "quip_wrong": "Crime and Punishment — St. Petersburg, an axe, and a lot of guilt."
     },
     {
       "id": "books_010",
@@ -1286,7 +1286,7 @@
       ],
       "answer": 3,
       "quip_correct": "In the beginning.",
-      "quip_wrong": "Genesis â€” in the beginning, God created the heavens and the earth."
+      "quip_wrong": "Genesis — in the beginning, God created the heavens and the earth."
     },
     {
       "id": "books_011",
@@ -1301,7 +1301,7 @@
       ],
       "answer": 2,
       "quip_correct": "Tomorrow and tomorrow and tomorrow.",
-      "quip_wrong": "Macbeth â€” Act V. 'Full of sound and fury, signifying nothing.'"
+      "quip_wrong": "Macbeth — Act V. 'Full of sound and fury, signifying nothing.'"
     },
     {
       "id": "books_012",
@@ -1316,7 +1316,7 @@
       ],
       "answer": 0,
       "quip_correct": "War is peace. Freedom is slavery. Ignorance is strength.",
-      "quip_wrong": "1984 â€” Orwell's word for holding two contradictory beliefs simultaneously."
+      "quip_wrong": "1984 — Orwell's word for holding two contradictory beliefs simultaneously."
     },
     {
       "id": "books_013",
@@ -1375,7 +1375,7 @@
         "Gibbons v. Ogden"
       ],
       "answer": 1,
-      "quip_correct": "Separate but equal â€” a doctrine that haunted America for decades.",
+      "quip_correct": "Separate but equal — a doctrine that haunted America for decades.",
       "quip_wrong": "Plessy v. Ferguson legalized segregation for 58 years."
     },
     {
@@ -1391,7 +1391,7 @@
       ],
       "answer": 2,
       "quip_correct": "The Treaty of Paris ended French colonial ambitions in North America.",
-      "quip_wrong": "1763 â€” France ceded Canada and territory east of the Mississippi."
+      "quip_wrong": "1763 — France ceded Canada and territory east of the Mississippi."
     },
     {
       "id": "general_016",
@@ -1420,8 +1420,8 @@
         "1868"
       ],
       "answer": 2,
-      "quip_correct": "Lee surrendered at Appomattox â€” the Union held.",
-      "quip_wrong": "1865 â€” General Lee surrendered, ending the bloodiest conflict in American history."
+      "quip_correct": "Lee surrendered at Appomattox — the Union held.",
+      "quip_wrong": "1865 — General Lee surrendered, ending the bloodiest conflict in American history."
     },
     {
       "id": "general_018",
@@ -1436,7 +1436,7 @@
       ],
       "answer": 2,
       "quip_correct": "He was appointed V.P., then ascended to the Oval Office.",
-      "quip_wrong": "Ford was never elected to either office â€” appointed V.P., then became President."
+      "quip_wrong": "Ford was never elected to either office — appointed V.P., then became President."
     },
     {
       "id": "general_019",
@@ -1466,7 +1466,7 @@
       ],
       "answer": 2,
       "quip_correct": "He led America through Depression and war.",
-      "quip_wrong": "FDR won four elections â€” the only president to do so."
+      "quip_wrong": "FDR won four elections — the only president to do so."
     },
     {
       "id": "general_021",
@@ -1496,7 +1496,7 @@
       ],
       "answer": 1,
       "quip_correct": "Five days after Lee's surrender, Lincoln fell.",
-      "quip_wrong": "April 14, 1865 â€” John Wilkes Booth struck at Ford's Theatre."
+      "quip_wrong": "April 14, 1865 — John Wilkes Booth struck at Ford's Theatre."
     },
     {
       "id": "general_023",
@@ -1556,7 +1556,7 @@
       ],
       "answer": 1,
       "quip_correct": "The Reagan Revolution began at the ballot box.",
-      "quip_wrong": "1980 â€” Carter's presidency ended with the rising sun."
+      "quip_wrong": "1980 — Carter's presidency ended with the rising sun."
     },
     {
       "id": "general_027",
@@ -1781,7 +1781,7 @@
       ],
       "answer": 1,
       "quip_correct": "F = ma, baby.",
-      "quip_wrong": "Newton â€” the SI unit of force, named after Isaac."
+      "quip_wrong": "Newton — the SI unit of force, named after Isaac."
     },
     {
       "id": "science_and_math_002",
@@ -1789,20 +1789,20 @@
       "difficulty": "easy",
       "prompt": "At what temperature does water freeze in Celsius?",
       "choices": [
-        "âˆ’40Â°C",
-        "0Â°C",
-        "32Â°C",
-        "100Â°C"
+        "-40 degC",
+        "0 degC",
+        "32 degC",
+        "100 degC"
       ],
       "answer": 1,
-      "quip_correct": "The freezing point of water â€” nice and round.",
-      "quip_wrong": "0Â°C â€” that's where ice forms."
+      "quip_correct": "The freezing point of water — nice and round.",
+      "quip_wrong": "0°C — that's where ice forms."
     },
     {
       "id": "science_and_math_003",
       "category": "science and math",
       "difficulty": "easy",
-      "prompt": "What does the 'c' in E=mcÂ² represent?",
+      "prompt": "What does the 'c' in E=mc^2 represent?",
       "choices": [
         "Circumference",
         "Coefficient",
@@ -1810,7 +1810,7 @@
         "Constant ratio"
       ],
       "answer": 2,
-      "quip_correct": "The speed of light â€” nothing's faster.",
+      "quip_correct": "The speed of light — nothing's faster.",
       "quip_wrong": "The speed of light, approximately 299,792,458 meters per second."
     },
     {
@@ -1825,8 +1825,8 @@
         "Cryptography"
       ],
       "answer": 1,
-      "quip_correct": "Ramsey theory â€” and the number is impossibly large.",
-      "quip_wrong": "Ramsey theory â€” a field dealing with combinatorial structures."
+      "quip_correct": "Ramsey theory — and the number is impossibly large.",
+      "quip_wrong": "Ramsey theory — a field dealing with combinatorial structures."
     },
     {
       "id": "science_and_math_005",
@@ -1840,7 +1840,7 @@
         "Complex"
       ],
       "answer": 1,
-      "quip_correct": "Transfinite â€” larger than finite, but not quite infinity.",
+      "quip_correct": "Transfinite — larger than finite, but not quite infinity.",
       "quip_wrong": "Transfinite numbers are larger than any finite number."
     },
     {
@@ -1856,7 +1856,7 @@
       ],
       "answer": 2,
       "quip_correct": "Uncountably infinite beats countably infinite.",
-      "quip_wrong": "The real numbers are uncountably infinite â€” Cantor proved it."
+      "quip_wrong": "The real numbers are uncountably infinite — Cantor proved it."
     },
     {
       "id": "science_and_math_007",
@@ -1870,7 +1870,7 @@
         "Uncomputable with known methods"
       ],
       "answer": 3,
-      "quip_correct": "Far too large to compute â€” the Ackermann function grows absurdly fast.",
+      "quip_correct": "Far too large to compute — the Ackermann function grows absurdly fast.",
       "quip_wrong": "A(4,4) is so large it can't be calculated with any practical computer."
     },
     {
@@ -1885,7 +1885,7 @@
         "The smallest irrational number"
       ],
       "answer": 1,
-      "quip_correct": "The first infinite cardinal â€” countably infinite.",
+      "quip_correct": "The first infinite cardinal — countably infinite.",
       "quip_wrong": "Aleph-null is the cardinality of the natural numbers."
     },
     {
@@ -1900,8 +1900,8 @@
         "5"
       ],
       "answer": 2,
-      "quip_correct": "Left and right, atrium and ventricle â€” four chambers total.",
-      "quip_wrong": "Four chambers â€” two atria and two ventricles."
+      "quip_correct": "Left and right, atrium and ventricle — four chambers total.",
+      "quip_wrong": "Four chambers — two atria and two ventricles."
     },
     {
       "id": "science_and_math_010",
@@ -1915,7 +1915,7 @@
         "Chloroplast"
       ],
       "answer": 2,
-      "quip_correct": "The mitochondrion â€” where ATP gets made.",
+      "quip_correct": "The mitochondrion — where ATP gets made.",
       "quip_wrong": "The mitochondrion, where cellular respiration happens."
     },
     {
@@ -2066,7 +2066,7 @@
       ],
       "answer": 2,
       "quip_correct": "The workhorse of C++ containers.",
-      "quip_wrong": "It's just <vector> â€” straightforward for once."
+      "quip_wrong": "It's just <vector> — straightforward for once."
     },
     {
       "id": "general_034",
@@ -2080,8 +2080,8 @@
         "Swaps two variables in place"
       ],
       "answer": 1,
-      "quip_correct": "It's a cast, not a move â€” the name lies!",
-      "quip_wrong": "std::move doesn't move anything â€” it just enables the move constructor to be called."
+      "quip_correct": "It's a cast, not a move — the name lies!",
+      "quip_wrong": "std::move doesn't move anything — it just enables the move constructor to be called."
     },
     {
       "id": "general_035",
@@ -2096,7 +2096,7 @@
       ],
       "answer": 2,
       "quip_correct": "The source of countless bugs.",
-      "quip_wrong": "It's a pointer to memory that's been freed â€” accessing it is undefined behavior."
+      "quip_wrong": "It's a pointer to memory that's been freed — accessing it is undefined behavior."
     },
     {
       "id": "general_036",
@@ -2126,7 +2126,7 @@
       ],
       "answer": 1,
       "quip_correct": "List comprehensions are beautiful.",
-      "quip_wrong": "range(4) starts at 0, so you get 0Â², 1Â², 2Â², 3Â²."
+      "quip_wrong": "range(4) starts at 0, so you get 0², 1², 2², 3²."
     },
     {
       "id": "general_038",
@@ -2140,7 +2140,7 @@
         "Adds type checking to the function's arguments"
       ],
       "answer": 1,
-      "quip_correct": "Functions wrapping functions â€” it's elegant.",
+      "quip_correct": "Functions wrapping functions — it's elegant.",
       "quip_wrong": "A decorator takes a function and returns a modified version of it."
     },
     {
@@ -2156,7 +2156,7 @@
       ],
       "answer": 1,
       "quip_correct": "Strict equality saves you from weird bugs.",
-      "quip_wrong": "== coerces types before comparing â€” that's why '0' == false is true."
+      "quip_wrong": "== coerces types before comparing — that's why '0' == false is true."
     },
     {
       "id": "general_040",
@@ -2171,7 +2171,7 @@
       ],
       "answer": 1,
       "quip_correct": "Map, don't mutate!",
-      "quip_wrong": "map() returns a brand new array â€” reduce() accumulates, find() returns one match."
+      "quip_wrong": "map() returns a brand new array — reduce() accumulates, find() returns one match."
     },
     {
       "id": "general_041",
@@ -2186,7 +2186,7 @@
       ],
       "answer": 2,
       "quip_correct": "No more .then().then().then() chains.",
-      "quip_wrong": "async/await is syntactic sugar over Promises â€” same thing, cleaner syntax."
+      "quip_wrong": "async/await is syntactic sugar over Promises — same thing, cleaner syntax."
     },
     {
       "id": "general_042",
@@ -2201,7 +2201,7 @@
       ],
       "answer": 1,
       "quip_correct": "Piping makes R code read like a sentence.",
-      "quip_wrong": "The pipe sends output forward â€” x %>% f() is the same as f(x)."
+      "quip_wrong": "The pipe sends output forward — x %>% f() is the same as f(x)."
     },
     {
       "id": "general_043",
@@ -2216,7 +2216,7 @@
       ],
       "answer": 3,
       "quip_correct": "Vectorized thinking at its finest.",
-      "quip_wrong": "apply, lapply, sapply â€” they all let you run a function across data without explicit loops."
+      "quip_wrong": "apply, lapply, sapply — they all let you run a function across data without explicit loops."
     },
     {
       "id": "general_044",
@@ -2231,7 +2231,7 @@
       ],
       "answer": 3,
       "quip_correct": "The bane of every data cleaning script.",
-      "quip_wrong": "NA means 'not available' â€” it's R's way of representing missing data."
+      "quip_wrong": "NA means 'not available' — it's R's way of representing missing data."
     },
     {
       "id": "linguistics_001",
@@ -2246,7 +2246,7 @@
       ],
       "answer": 3,
       "quip_correct": "Nearly a billion native speakers!",
-      "quip_wrong": "Mandarin has roughly 920 million native speakers â€” nothing else comes close."
+      "quip_wrong": "Mandarin has roughly 920 million native speakers — nothing else comes close."
     },
     {
       "id": "linguistics_002",
@@ -2261,7 +2261,7 @@
       ],
       "answer": 0,
       "quip_correct": "German is Germanic, not Romantic.",
-      "quip_wrong": "German comes from the Germanic branch â€” French, Spanish, and Romanian all descend from Latin."
+      "quip_wrong": "German comes from the Germanic branch — French, Spanish, and Romanian all descend from Latin."
     },
     {
       "id": "linguistics_003",
@@ -2276,7 +2276,7 @@
       ],
       "answer": 1,
       "quip_correct": "Now go seize it.",
-      "quip_wrong": "Carpe diem â€” seize the day. Horace would want you to remember."
+      "quip_wrong": "Carpe diem — seize the day. Horace would want you to remember."
     },
     {
       "id": "linguistics_004",
@@ -2290,8 +2290,8 @@
         "Biology class"
       ],
       "answer": 2,
-      "quip_correct": "Donde estÃ¡ la biblioteca!",
-      "quip_wrong": "Biblioteca means library â€” it comes from the Greek word for 'book container.'"
+      "quip_correct": "Donde está la biblioteca!",
+      "quip_wrong": "Biblioteca means library — it comes from the Greek word for 'book container.'"
     },
     {
       "id": "linguistics_005",
@@ -2302,7 +2302,7 @@
         "Four",
         "Two",
         "Six",
-        "None â€” German doesn't use cases"
+        "None  -  German doesn't use cases"
       ],
       "answer": 0,
       "quip_correct": "Nominative, accusative, dative, genitive!",
@@ -2320,7 +2320,7 @@
         "Upsilon"
       ],
       "answer": 2,
-      "quip_correct": "The end â€” literally. Omega means 'great O.'",
+      "quip_correct": "The end — literally. Omega means 'great O.'",
       "quip_wrong": "Omega is the last letter, and its name literally means 'the great O.'"
     },
     {
@@ -2335,8 +2335,8 @@
         "A word with two opposite meanings"
       ],
       "answer": 1,
-      "quip_correct": "Like 'night' (English) and 'Nacht' (German) â€” same root!",
-      "quip_wrong": "Cognates share a common etymological origin â€” like 'mother' and 'Mutter.'"
+      "quip_correct": "Like 'night' (English) and 'Nacht' (German) — same root!",
+      "quip_wrong": "Cognates share a common etymological origin — like 'mother' and 'Mutter.'"
     },
     {
       "id": "linguistics_008",
@@ -2350,7 +2350,7 @@
         "It adopted the Cyrillic alphabet permanently"
       ],
       "answer": 1,
-      "quip_correct": "Lupul â€” 'the wolf' â€” with the article stuck on the end!",
+      "quip_correct": "Lupul — 'the wolf' — with the article stuck on the end!",
       "quip_wrong": "Romanian is the only major Romance language with a postposed (suffixed) definite article."
     },
     {
@@ -2366,7 +2366,7 @@
       ],
       "answer": 0,
       "quip_correct": "Roman soldiers were worth their salt.",
-      "quip_wrong": "Salarium relates to 'sal' (salt) â€” Roman soldiers may have been paid in it."
+      "quip_wrong": "Salarium relates to 'sal' (salt) — Roman soldiers may have been paid in it."
     },
     {
       "id": "linguistics_010",
@@ -2381,7 +2381,7 @@
       ],
       "answer": 2,
       "quip_correct": "Il faut que tu le saches!",
-      "quip_wrong": "The subjunctive expresses uncertainty, wishes, and feelings â€” que + subjunctive is the classic pattern."
+      "quip_wrong": "The subjunctive expresses uncertainty, wishes, and feelings — que + subjunctive is the classic pattern."
     },
     {
       "id": "pop_001",
@@ -2396,7 +2396,7 @@
       ],
       "answer": 0,
       "quip_correct": "What would you do without Winnie Cooper?",
-      "quip_wrong": "Kevin Arnold â€” the kid who narrated his way through the '60s and '70s."
+      "quip_wrong": "Kevin Arnold — the kid who narrated his way through the '60s and '70s."
     },
     {
       "id": "pop_002",
@@ -2411,7 +2411,7 @@
       ],
       "answer": 3,
       "quip_correct": "Peace, love, and suburban angst.",
-      "quip_wrong": "The show is set from 1968 to 1973 â€” Vietnam era suburbia."
+      "quip_wrong": "The show is set from 1968 to 1973 — Vietnam era suburbia."
     },
     {
       "id": "pop_003",
@@ -2425,7 +2425,7 @@
         "Architect"
       ],
       "answer": 2,
-      "quip_correct": "Fake it till you make it â€” literally.",
+      "quip_correct": "Fake it till you make it — literally.",
       "quip_wrong": "Mike never went to law school but practiced law at Pearson Hardman."
     },
     {
@@ -2456,7 +2456,7 @@
       ],
       "answer": 0,
       "quip_correct": "It started with books in a garage.",
-      "quip_wrong": "Amazon â€” founded in 1994, originally as an online bookstore."
+      "quip_wrong": "Amazon — founded in 1994, originally as an online bookstore."
     },
     {
       "id": "pop_006",
@@ -2516,7 +2516,7 @@
       ],
       "answer": 1,
       "quip_correct": "Before all the name changes began.",
-      "quip_wrong": "It started as Pearson Hardman â€” the firm name changed many times over the series."
+      "quip_wrong": "It started as Pearson Hardman — the firm name changed many times over the series."
     },
     {
       "id": "pop_010",
@@ -2545,8 +2545,8 @@
         "Orbital Sciences"
       ],
       "answer": 2,
-      "quip_correct": "Gradatim ferociter â€” step by step, ferociously.",
-      "quip_wrong": "Blue Origin â€” founded in 2000, years before SpaceX."
+      "quip_correct": "Gradatim ferociter — step by step, ferociously.",
+      "quip_wrong": "Blue Origin — founded in 2000, years before SpaceX."
     },
     {
       "id": "pop_012",
@@ -2560,7 +2560,7 @@
         "Karen Arnold"
       ],
       "answer": 2,
-      "quip_correct": "The girl next door â€” literally.",
+      "quip_correct": "The girl next door — literally.",
       "quip_wrong": "Winnie Cooper, played by Danica McKellar, who later became a mathematician."
     },
     {
@@ -2571,11 +2571,11 @@
       "choices": [
         "I'm not a lawyer, I'm a closer",
         "Winners don't make excuses",
-        "That's what I do â€” I drink and I know things",
+        "That's what I do  -  I drink and I know things",
         "I don't have dreams, I have goals"
       ],
       "answer": 3,
-      "quip_correct": "Goals, not dreams â€” very Harvey.",
+      "quip_correct": "Goals, not dreams — very Harvey.",
       "quip_wrong": "Harvey's famous line was 'I don't have dreams, I have goals.'"
     },
     {
@@ -2591,7 +2591,7 @@
       ],
       "answer": 1,
       "quip_correct": "Ten billion dollars for the planet.",
-      "quip_wrong": "The Bezos Earth Fund â€” a $10 billion commitment to fight climate change."
+      "quip_wrong": "The Bezos Earth Fund — a $10 billion commitment to fight climate change."
     },
     {
       "id": "pop_015",
@@ -2665,7 +2665,7 @@
         "The Los Angeles Times"
       ],
       "answer": 2,
-      "quip_correct": "Democracy dies in darkness â€” and Bezos brought cash.",
+      "quip_correct": "Democracy dies in darkness — and Bezos brought cash.",
       "quip_wrong": "He bought The Washington Post for $250 million."
     },
     {
@@ -2696,7 +2696,7 @@
       ],
       "answer": 0,
       "quip_correct": "It's the cinnamon sugar swirls in every bite!",
-      "quip_wrong": "Cinnamon Toast Crunch â€” the cereal that sees you back."
+      "quip_wrong": "Cinnamon Toast Crunch — the cereal that sees you back."
     },
     {
       "id": "pop_022",
@@ -2726,7 +2726,7 @@
       ],
       "answer": 2,
       "quip_correct": "Cute, furry, and very blue.",
-      "quip_wrong": "Grover is blue â€” and he'd like you to know he is also adorable and lovable."
+      "quip_wrong": "Grover is blue — and he'd like you to know he is also adorable and lovable."
     },
     {
       "id": "pop_024",
@@ -2740,7 +2740,7 @@
         "Andrew Johnson"
       ],
       "answer": 0,
-      "quip_correct": "Sic semper tyrannis â€” too soon?",
+      "quip_correct": "Sic semper tyrannis — too soon?",
       "quip_wrong": "Abraham Lincoln was shot by John Wilkes Booth at Ford's Theatre."
     },
     {
@@ -2771,7 +2771,7 @@
       ],
       "answer": 3,
       "quip_correct": "East Bay punk at its finest.",
-      "quip_wrong": "Rancid is punk rock through and through â€” straight out of the Berkeley scene."
+      "quip_wrong": "Rancid is punk rock through and through — straight out of the Berkeley scene."
     },
     {
       "id": "pop_027",
@@ -2786,7 +2786,7 @@
       ],
       "answer": 3,
       "quip_correct": "Now you'll never look at a fish stick the same way.",
-      "quip_wrong": "Alaska pollock â€” cheap, mild, and perfect for breading."
+      "quip_wrong": "Alaska pollock — cheap, mild, and perfect for breading."
     },
     {
       "id": "pop_028",
@@ -2801,7 +2801,7 @@
       ],
       "answer": 0,
       "quip_correct": "Wendell held on as long as he could.",
-      "quip_wrong": "Wendell was the last baker standing â€” Bob and Quello were phased out first."
+      "quip_wrong": "Wendell was the last baker standing — Bob and Quello were phased out first."
     },
     {
       "id": "pop_029",
@@ -2816,7 +2816,7 @@
       ],
       "answer": 2,
       "quip_correct": "Philly emo at its most heartfelt.",
-      "quip_wrong": "Modern Baseball formed in Philadelphia â€” Brendan Lukens and Jake Ewald met at college there."
+      "quip_wrong": "Modern Baseball formed in Philadelphia — Brendan Lukens and Jake Ewald met at college there."
     },
     {
       "id": "pop_030",
@@ -2840,13 +2840,13 @@
       "prompt": "What is Bad Bunny's real name?",
       "choices": [
         "Luis Fonsi",
-        "Benito Antonio MartÃ­nez Ocasio",
-        "RamÃ³n Ayala",
+        "Benito Antonio Martínez Ocasio",
+        "Ramón Ayala",
         "Juan Carlos Ozuna"
       ],
       "answer": 1,
-      "quip_correct": "Benito â€” but you can call him Bad Bunny.",
-      "quip_wrong": "His real name is Benito Antonio MartÃ­nez Ocasio."
+      "quip_correct": "Benito — but you can call him Bad Bunny.",
+      "quip_wrong": "His real name is Benito Antonio Martínez Ocasio."
     },
     {
       "id": "pop_032",
@@ -2860,8 +2860,8 @@
         "He was the only president from the Whig Party"
       ],
       "answer": 0,
-      "quip_correct": "22nd AND 24th â€” the comeback kid.",
-      "quip_wrong": "Cleveland is the only president to serve two non-consecutive terms: 1885â€“1889 and 1893â€“1897."
+      "quip_correct": "22nd AND 24th — the comeback kid.",
+      "quip_wrong": "Cleveland is the only president to serve two non-consecutive terms: 1885–1889 and 1893–1897."
     },
     {
       "id": "pop_033",
@@ -2891,7 +2891,7 @@
       ],
       "answer": 0,
       "quip_correct": "Fake business is real business.",
-      "quip_wrong": "The Tim Dillon Show â€” where real estate, conspiracy, and comedy collide."
+      "quip_wrong": "The Tim Dillon Show — where real estate, conspiracy, and comedy collide."
     },
     {
       "id": "pop_035",
@@ -2906,7 +2906,7 @@
       ],
       "answer": 3,
       "quip_correct": "Punk rocker by night, evolutionary biologist by day.",
-      "quip_wrong": "Greg Graffin earned his PhD in zoology â€” he's literally Dr. Graffin."
+      "quip_wrong": "Greg Graffin earned his PhD in zoology — he's literally Dr. Graffin."
     },
     {
       "id": "pop_036",
@@ -2917,10 +2917,10 @@
         "Malcolm Gladwell",
         "Eric Klinenberg",
         "Steven Levitt",
-        "BrenÃ© Brown"
+        "Brené Brown"
       ],
       "answer": 1,
-      "quip_correct": "Comedy meets sociology â€” a surprisingly great combo.",
+      "quip_correct": "Comedy meets sociology — a surprisingly great combo.",
       "quip_wrong": "Eric Klinenberg, an NYU sociologist, co-wrote the book with Ansari."
     },
     {
@@ -2936,7 +2936,7 @@
       ],
       "answer": 0,
       "quip_correct": "One of the greatest punk albums ever made.",
-      "quip_wrong": "...And Out Come the Wolves â€” Rancid's masterpiece and a punk rock landmark."
+      "quip_wrong": "...And Out Come the Wolves — Rancid's masterpiece and a punk rock landmark."
     },
     {
       "id": "pop_038",
@@ -2951,7 +2951,7 @@
       ],
       "answer": 2,
       "quip_correct": "The same genius behind Yoda and Miss Piggy!",
-      "quip_wrong": "Frank Oz originated Grover â€” he also performed Cookie Monster, Bert, and Fozzie Bear."
+      "quip_wrong": "Frank Oz originated Grover — he also performed Cookie Monster, Bert, and Fozzie Bear."
     },
     {
       "id": "pop_039",
@@ -2965,14 +2965,14 @@
         "Jill Biden"
       ],
       "answer": 2,
-      "quip_correct": "Let's Move â€” to Sesame Street!",
+      "quip_correct": "Let's Move — to Sesame Street!",
       "quip_wrong": "Michelle Obama appeared as part of her Let's Move! initiative promoting kids' nutrition."
     },
     {
       "id": "pop_040",
       "category": "pop",
       "difficulty": "hard",
-      "prompt": "What is the name of Bad Religion's iconic logo â€” a cross with a red prohibition sign over it?",
+      "prompt": "What is the name of Bad Religion's iconic logo  -  a cross with a red prohibition sign over it?",
       "choices": [
         "The Cross-Out",
         "The Anti-Cross",
@@ -2981,7 +2981,7 @@
       ],
       "answer": 3,
       "quip_correct": "The most recognizable symbol in punk.",
-      "quip_wrong": "The Crossbuster â€” designed in the early '80s and still on every album."
+      "quip_wrong": "The Crossbuster — designed in the early '80s and still on every album."
     },
     {
       "id": "music_013",
@@ -2996,7 +2996,7 @@
       ],
       "answer": 2,
       "quip_correct": "Even Thom Yorke can't escape it.",
-      "quip_wrong": "Creep â€” the song that made them famous and the one they wish hadn't."
+      "quip_wrong": "Creep — the song that made them famous and the one they wish hadn't."
     },
     {
       "id": "music_014",
@@ -3026,7 +3026,7 @@
       ],
       "answer": 0,
       "quip_correct": "The most punk thing to ever happen on live TV.",
-      "quip_wrong": "He was supposed to play 'Less Than Zero' but switched to 'Radio Radio' â€” and was banned for over a decade."
+      "quip_wrong": "He was supposed to play 'Less Than Zero' but switched to 'Radio Radio' — and was banned for over a decade."
     },
     {
       "id": "music_016",
@@ -3041,7 +3041,7 @@
       ],
       "answer": 3,
       "quip_correct": "A cold and gray Chicago mornin' indeed.",
-      "quip_wrong": "The song is set in Chicago â€” written by Mac Davis."
+      "quip_wrong": "The song is set in Chicago — written by Mac Davis."
     },
     {
       "id": "general_045",
@@ -3062,7 +3062,7 @@
       "id": "general_046",
       "category": "general",
       "difficulty": "medium",
-      "prompt": "The Irish Potato Famine (1845â€“1852) was caused by a devastating potato blight. What type of organism caused it?",
+      "prompt": "The Irish Potato Famine (1845-1852) was caused by a devastating potato blight. What type of organism caused it?",
       "choices": [
         "A bacterium",
         "A virus",
@@ -3070,8 +3070,8 @@
         "A fungus-like water mold"
       ],
       "answer": 3,
-      "quip_correct": "Phytophthora infestans â€” the oomycete that changed history.",
-      "quip_wrong": "It was caused by Phytophthora infestans, a water mold â€” technically not a true fungus."
+      "quip_correct": "Phytophthora infestans — the oomycete that changed history.",
+      "quip_wrong": "It was caused by Phytophthora infestans, a water mold — technically not a true fungus."
     },
     {
       "id": "general_047",
@@ -3086,7 +3086,7 @@
       ],
       "answer": 1,
       "quip_correct": "Ireland's population still hasn't recovered.",
-      "quip_wrong": "Roughly 1 million died and over 1 million emigrated â€” Ireland's population dropped by about 25%."
+      "quip_wrong": "Roughly 1 million died and over 1 million emigrated — Ireland's population dropped by about 25%."
     },
     {
       "id": "film-and-tv_019",
@@ -3116,7 +3116,7 @@
       ],
       "answer": 2,
       "quip_correct": "The most pretentious Labrador in Quahog.",
-      "quip_wrong": "Brian Griffin â€” martini-drinking, novel-writing, Prius-driving dog."
+      "quip_wrong": "Brian Griffin — martini-drinking, novel-writing, Prius-driving dog."
     },
     {
       "id": "film-and-tv_021",
@@ -3131,7 +3131,7 @@
       ],
       "answer": 0,
       "quip_correct": "Making your way in the world today takes everything you've got.",
-      "quip_wrong": "Cheers â€” the bar where everybody knows your name. Ran for 11 seasons."
+      "quip_wrong": "Cheers — the bar where everybody knows your name. Ran for 11 seasons."
     },
     {
       "id": "film-and-tv_022",
@@ -3146,7 +3146,7 @@
       ],
       "answer": 3,
       "quip_correct": "And somehow nothing became everything.",
-      "quip_wrong": "'A show about nothing' â€” the pitch that almost didn't make it."
+      "quip_wrong": "'A show about nothing' — the pitch that almost didn't make it."
     },
     {
       "id": "film-and-tv_023",
@@ -3176,7 +3176,7 @@
       ],
       "answer": 0,
       "quip_correct": "Lock, lock, lock, lock, lock.",
-      "quip_wrong": "Melvin has OCD â€” the lock-checking and crack-avoiding won Nicholson his third Oscar."
+      "quip_wrong": "Melvin has OCD — the lock-checking and crack-avoiding won Nicholson his third Oscar."
     },
     {
       "id": "film-and-tv_025",
@@ -3191,7 +3191,7 @@
       ],
       "answer": 2,
       "quip_correct": "One of cinema's greatest villains.",
-      "quip_wrong": "Louise Fletcher â€” her Oscar acceptance speech in sign language for her deaf parents is legendary."
+      "quip_wrong": "Louise Fletcher — her Oscar acceptance speech in sign language for her deaf parents is legendary."
     },
     {
       "id": "film-and-tv_026",
@@ -4352,7 +4352,7 @@
       "id": "pop_056",
       "category": "pop",
       "difficulty": "hard",
-      "prompt": "On 'The Dick Van Dyke Show,' boss Alan Brady was rarely seen on screen. Which comedian played him — and also created the show?",
+      "prompt": "On 'The Dick Van Dyke Show,' boss Alan Brady was rarely seen on screen. Which comedian played him  -  and also created the show?",
       "choices": [
         "Danny Thomas",
         "Sheldon Leonard",
