@@ -16,4 +16,8 @@ __all__ = [
     "load_resource",
 ]
 
-__version__ = "0.1.0"
+from importlib.metadata import version, PackageNotFoundError
+try:
+    __version__ = version("promptukit")
+except PackageNotFoundError:
+    __version__ = "unknown"
