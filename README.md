@@ -19,6 +19,7 @@ add-question
 extract-question --help
 validate-question
 question-bank --help
+promptukit-gui          # launch the browser-based authoring GUI
 ```
 
 You can also import the library in Python or a Jupyter notebook:
@@ -26,6 +27,7 @@ You can also import the library in Python or a Jupyter notebook:
 ```python
 import promptukit as pk
 # Top-level helpers: pk.load(path), pk.save(path, data), pk.pick(), pk.confirm()
+# Launch the authoring GUI: pk.launch_gui()
 # Subpackages are available as `pk.exams`, `pk.questions`, and `pk.utils`.
 ```
 
@@ -260,6 +262,92 @@ python -m promptukit.questions.add_question
 python -m promptukit.questions.extract_question --help
 python -m promptukit.questions.question_bank create --dest content/question_banks/new.json
 ```
+
+Authoring GUI (NiceGUI)
+-----------------------
+
+`promptukit` ships a lightweight browser GUI for authoring multiple-choice
+question banks without touching Python. It reads and writes the same JSON
+format used by the rest of the package (the one validated by
+`validate-question`), so you can open any existing bank in
+`promptukit/data/question_banks/` (or your own) and edit it in place.
+
+Launch from the shell:
+
+```bash
+promptukit-gui                                  # opens http://localhost:8080 in a browser tab
+promptukit-gui -f my_bank.json                  # load (or create) this working file
+promptukit-gui -p 9000 --no-browser             # custom port, don't auto-open a tab
+```
+
+`-f/--file` points at the GUI's *working file* — if it exists it's loaded on
+startup; when you click **Save all to file** it gets overwritten with the
+current in-memory list. You can also change the working file from inside the
+GUI via the top-bar **Open…** button.
+
+Or from Python:
+
+```python
+from promptukit import launch_gui
+launch_gui()                                     # defaults: ./promptukit_questions.json, port 8080
+launch_gui(file_path="my_bank.json", port=9000, show=False)
+```
+
+The GUI is a single page with a resizable splitter: question list on the left,
+editor on the right. Each list row shows the full prompt (wrapping as needed)
+plus `id`, `category`, and a color-coded `difficulty` badge. The editor exposes
+every field in the schema:
+
+- `id` (text)
+- `category` (text with autocomplete from the file's `categories` list)
+- `difficulty` (easy / medium / hard)
+- `prompt` (autosizing textarea)
+- `choices` (four inputs A–D, with a radio to pick which one is `answer`)
+- `quip_correct`, `quip_wrong` (optional textareas — omitted from the saved
+  file when blank, matching the existing banks' convention)
+
+Top-bar buttons:
+
+- **Open…** — switch the working file (loads it if it exists, or starts empty
+  with that path queued for the next save).
+- **Reload from file** — discard in-memory edits and re-read the working file.
+- **Save all to file** — the only action that writes to the current working
+  file, so you can discard a session.
+- **Save as…** — write the in-memory bank to a new path and switch the working
+  file to it (existing files are not overwritten unless you opt in).
+- **Copy all as JSON** — full bank (including `categories` / `_schema_notes`).
+- **Copy selected as JSON** — the single-question dict, ready to paste into
+  another bank's `questions` array.
+
+The editor's **Apply** button commits edits to the in-memory list (the
+top-bar Save writes them to disk).
+
+On-disk format (unchanged from the rest of the package):
+
+```json
+{
+  "_schema_notes": ["optional free-form notes"],
+  "categories": ["music", "motorsport"],
+  "questions": [
+    {
+      "id": "music_001",
+      "category": "music",
+      "difficulty": "easy",
+      "prompt": "Which instrument has a keyboard and strings?",
+      "choices": ["Guitar", "Piano", "Violin", "Drums"],
+      "answer": 1,
+      "quip_correct": "Yep.",
+      "quip_wrong": "Nope."
+    }
+  ]
+}
+```
+
+Unknown top-level keys and unknown per-question keys are preserved verbatim on
+round-trip, so the GUI is safe to point at files with extra metadata it
+doesn't understand.
+
+Requires `nicegui` (installed automatically as a dependency).
 
 Create exam PDF
 ---------------

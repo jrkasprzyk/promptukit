@@ -9,6 +9,7 @@ Subpackages
 -----------
   promptukit.questions       - manage question bank JSON files
   promptukit.exams           - generate exam PDFs (requires reportlab)
+  promptukit.gui             - NiceGUI-based authoring GUI (requires nicegui)
 
 CLI tools (run with python -m <module>)
 ---------------------------------------
@@ -28,9 +29,17 @@ CLI tools (run with python -m <module>)
   python -m promptukit.exams.create_exam \\
       -q questions.json -o exam.pdf [-m metadata.json]
 
+  promptukit-gui                         # launch authoring GUI (browser tab)
+  promptukit-gui -f my.json              # open an existing file (or start a new one)
+  promptukit-gui -p 9000 --no-browser    # custom port, no auto-open
+
 Python API
 ----------
-  from promptukit import load, save, pick, confirm, load_resource
+  from promptukit import load, save, pick, confirm, load_resource, launch_gui
+
+  launch_gui()                              # open the authoring GUI
+  launch_gui(file_path="qs.json")           # load/save this file
+  launch_gui(port=9000, show=False)         # custom port, no auto-open
 
   load(path)                 # load any JSON file -> dict/list
   save(path, data)           # save dict/list to JSON
@@ -47,6 +56,14 @@ Python API
 
 from promptukit.utils.cli_helpers import load, save, pick, confirm, load_resource
 
+
+def launch_gui(*args, **kwargs):
+    """Lazy wrapper for ``promptukit.gui.launch`` (avoids importing NiceGUI until used)."""
+    from promptukit.gui import launch
+
+    return launch(*args, **kwargs)
+
+
 __all__ = [
     # subpackages
     "questions",
@@ -58,6 +75,7 @@ __all__ = [
     "pick",
     "confirm",
     "load_resource",
+    "launch_gui",
     "help",
 ]
 
