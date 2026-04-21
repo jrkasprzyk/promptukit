@@ -47,12 +47,12 @@ from promptukit.exams import create_exam
 # running outside the repository (for example from an installed package),
 # fall back to the packaged sample dataset that ships with `promptukit`.
 import os
-bank_path = 'content/question_banks/example_sections.json'
+bank_path = 'promptukit/data/question_banks/crb-water-management-sample.json'
 if os.path.exists(bank_path):
-   data = pk.load(bank_path)
+  data = pk.load(bank_path)
 else:
-   # load packaged sample included with the installed package
-   data = pk.load_resource('question_banks/example_sections.json')
+  # load packaged sample included with the installed package
+  data = pk.load_resource('question_banks/crb-water-management-sample.json')
 
 # 3) Inspect the file (section-based vs flat list)
 if 'sections' in data:
@@ -213,7 +213,7 @@ Extracting data:
 poetry run extract-question --list-categories
 
 # Print prompt and answer fields for the 'music' category
-poetry run extract-question --file content/question_banks/block-doku-questions.json --category music --fields prompt,answer
+poetry run extract-question --file promptukit/data/question_banks/block-doku-questions.json --category music --fields prompt,answer
 
 # Interactive picker
 poetry run extract-question -i
@@ -226,7 +226,7 @@ Add questions:
 poetry run add-question
 
 # Batch mode
-poetry run add-question --batch new_questions.json content/question_banks/mybank.json
+poetry run add-question --batch new_questions.json promptukit/data/question_banks/mybank.json
 ```
 
 Validate a trivia file:
@@ -236,23 +236,23 @@ Validate a trivia file:
 poetry run validate-question
 
 # Validate a specific file
-poetry run validate-question content/question_banks/block-doku-questions.json
+poetry run validate-question promptukit/data/question_banks/block-doku-questions.json
 ```
 
 Manage files with `question-bank` (create/copy/extract):
 
 ```bash
 # Create a new template JSON file
-poetry run question-bank create --dest content/question_banks/new.json --categories music,film-and-tv
+poetry run question-bank create --dest promptukit/data/question_banks/new.json --categories music,film-and-tv
 
 # Copy an existing file
-poetry run question-bank copy --src content/question_banks/block-doku-questions.json --dest content/question_banks/backup.json
+poetry run question-bank copy --src promptukit/data/question_banks/block-doku-questions.json --dest promptukit/data/question_banks/backup.json
 
 # Extract a subset (easy music questions)
-poetry run question-bank extract --src content/question_banks/block-doku-questions.json --dest content/question_banks/music_easy.json --categories music --difficulty easy
+poetry run question-bank extract --src promptukit/data/question_banks/block-doku-questions.json --dest promptukit/data/question_banks/music_easy.json --categories music --difficulty easy
 
 # Interactive extract
-poetry run question-bank extract -i --src content/question_banks/block-doku-questions.json --dest content/question_banks/pick.json
+poetry run question-bank extract -i --src promptukit/data/question_banks/block-doku-questions.json --dest promptukit/data/question_banks/pick.json
 ```
 
 Alternative: run modules with `python -m` when not using Poetry:
@@ -260,7 +260,7 @@ Alternative: run modules with `python -m` when not using Poetry:
 ```bash
 python -m promptukit.questions.add_question
 python -m promptukit.questions.extract_question --help
-python -m promptukit.questions.question_bank create --dest content/question_banks/new.json
+python -m promptukit.questions.question_bank create --dest promptukit/data/question_banks/new.json
 ```
 
 Authoring GUI (NiceGUI)
@@ -354,7 +354,7 @@ Create exam PDF
 
 The `create_exam.py` script can generate a printable exam PDF. It accepts
 an external JSON question bank so you can build exams from your existing
-`content/question_banks/` files.
+`promptukit/data/question_banks/` files.
 
 Usage (from the repository root):
 
@@ -363,10 +363,10 @@ Usage (from the repository root):
 python -m promptukit.exams.create_exam
 
 # Load questions from a JSON bank and write a PDF
-python -m promptukit.exams.create_exam -q content/question_banks/block-doku-questions.json -o cven4333_from_json.pdf
+python -m promptukit.exams.create_exam -q promptukit/data/question_banks/block-doku-questions.json -o cven4333_from_json.pdf
 
 # With Poetry (runs the module inside the virtualenv)
-poetry run python -m promptukit.exams.create_exam -q content/question_banks/block-doku-questions.json -o cven4333_from_json.pdf
+poetry run python -m promptukit.exams.create_exam -q promptukit/data/question_banks/block-doku-questions.json -o cven4333_from_json.pdf
 ```
 
 Supported JSON formats
@@ -402,8 +402,8 @@ Supported JSON formats
 Example files
 -------------
 
-- Example section-based bank: [content/question_banks/example_sections.json](content/question_banks/example_sections.json)
-- JSON Schema describing accepted layouts: [content/question_banks/question_schema.json](content/question_banks/question_schema.json)
+-- Example section-based bank: [promptukit/data/question_banks/crb-water-management-sample.json](promptukit/data/question_banks/crb-water-management-sample.json)
+-- JSON Schema describing accepted layouts: [promptukit/data/question_banks/question_schema.json](promptukit/data/question_banks/question_schema.json)
 
 Behavior notes
 --------------

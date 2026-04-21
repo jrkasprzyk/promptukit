@@ -43,7 +43,7 @@ Python API
 
   load(path)                 # load any JSON file -> dict/list
   save(path, data)           # save dict/list to JSON
-  load_resource('question_banks/example.json')  # load bundled data file
+    load_resource('question_banks/crb-water-management-sample.json')  # load bundled data file
   pick("Choose:", options)   # numbered CLI menu -> chosen string
   confirm("Continue?")       # y/n prompt -> bool
 

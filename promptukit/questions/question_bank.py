@@ -2,12 +2,12 @@
 """Manage question bank JSON files: create, copy, or extract subsets.
 
 Usage examples:
-  python -m promptukit.questions.question_bank create --dest content/question_banks/new.json --categories music,film-and-tv
-  python -m promptukit.questions.question_bank copy --src content/question_banks/block-doku-questions.json --dest content/question_banks/backup.json
-  python -m promptukit.questions.question_bank extract --src content/question_banks/block-doku-questions.json --dest content/question_banks/music_subset.json --categories music --difficulty easy
-  python -m promptukit.questions.question_bank extract -i --src content/question_banks/block-doku-questions.json --dest content/question_banks/pick.json
-  python -m promptukit.questions.question_bank extract --src content/question_banks/block-doku-questions.json --dest content/question_banks/exam_subset.json --numbers 5,10,15-18
-  python -m promptukit.questions.question_bank extract -I --src content/question_banks/block-doku-questions.json --dest content/question_banks/pick.json
+    python -m promptukit.questions.question_bank create --dest promptukit/data/question_banks/new.json --categories music,film-and-tv
+    python -m promptukit.questions.question_bank copy --src promptukit/data/question_banks/block-doku-questions.json --dest promptukit/data/question_banks/backup.json
+    python -m promptukit.questions.question_bank extract --src promptukit/data/question_banks/block-doku-questions.json --dest promptukit/data/question_banks/music_subset.json --categories music --difficulty easy
+    python -m promptukit.questions.question_bank extract -i --src promptukit/data/question_banks/block-doku-questions.json --dest promptukit/data/question_banks/pick.json
+    python -m promptukit.questions.question_bank extract --src promptukit/data/question_banks/block-doku-questions.json --dest promptukit/data/question_banks/exam_subset.json --numbers 5,10,15-18
+    python -m promptukit.questions.question_bank extract -I --src promptukit/data/question_banks/block-doku-questions.json --dest promptukit/data/question_banks/pick.json
 """
 
 from __future__ import annotations

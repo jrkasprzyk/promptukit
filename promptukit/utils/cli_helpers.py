@@ -26,8 +26,8 @@ def load_resource(relpath: str) -> Any:
     """Load a JSON resource bundled with the package under `promptukit/data`.
 
     Examples:
-        load_resource('question_banks/example_sections.json')
-        load_resource('example_sections.json')  # will try data/question_banks
+        load_resource('question_banks/crb-water-management-sample.json')
+        load_resource('crb-water-management-sample.json')  # will try data/question_banks
     """
     base = resources.files('promptukit').joinpath('data')
     target = base.joinpath(relpath)

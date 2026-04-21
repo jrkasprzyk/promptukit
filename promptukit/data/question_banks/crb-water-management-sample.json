@@ -4,12 +4,20 @@
       "title": "Hydrology Basics",
       "questions": [
         {
+          "id": "crb_001",
+          "category": "science and math",
+          "difficulty": "easy",
           "prompt": "The basic water-balance equation P = Q + ET + \u0394S includes which term for change in storage?",
-          "choices": ["P", "Q", "ET", "\u0394S", "None of the above"]
+          "choices": ["P", "Q", "ET", "\u0394S"],
+          "answer": 3
         },
         {
+          "id": "crb_002",
+          "category": "science and math",
+          "difficulty": "easy",
           "prompt": "Which process transfers water from plants to the atmosphere?",
-          "choices": ["Infiltration", "Runoff", "Transpiration", "Condensation", "Percolation"]
+          "choices": ["Infiltration", "Runoff", "Transpiration", "Condensation"],
+          "answer": 2
         }
       ]
     }

@@ -1,0 +1,93 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "promptukit question bank schema (permissive)",
+  "description": "Permissive JSON Schema documenting the shapes and common fields accepted by promptukit loaders and tools. This schema enumerates common keys (aliases) and preserves additional unknown fields.",
+  "anyOf": [
+    {
+      "type": "object",
+      "description": "Top-level object with a 'sections' array (preferred shape).",
+      "properties": {
+        "sections": {
+          "type": "array",
+          "items": {
+            "anyOf": [
+              { "type": "string" },
+              { "type": "object",
+                "properties": {
+                  "title": { "type": "string" },
+                  "name": { "type": "string" },
+                  "label": { "type": "string" },
+                  "questions": { "type": "array", "items": { "$ref": "#/definitions/question" } },
+                  "items": { "type": "array", "items": { "$ref": "#/definitions/question" } }
+                },
+                "additionalProperties": true
+              }
+            ]
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    {
+      "type": "object",
+      "description": "Top-level object with 'questions' (flat list) and optional 'categories' list of names.",
+      "properties": {
+        "categories": { "type": "array", "items": { "type": "string" } },
+        "questions": { "type": "array", "items": { "$ref": "#/definitions/question" } },
+        "items": { "type": "array", "items": { "$ref": "#/definitions/question" } }
+      },
+      "required": ["questions"],
+      "additionalProperties": true
+    },
+    {
+      "type": "object",
+      "description": "Category -> questions mapping: top-level keys are category names mapping to arrays of questions.",
+      "patternProperties": {
+        ".*": { "type": "array", "items": { "$ref": "#/definitions/question" } }
+      },
+      "additionalProperties": false
+    },
+    {
+      "type": "array",
+      "description": "Flat top-level array of question objects.",
+      "items": { "$ref": "#/definitions/question" }
+    }
+  ],
+
+  "definitions": {
+    "question": {
+      "type": "object",
+      "description": "Question object. Multiple aliases are accepted for historical compatibility. Additional unknown fields are permitted and preserved by the GUI and loaders.",
+      "properties": {
+        "id": { "type": "string", "description": "Optional question id (e.g. 'motorsport_001')." },
+        "category": { "type": "string", "description": "Optional category name for grouping/sectioning." },
+        "difficulty": { "type": "string", "enum": ["easy", "medium", "hard"], "description": "Optional difficulty tag used by some tools." },
+
+        "prompt": { "type": "string", "description": "Primary canonical question text." },
+        "q": { "type": "string", "description": "Alias for question text (\" q \")." },
+        "question": { "type": "string", "description": "Alias for question text." },
+        "text": { "type": "string", "description": "Alias for question text." },
+
+        "choices": { "type": "array", "items": { "type": "string" }, "description": "Answer choices (commonly 4 items for MCQ banks)." },
+        "answers": { "type": "array", "items": { "type": "string" }, "description": "Alias for choices." },
+
+        "answer": { "oneOf": [ { "type": "integer" }, { "type": "string" } ], "description": "Canonical correct-answer indicator (often 0-based integer index)." },
+
+        "quip_correct": { "type": "string", "description": "Optional short message shown when answer is correct." },
+        "quip_wrong": { "type": "string", "description": "Optional short message shown when answer is wrong." },
+
+        "available": { "type": "boolean", "description": "Optional flag to include/exclude a question in sampling modes." },
+        "shuffle_choices": { "type": "boolean", "description": "Optional flag whether to shuffle the choices when presenting the question." },
+        "group_id": { "type": "string", "description": "Optional id used to group multi-part questions." },
+        "weight": { "type": "number", "description": "Optional numeric weight for sampling or scoring." },
+
+        "type": { "type": "string", "description": "Optional question type, e.g. 'mcq', 'tf', 'fill_blank', 'essay', 'numeric', 'matching'." },
+        "rubric": { "type": "string", "description": "Optional grading rubric or guidance." },
+        "expression": { "type": "string", "description": "Optional expression for numeric or computed answers." },
+        "tolerance": { "type": "number", "description": "Optional tolerance for numeric answers." },
+        "pairs": { "type": "array", "items": { "type": "array" }, "description": "Optional pairs for matching-type questions." }
+      },
+      "additionalProperties": true
+    }
+  }
+}

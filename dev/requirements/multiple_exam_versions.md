@@ -93,7 +93,7 @@
 
 ```
 python -m promptukit.exams.create_exam \
-  --bank content/question_banks/example.json \
+  --bank promptukit/data/question_banks/crb-water-management-sample.json \
   --versions 5 --labels A,B,C,D,E --seed 12345 \
   --output-dir output/exams/multi --formats json,pdf,csv
 ```
@@ -102,7 +102,7 @@ python -m promptukit.exams.create_exam \
 
 ```
 python -m promptukit.exams.create_exam \
-  --bank content/question_banks/example.json \
+  --bank promptukit/data/question_banks/crb-water-management-sample.json \
   --versions 5 --sample-mode per-version --questions-per-version 50 \
   --category-distribution math:20,verbal:30 --sample-strategy stratified \
   --ensure-unique-questions-across-versions --seed 12345 \

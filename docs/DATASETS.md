@@ -20,7 +20,7 @@ Use the convenience function exposed at the package top-level:
 import promptukit as pk
 
 # Load a packaged sample by relative path under 'question_banks'
-data = pk.load_resource('question_banks/example_sections.json')
+data = pk.load_resource('question_banks/crb-water-management-sample.json')
 
 # The function returns a Python object loaded from JSON (usually a dict).
 ```
@@ -36,11 +36,11 @@ README notebook examples:
 import os
 import promptukit as pk
 
-local = 'content/question_banks/example_sections.json'
+local = 'promptukit/data/question_banks/crb-water-management-sample.json'
 if os.path.exists(local):
     data = pk.load(local)
 else:
-    data = pk.load_resource('question_banks/example_sections.json')
+  data = pk.load_resource('question_banks/crb-water-management-sample.json')
 ```
 
 Adding new packaged datasets

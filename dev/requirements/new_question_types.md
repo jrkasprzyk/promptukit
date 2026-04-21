@@ -47,7 +47,7 @@
 ## Background / Context
 ## Background / Context
 - promptukit currently models questions as fixed multiple-choice items (typically four choices). Many question banks include other formats or require numeric parameterisation (used elsewhere in the tool for randomized values). There is already randomization and seeding logic in `promptukit/exams/create_exam.py` and related modules; new question types should integrate with that deterministic model.
-- Existing files to consider: [promptukit/questions/add_question.py](promptukit/questions/add_question.py), [promptukit/questions/validate_question.py](promptukit/questions/validate_question.py), [promptukit/questions/question_bank.py](promptukit/questions/question_bank.py), and the canonical question schema at [content/question_banks/question_schema.json](content/question_banks/question_schema.json).
+- Existing files to consider: [promptukit/questions/add_question.py](promptukit/questions/add_question.py), [promptukit/questions/validate_question.py](promptukit/questions/validate_question.py), [promptukit/questions/question_bank.py](promptukit/questions/question_bank.py), and the canonical question schema at [promptukit/data/question_banks/question_schema.json](promptukit/data/question_banks/question_schema.json).
 
 ## Assumptions
 ## Assumptions
@@ -90,7 +90,7 @@
 - Then <expected outcome>
 
 ## Functional requirements
-- FR1: Data model: add `type` field to question schema with allowed values: `mcq`, `tf`, `fill_blank`, `essay`, `numeric`, `matching`. Extend schema files in [content/question_banks/question_schema.json](content/question_banks/question_schema.json).
+-- FR1: Data model: add `type` field to question schema with allowed values: `mcq`, `tf`, `fill_blank`, `essay`, `numeric`, `matching`. Extend schema files in [promptukit/data/question_banks/question_schema.json](promptukit/data/question_banks/question_schema.json).
 - FR2: Authoring API/CLI: extend `promptukit/questions/add_question.py` to accept `--type`, `--choices`, `--answers`, `--rubric`, `--expression`, `--params`, and other type-specific fields; support JSON import and interactive prompts.
 - FR3: Validation: extend `promptukit/questions/validate_question.py` to validate type-specific constraints (e.g., numeric expressions compile in safe mode, matching pairs are balanced, fill_blank has at least one accepted answer).
 - FR4: Serialization: maintain backward compatible JSON export for MCQs; new fields are optional and ignored by older clients.
@@ -110,7 +110,7 @@
 - Scalability
 
 ## Data & content considerations
-- Schema change: add optional `type`, `answers`, `rubric`, `expression`, `params`, `tolerance`, and `pairs` fields. Update [content/question_banks/question_schema.json](content/question_banks/question_schema.json) and provide a migration guide.
+-- Schema change: add optional `type`, `answers`, `rubric`, `expression`, `params`, `tolerance`, and `pairs` fields. Update [promptukit/data/question_banks/question_schema.json](promptukit/data/question_banks/question_schema.json) and provide a migration guide.
 - Migration: provide a `bank:migrate` command that annotates legacy MCQs with explicit `type: mcq` and validates missing fields. Do not mutate authors' content by default — only offer a `--apply` option.
 - Exports/Imports: ensure imports that do not understand new fields ignore them gracefully. Provide sample bank snippets and update README and `DATASETS.md`.
 - Impact on existing data, schemas, and exports/imports.
@@ -197,7 +197,7 @@ python -m promptukit.questions.add_question --type fill_blank --id F1 \
 - List any unresolved questions and owners.
 
 ## References
-- Question schema: [content/question_banks/question_schema.json](content/question_banks/question_schema.json)
+- Question schema: [promptukit/data/question_banks/question_schema.json](promptukit/data/question_banks/question_schema.json)
 - Example: [dev/requirements/multiple_exam_versions.md](dev/requirements/multiple_exam_versions.md)
 - Code locations: [promptukit/questions/add_question.py](promptukit/questions/add_question.py), [promptukit/questions/validate_question.py](promptukit/questions/validate_question.py), [promptukit/exams/create_exam.py](promptukit/exams/create_exam.py)
 - Links to relevant docs, schemas, and examples.
