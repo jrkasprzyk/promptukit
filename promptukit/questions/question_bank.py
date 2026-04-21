@@ -6,6 +6,8 @@ Usage examples:
   python -m promptukit.questions.question_bank copy --src content/question_banks/block-doku-questions.json --dest content/question_banks/backup.json
   python -m promptukit.questions.question_bank extract --src content/question_banks/block-doku-questions.json --dest content/question_banks/music_subset.json --categories music --difficulty easy
   python -m promptukit.questions.question_bank extract -i --src content/question_banks/block-doku-questions.json --dest content/question_banks/pick.json
+  python -m promptukit.questions.question_bank extract --src content/question_banks/block-doku-questions.json --dest content/question_banks/exam_subset.json --numbers 5,10,15-18
+  python -m promptukit.questions.question_bank extract -I --src content/question_banks/block-doku-questions.json --dest content/question_banks/pick.json
 """
 
 from __future__ import annotations
@@ -17,7 +19,7 @@ import sys
 from pathlib import Path
 from typing import Any, List, Optional
 
-from promptukit.utils.cli_helpers import load, save, pick, confirm
+from promptukit.utils.cli_helpers import load, save, pick, confirm, pick_questions
 
 
 def _load_questions(data: Any) -> List[dict]:
@@ -57,6 +59,23 @@ def _parse_csv(s: Optional[str]) -> List[str]:
     if not s:
         return []
     return [p.strip() for p in s.split(",") if p.strip()]
+
+
+def _parse_numbers(s: str) -> List[int]:
+    """Parse a number/range string like '5,10,15-18' into a sorted list of 1-based indices."""
+    result: set[int] = set()
+    for token in s.split(","):
+        token = token.strip()
+        if "-" in token:
+            parts = token.split("-", 1)
+            try:
+                lo, hi = int(parts[0]), int(parts[1])
+                result.update(range(lo, hi + 1))
+            except ValueError:
+                pass
+        elif token.isdigit():
+            result.add(int(token))
+    return sorted(result)
 
 
 def filter_questions(questions: List[dict], categories: Optional[List[str]] = None, ids: Optional[List[str]] = None,
@@ -133,7 +152,13 @@ def cmd_extract(args: argparse.Namespace) -> int:
         return 3
     data = load(src)
     questions = _load_questions(data)
-    # interactive selection of categories if requested
+
+    # --numbers: pick by 1-based position before any other filter
+    if args.numbers:
+        indices = _parse_numbers(args.numbers)
+        questions = [questions[i - 1] for i in indices if 1 <= i <= len(questions)]
+
+    # -i: interactive single-category filter
     cats = _parse_csv(args.categories) if args.categories else []
     if args.interactive:
         available = _categories_of(questions)
@@ -142,10 +167,23 @@ def cmd_extract(args: argparse.Namespace) -> int:
             return 5
         cat = pick("Choose a category to extract (or type a name)", available)
         cats = [cat]
+
     ids = _parse_csv(args.ids) if args.ids else []
     filtered = filter_questions(questions, categories=cats, ids=ids, difficulty=args.difficulty, match=args.match)
     if args.limit and args.limit > 0:
         filtered = filtered[: args.limit]
+
+    # -I: interactive multi-select from the (already-filtered) question list
+    if args.interactive_questions:
+        if not filtered:
+            print("No questions to select from.")
+            return 7
+        chosen = pick_questions(filtered)
+        if not chosen:
+            print("No questions selected. Aborted.")
+            return 8
+        filtered = [filtered[i] for i in chosen]
+
     out_data = {"categories": _categories_of(filtered), "questions": filtered}
     if not ensure_dest(dest, force=args.force):
         print("Aborted.")
@@ -179,8 +217,11 @@ def main(argv: List[str] | None = None) -> int:
     p_extract.add_argument("--ids", help="Comma-separated question ids to include (exact match)")
     p_extract.add_argument("--difficulty", help="Filter by difficulty (easy|medium|hard)")
     p_extract.add_argument("--match", help="Regex to match against prompt+choices")
+    p_extract.add_argument("--numbers", help="1-based question numbers or ranges to include (e.g. 5,10,15-18)")
     p_extract.add_argument("--limit", type=int, default=0, help="Limit number of questions written")
     p_extract.add_argument("-i", "--interactive", action="store_true", help="Interactive category picker")
+    p_extract.add_argument("-I", "--interactive-questions", action="store_true",
+                           help="Interactive multi-select: browse and toggle individual questions")
     p_extract.add_argument("-f", "--force", action="store_true", help="Overwrite destination if exists")
     p_extract.set_defaults(func=cmd_extract)
 

@@ -87,3 +87,74 @@ def confirm(msg: str) -> bool:
             return True
         if raw in ("n", "no"):
             return False
+
+
+def pick_questions(questions: List[Any]) -> List[int]:
+    """Interactive multi-select: show numbered questions, return chosen 0-based indices.
+
+    The user types numbers or ranges (e.g. "5,10,15-18") to toggle selections,
+    "done" or blank to confirm, "all" to select all, "clear" to deselect all,
+    "list" to reprint the menu.
+    """
+    selected: set[int] = set()
+
+    def _render() -> None:
+        print()
+        for i, q in enumerate(questions, 1):
+            marker = "[x]" if (i - 1) in selected else "[ ]"
+            prompt_text = (q.get("prompt") or q.get("q") or q.get("question") or "")[:72]
+            cat = q.get("category", "")
+            suffix = f"  ({cat})" if cat else ""
+            print(f"  {marker} {i:>4}.  {prompt_text}{suffix}")
+        total = len(selected)
+        print(f"\n  {total} selected. Commands: numbers/ranges to toggle (e.g. 5,10,15-18), "
+              "'all', 'clear', 'list', or blank/done to confirm.")
+
+    def _parse_tokens(raw: str) -> set[int]:
+        result: set[int] = set()
+        for token in raw.split(","):
+            token = token.strip()
+            if "-" in token:
+                parts = token.split("-", 1)
+                try:
+                    lo, hi = int(parts[0]), int(parts[1])
+                    result.update(range(lo, hi + 1))
+                except ValueError:
+                    pass
+            elif token.isdigit():
+                result.add(int(token))
+        return result
+
+    _render()
+    while True:
+        raw = input("  > ").strip().lower()
+        if raw in ("", "done"):
+            break
+        if raw == "all":
+            selected = set(range(len(questions)))
+            print(f"  All {len(selected)} selected.")
+            continue
+        if raw == "clear":
+            selected.clear()
+            print("  Selection cleared.")
+            continue
+        if raw == "list":
+            _render()
+            continue
+        indices = _parse_tokens(raw)
+        valid = {i - 1 for i in indices if 1 <= i <= len(questions)}
+        if not valid:
+            print(f"  No valid numbers found. Enter numbers 1-{len(questions)}.")
+            continue
+        # toggle: add unselected, remove already-selected
+        to_add = valid - selected
+        to_remove = valid & selected
+        selected ^= valid
+        if to_add and to_remove:
+            print(f"  Added {sorted(i+1 for i in to_add)}, removed {sorted(i+1 for i in to_remove)}.")
+        elif to_add:
+            print(f"  Added {sorted(i+1 for i in to_add)}. Total: {len(selected)}")
+        else:
+            print(f"  Removed {sorted(i+1 for i in to_remove)}. Total: {len(selected)}")
+
+    return sorted(selected)
