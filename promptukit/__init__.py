@@ -1,7 +1,6 @@
 """promptukit — utilities for building question banks and exam documents."""
 
 from promptukit.utils.cli_helpers import load, save, pick, confirm, load_resource
-from promptukit import questions, exams, utils
 
 __all__ = [
     # subpackages
