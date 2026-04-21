@@ -29,6 +29,18 @@ Release checklist
    - Minor (`0.1.1` → `0.2.0`): new features, backward-compatible
    - Major (`0.1.1` → `1.0.0`): breaking changes
 
+   Poetry can also be used to do the bump:
+
+ ```bash
+# bump semver parts
+poetry version patch
+poetry version minor
+poetry version major
+
+# set an exact version
+poetry version 0.3.0
+```
+
 3. **Commit and push** the bump:
 
    ```bash
@@ -57,11 +69,16 @@ Release checklist
 
 7. **Verify** the release landed:
 
-   ```bash
-   pip install --upgrade promptukit
-   ```
+   Check [the package's page on PyPi](https://pypi.org/project/promptukit/).
 
-   And check https://pypi.org/project/promptukit/.
+   
+   TODO: In a future update, we'll make sure the releasing instructions refer to the poetry version of the commands, see [the post here](https://www.geeksforgeeks.org/python/updating-dependencies-in-python-poetry/) in the meantime.
+
+   For example, you can update the version of `promptukit` in your repository with:
+
+   ```bash
+   poetry update promptukit   
+   ```
 
 Shortcut
 --------
