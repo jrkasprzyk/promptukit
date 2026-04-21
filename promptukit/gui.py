@@ -276,7 +276,13 @@ def launch(file_path: Optional[Path] = None, port: int = 8080, show: bool = True
     store = QuestionStore(path)
     store.load()
 
-    dirty = {"value": False}
+    # Two sources of "unsaved" state, tracked separately so we can clear the
+    # editor half on Apply without losing the "in-memory bank != disk" signal.
+    # The UI surfaces only their union.
+    dirty = {"editor": False, "store": False}
+
+    def is_dirty() -> bool:
+        return dirty["editor"] or dirty["store"]
 
     @ui.page("/")
     def main_page() -> None:
@@ -294,6 +300,12 @@ def launch(file_path: Optional[Path] = None, port: int = 8080, show: bool = True
             ui.button("Copy all as JSON", on_click=lambda: copy_json(all_=True))
             ui.button("Copy selected as JSON", on_click=lambda: copy_json(all_=False))
 
+        def refresh_dirty_indicator() -> None:
+            marker = " *" if is_dirty() else ""
+            path_label.set_text(f"Working file: {store.path}{marker}")
+            flag = "true" if is_dirty() else "false"
+            ui.run_javascript(f"window.__promptukit_dirty = {flag};")
+
         # ---- Resizable two-pane body --------------------------------------
         splitter = ui.splitter(value=33).classes("w-full").style("height: calc(100vh - 64px)")
         with splitter.before:
@@ -310,7 +322,8 @@ def launch(file_path: Optional[Path] = None, port: int = 8080, show: bool = True
         widgets: dict[str, Any] = {}
 
         def mark_dirty() -> None:
-            dirty["value"] = True
+            dirty["editor"] = True
+            refresh_dirty_indicator()
 
         # ---- List rendering -----------------------------------------------
         def render_list() -> None:
@@ -451,7 +464,9 @@ def launch(file_path: Optional[Path] = None, port: int = 8080, show: bool = True
 
         def apply_editor() -> None:
             commit_editor_to_store()
-            dirty["value"] = False
+            dirty["editor"] = False
+            dirty["store"] = True
+            refresh_dirty_indicator()
             render_list()
             ui.notify(
                 "Applied edits to in-memory list. Use 'Save all to file' to persist.",
@@ -462,10 +477,12 @@ def launch(file_path: Optional[Path] = None, port: int = 8080, show: bool = True
         def create_new() -> None:
             def do():
                 store.new()
-                dirty["value"] = False
+                dirty["editor"] = False
+                dirty["store"] = True
+                refresh_dirty_indicator()
                 render_list()
                 render_editor()
-            if dirty["value"]:
+            if dirty["editor"]:
                 prompt_unsaved(do)
             else:
                 do()
@@ -475,10 +492,11 @@ def launch(file_path: Optional[Path] = None, port: int = 8080, show: bool = True
                 return
             def do():
                 store.selected_id = qid
-                dirty["value"] = False
+                dirty["editor"] = False
+                refresh_dirty_indicator()
                 render_list()
                 render_editor()
-            if dirty["value"]:
+            if dirty["editor"]:
                 prompt_unsaved(do)
             else:
                 do()
@@ -489,7 +507,9 @@ def launch(file_path: Optional[Path] = None, port: int = 8080, show: bool = True
             if q is None:
                 return
             store.duplicate(q)
-            dirty["value"] = False
+            dirty["editor"] = False
+            dirty["store"] = True
+            refresh_dirty_indicator()
             render_list()
             render_editor()
 
@@ -506,7 +526,9 @@ def launch(file_path: Optional[Path] = None, port: int = 8080, show: bool = True
                     ui.button("Cancel", on_click=dialog.close).props("flat")
                     def do_delete():
                         store.delete(q)
-                        dirty["value"] = False
+                        dirty["editor"] = False
+                        dirty["store"] = True
+                        refresh_dirty_indicator()
                         dialog.close()
                         render_list()
                         render_editor()
@@ -529,6 +551,9 @@ def launch(file_path: Optional[Path] = None, port: int = 8080, show: bool = True
             commit_editor_to_store()
             try:
                 store.save()
+                dirty["editor"] = False
+                dirty["store"] = False
+                refresh_dirty_indicator()
                 ui.notify(
                     f"Wrote {len(store.questions)} question(s) to {store.path}",
                     type="positive",
@@ -561,9 +586,10 @@ def launch(file_path: Optional[Path] = None, port: int = 8080, show: bool = True
                             previous = store.path
                             store.path = new_path
                             store.save()
-                            dirty["value"] = False
+                            dirty["editor"] = False
+                            dirty["store"] = False
                             dialog.close()
-                            path_label.set_text(f"Working file: {store.path}")
+                            refresh_dirty_indicator()
                             ui.notify(
                                 f"Wrote {len(store.questions)} question(s) to {new_path}. "
                                 f"Working file switched from {previous}.",
@@ -579,13 +605,15 @@ def launch(file_path: Optional[Path] = None, port: int = 8080, show: bool = True
                 try:
                     store.load()
                     store.selected_id = store.questions[0].id if store.questions else None
-                    dirty["value"] = False
+                    dirty["editor"] = False
+                    dirty["store"] = False
+                    refresh_dirty_indicator()
                     render_list()
                     render_editor()
                     ui.notify(f"Reloaded from {store.path}", type="positive")
                 except Exception as e:
                     ui.notify(f"Failed to reload: {e}", type="negative")
-            if dirty["value"]:
+            if dirty["editor"]:
                 prompt_unsaved(do)
             else:
                 do()
@@ -609,9 +637,10 @@ def launch(file_path: Optional[Path] = None, port: int = 8080, show: bool = True
                                 store.selected_id = (
                                     store.questions[0].id if store.questions else None
                                 )
-                                dirty["value"] = False
+                                dirty["editor"] = False
+                                dirty["store"] = False
                                 dialog.close()
-                                path_label.set_text(f"Working file: {store.path}")
+                                refresh_dirty_indicator()
                                 render_list()
                                 render_editor()
                                 if new_path.exists():
@@ -626,7 +655,7 @@ def launch(file_path: Optional[Path] = None, port: int = 8080, show: bool = True
                                 ui.notify(f"Failed to open: {e}", type="negative")
                         ui.button("Open", on_click=do_open).props("color=primary")
                 dialog.open()
-            if dirty["value"]:
+            if dirty["editor"]:
                 prompt_unsaved(build)
             else:
                 build()
@@ -653,6 +682,14 @@ def launch(file_path: Optional[Path] = None, port: int = 8080, show: bool = True
             store.selected_id = store.questions[0].id
         render_list()
         render_editor()
+        # Warn on tab close / reload when editor or store is dirty. The Python
+        # side flips window.__promptukit_dirty via refresh_dirty_indicator().
+        ui.run_javascript(
+            "window.__promptukit_dirty = false;"
+            "window.addEventListener('beforeunload', function (e) {"
+            "  if (window.__promptukit_dirty) { e.preventDefault(); e.returnValue = ''; }"
+            "});"
+        )
 
     print(f"promptukit GUI running at http://localhost:{port}", file=sys.stderr)
     ui.run(port=port, reload=False, show=show, title="promptukit")
