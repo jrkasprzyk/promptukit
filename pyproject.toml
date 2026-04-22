@@ -29,11 +29,12 @@ include = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = ">=3.12,<4.0"
 reportlab = "^4.4.10"
 twine = "^6.2.0"
 build = "^1.4.3"
 nicegui = "^2.0.0"
+parasolpy = "^0.0.1"
 
 [tool.poetry.scripts]
 add-question = "promptukit.questions.add_question:main"
