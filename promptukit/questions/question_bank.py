@@ -20,6 +20,7 @@ from pathlib import Path
 from typing import Any, List, Optional
 
 from promptukit.utils.cli_helpers import load, save, pick, confirm, pick_questions
+from promptukit.utils.json_tools import update_json_file
 
 
 def _load_questions(data: Any) -> List[dict]:
@@ -193,6 +194,22 @@ def cmd_extract(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_migrate(args: argparse.Namespace) -> int:
+    """Add ``question_type`` tags to a JSON file (write in-place or to dest)."""
+    src = Path(args.src)
+    dest = Path(args.dest) if args.dest else None
+    if not src.exists():
+        print(f"Source not found: {src}")
+        return 3
+    if dest and dest.exists() and not args.force:
+        if not confirm(f"Destination {dest} exists — overwrite?"):
+            print("Aborted.")
+            return 4
+    out = update_json_file(src, dest)
+    print(f"Updated: {src} -> {out}")
+    return 0
+
+
 def main(argv: List[str] | None = None) -> int:
     argv = argv if argv is not None else sys.argv[1:]
     p = argparse.ArgumentParser(description="Create, copy, or extract question bank JSON files")
@@ -209,6 +226,12 @@ def main(argv: List[str] | None = None) -> int:
     p_copy.add_argument("--dest", required=True, help="Destination path")
     p_copy.add_argument("-f", "--force", action="store_true", help="Overwrite destination if exists")
     p_copy.set_defaults(func=cmd_copy)
+
+    p_migrate = sp.add_parser("migrate", help="Add question_type tags to a JSON file (migrate schema)")
+    p_migrate.add_argument("--src", required=True, help="Source question bank JSON")
+    p_migrate.add_argument("--dest", help="Destination path (optional). If omitted, overwrites source")
+    p_migrate.add_argument("-f", "--force", action="store_true", help="Overwrite destination if exists")
+    p_migrate.set_defaults(func=cmd_migrate)
 
     p_extract = sp.add_parser("extract", help="Extract a subset of questions into a new file")
     p_extract.add_argument("--src", required=True, help="Source question bank JSON")

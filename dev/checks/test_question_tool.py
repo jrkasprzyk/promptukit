@@ -2,6 +2,8 @@ import json
 from pathlib import Path
 
 import promptukit.questions.question_bank as tt
+import promptukit.utils.json_tools as jt
+from promptukit.questions.question_models import MultipleChoice
 
 
 def _sample_questions():
@@ -74,3 +76,23 @@ def test_cmd_extract_and_create_and_copy(tmp_path: Path):
     rc = tt.main(["copy", "--src", str(newfile), "--dest", str(copyfile), "-f"])
     assert rc == 0
     assert json.loads(copyfile.read_text(encoding="utf-8")) == loaded
+
+
+def test_json_tools_update_and_load(tmp_path: Path):
+    src = tmp_path / "bank.json"
+    data = {"categories": ["music"], "questions": [
+        {"id": "q1", "prompt": "Sample?", "choices": ["A", "B"], "answer": 1}
+    ]}
+    src.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+
+    # Add question_type tags in-place
+    out = jt.update_json_file(src)
+    assert out == src
+    updated = json.loads(src.read_text(encoding="utf-8"))
+    assert updated["questions"][0].get("question_type") == "MultipleChoice"
+
+    # Load as objects
+    objs = jt.load_questions_as_objects(src)
+    assert len(objs) == 1
+    assert isinstance(objs[0], MultipleChoice)
+    assert objs[0].text == "Sample?"
