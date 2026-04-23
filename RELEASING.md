@@ -1,110 +1,158 @@
-Releasing promptukit
-====================
+# Releasing
 
-This is the end-to-end checklist for shipping a new version of `promptukit`
-to PyPI. The release is automated by
-[.github/workflows/python-publish.yml](.github/workflows/python-publish.yml),
-which fires when you **publish a GitHub Release** and uses PyPI Trusted
-Publishing (no API tokens).
+This document describes how to cut a new release of `promptukit`. Publishing is automated by
+[`.github/workflows/python-publish.yml`](.github/workflows/python-publish.yml), which fires when
+you **publish a GitHub Release** and uploads to PyPI via Trusted Publishing (no API tokens required).
 
-The canonical rule: **the version in `pyproject.toml` and the git tag
-must match** (`0.1.2` ↔ `v0.1.2`). Everything else follows from that.
+The canonical rule: **the version in `pyproject.toml` and the git tag must match** (`0.3.0` ↔ `v0.3.0`). Everything else follows from that.
 
-Release checklist
------------------
+## Prerequisites
 
-1. **Make your changes** on `main` and run the tests:
+- Poetry installed (`pipx install poetry` or see the [official docs](https://python-poetry.org/docs/#installation)).
+- Python 3 on `PATH` (the release scripts are Python).
+- A clean working tree on `main` with all changes to be released already merged.
+- Write access to the GitHub repo (to push tags and create releases).
+
+## Quick release (using the script)
+
+The release script bumps `pyproject.toml`, moves `[Unreleased]` content in `CHANGELOG.md` to a new dated section, updates link references, commits both files, and pushes the tag. You still need to publish the GitHub Release manually — that's the deliberate "go" button that triggers the PyPI upload.
+
+1. **Sync and run the tests.**
 
    ```bash
+   git checkout main
+   git pull
+   poetry install
    poetry run pytest -q
    ```
 
-2. **Bump the version** in [pyproject.toml](pyproject.toml) (the `version`
-   line under `[tool.poetry]`). PyPI rejects re-uploads of an existing
-   version, so this step is mandatory for every release.
+2. **Make sure `CHANGELOG.md` has entries under `## [Unreleased]`.** These will become the new version's release notes. If the section is empty the script will warn and let you opt in to an empty release.
 
-   Semver guidance:
+3. **Run the release script** with the new version.
 
-   - Patch (`0.1.1` → `0.1.2`): bug fixes, docs
-   - Minor (`0.1.1` → `0.2.0`): new features, backward-compatible
-   - Major (`0.1.1` → `1.0.0`): breaking changes
-
-   Poetry can also be used to do the bump:
-
- ```bash
-# bump semver parts
-poetry version patch
-poetry version minor
-poetry version major
-
-# set an exact version
-poetry version 0.3.0
-```
-
-3. **Commit and push** the bump:
+   Git Bash / macOS / Linux:
 
    ```bash
-   git commit -am "bump version to 0.1.2"
-   git push
+   ./scripts/release.sh 0.4.0
    ```
 
-4. **(Optional) Local build sanity check**:
+   PowerShell / Windows:
+
+   ```powershell
+   python scripts/release.py 0.4.0
+   ```
+
+4. **Publish a GitHub Release** to trigger the PyPI upload.
+
+   - **Web UI:** Repo → Releases → "Draft a new release" → select the tag → add release notes → Publish release.
+   - **GitHub CLI:**
+
+     ```bash
+     gh release create "v$(poetry version -s)" --generate-notes
+     ```
+
+   Confirm the release is live:
+
+   ```bash
+   gh release list
+   ```
+
+5. **Verify** the package is on PyPI: <https://pypi.org/project/promptukit/>
+
+## Manual release (step by step)
+
+Useful when you want to understand what the script does, or when you need to deviate from the standard path.
+
+1. **Sync and verify the working tree is clean.**
+
+   ```bash
+   git checkout main
+   git pull
+   git status
+   ```
+
+2. **Install dependencies and run the tests.**
+
+   ```bash
+   poetry install
+   poetry run pytest -q
+   ```
+
+3. **Bump the version.** Use Poetry's `version` command with a semver part or an explicit version.
+
+   Semver guidance:
+   - `patch` (`0.1.1` → `0.1.2`): bug fixes, docs
+   - `minor` (`0.1.1` → `0.2.0`): new features, backward-compatible
+   - `major` (`0.1.1` → `1.0.0`): breaking changes
+
+   ```bash
+   poetry version patch   # or minor, major, or an explicit version like 0.4.0
+   poetry version         # confirm
+   ```
+
+4. **Update `CHANGELOG.md`.** Move everything under `[Unreleased]` to a new `[X.Y.Z] — YYYY-MM-DD` section. Leave an empty `[Unreleased]` heading at the top and update the link references at the bottom:
+
+   ```markdown
+   ## [Unreleased]
+
+   ## [0.4.0] — 2026-05-01
+   ...
+
+   [Unreleased]: https://github.com/jrkasprzyk/promptukit/compare/v0.4.0...HEAD
+   [0.4.0]: https://github.com/jrkasprzyk/promptukit/compare/v0.3.0...v0.4.0
+   ```
+
+5. **Commit the version bump and changelog together.**
+
+   ```bash
+   git add pyproject.toml CHANGELOG.md
+   git commit -m "Release $(poetry version -s)"
+   ```
+
+6. **(Optional) Local build sanity check.**
 
    ```bash
    poetry build
    poetry run twine check dist/*
    ```
 
-5. **Tag and push** the release tag:
+7. **Tag and push.** Plain `git push` does not push tags, so both commands are needed:
 
    ```bash
-   git tag v0.1.2
-   git push origin v0.1.2
+   git tag "v$(poetry version -s)"
+   git push
+   git push --tags
    ```
 
-6. **Publish a GitHub Release** — on github.com go to
-   *Releases → Draft a new release*, pick the tag `v0.1.2`, write short
-   release notes, and click **Publish release**. This fires the workflow
-   and ships to PyPI automatically.
-
-7. **Verify** the release landed:
-
-   Check [the package's page on PyPi](https://pypi.org/project/promptukit/).
-
-   
-   TODO: In a future update, we'll make sure the releasing instructions refer to the poetry version of the commands, see [the post here](https://www.geeksforgeeks.org/python/updating-dependencies-in-python-poetry/) in the meantime.
-
-   For example, you can update the version of `promptukit` in your repository with:
+   Verify the tag reached the remote:
 
    ```bash
-   poetry update promptukit   
+   git ls-remote --tags origin
    ```
 
-Shortcut
---------
+8. **Publish a GitHub Release** (step 4 of the quick path above).
 
-Steps 2, 3, and 5 are automated by a release script that bumps `pyproject.toml`,
-commits, pushes, and creates + pushes the matching `v0.1.2` tag. You still need
-to publish the GitHub Release (step 6) manually — that's the deliberate "go" button.
+## Troubleshooting
 
-Git Bash / macOS / Linux:
+**PyPI not updated after publishing the GitHub Release** — one of:
+- The CI workflow failed. Check the Actions tab on GitHub for errors.
+- The version in `pyproject.toml` doesn't match the git tag (e.g. `0.4.0` vs `v0.4.0` — they must match exactly with the `v` prefix only on the tag).
 
-```bash
-./scripts/release.sh 0.1.2
-```
+**Tag visible under "Tags" but not "Releases"** — a tag alone does not create a GitHub Release. Publish one from the tag (quick path step 4).
 
-PowerShell / Windows (works anywhere Python is available):
+**Script complains about `[Unreleased]` link ref** — `CHANGELOG.md` must contain a `[Unreleased]: <url>/compare/vPREV...HEAD` reference at the bottom. Add one before running the script.
 
-```powershell
-python scripts/release.py 0.1.2
-```
+## Rolling back a failed release
 
-One-time setup (already done)
------------------------------
+PyPI does not allow re-uploading the same version. If a release is broken:
+
+1. Yank the bad version on PyPI (via the web UI).
+2. Bump to the next patch version and repeat the release steps.
+
+## One-time setup
 
 For reference, these were configured once and don't need to be redone:
 
 - PyPI Trusted Publisher registered for this repo and workflow
 - GitHub repo environment named `pypi` (Settings → Environments)
-- `license = "MIT"` declared in `pyproject.toml` with [LICENSE](LICENSE)
-  at the repo root
+- `license = "MIT"` declared in `pyproject.toml` with [LICENSE](LICENSE) at the repo root

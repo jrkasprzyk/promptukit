@@ -1,11 +1,14 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
+All notable changes to `promptukit` are documented here. The format follows
+[Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project
+adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html) (with
+the understanding that during the `0.x` series, minor bumps may contain
+breaking changes).
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+## [Unreleased]
 
-## [0.3.0] - 2026-04-23
+## [0.3.0] — 2026-04-23
 
 ### Added
 - OO question model hierarchy (`question_models.py`) — base `Question` class extensible to new types
@@ -18,18 +21,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `question_bank.py` refactored to delegate to new question model classes
 - Upgraded `nicegui` to 3.10.0, `parasolpy` to 0.1.1
 
-## [0.2.2] - 2026-04-21
+## [0.2.2] — 2026-04-21
 
 ### Changed
 - Updated question bank paths, removed deprecated example file
 - Added validation helpers and additional scripts
 
-## [0.2.100] - 2026-04-20
+## [0.2.100] — 2026-04-20
 
 ### Added
 - Dirty-state indicator and `beforeunload` guard in authoring GUI
 
-## [0.2.000] - 2026-04-20
+## [0.2.000] — 2026-04-20
 
 ### Added
 - NiceGUI-based authoring GUI (`promptukit.gui`)
@@ -38,3 +41,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - `RuntimeWarning` from eager subpackage imports in top-level `__init__.py`
+
+[Unreleased]: https://github.com/jrkasprzyk/promptukit/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/jrkasprzyk/promptukit/compare/v0.2.2...v0.3.0
+[0.2.2]: https://github.com/jrkasprzyk/promptukit/compare/v0.2.100...v0.2.2
+[0.2.100]: https://github.com/jrkasprzyk/promptukit/compare/v0.2.000...v0.2.100
+[0.2.000]: https://github.com/jrkasprzyk/promptukit/releases/tag/v0.2.000
