@@ -19,7 +19,8 @@ add-question
 extract-question --help
 validate-question
 question-bank --help
-promptukit-gui          # launch the browser-based authoring GUI
+promptukit-gui                  # launch the browser-based authoring GUI
+promptukit-claude-commands      # list/show/install bundled Claude Code slash commands
 ```
 
 You can also import the library in Python or a Jupyter notebook:
@@ -399,10 +400,44 @@ Supported JSON formats
 
 - If choices are not already labeled (for example "Oceans" instead of "A) Oceans"), the script will prefix them with `A)`, `B)`, etc. Prompts without a leading number will be auto-numbered sequentially.
 
+Question types
+--------------
+
+Beyond multiple-choice (`MultipleChoice`), `add-question` (batch mode) and
+`validate-question` accept these non-MCQ types:
+
+- `TrueFalse` — boolean `answer`
+- `ShortAnswer` — free-text `answer`, optional `acceptable_answers` list
+- `FillInTheBlank` — `prompt` with `____` placeholders + ordered `answers`
+- `Matching` — `left` / `right` lists with an `answer` mapping
+- `Calculation` — numeric `answer` with optional `tolerance` and `units`
+
+See [promptukit/data/question_banks/mixed-types-sample.json](promptukit/data/question_banks/mixed-types-sample.json)
+for one of each. The OO model lives in `promptukit.questions.question_models`.
+
+Bundled Claude Code slash commands
+----------------------------------
+
+The package ships canonical `add-trivia` and `audit-trivia` slash-command
+prompts under `promptukit.claude_commands`. Use them via the
+`promptukit-claude-commands` CLI:
+
+```bash
+promptukit-claude-commands list                 # show available command names
+promptukit-claude-commands show add-trivia      # print markdown to stdout
+promptukit-claude-commands install              # copy into ./.claude/commands/
+promptukit-claude-commands install --dest ~/.claude/commands  # user-level install
+```
+
+For local development, `scripts/sync_claude_commands.py` mirrors the same
+files into the repo's `.claude/commands/` directory and supports `--check`
+for CI drift detection.
+
 Example files
 -------------
 
 -- Example section-based bank: [promptukit/data/question_banks/crb-water-management-sample.json](promptukit/data/question_banks/crb-water-management-sample.json)
+-- Mixed question-type sample: [promptukit/data/question_banks/mixed-types-sample.json](promptukit/data/question_banks/mixed-types-sample.json)
 -- JSON Schema describing accepted layouts: [promptukit/data/question_banks/question_schema.json](promptukit/data/question_banks/question_schema.json)
 
 Behavior notes
