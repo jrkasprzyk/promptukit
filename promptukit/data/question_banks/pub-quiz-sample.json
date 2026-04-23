@@ -1,0 +1,63 @@
+{
+  "_schema_notes": [
+    "Pub-quiz bank layout: top-level 'rounds' list.",
+    "Each round has title, optional theme (printed under the round title), and questions.",
+    "Questions are free-answer by default (blank line). Include 'choices' for MC (team writes the letter). Use question_type 'TrueFalse' for T/F.",
+    "Used by: python -m promptukit.exams.create_pub_quiz -q <this file> -o pub_quiz.pdf"
+  ],
+  "title": "JRB Industries Pub Quiz",
+  "rounds": [
+    {
+      "title": "Motorsport",
+      "theme": "Open wheel, closed wheel, and everything in between.",
+      "questions": [
+        {"prompt": "Which series uses the Dallara IR-18 as its spec chassis?"},
+        {"prompt": "What year did the first Indianapolis 500 take place?"},
+        {
+          "prompt": "Which flag color signals that a Formula 1 race has been stopped?",
+          "choices": ["Yellow", "Blue", "White", "Red"]
+        },
+        {"prompt": "How many laps make up the Indianapolis 500?"},
+        {"prompt": "Name the driver who won the 2008 Formula 1 World Championship."},
+        {
+          "prompt": "True or false: a full-course yellow in IndyCar bunches the field behind the pace car.",
+          "question_type": "TrueFalse"
+        }
+      ]
+    },
+    {
+      "title": "Music",
+      "theme": "From 60s vinyl to 2020s streaming.",
+      "questions": [
+        {"prompt": "Which Beatles album includes the track 'A Day in the Life'?"},
+        {
+          "prompt": "Who composed 'The Four Seasons'?",
+          "choices": ["Bach", "Mozart", "Vivaldi", "Handel"]
+        },
+        {"prompt": "In what key is Beethoven's 5th Symphony?"},
+        {"prompt": "Name the lead singer of Queen."},
+        {"prompt": "What instrument did Jimi Hendrix famously play left-handed?"},
+        {"prompt": "Which 1984 Prince album shares its name with a film he starred in?"},
+        {
+          "prompt": "True or false: Taylor Swift's 'Midnights' was released in 2021.",
+          "question_type": "TrueFalse"
+        }
+      ]
+    },
+    {
+      "title": "Science and Math",
+      "theme": "Tiebreakers welcome.",
+      "questions": [
+        {"prompt": "What is the chemical symbol for gold?"},
+        {"prompt": "How many bones are in the adult human body?"},
+        {
+          "prompt": "Which planet has the most moons as of 2024?",
+          "choices": ["Jupiter", "Saturn", "Uranus", "Neptune"]
+        },
+        {"prompt": "What is the square root of 144?"},
+        {"prompt": "Name the scientist who formulated the three laws of motion."},
+        {"prompt": "What is the approximate value of pi to five decimal places?"}
+      ]
+    }
+  ]
+}

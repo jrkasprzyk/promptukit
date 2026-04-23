@@ -400,6 +400,55 @@ Supported JSON formats
 
 - If choices are not already labeled (for example "Oceans" instead of "A) Oceans"), the script will prefix them with `A)`, `B)`, etc. Prompts without a leading number will be auto-numbered sequentially.
 
+Create pub quiz PDF
+-------------------
+
+The `create_pub_quiz.py` script generates a pub-quiz style group trivia PDF,
+with one printable sheet per round so a grader can split a stack of rounds
+and score them in parallel. Each sheet carries its own team-name / date /
+score header.
+
+Usage (from the repository root):
+
+```bash
+python -m promptukit.exams.create_pub_quiz \
+  -q promptukit/data/question_banks/pub-quiz-sample.json \
+  -o pub_quiz.pdf
+
+# With custom metadata (title, host, instructions, labels)
+python -m promptukit.exams.create_pub_quiz \
+  -q my_quiz.json -m my_quiz_meta.json -o pub_quiz.pdf
+```
+
+Input JSON layout — top-level `rounds` (aliases: `sections`, `categories`):
+
+```json
+{
+  "title": "JRB Industries Pub Quiz",
+  "rounds": [
+    {
+      "title": "Motorsport",
+      "theme": "Open wheel, closed wheel, and everything in between.",
+      "questions": [
+        {"prompt": "Which series uses the Dallara IR-18 as its spec chassis?"},
+        {"prompt": "Which flag color signals an F1 race is stopped?",
+         "choices": ["Yellow", "Blue", "White", "Red"]},
+        {"prompt": "True or false: a full-course yellow bunches the field.",
+         "question_type": "TrueFalse"}
+      ]
+    }
+  ]
+}
+```
+
+A flat `questions` list with a `round` or `category` key per item is also
+grouped into rounds. Questions without `choices` render as free-answer
+(blank line); questions with `choices` render as multiple-choice (team
+writes the letter); `question_type: "TrueFalse"` renders `T / F`.
+
+See [promptukit/data/question_banks/pub-quiz-sample.json](promptukit/data/question_banks/pub-quiz-sample.json)
+for a 3-round example.
+
 Question types
 --------------
 

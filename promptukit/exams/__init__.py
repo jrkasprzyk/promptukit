@@ -3,4 +3,5 @@
 
 __all__ = [
     "create_exam",
+    "create_pub_quiz",
 ]

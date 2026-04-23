@@ -8,6 +8,10 @@ breaking changes).
 
 ## [Unreleased]
 
+### Added
+- `promptukit.exams.create_pub_quiz` generates a pub-quiz style group trivia PDF with one sheet per round, each carrying team-name / date / score fields for independent grading; supports free-answer, multiple-choice, and true/false questions
+- `promptukit/data/question_banks/pub-quiz-sample.json` — 3-round sample bank (Motorsport / Music / Science)
+
 ## [0.4.0] — 2026-04-23
 
 ### Added
