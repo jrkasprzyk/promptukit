@@ -25,7 +25,8 @@ packages = [ { include = "promptukit" } ]
 # installed distribution. This pattern includes the `promptukit/data/**`
 # directory in source distributions and wheels.
 include = [
-    { path = "promptukit/data/**", format = "sdist" }
+    { path = "promptukit/data/**", format = "sdist" },
+    { path = "promptukit/claude_commands/*.md", format = ["sdist", "wheel"] }
 ]
 
 [tool.poetry.dependencies]
@@ -42,6 +43,7 @@ extract-question = "promptukit.questions.extract_question:main"
 validate-question = "promptukit.questions.validate_question:main"
 question-bank = "promptukit.questions.question_bank:main"
 promptukit-gui = "promptukit.gui:main"
+promptukit-claude-commands = "promptukit.claude_commands:main"
 
 [build-system]
 requires = ["poetry-core>=1.5.0"]
