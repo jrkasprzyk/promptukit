@@ -8,6 +8,15 @@ breaking changes).
 
 ## [Unreleased]
 
+### Added
+- Non-MCQ question types (`TrueFalse`, `ShortAnswer`, `FillInTheBlank`, `Matching`, `Calculation`) supported in `add_question.py` batch mode and `validate_question.py`; `mixed-types-sample.json` fixture shipped
+- `promptukit.claude_commands` package bundles `add-trivia.md` and `audit-trivia.md` as canonical slash-command sources, installable via the new `promptukit-claude-commands` entry point (`list` / `show` / `install`)
+- `scripts/sync_claude_commands.py` mirrors canonical command files into `.claude/commands/` and supports `--check` for CI
+
+### Changed
+- Release flow rewritten around `scripts/release.py` (bumps `pyproject.toml`, promotes `[Unreleased]`, updates compare links, commits, tags, pushes); `scripts/release.sh` is now a thin Git-Bash wrapper; `RELEASING.md` rewritten around the new flow
+- `pyproject.toml` now includes `promptukit/claude_commands/*.md` in both sdist and wheel
+
 ## [0.3.0] — 2026-04-23
 
 ### Added
