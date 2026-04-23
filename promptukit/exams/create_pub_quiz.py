@@ -42,6 +42,7 @@ import re
 import sys
 from collections import OrderedDict
 from pathlib import Path
+from xml.sax.saxutils import escape as _xml_escape
 
 
 styles = getSampleStyleSheet()
@@ -89,8 +90,8 @@ DEFAULT_METADATA = {
 
 
 def _escape_if_needed(text):
-    """Leave reportlab HTML-ish markup alone; pass through."""
-    return text
+    """Escape XML special chars so ReportLab's Paragraph parser doesn't choke."""
+    return _xml_escape(str(text))
 
 
 def _question_block(q_data, counter, answer_prompt):
@@ -108,15 +109,16 @@ def _question_block(q_data, counter, answer_prompt):
     if re.match(r'^\s*\d+\.', str(q_text).strip()) is None:
         q_text = f"{counter}. {q_text}"
 
-    block = [Paragraph(q_text, question_style)]
+    block = [Paragraph(_escape_if_needed(q_text), question_style)]
 
     if choices:
         for j, c in enumerate(choices):
-            chs = str(c).strip()
+            chs = _escape_if_needed(str(c).strip())
             if re.match(r'^[A-Za-z][\)\.\s]+', chs):
                 block.append(Paragraph(chs, choice_style))
             else:
-                block.append(Paragraph(f"{chr(ord('A') + j)}) {chs}", choice_style))
+                label = chr(ord('A') + (j % 26))
+                block.append(Paragraph(f"{label}) {chs}", choice_style))
         blank = "_____"
     elif qtype in ('truefalse', 'true_false', 'true/false', 'tf'):
         blank = "T  /  F"
@@ -124,7 +126,7 @@ def _question_block(q_data, counter, answer_prompt):
         blank = "_" * 60
 
     block.append(Paragraph(
-        f"<b>{answer_prompt}</b> &nbsp; {blank}",
+        f"<b>{_escape_if_needed(answer_prompt)}</b> &nbsp; {blank}",
         answer_line_style,
     ))
     return KeepTogether(block)
@@ -151,14 +153,14 @@ def _round_header(meta, round_title, round_theme, question_count):
     ]))
 
     flowables = []
-    flowables.append(Paragraph(meta['title'], title_style))
-    sub_parts = [p for p in (meta.get('institution'), meta.get('host')) if p]
+    flowables.append(Paragraph(_escape_if_needed(meta['title']), title_style))
+    sub_parts = [_escape_if_needed(p) for p in (meta.get('institution'), meta.get('host')) if p]
     if sub_parts:
         flowables.append(Paragraph(" &mdash; ".join(sub_parts), subtitle_style))
     flowables.append(Spacer(1, 4))
-    flowables.append(Paragraph(round_title, round_title_style))
+    flowables.append(Paragraph(_escape_if_needed(round_title), round_title_style))
     if round_theme:
-        flowables.append(Paragraph(round_theme, theme_style))
+        flowables.append(Paragraph(_escape_if_needed(round_theme), theme_style))
     flowables.append(Spacer(1, 4))
     flowables.append(header_table)
     flowables.append(Spacer(1, 6))
