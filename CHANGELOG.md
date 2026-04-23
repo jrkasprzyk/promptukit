@@ -8,6 +8,8 @@ breaking changes).
 
 ## [Unreleased]
 
+## [0.5.0] — 2026-04-23
+
 ### Added
 - `promptukit.exams.create_pub_quiz` generates a pub-quiz style group trivia PDF with one sheet per round, each carrying team-name / date / score fields for independent grading; supports free-answer, multiple-choice, and true/false questions
 - `promptukit/data/question_banks/pub-quiz-sample.json` — 3-round sample bank (Motorsport / Music / Science)
@@ -57,7 +59,8 @@ breaking changes).
 ### Fixed
 - `RuntimeWarning` from eager subpackage imports in top-level `__init__.py`
 
-[Unreleased]: https://github.com/jrkasprzyk/promptukit/compare/v0.4.0...HEAD
+[Unreleased]: https://github.com/jrkasprzyk/promptukit/compare/v0.5.0...HEAD
+[0.5.0]: https://github.com/jrkasprzyk/promptukit/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/jrkasprzyk/promptukit/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/jrkasprzyk/promptukit/compare/v0.2.2...v0.3.0
 [0.2.2]: https://github.com/jrkasprzyk/promptukit/compare/v0.2.100...v0.2.2
