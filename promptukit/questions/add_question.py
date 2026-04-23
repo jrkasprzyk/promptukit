@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 """Add questions to a question bank.
 
-Interactive mode (default):
+Interactive mode (default) supports MultipleChoice only. Use --batch
+or edit the JSON directly for other question types.
+
+Interactive mode:
   python -m promptukit.questions.add_question [path/to/bank.json]
 
 Batch mode — read a JSON array of partial question objects from a file or
@@ -9,9 +12,12 @@ stdin, auto-assign IDs, and append to the bank without any prompts:
   python -m promptukit.questions.add_question --batch questions.json [path/to/bank.json]
   cat questions.json | python -m promptukit.questions.add_question --batch - [path/to/bank.json]
 
-Each object in the batch array must have: category, difficulty, prompt,
-choices (4 strings), answer (0-3 int).  Optional: quip_correct, quip_wrong.
-IDs are auto-generated; any "id" field in the input is ignored.
+Every object in the batch array needs category, difficulty, and prompt.
+The ``question_type`` field selects type-specific required fields
+(see ``BATCH_TYPE_REQUIRED`` below); if omitted, the type is inferred
+from the shape of the object. Optional on all types: quip_correct,
+quip_wrong. IDs are auto-generated; any ``id`` field in the input is
+ignored.
 """
 
 import io
@@ -21,6 +27,7 @@ import argparse
 from pathlib import Path
 
 from promptukit.utils.cli_helpers import load, save, pick, confirm
+from promptukit.utils.json_tools import infer_question_type
 
 DEFAULT_BANK_PATH = Path(__file__).resolve().parent.parent.parent / "content" / "question_banks" / "block-doku-questions.json"
 DIFFICULTIES = ["easy", "medium", "hard"]
@@ -71,18 +78,40 @@ def insert_after_category(questions: list[dict], new_q: dict) -> list[dict]:
 
 
 def preview(q: dict) -> None:
+    qtype = q.get("question_type", "MultipleChoice")
     print("\n  ┌─ Preview " + "─" * 50)
-    print(f"  │  id         : {q['id']}")
-    print(f"  │  category   : {q['category']}")
-    print(f"  │  difficulty : {q['difficulty']}")
-    print(f"  │  prompt     : {q['prompt']}")
-    for i, choice in enumerate(q["choices"]):
-        marker = "✓" if i == q["answer"] else " "
-        print(f"  │  {marker} [{i}] {choice}")
+    print(f"  │  id            : {q['id']}")
+    print(f"  │  question_type : {qtype}")
+    print(f"  │  category      : {q['category']}")
+    print(f"  │  difficulty    : {q['difficulty']}")
+    print(f"  │  prompt        : {q['prompt']}")
+
+    if qtype == "MultipleChoice":
+        ans = q.get("answer")
+        for i, choice in enumerate(q.get("choices", [])):
+            marker = "✓" if i == ans else " "
+            print(f"  │  {marker} [{i}] {choice}")
+    elif qtype == "TrueFalse":
+        print(f"  │  answer        : {q.get('answer')}")
+    elif qtype == "ShortAnswer":
+        print(f"  │  answer        : {q.get('answer')!r}")
+    elif qtype == "FillInTheBlank":
+        for i, a in enumerate(q.get("answers", [])):
+            print(f"  │    blank[{i}]    : {a!r}")
+    elif qtype == "Matching":
+        for i, p in enumerate(q.get("pairs", [])):
+            print(f"  │    pair[{i}]     : {p[0]!r} -> {p[1]!r}")
+    elif qtype == "Calculation":
+        print(f"  │  answer        : {q.get('answer')}")
+        if q.get("tolerance") is not None:
+            print(f"  │  tolerance     : {q['tolerance']}")
+        if q.get("unit"):
+            print(f"  │  unit          : {q['unit']}")
+
     if q.get("quip_correct"):
-        print(f"  │  quip_correct : {q['quip_correct']}")
+        print(f"  │  quip_correct  : {q['quip_correct']}")
     if q.get("quip_wrong"):
-        print(f"  │  quip_wrong   : {q['quip_wrong']}")
+        print(f"  │  quip_wrong    : {q['quip_wrong']}")
     print("  └" + "─" * 59)
 
 
@@ -141,6 +170,7 @@ def collect_question(categories: list[str], questions: list[dict]) -> dict:
 
     q: dict = {
         "id": qid,
+        "question_type": "MultipleChoice",
         "category": category,
         "difficulty": difficulty,
         "prompt": q_prompt,
@@ -162,7 +192,30 @@ def collect_question(categories: list[str], questions: list[dict]) -> dict:
 # Batch mode
 # ---------------------------------------------------------------------------
 
-BATCH_REQUIRED = {"category", "difficulty", "prompt", "choices", "answer"}
+BATCH_COMMON_REQUIRED = {"category", "difficulty", "prompt"}
+
+BATCH_TYPE_REQUIRED: dict[str, set[str]] = {
+    "MultipleChoice": {"choices", "answer"},
+    "TrueFalse":      {"answer"},
+    "ShortAnswer":    {"answer"},
+    "FillInTheBlank": {"answers"},
+    "Matching":       {"pairs"},
+    "Calculation":    {"answer"},
+}
+
+# Type-specific fields carried through from the batch input into the
+# written question dict (after the common id/category/difficulty/prompt).
+BATCH_TYPE_FIELDS: dict[str, tuple[str, ...]] = {
+    "MultipleChoice": ("choices", "answer"),
+    "TrueFalse":      ("answer",),
+    "ShortAnswer":    ("answer",),
+    "FillInTheBlank": ("answers",),
+    "Matching":       ("pairs",),
+    "Calculation":    ("answer", "tolerance", "unit"),
+}
+
+# Kept for backward compatibility — older callers may import this.
+BATCH_REQUIRED = BATCH_COMMON_REQUIRED | BATCH_TYPE_REQUIRED["MultipleChoice"]
 
 
 def _load_batch(source: str) -> list[dict]:
@@ -201,9 +254,23 @@ def cmd_batch(bank_path: Path, batch_source: str) -> int:
     errors = 0
 
     for i, raw in enumerate(incoming):
-        missing = BATCH_REQUIRED - set(raw.keys())
-        if missing:
-            print(f"  SKIP item[{i}]: missing fields {missing}")
+        # --- common fields ---
+        missing_common = BATCH_COMMON_REQUIRED - set(raw.keys())
+        if missing_common:
+            print(f"  SKIP item[{i}]: missing fields {missing_common}")
+            errors += 1
+            continue
+
+        # --- resolve question type ---
+        qtype = raw.get("question_type") or infer_question_type(raw)
+        if qtype not in BATCH_TYPE_REQUIRED:
+            print(f"  SKIP item[{i}]: unsupported question_type '{qtype}'")
+            errors += 1
+            continue
+
+        missing_type = BATCH_TYPE_REQUIRED[qtype] - set(raw.keys())
+        if missing_type:
+            print(f"  SKIP item[{i}] [{qtype}]: missing fields {missing_type}")
             errors += 1
             continue
 
@@ -214,13 +281,15 @@ def cmd_batch(bank_path: Path, batch_source: str) -> int:
 
         qid = next_id(questions, cat)
         q: dict = {
-            "id":         qid,
-            "category":   cat,
-            "difficulty": raw["difficulty"],
-            "prompt":     raw["prompt"],
-            "choices":    raw["choices"],
-            "answer":     raw["answer"],
+            "id":            qid,
+            "question_type": qtype,
+            "category":      cat,
+            "difficulty":    raw["difficulty"],
+            "prompt":        raw["prompt"],
         }
+        for field in BATCH_TYPE_FIELDS[qtype]:
+            if field in raw:
+                q[field] = raw[field]
         for opt in ("quip_correct", "quip_wrong"):
             if raw.get(opt):
                 q[opt] = raw[opt]

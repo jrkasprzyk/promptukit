@@ -1,0 +1,81 @@
+{
+  "categories": [
+    "geography",
+    "math",
+    "history",
+    "chem"
+  ],
+  "questions": [
+    {
+      "id": "geography_001",
+      "question_type": "MultipleChoice",
+      "category": "geography",
+      "difficulty": "easy",
+      "prompt": "Capital of France?",
+      "choices": [
+        "Paris",
+        "London",
+        "Berlin",
+        "Madrid"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "geography_002",
+      "question_type": "TrueFalse",
+      "category": "geography",
+      "difficulty": "easy",
+      "prompt": "The Nile is in Africa.",
+      "answer": true
+    },
+    {
+      "id": "geography_003",
+      "question_type": "Matching",
+      "category": "geography",
+      "difficulty": "medium",
+      "prompt": "Match countries to capitals.",
+      "pairs": [
+        [
+          "France",
+          "Paris"
+        ],
+        [
+          "Japan",
+          "Tokyo"
+        ],
+        [
+          "Egypt",
+          "Cairo"
+        ]
+      ]
+    },
+    {
+      "id": "history_001",
+      "question_type": "ShortAnswer",
+      "category": "history",
+      "difficulty": "medium",
+      "prompt": "Who wrote the Declaration of Independence?",
+      "answer": "Thomas Jefferson"
+    },
+    {
+      "id": "chem_001",
+      "question_type": "FillInTheBlank",
+      "category": "chem",
+      "difficulty": "easy",
+      "prompt": "The symbol for ___ is Au.",
+      "answers": [
+        "gold"
+      ]
+    },
+    {
+      "id": "math_001",
+      "question_type": "Calculation",
+      "category": "math",
+      "difficulty": "hard",
+      "prompt": "Area of circle r=3 in m^2?",
+      "answer": 28.27,
+      "tolerance": 0.05,
+      "unit": "m^2"
+    }
+  ]
+}
