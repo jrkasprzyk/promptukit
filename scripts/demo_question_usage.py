@@ -3,7 +3,8 @@
 
 This script demonstrates:
 - Inferring and adding `question_type` tags to legacy JSON
-- Loading questions as `Question`/`MultipleChoice` objects
+- Loading questions as typed Question objects
+- Constructing each question type directly
 - Serializing objects back to dicts (preserving raw JSON when requested)
 
 Usage:
@@ -21,7 +22,15 @@ from typing import Any, Dict, List
 
 from promptukit.utils.cli_helpers import load, save
 from promptukit.utils.json_tools import add_question_type_tags, update_json_file, infer_question_type
-from promptukit.questions.question_models import Question
+from promptukit.questions.question_models import (
+    Question,
+    MultipleChoice,
+    TrueFalse,
+    ShortAnswer,
+    FillInTheBlank,
+    Matching,
+    Calculation,
+)
 
 
 def _flatten_data(data: Any) -> List[Dict[str, Any]]:
@@ -40,15 +49,60 @@ def _flatten_data(data: Any) -> List[Dict[str, Any]]:
     return []
 
 
-def _summarize(obj: Question) -> Dict[str, Any]:
-    s: Dict[str, Any] = {"type": obj.question_type, "text": getattr(obj, "text", None)}
-    if hasattr(obj, "choices"):
-        s["choices"] = getattr(obj, "choices")
-    if hasattr(obj, "answer_index"):
-        s["answer_index"] = getattr(obj, "answer_index")
-    if hasattr(obj, "answer_text"):
-        s["answer_text"] = getattr(obj, "answer_text")
-    return s
+def _print_obj(label: str, obj: Question) -> None:
+    print(f"  [{label}] {obj.question_type}: {obj.text}")
+    d = obj.to_dict()
+    for k, v in d.items():
+        if k not in ("question_type", "prompt"):
+            print(f"    {k}: {v}")
+
+
+def _demo_new_types() -> None:
+    print("\n--- New question type samples ---\n")
+
+    mc = MultipleChoice(
+        text="Which planet is closest to the Sun?",
+        choices=["Venus", "Mercury", "Mars", "Earth"],
+        answer=1,
+    )
+    _print_obj("MultipleChoice", mc)
+
+    tf = TrueFalse(text="The Earth orbits the Moon.", answer=False)
+    _print_obj("TrueFalse", tf)
+
+    sa = ShortAnswer(text="What is the chemical symbol for gold?", answer="Au")
+    _print_obj("ShortAnswer", sa)
+
+    fitb = FillInTheBlank(
+        text="The ___ is the powerhouse of the cell.",
+        answers=["mitochondria"],
+    )
+    _print_obj("FillInTheBlank", fitb)
+
+    match = Matching(
+        text="Match each element to its chemical symbol.",
+        pairs=[["Hydrogen", "H"], ["Oxygen", "O"], ["Carbon", "C"]],
+    )
+    _print_obj("Matching", match)
+
+    calc = Calculation(
+        text="A car travels 150 km in 2 hours. What is its average speed?",
+        answer=75.0,
+        tolerance=0.5,
+        unit="km/h",
+    )
+    _print_obj("Calculation", calc)
+    print(f"    is_correct(75.0): {calc.is_correct(75.0)}")
+    print(f"    is_correct(74.6): {calc.is_correct(74.6)}")
+    print(f"    is_correct(74.4): {calc.is_correct(74.4)}")
+
+    print("\n--- Round-trip from_json → to_dict ---\n")
+    samples = [mc, tf, sa, fitb, match, calc]
+    for obj in samples:
+        d = obj.to_dict()
+        restored = Question.from_json(d)
+        match_type = type(restored).__name__ == type(obj).__name__
+        print(f"  {type(obj).__name__}: round-trip ok={match_type}")
 
 
 def main(argv: List[str] | None = None) -> int:
@@ -59,6 +113,8 @@ def main(argv: List[str] | None = None) -> int:
     p.add_argument("--inplace", action="store_true", help="Overwrite the source file (use with care)")
     p.add_argument("--preserve-raw", action="store_true",
                    help="When showing serialized objects, prefer original raw dict")
+    p.add_argument("--new-types", action="store_true", default=True,
+                   help="Show new question type samples (default: on)")
     args = p.parse_args(argv)
 
     bank_path = Path(args.bank)
@@ -94,17 +150,15 @@ def main(argv: List[str] | None = None) -> int:
             print(f"Wrote migrated JSON to: {written}")
 
     # Build objects from the in-memory migrated data
-    items = migrated_questions
-    objects = [Question.from_json(q) for q in items]
-    print(f"\nLoaded {len(objects)} question objects:")
+    objects = [Question.from_json(q) for q in migrated_questions]
+    print(f"\nLoaded {len(objects)} question objects from bank:")
     for i, obj in enumerate(objects, 1):
-        summary = _summarize(obj)
-        print(f" {i}) {summary['type']}: {summary['text']}")
-        if "choices" in summary:
-            print("    choices:", summary["choices"])
-        print("    answer_index:", summary.get("answer_index"), "answer_text:", summary.get("answer_text"))
+        print(f" {i}) {obj.question_type}: {obj.text[:60]}")
         serialized = obj.to_dict(preserve_raw=args.preserve_raw)
-        print("    serialized (sample):", json.dumps(serialized, ensure_ascii=False)[:200])
+        print("    serialized:", json.dumps(serialized, ensure_ascii=False)[:200])
+
+    if args.new_types:
+        _demo_new_types()
 
     print("\nDone. Use --out to write migrated JSON to disk, or --inplace to overwrite source.")
     return 0

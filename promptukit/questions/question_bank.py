@@ -20,31 +20,8 @@ from pathlib import Path
 from typing import Any, List, Optional
 
 from promptukit.utils.cli_helpers import load, save, pick, confirm, pick_questions
-from promptukit.utils.json_tools import update_json_file
+from promptukit.utils.json_tools import update_json_file, flatten_questions
 
-
-def _load_questions(data: Any) -> List[dict]:
-    """Return a flat list of question dicts from several supported JSON shapes.
-
-    The project uses either a top-level `questions` list or a mapping of
-    category -> list. This helper normalizes those shapes into a single
-    list of question objects for downstream filtering.
-    """
-    if isinstance(data, dict):
-        if "questions" in data and isinstance(data["questions"], list):
-            return [q for q in data["questions"] if isinstance(q, dict)]
-        # top-level category -> list mapping
-        if all(isinstance(v, list) for v in data.values()):
-            out: List[dict] = []
-            for v in data.values():
-                if isinstance(v, list):
-                    out.extend([q for q in v if isinstance(q, dict)])
-            return out
-        # fallback: dict itself as single item
-        return [data] if isinstance(data, dict) else []
-    if isinstance(data, list):
-        return [q for q in data if isinstance(q, dict)]
-    return []
 
 
 def _categories_of(questions: List[dict]) -> List[str]:
@@ -152,7 +129,7 @@ def cmd_extract(args: argparse.Namespace) -> int:
         print(f"Source not found: {src}")
         return 3
     data = load(src)
-    questions = _load_questions(data)
+    questions = flatten_questions(data)
 
     # --numbers: pick by 1-based position before any other filter
     if args.numbers:

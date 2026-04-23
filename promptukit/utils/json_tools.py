@@ -15,21 +15,41 @@ from promptukit.utils.cli_helpers import load, save
 from promptukit.questions.question_models import Question
 
 
+_KNOWN_TYPES = {"MultipleChoice", "TrueFalse", "ShortAnswer", "FillInTheBlank", "Matching", "Calculation", "Question"}
+
+
 def infer_question_type(item: Dict[str, Any]) -> str:
 	"""Infer the question type for a single question dict.
 
-	Rules:
-	- If ``question_type`` already present, return it.
-	- If ``choices`` or ``answer`` present, return ``MultipleChoice``.
-	- Otherwise default to ``MultipleChoice`` (per project requirement).
+	Rules (in order):
+	1. If ``question_type`` already present and recognized, return it.
+	2. ``choices``/``options`` → MultipleChoice.
+	3. ``pairs`` → Matching.
+	4. ``answers`` (list) → FillInTheBlank.
+	5. ``answer`` bool → TrueFalse.
+	6. ``answer`` numeric → Calculation.
+	7. ``answer`` string → ShortAnswer.
+	8. Default → MultipleChoice.
 	"""
 	if not isinstance(item, dict):
 		return "Question"
 	qt = item.get("question_type")
-	if isinstance(qt, str) and qt:
+	if isinstance(qt, str) and qt in _KNOWN_TYPES:
 		return qt
-	if "choices" in item or "answer" in item:
+	if "choices" in item or "options" in item:
 		return "MultipleChoice"
+	if "pairs" in item:
+		return "Matching"
+	if "answers" in item and isinstance(item["answers"], list):
+		return "FillInTheBlank"
+	if "answer" in item:
+		answer = item["answer"]
+		if isinstance(answer, bool):
+			return "TrueFalse"
+		if isinstance(answer, (int, float)):
+			return "Calculation"
+		if isinstance(answer, str):
+			return "ShortAnswer"
 	return "MultipleChoice"
 
 
@@ -38,6 +58,7 @@ def _update_list(lst: List[Any]) -> List[Any]:
 	for it in lst:
 		if isinstance(it, dict):
 			if "question_type" not in it:
+				it = dict(it)
 				it["question_type"] = infer_question_type(it)
 		out.append(it)
 	return out
@@ -59,7 +80,9 @@ def add_question_type_tags(data: Any) -> Any:
 			out["questions"] = _update_list(out["questions"])
 			return out
 
-		# mapping of category -> list
+		# mapping of category -> list (explicit empty check avoids vacuous True)
+		if not data:
+			return data
 		if all(isinstance(v, list) for v in data.values()):
 			out = {}
 			for k, v in data.items():
@@ -96,6 +119,29 @@ def update_json_file(path: Path, dest: Path | None = None) -> Path:
 	return out_path
 
 
+def flatten_questions(data: Any) -> List[Dict[str, Any]]:
+	"""Return a flat list of question dicts from common JSON shapes.
+
+	Handles: ``{"questions": [...]}`` wrapper, category->list mapping,
+	bare list, or single question dict.
+	"""
+	if isinstance(data, dict):
+		if not data:
+			return []
+		if "questions" in data and isinstance(data["questions"], list):
+			return [q for q in data["questions"] if isinstance(q, dict)]
+		if all(isinstance(v, list) for v in data.values()):
+			out: List[Dict[str, Any]] = []
+			for v in data.values():
+				if isinstance(v, list):
+					out.extend([q for q in v if isinstance(q, dict)])
+			return out
+		return [data]
+	if isinstance(data, list):
+		return [q for q in data if isinstance(q, dict)]
+	return []
+
+
 def load_questions_as_objects(path: Path) -> List[Question]:
 	"""Load questions from a JSON bank and return a flat list of Question objects.
 
@@ -103,22 +149,5 @@ def load_questions_as_objects(path: Path) -> List[Question]:
 	instantiates the appropriate subclass via ``Question.from_json``.
 	"""
 	data = load(path)
-
-	def _flatten(d: Any) -> List[Dict[str, Any]]:
-		if isinstance(d, dict):
-			if "questions" in d and isinstance(d["questions"], list):
-				return [q for q in d["questions"] if isinstance(q, dict)]
-			if all(isinstance(v, list) for v in d.values()):
-				out: List[Dict[str, Any]] = []
-				for v in d.values():
-					if isinstance(v, list):
-						out.extend([q for q in v if isinstance(q, dict)])
-				return out
-			return [d]
-		if isinstance(d, list):
-			return [q for q in d if isinstance(q, dict)]
-		return []
-
-	items = _flatten(data)
-	return [Question.from_json(q) for q in items]
+	return [Question.from_json(q) for q in flatten_questions(data)]
 
