@@ -433,6 +433,23 @@ For local development, `scripts/sync_claude_commands.py` mirrors the same
 files into the repo's `.claude/commands/` directory and supports `--check`
 for CI drift detection.
 
+**PATH note:** `pip install promptukit` inside a Poetry-managed virtualenv
+puts the script on the venv's PATH only — the bare `promptukit-claude-commands`
+command will not resolve from a fresh shell. Pick one:
+
+```bash
+# 1. Prefix every call (no install changes)
+poetry run promptukit-claude-commands install --dest ~/.claude/commands
+
+# 2. Activate the venv first (then bare command works)
+poetry shell
+promptukit-claude-commands install --dest ~/.claude/commands
+
+# 3. Install globally so the command is on PATH everywhere
+pipx install promptukit            # recommended
+pip install --user promptukit      # alternative
+```
+
 Example files
 -------------
 
