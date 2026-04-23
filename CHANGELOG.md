@@ -8,6 +8,8 @@ breaking changes).
 
 ## [Unreleased]
 
+## [0.4.0] — 2026-04-23
+
 ### Added
 - Non-MCQ question types (`TrueFalse`, `ShortAnswer`, `FillInTheBlank`, `Matching`, `Calculation`) supported in `add_question.py` batch mode and `validate_question.py`; `mixed-types-sample.json` fixture shipped
 - `promptukit.claude_commands` package bundles `add-trivia.md` and `audit-trivia.md` as canonical slash-command sources, installable via the new `promptukit-claude-commands` entry point (`list` / `show` / `install`)
@@ -51,7 +53,8 @@ breaking changes).
 ### Fixed
 - `RuntimeWarning` from eager subpackage imports in top-level `__init__.py`
 
-[Unreleased]: https://github.com/jrkasprzyk/promptukit/compare/v0.3.0...HEAD
+[Unreleased]: https://github.com/jrkasprzyk/promptukit/compare/v0.4.0...HEAD
+[0.4.0]: https://github.com/jrkasprzyk/promptukit/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/jrkasprzyk/promptukit/compare/v0.2.2...v0.3.0
 [0.2.2]: https://github.com/jrkasprzyk/promptukit/compare/v0.2.100...v0.2.2
 [0.2.100]: https://github.com/jrkasprzyk/promptukit/compare/v0.2.000...v0.2.100
