@@ -183,9 +183,7 @@ def build_pub_quiz_pdf(rounds, output_path, metadata=None):
         leftMargin=0.75 * inch, rightMargin=0.75 * inch,
     )
 
-    meta = DEFAULT_METADATA.copy()
-    if metadata:
-        meta.update({k: v for k, v in metadata.items() if v is not None})
+    meta = effective_metadata(metadata)
 
     story = []
     total_rounds = len(rounds)
@@ -306,6 +304,22 @@ def load_metadata_from_json(path):
     return merged
 
 
+def effective_metadata(metadata=None):
+    meta = dict(DEFAULT_METADATA)
+    if metadata:
+        meta.update({k: v for k, v in metadata.items() if v is not None})
+    return meta
+
+
+def save_json_artifact(path, data):
+    p = Path(path)
+    if p.parent and not p.parent.exists():
+        p.parent.mkdir(parents=True, exist_ok=True)
+    with p.open('w', encoding='utf-8') as fh:
+        json.dump(data, fh, indent=2, ensure_ascii=False)
+        fh.write('\n')
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="Create a pub-quiz PDF (one sheet per round)."
@@ -314,8 +328,12 @@ def main():
                         help='Path to JSON file with rounds/questions')
     parser.add_argument('-o', '--output', default='pub_quiz.pdf',
                         help='Output PDF filename')
-    parser.add_argument('-m', '--metadata', default=None,
-                        help='Path to JSON metadata file (title, host, etc.)')
+    parser.add_argument('-m', '--metadata', '--setup', default=None,
+                        help='Path to JSON metadata/setup file (title, host, etc.)')
+    parser.add_argument('--save-questions', default=None,
+                        help='Write the normalized rounds/questions artifact used for this PDF')
+    parser.add_argument('--save-setup', default=None,
+                        help='Write the effective metadata/setup artifact used for this PDF')
     args = parser.parse_args()
 
     rounds = load_rounds_from_json(args.questions)
@@ -324,6 +342,13 @@ def main():
         sys.exit(1)
 
     meta = load_metadata_from_json(args.metadata) if args.metadata else None
+
+    if args.save_questions:
+        save_json_artifact(args.save_questions, {'rounds': rounds})
+        print(f"Pub quiz question artifact written to: {args.save_questions}")
+    if args.save_setup:
+        save_json_artifact(args.save_setup, effective_metadata(meta))
+        print(f"Pub quiz setup artifact written to: {args.save_setup}")
 
     try:
         build_pub_quiz_pdf(rounds, args.output, metadata=meta)

@@ -366,8 +366,33 @@ python -m promptukit.exams.create_exam
 # Load questions from a JSON bank and write a PDF
 python -m promptukit.exams.create_exam -q promptukit/data/question_banks/block-doku-questions.json -o cven4333_from_json.pdf
 
+# Save reproducible artifacts while creating the PDF
+python -m promptukit.exams.create_exam \
+  -q promptukit/data/question_banks/block-doku-questions.json \
+  --save-questions exam_questions.json \
+  --save-setup exam_setup.json \
+  -o cven4333_from_json.pdf
+
 # With Poetry (runs the module inside the virtualenv)
 poetry run python -m promptukit.exams.create_exam -q promptukit/data/question_banks/block-doku-questions.json -o cven4333_from_json.pdf
+```
+
+You can also create the editable two-file artifact pair with the extraction
+tool, then render from those files:
+
+```bash
+poetry run question-bank extract \
+  --src promptukit/data/question_banks/block-doku-questions.json \
+  --dest exam_questions.json \
+  --categories music \
+  --setup-dest exam_setup.json \
+  --artifact-kind exam \
+  -f
+
+python -m promptukit.exams.create_exam \
+  -q exam_questions.json \
+  -m exam_setup.json \
+  -o exam.pdf
 ```
 
 Supported JSON formats
@@ -418,6 +443,19 @@ python -m promptukit.exams.create_pub_quiz \
 # With custom metadata (title, host, instructions, labels)
 python -m promptukit.exams.create_pub_quiz \
   -q my_quiz.json -m my_quiz_meta.json -o pub_quiz.pdf
+
+# Extract an editable subset and setup file, then render from them
+poetry run question-bank extract \
+  --src promptukit/data/question_banks/pub-quiz-sample.json \
+  --dest pub_quiz_questions.json \
+  --setup-dest pub_quiz_setup.json \
+  --artifact-kind pub_quiz \
+  -f
+
+python -m promptukit.exams.create_pub_quiz \
+  -q pub_quiz_questions.json \
+  -m pub_quiz_setup.json \
+  -o pub_quiz.pdf
 ```
 
 Input JSON layout — top-level `rounds` (aliases: `sections`, `categories`):
@@ -542,4 +580,3 @@ poetry run pytest dev/checks/test_question_tool.py -q
 Notes:
 
 - Tests use pytest's `tmp_path` fixture and do not modify your repository files.
-

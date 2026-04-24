@@ -94,6 +94,13 @@ def ensure_dest(path: Path, force: bool = False) -> bool:
         return True
     return confirm(f"Destination {path} exists — overwrite?")
 
+def _setup_template(kind: str) -> dict:
+    if kind == "pub_quiz":
+        from promptukit.exams.create_pub_quiz import DEFAULT_METADATA
+    else:
+        from promptukit.exams.create_exam import DEFAULT_METADATA
+    return dict(DEFAULT_METADATA)
+
 
 def cmd_create(args: argparse.Namespace) -> int:
     dest = Path(args.dest)
@@ -168,6 +175,15 @@ def cmd_extract(args: argparse.Namespace) -> int:
         return 6
     save(dest, out_data)
     print(f"Wrote {len(filtered)} question(s) to {dest}")
+
+    if args.setup_dest:
+        setup_dest = Path(args.setup_dest)
+        if not ensure_dest(setup_dest, force=args.force):
+            print("Question subset was written, but setup artifact was not written.")
+            return 9
+        save(setup_dest, _setup_template(args.artifact_kind))
+        print(f"Wrote {args.artifact_kind.replace('_', ' ')} setup artifact to {setup_dest}")
+
     return 0
 
 
@@ -222,6 +238,10 @@ def main(argv: List[str] | None = None) -> int:
     p_extract.add_argument("-i", "--interactive", action="store_true", help="Interactive category picker")
     p_extract.add_argument("-I", "--interactive-questions", action="store_true",
                            help="Interactive multi-select: browse and toggle individual questions")
+    p_extract.add_argument("--setup-dest",
+                           help="Optional destination for a matching exam/pub-quiz setup JSON template")
+    p_extract.add_argument("--artifact-kind", choices=["exam", "pub_quiz"], default="exam",
+                           help="Setup template type to write with --setup-dest")
     p_extract.add_argument("-f", "--force", action="store_true", help="Overwrite destination if exists")
     p_extract.set_defaults(func=cmd_extract)
 

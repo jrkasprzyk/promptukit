@@ -3,6 +3,7 @@ from pathlib import Path
 
 import promptukit.questions.question_bank as tt
 import promptukit.utils.json_tools as jt
+from promptukit.exams import create_exam, create_pub_quiz
 from promptukit.questions.question_models import (
     MultipleChoice,
     TrueFalse,
@@ -84,6 +85,62 @@ def test_cmd_extract_and_create_and_copy(tmp_path: Path):
     rc = tt.main(["copy", "--src", str(newfile), "--dest", str(copyfile), "-f"])
     assert rc == 0
     assert json.loads(copyfile.read_text(encoding="utf-8")) == loaded
+
+
+def test_cmd_extract_can_write_setup_artifact(tmp_path: Path):
+    src = tmp_path / "src.json"
+    data = {"categories": ["music"], "questions": _sample_questions()}
+    src.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+
+    subset = tmp_path / "subset.json"
+    setup = tmp_path / "setup.json"
+    rc = tt.main([
+        "extract",
+        "--src", str(src),
+        "--dest", str(subset),
+        "--categories", "music",
+        "--setup-dest", str(setup),
+        "--artifact-kind", "exam",
+        "-f",
+    ])
+
+    assert rc == 0
+    assert len(json.loads(subset.read_text(encoding="utf-8"))["questions"]) == 2
+    setup_data = json.loads(setup.read_text(encoding="utf-8"))
+    assert setup_data["title"] == create_exam.DEFAULT_METADATA["title"]
+    assert "instructions" in setup_data
+
+
+def test_exam_artifacts_are_loadable(tmp_path: Path):
+    question_artifact = tmp_path / "exam_questions.json"
+    setup_artifact = tmp_path / "exam_setup.json"
+    sections = [{"title": "Music", "questions": _sample_questions()[:1]}]
+
+    create_exam.save_json_artifact(question_artifact, create_exam.questions_artifact(sections))
+    create_exam.save_json_artifact(setup_artifact, create_exam.effective_metadata({"title": "Custom Exam"}))
+
+    loaded = create_exam.load_questions_from_json(question_artifact)
+    setup = create_exam.load_metadata_from_json(setup_artifact)
+
+    assert loaded["sections"][0]["title"] == "Music"
+    assert loaded["sections"][0]["questions"][0]["q"] == "Who wrote this song?"
+    assert setup["title"] == "Custom Exam"
+
+
+def test_pub_quiz_artifacts_are_loadable(tmp_path: Path):
+    question_artifact = tmp_path / "quiz_questions.json"
+    setup_artifact = tmp_path / "quiz_setup.json"
+    rounds = [{"title": "Round 1", "theme": "Music", "questions": _sample_questions()[:1]}]
+
+    create_pub_quiz.save_json_artifact(question_artifact, {"rounds": rounds})
+    create_pub_quiz.save_json_artifact(setup_artifact, create_pub_quiz.effective_metadata({"title": "Custom Quiz"}))
+
+    loaded = create_pub_quiz.load_rounds_from_json(question_artifact)
+    setup = create_pub_quiz.load_metadata_from_json(setup_artifact)
+
+    assert loaded[0]["title"] == "Round 1"
+    assert loaded[0]["questions"][0]["q"] == "Who wrote this song?"
+    assert setup["title"] == "Custom Quiz"
 
 
 def test_json_tools_update_and_load(tmp_path: Path):

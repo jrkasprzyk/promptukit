@@ -383,6 +383,32 @@ def load_metadata_from_json(path):
     return merged
 
 
+def effective_metadata(metadata=None):
+    meta = dict(DEFAULT_METADATA)
+    if metadata:
+        meta.update({k: v for k, v in metadata.items() if v is not None})
+    return meta
+
+
+def save_json_artifact(path, data):
+    p = Path(path)
+    if p.parent and not p.parent.exists():
+        p.parent.mkdir(parents=True, exist_ok=True)
+    with p.open('w', encoding='utf-8') as fh:
+        json.dump(data, fh, indent=2, ensure_ascii=False)
+        fh.write('\n')
+
+
+def questions_artifact(questions_to_use):
+    if isinstance(questions_to_use, list) and questions_to_use and isinstance(questions_to_use[0], dict) and 'questions' in questions_to_use[0]:
+        return {'sections': questions_to_use}
+    if isinstance(questions_to_use, dict) and 'sections' in questions_to_use:
+        return questions_to_use
+    if isinstance(questions_to_use, dict) and 'questions' in questions_to_use:
+        return questions_to_use
+    return {'questions': questions_to_use}
+
+
 # --- Build PDF ---
 def build_exam_pdf(sections_or_questions, output_path, metadata=None):
     # Ensure output directory exists (creating it if necessary). This
@@ -401,9 +427,7 @@ def build_exam_pdf(sections_or_questions, output_path, metadata=None):
         topMargin=0.6*inch, bottomMargin=0.6*inch,
         leftMargin=0.75*inch, rightMargin=0.75*inch)
 
-    meta = DEFAULT_METADATA.copy()
-    if metadata:
-        meta.update({k: v for k, v in metadata.items() if v is not None})
+    meta = effective_metadata(metadata)
 
     story = []
 
@@ -596,7 +620,9 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description="Create exam PDF with optional JSON question bank")
     parser.add_argument('-q', '--questions', help='Path to JSON question bank file', default=None)
     parser.add_argument('-o', '--output', help='Output PDF filename', default='cven4333_exam.pdf')
-    parser.add_argument('-m', '--metadata', help='Path to JSON exam metadata file', default=None)
+    parser.add_argument('-m', '--metadata', '--setup', help='Path to JSON exam metadata/setup file', default=None)
+    parser.add_argument('--save-questions', help='Write the normalized question artifact used for this PDF', default=None)
+    parser.add_argument('--save-setup', help='Write the effective metadata/setup artifact used for this PDF', default=None)
     args = parser.parse_args()
     if args.questions:
         raw = load_questions_from_json(args.questions)
@@ -636,6 +662,13 @@ if __name__ == '__main__':
         questions_to_use = formatted_sections
 
     exam_metadata = load_metadata_from_json(args.metadata) if args.metadata else None
+
+    if args.save_questions:
+        save_json_artifact(args.save_questions, questions_artifact(questions_to_use))
+        print(f"Exam question artifact written to: {args.save_questions}")
+    if args.save_setup:
+        save_json_artifact(args.save_setup, effective_metadata(exam_metadata))
+        print(f"Exam setup artifact written to: {args.save_setup}")
 
     try:
         build_exam_pdf(questions_to_use, args.output, metadata=exam_metadata)
