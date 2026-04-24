@@ -1,0 +1,6 @@
+# Earlier drafts and unused sections
+
+## Earlier versions of abstract
+**v1** `promptukit` is a source-based authoring layer that turns reusable engineering code into checked assessment items and worked lecture examples. Instructors author learning artifacts as plain-text source files that call domain libraries such as parasolpy for parameter generation, solution computation, visualization, or validation. During the build process, promptukit executes these checks before rendering the final materials, making answer-key validation part of the same workflow that produces the artifact.
+
+**v2** `promptukit` is a Python package for creating, validating, managing, and rendering structured question banks. It provides command-line tools, Python/Jupyter helpers, a browser-based authoring interface, and PDF generation utilities for multiple-choice and mixed-format assessment content. Existing LMS quiz tools and commercial assessment platforms provide integrated delivery environments, but they often constrain authoring workflows and reduce portability. General-purpose document tools are flexible but do not provide validation or reusable structure. `promptukit` occupies an intermediate space: it is a small, open-source toolkit for local, scriptable, version-controlled assessment authoring.
