@@ -8,6 +8,10 @@ breaking changes).
 
 ## [Unreleased]
 
+### Added
+- JOSS-style paper draft scaffold under `paper/` (outline, abstract, figures directory, AI-use log)
+- `dev/requirements/matlab_interoperability_plan.md` — scopes MATLAB interop as an optional `examples/matlab/` demo rather than a dependency or full binding layer
+
 ## [0.5.0] — 2026-04-23
 
 ### Added
