@@ -8,6 +8,8 @@ breaking changes).
 
 ## [Unreleased]
 
+## [0.5.1] — 2026-04-23
+
 ### Added
 - JOSS-style paper draft scaffold under `paper/` (outline, abstract, figures directory, AI-use log)
 - `dev/requirements/matlab_interoperability_plan.md` — scopes MATLAB interop as an optional `examples/matlab/` demo rather than a dependency or full binding layer
@@ -63,7 +65,8 @@ breaking changes).
 ### Fixed
 - `RuntimeWarning` from eager subpackage imports in top-level `__init__.py`
 
-[Unreleased]: https://github.com/jrkasprzyk/promptukit/compare/v0.5.0...HEAD
+[Unreleased]: https://github.com/jrkasprzyk/promptukit/compare/v0.5.1...HEAD
+[0.5.1]: https://github.com/jrkasprzyk/promptukit/compare/v0.5.0...v0.5.1
 [0.5.0]: https://github.com/jrkasprzyk/promptukit/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/jrkasprzyk/promptukit/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/jrkasprzyk/promptukit/compare/v0.2.2...v0.3.0
