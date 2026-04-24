@@ -1,6 +1,8 @@
 # Project-specific
 .private/
 .claude/settings.local.json
+.agents/plugins/
+plugins/
 
 # Python
 __pycache__/
@@ -46,6 +48,9 @@ pip-delete-this-directory.txt
 
 # Testing
 .pytest_cache/
+.pytest_tmp/
+**/pytest_tmp*/
+**/pytest-cache-files-*/
 htmlcov/
 .tox/
 .nox/
