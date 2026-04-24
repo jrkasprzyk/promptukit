@@ -8,6 +8,13 @@ breaking changes).
 
 ## [Unreleased]
 
+### Changed
+- `paper/outline.md` expanded with handoff notes, inline TODOs, and new sections (Emerging AI-assisted workflows, Functionality, Example workflow, Availability, AI use)
+- `paper/ai-use-log.md` logs AI-assisted outline edit round and observations on model opinionation
+
+### Added
+- `paper/_old.md` archives prior outline draft for reference
+
 ## [0.5.1] — 2026-04-23
 
 ### Added
