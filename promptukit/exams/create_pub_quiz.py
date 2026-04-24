@@ -42,7 +42,8 @@ import re
 import sys
 from collections import OrderedDict
 from pathlib import Path
-from xml.sax.saxutils import escape as _xml_escape
+
+from promptukit.questions.text_audit import reportlab_safe_text
 
 
 styles = getSampleStyleSheet()
@@ -91,7 +92,7 @@ DEFAULT_METADATA = {
 
 def _escape_if_needed(text):
     """Escape XML special chars so ReportLab's Paragraph parser doesn't choke."""
-    return _xml_escape(str(text))
+    return reportlab_safe_text(text)
 
 
 def _question_block(q_data, counter, answer_prompt):

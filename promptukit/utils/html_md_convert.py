@@ -279,9 +279,6 @@ def md_to_html(md: str) -> str:
 
     def inline(text: str) -> str:
         """Apply inline formatting rules."""
-        # Images before links (overlap avoidance)
-        text = re.sub(r"!\[([^\]]*)\]\(([^)]*)\)", r'<img src="\2" alt="\1">', text)
-        text = re.sub(r"\[([^\]]+)\]\(([^)]*)\)", r'<a href="\2">\1</a>', text)
         # Fenced inline code (protect before bold/italic)
         parts = re.split(r"(`[^`]+`)", text)
         result = []
@@ -290,6 +287,10 @@ def md_to_html(md: str) -> str:
                 inner = html_module.escape(part[1:-1])
                 result.append(f"<code>{inner}</code>")
             else:
+                part = html_module.escape(part, quote=True)
+                # Images before links (overlap avoidance)
+                part = re.sub(r"!\[([^\]]*)\]\(([^)]*)\)", r'<img src="\2" alt="\1">', part)
+                part = re.sub(r"\[([^\]]+)\]\(([^)]*)\)", r'<a href="\2">\1</a>', part)
                 part = re.sub(r"\*\*\*(.+?)\*\*\*", r"<strong><em>\1</em></strong>", part)
                 part = re.sub(r"\*\*(.+?)\*\*", r"<strong>\1</strong>", part)
                 part = re.sub(r"\*(.+?)\*", r"<em>\1</em>", part)

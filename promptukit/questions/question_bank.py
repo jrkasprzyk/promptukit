@@ -21,6 +21,7 @@ from typing import Any, List, Optional
 
 from promptukit.utils.cli_helpers import load, save, pick, confirm, pick_questions
 from promptukit.utils.json_tools import update_json_file, flatten_questions
+from promptukit.questions import text_audit
 
 
 
@@ -203,6 +204,95 @@ def cmd_migrate(args: argparse.Namespace) -> int:
     return 0
 
 
+def _print_text_issues(issues: list[text_audit.TextIssue]) -> None:
+    for issue in issues:
+        print("  " + issue.format())
+
+
+def cmd_audit_text(args: argparse.Namespace) -> int:
+    """Audit JSON bank text for encoding and Unicode hazards."""
+    src = Path(args.src)
+    issues = text_audit.audit_path(src, ascii_only=args.ascii_only)
+    if issues:
+        print(f"Text audit found {len(issues)} issue(s):")
+        _print_text_issues(issues)
+        return 1
+    print(f"Text audit passed: {src}")
+    return 0
+
+
+def _fix_one_text_file(src: Path, dest: Path, *, force: bool, ascii_only: bool) -> tuple[int, bool]:
+    if dest.exists() and dest != src and not force:
+        if not confirm(f"Destination {dest} exists - overwrite?"):
+            print(f"Skipped: {src}")
+            return 2, False
+    try:
+        changed = text_audit.fix_file(src, dest, ascii_only=ascii_only)
+    except (UnicodeDecodeError, json.JSONDecodeError) as e:
+        print(f"FATAL: cannot fix {src}: {e}")
+        return 1, False
+
+    remaining = text_audit.audit_file(dest, ascii_only=ascii_only)
+    if remaining:
+        print(f"Remaining issue(s) after fixing {dest}:")
+        _print_text_issues(remaining)
+        return 1, changed
+    status = "rewrote" if changed else "already clean"
+    print(f"{status}: {src} -> {dest}")
+    return 0, changed
+
+
+def cmd_fix_text(args: argparse.Namespace) -> int:
+    """Apply safe deterministic text repairs to JSON bank files."""
+    src = Path(args.src)
+    dest_arg = Path(args.dest) if args.dest else None
+
+    if not src.exists():
+        print(f"Source not found: {src}")
+        return 3
+    if not args.in_place and dest_arg is None:
+        print("Pass --dest to write a repaired copy, or --in-place to overwrite the source.")
+        return 2
+
+    paths = text_audit.iter_json_paths(src)
+    if not paths:
+        print(f"No JSON files found: {src}")
+        return 3
+
+    overall = 0
+    changed_count = 0
+    for path in paths:
+        if args.in_place:
+            dest = path
+        elif src.is_dir():
+            assert dest_arg is not None
+            dest = dest_arg / path.relative_to(src)
+        else:
+            assert dest_arg is not None
+            dest = dest_arg
+        rc, changed = _fix_one_text_file(path, dest, force=args.force, ascii_only=args.ascii_only)
+        changed_count += int(changed)
+        if rc:
+            overall = rc
+
+    if overall == 0:
+        print(f"Text fix complete: {changed_count}/{len(paths)} file(s) changed.")
+    return overall
+
+
+def cmd_render_audit(args: argparse.Namespace) -> int:
+    """Check that bank text survives supported render targets."""
+    src = Path(args.src)
+    issues = text_audit.audit_render_path(src, target=args.target, encoding=args.encoding)
+    if issues:
+        print(f"Render audit found {len(issues)} issue(s):")
+        _print_text_issues(issues)
+        return 1
+    target = args.target if args.target != "all" else "pdf/html/cli"
+    print(f"Render audit passed ({target}): {src}")
+    return 0
+
+
 def main(argv: List[str] | None = None) -> int:
     argv = argv if argv is not None else sys.argv[1:]
     p = argparse.ArgumentParser(description="Create, copy, or extract question bank JSON files")
@@ -225,6 +315,37 @@ def main(argv: List[str] | None = None) -> int:
     p_migrate.add_argument("--dest", help="Destination path (optional). If omitted, overwrites source")
     p_migrate.add_argument("-f", "--force", action="store_true", help="Overwrite destination if exists")
     p_migrate.set_defaults(func=cmd_migrate)
+
+    p_audit_text = sp.add_parser("audit-text", help="Audit JSON text for Unicode/encoding hazards")
+    p_audit_text.add_argument("--src", required=True, help="Question bank JSON file or directory")
+    p_audit_text.add_argument(
+        "--ascii-only",
+        action="store_true",
+        help="Also flag all non-ASCII characters for strict downstream tools",
+    )
+    p_audit_text.set_defaults(func=cmd_audit_text)
+
+    p_fix_text = sp.add_parser("fix-text", help="Repair safe Unicode/encoding hazards in bank text")
+    p_fix_text.add_argument("--src", required=True, help="Question bank JSON file or directory")
+    p_fix_text.add_argument("--dest", help="Destination JSON file or directory for repaired output")
+    p_fix_text.add_argument("--in-place", action="store_true", help="Overwrite source file(s)")
+    p_fix_text.add_argument(
+        "--ascii-only",
+        action="store_true",
+        help="Fold text to ASCII where possible after other repairs",
+    )
+    p_fix_text.add_argument("-f", "--force", action="store_true", help="Overwrite destination if exists")
+    p_fix_text.set_defaults(func=cmd_fix_text)
+
+    p_render_audit = sp.add_parser("render-audit", help="Check bank text against PDF/HTML/CLI render targets")
+    p_render_audit.add_argument("--src", required=True, help="Question bank JSON file or directory")
+    p_render_audit.add_argument("--target", choices=["all", "pdf", "html", "cli"], default="all")
+    p_render_audit.add_argument(
+        "--encoding",
+        default="utf-8",
+        help="Encoding to test for --target cli (default: utf-8)",
+    )
+    p_render_audit.set_defaults(func=cmd_render_audit)
 
     p_extract = sp.add_parser("extract", help="Extract a subset of questions into a new file")
     p_extract.add_argument("--src", required=True, help="Source question bank JSON")

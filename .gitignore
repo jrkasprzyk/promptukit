@@ -49,6 +49,8 @@ pip-delete-this-directory.txt
 # Testing
 .pytest_cache/
 .pytest_tmp/
+.test_tmp_local/
+test_tmp_local/
 **/pytest_tmp*/
 **/pytest-cache-files-*/
 htmlcov/

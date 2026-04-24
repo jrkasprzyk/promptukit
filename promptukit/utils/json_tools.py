@@ -130,6 +130,20 @@ def flatten_questions(data: Any) -> List[Dict[str, Any]]:
 			return []
 		if "questions" in data and isinstance(data["questions"], list):
 			return [q for q in data["questions"] if isinstance(q, dict)]
+		if "rounds" in data and isinstance(data["rounds"], list):
+			out: List[Dict[str, Any]] = []
+			for section in data["rounds"]:
+				if isinstance(section, dict):
+					items = section.get("questions") or section.get("items") or []
+					out.extend([q for q in items if isinstance(q, dict)])
+			return out
+		if "sections" in data and isinstance(data["sections"], list):
+			out: List[Dict[str, Any]] = []
+			for section in data["sections"]:
+				if isinstance(section, dict):
+					items = section.get("questions") or section.get("items") or []
+					out.extend([q for q in items if isinstance(q, dict)])
+			return out
 		if all(isinstance(v, list) for v in data.values()):
 			out: List[Dict[str, Any]] = []
 			for v in data.values():
@@ -150,4 +164,3 @@ def load_questions_as_objects(path: Path) -> List[Question]:
 	"""
 	data = load(path)
 	return [Question.from_json(q) for q in flatten_questions(data)]
-

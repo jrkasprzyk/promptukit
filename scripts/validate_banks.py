@@ -10,6 +10,10 @@ from pathlib import Path
 import json
 import sys
 
+REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
 from promptukit.questions import validate_question
 
 
@@ -23,10 +27,15 @@ def normalize(path: Path):
     if isinstance(data, dict) and isinstance(data.get("questions"), list):
         return data, None
 
-    # If shape uses 'sections' or 'categories' (preferred sectioned format),
+    # If shape uses 'rounds', 'sections', or 'categories' (sectioned formats),
     # flatten into top-level questions preserving common keys when present.
-    if isinstance(data, dict) and ("sections" in data or "categories" in data):
-        key = "sections" if "sections" in data else "categories"
+    if isinstance(data, dict) and ("rounds" in data or "sections" in data or "categories" in data):
+        if "rounds" in data:
+            key = "rounds"
+        elif "sections" in data:
+            key = "sections"
+        else:
+            key = "categories"
         sections_raw = data.get(key, [])
         out = []
         for sec in sections_raw:
@@ -70,7 +79,11 @@ def main():
     if not base.exists():
         print(f"  SKIP: directory not found: {base}")
         return 2
-    files = sorted([p for p in base.rglob("*.json") if p.is_file()])
+    structural_skip = {"question_schema.json", "pub-quiz-sample.json"}
+    files = sorted([
+        p for p in base.rglob("*.json")
+        if p.is_file() and p.name not in structural_skip
+    ])
 
     overall_ok = True
     for p in files:

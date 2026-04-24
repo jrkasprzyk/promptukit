@@ -23,6 +23,8 @@ from pathlib import Path
 import sys
 from collections import OrderedDict
 
+from promptukit.questions.text_audit import reportlab_safe_text
+
 # --- Styles ---
 styles = getSampleStyleSheet()
 
@@ -432,11 +434,11 @@ def build_exam_pdf(sections_or_questions, output_path, metadata=None):
     story = []
 
     # Header
-    story.append(Paragraph(meta["title"], title_style))
-    subtitle_parts = [meta["institution"], meta["instructor"]]
+    story.append(Paragraph(reportlab_safe_text(meta["title"]), title_style))
+    subtitle_parts = [reportlab_safe_text(meta["institution"]), reportlab_safe_text(meta["instructor"])]
     story.append(Paragraph(" &mdash; ".join(part for part in subtitle_parts if part), subtitle_style))
     story.append(Spacer(1, 4))
-    story.append(Paragraph(meta["exam_type"], subtitle_style))
+    story.append(Paragraph(reportlab_safe_text(meta["exam_type"]), subtitle_style))
     story.append(Spacer(1, 10))
 
     # Name / ID box
@@ -455,7 +457,7 @@ def build_exam_pdf(sections_or_questions, output_path, metadata=None):
     story.append(Spacer(1, 10))
 
     # Instructions
-    story.append(Paragraph(meta["instructions"], instructions_style))
+    story.append(Paragraph(reportlab_safe_text(meta["instructions"]), instructions_style))
     story.append(Spacer(1, 4))
     # If input provided as sections/categories, use them. Otherwise accept
     # a flat list of questions (optionally with 'category' keys) and group
@@ -489,7 +491,7 @@ def build_exam_pdf(sections_or_questions, output_path, metadata=None):
     for sec in processed_sections:
         sec_title = sec.get('title') or ''
         if sec_title:
-            story.append(Paragraph(sec_title, section_style))
+            story.append(Paragraph(reportlab_safe_text(sec_title), section_style))
         for q_data in sec.get('questions', []):
             if isinstance(q_data, dict):
                 q_text = q_data.get('q') or q_data.get('prompt') or q_data.get('question') or q_data.get('text') or ''
@@ -502,10 +504,11 @@ def build_exam_pdf(sections_or_questions, output_path, metadata=None):
                 q_text = f"{question_counter}. {q_text}"
             question_counter += 1
 
-            block = [Paragraph(q_text, question_style)]
+            block = [Paragraph(reportlab_safe_text(q_text), question_style)]
             for j, c in enumerate(choices_iter):
-                chs = str(c).strip()
-                if re.match(r'^[A-Za-z][\)\.\s]+', chs):
+                raw_choice = str(c).strip()
+                chs = reportlab_safe_text(raw_choice)
+                if re.match(r'^[A-Za-z][\)\.\s]+', raw_choice):
                     block.append(Paragraph(chs, choice_style))
                 else:
                     block.append(Paragraph(f"{chr(ord('A') + j)}) {chs}", choice_style))
@@ -514,7 +517,7 @@ def build_exam_pdf(sections_or_questions, output_path, metadata=None):
     # Footer
     story.append(Spacer(1, 20))
     story.append(Paragraph(
-        meta["footer"],
+        reportlab_safe_text(meta["footer"]),
         ParagraphStyle('EndNote', parent=styles['Normal'],
                        fontSize=10, alignment=TA_CENTER, fontName='Helvetica-Bold')
     ))
