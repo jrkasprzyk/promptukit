@@ -201,7 +201,7 @@ Usage Examples
 Quick (Poetry):
 
 ```bash
-poetry run add-question
+poetry run add-question path/to/mybank.json
 poetry run extract-question --list-categories
 poetry run validate-question
 poetry run question-bank extract --help
@@ -223,8 +223,12 @@ poetry run extract-question -i
 Add questions:
 
 ```bash
-# Interactive add
-poetry run add-question
+# Interactive add; prompts for question type unless --type is provided
+poetry run add-question path/to/mybank.json
+poetry run add-question --type TrueFalse path/to/mybank.json
+
+# Create a new bank while adding
+poetry run add-question --create path/to/new-bank.json
 
 # Batch mode
 poetry run add-question --batch new_questions.json promptukit/data/question_banks/mybank.json
@@ -259,7 +263,7 @@ poetry run question-bank extract -i --src promptukit/data/question_banks/block-d
 Alternative: run modules with `python -m` when not using Poetry:
 
 ```bash
-python -m promptukit.questions.add_question
+python -m promptukit.questions.add_question path/to/mybank.json
 python -m promptukit.questions.extract_question --help
 python -m promptukit.questions.question_bank create --dest promptukit/data/question_banks/new.json
 ```
@@ -490,14 +494,14 @@ for a 3-round example.
 Question types
 --------------
 
-Beyond multiple-choice (`MultipleChoice`), `add-question` (batch mode) and
-`validate-question` accept these non-MCQ types:
+Beyond multiple-choice (`MultipleChoice`), `add-question` (interactive or
+batch mode) and `validate-question` accept these non-MCQ types:
 
-- `TrueFalse` — boolean `answer`
-- `ShortAnswer` — free-text `answer`, optional `acceptable_answers` list
-- `FillInTheBlank` — `prompt` with `____` placeholders + ordered `answers`
-- `Matching` — `left` / `right` lists with an `answer` mapping
-- `Calculation` — numeric `answer` with optional `tolerance` and `units`
+- `TrueFalse` - boolean `answer`
+- `ShortAnswer` - free-text `answer`
+- `FillInTheBlank` - `prompt` with `___` placeholders + ordered `answers`
+- `Matching` - ordered `pairs` as `[left, right]`
+- `Calculation` - numeric `answer` with optional `tolerance` and `unit`
 
 See [promptukit/data/question_banks/mixed-types-sample.json](promptukit/data/question_banks/mixed-types-sample.json)
 for one of each. The OO model lives in `promptukit.questions.question_models`.

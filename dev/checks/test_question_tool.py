@@ -1,6 +1,8 @@
 import json
 from pathlib import Path
 
+import pytest
+import promptukit.questions.add_question as aq
 import promptukit.questions.question_bank as tt
 import promptukit.utils.json_tools as jt
 from promptukit.exams import create_exam, create_pub_quiz
@@ -109,6 +111,55 @@ def test_cmd_extract_can_write_setup_artifact(tmp_path: Path):
     setup_data = json.loads(setup.read_text(encoding="utf-8"))
     assert setup_data["title"] == create_exam.DEFAULT_METADATA["title"]
     assert "instructions" in setup_data
+
+
+def test_add_question_requires_bank_path():
+    with pytest.raises(SystemExit) as exc:
+        aq.main([])
+    assert exc.value.code == 2
+
+
+def test_add_question_batch_create_true_false(tmp_path: Path):
+    bank = tmp_path / "bank.json"
+    batch = tmp_path / "questions.json"
+    batch.write_text(json.dumps([{
+        "question_type": "tf",
+        "category": "science",
+        "difficulty": "easy",
+        "prompt": "Water freezes at 0 C.",
+        "answer": True,
+    }]), encoding="utf-8")
+
+    rc = aq.main(["--create", "--batch", str(batch), str(bank)])
+
+    assert rc == 0
+    data = json.loads(bank.read_text(encoding="utf-8"))
+    assert data["categories"] == ["science"]
+    assert data["questions"][0]["question_type"] == "TrueFalse"
+    assert data["questions"][0]["answer"] is True
+
+
+def test_add_question_interactive_short_answer(tmp_path: Path, monkeypatch: pytest.MonkeyPatch):
+    bank = tmp_path / "bank.json"
+    responses = iter([
+        "general",                  # category
+        "1",                        # difficulty: easy
+        "What is the capital of France?",
+        "Paris",
+        "",                         # quip_correct
+        "",                         # quip_wrong
+        "y",                        # save question
+        "n",                        # add another
+    ])
+    monkeypatch.setattr("builtins.input", lambda _prompt="": next(responses))
+
+    rc = aq.main(["--create", "--type", "short", str(bank)])
+
+    assert rc == 0
+    data = json.loads(bank.read_text(encoding="utf-8"))
+    question = data["questions"][0]
+    assert question["question_type"] == "ShortAnswer"
+    assert question["answer"] == "Paris"
 
 
 def test_exam_artifacts_are_loadable(tmp_path: Path):
