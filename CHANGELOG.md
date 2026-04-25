@@ -8,6 +8,8 @@ breaking changes).
 
 ## [Unreleased]
 
+## [0.5.2] — 2026-04-24
+
 ### Changed
 - `paper/outline.md` expanded with handoff notes, inline TODOs, and new sections (Emerging AI-assisted workflows, Functionality, Example workflow, Availability, AI use)
 - `paper/ai-use-log.md` logs AI-assisted outline edit round and observations on model opinionation
@@ -72,7 +74,8 @@ breaking changes).
 ### Fixed
 - `RuntimeWarning` from eager subpackage imports in top-level `__init__.py`
 
-[Unreleased]: https://github.com/jrkasprzyk/promptukit/compare/v0.5.1...HEAD
+[Unreleased]: https://github.com/jrkasprzyk/promptukit/compare/v0.5.2...HEAD
+[0.5.2]: https://github.com/jrkasprzyk/promptukit/compare/v0.5.1...v0.5.2
 [0.5.1]: https://github.com/jrkasprzyk/promptukit/compare/v0.5.0...v0.5.1
 [0.5.0]: https://github.com/jrkasprzyk/promptukit/compare/v0.4.0...v0.5.0
 [0.4.0]: https://github.com/jrkasprzyk/promptukit/compare/v0.3.0...v0.4.0
