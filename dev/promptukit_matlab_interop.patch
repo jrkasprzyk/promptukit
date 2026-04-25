@@ -1,0 +1,218 @@
+diff --git a/README.md b/README.md
+index 0000000..0000000 100644
+--- a/README.md
++++ b/README.md
+@@ -1,5 +1,15 @@
+ PromptuKit
+ ==========
+ Utilities for building and managing multiple-choice question banks and generating exam PDFs.
++
++### MATLAB interoperability example
++
++The repository includes an optional MATLAB interoperability example in
++[`examples/matlab`](examples/matlab). It demonstrates a simple pattern where
++MATLAB computes or stores numerical results, calls a Python script with
++`pyrunfile`, and the Python side uses PromptuKit's question-model and validation
++utilities to generate a structured calculation question bank.
++
++MATLAB is not a PromptuKit dependency; this example is documentation-focused and
++can be smoke-tested from Python without MATLAB.
+ 
+ Install from PyPI
+ -----------------
+diff --git a/examples/matlab/README.md b/examples/matlab/README.md
+new file mode 100644
+index 0000000..1111111
+--- /dev/null
++++ b/examples/matlab/README.md
+@@ -0,0 +1,59 @@
++# MATLAB Interoperability Example
++
++This example shows how a MATLAB workflow can call Python code that uses
++PromptuKit for reusable educational-content logic.
++
++The example keeps the boundary intentionally simple:
++
++- MATLAB computes or defines values from an existing analysis or teaching script.
++- MATLAB calls a Python script with `pyrunfile`.
++- The Python script uses PromptuKit's question-model and validation utilities to
++  build a small calculation question bank.
++- MATLAB receives the rendered JSON text and displays it.
++
++This is an optional interoperability pattern. MATLAB is not required to install
++or use PromptuKit, and PromptuKit does not depend on MATLAB.
++
++## Requirements
++
++- MATLAB with Python interoperability enabled.
++- A Python environment visible to MATLAB.
++- PromptuKit installed in that Python environment.
++
++You can check or change the Python environment from MATLAB with:
++
++```matlab
++pyenv
++% pyenv("Version", "path/to/python")
++```
++
++## Files
++
++- `call_promptukit_from_matlab.m`: MATLAB-side driver script.
++- `promptukit_api_example.py`: Python-side PromptuKit workflow.
++
++## Running the example
++
++From MATLAB, navigate to this directory and run:
++
++```matlab
++call_promptukit_from_matlab
++```
++
++If MATLAB is using the wrong Python environment, edit the optional `pyenv` line
++in `call_promptukit_from_matlab.m`.
++
++You can also run the Python script directly, without MATLAB:
++
++```bash
++python promptukit_api_example.py
++```
++
++That direct run uses fallback values and prints the generated question bank.
++
++## What this demonstrates
++
++Many instructors and researchers already use MATLAB for simulation, analysis,
++and classroom demonstrations. PromptuKit does not replace those workflows. It can
++serve as a reusable Python layer for structured question banks, validation, and
++other educational-content workflows that surround existing domain computation.
+diff --git a/examples/matlab/call_promptukit_from_matlab.m b/examples/matlab/call_promptukit_from_matlab.m
+new file mode 100644
+index 0000000..2222222
+--- /dev/null
++++ b/examples/matlab/call_promptukit_from_matlab.m
+@@ -0,0 +1,30 @@
++% call_promptukit_from_matlab.m
++%
++% Demonstrates how a MATLAB workflow can call a small Python script that uses
++% PromptuKit for reusable educational-content logic.
++%
++% Requirements:
++%   1. MATLAB configured with a Python environment.
++%   2. PromptuKit installed in that Python environment.
++%   3. promptukit_api_example.py available in this same directory.
++
++% Optional: explicitly select the Python environment.
++% Uncomment and edit this line if MATLAB is not already using the desired Python.
++% pyenv("Version", "path/to/python");
++
++% Example values from a MATLAB-side analysis or teaching workflow.
++flow_mgd = 125.4;
++cost_usd = 8.91e6;
++reliability = 0.93;
++
++% Call the Python script and retrieve the variable named "question_bank_json".
++question_bank_json = pyrunfile( ...
++    "promptukit_api_example.py", ...
++    "question_bank_json", ...
++    flow_mgd=flow_mgd, ...
++    cost_usd=cost_usd, ...
++    reliability=reliability);
++
++% Display the generated PromptuKit-compatible JSON in MATLAB.
++disp(string(question_bank_json));
+diff --git a/examples/matlab/promptukit_api_example.py b/examples/matlab/promptukit_api_example.py
+new file mode 100644
+index 0000000..3333333
+--- /dev/null
++++ b/examples/matlab/promptukit_api_example.py
+@@ -0,0 +1,86 @@
++"""Minimal Python-side PromptuKit example called from MATLAB.
++
++This file demonstrates a lightweight interoperability boundary:
++
++- MATLAB owns the numerical workflow and passes scalar results to Python.
++- Python uses PromptuKit's question model and validation utilities to create a
++  structured, PromptuKit-compatible question bank.
++
++The script can also be run directly from Python. In that case, it uses fallback
++values and prints the generated JSON question bank.
++"""
++
++from __future__ import annotations
++
++import json
++
++from promptukit.questions.question_models import Calculation
++from promptukit.questions.validate_question import validate
++
++
++# MATLAB passes these names into the script through pyrunfile. When the script is
++# run directly from Python, provide fallback values so the example remains easy
++# to smoke-test without MATLAB.
++try:
++    flow_mgd
++except NameError:
++    flow_mgd = 125.4
++
++try:
++    cost_usd
++except NameError:
++    cost_usd = 8.91e6
++
++try:
++    reliability
++except NameError:
++    reliability = 0.93
++
++
++unit_cost = float(cost_usd) / float(flow_mgd)
++
++question = Calculation(
++    text=(
++        "A water-system design has a capacity of "
++        f"{float(flow_mgd):.1f} MGD and a total cost of "
++        f"${float(cost_usd):,.0f}. What is the unit cost in dollars per MGD?"
++    ),
++    answer=unit_cost,
++    tolerance=max(unit_cost * 0.005, 1.0),
++    unit="USD/MGD",
++).to_dict()
++
++# Add fields required by PromptuKit's question-bank validator.
++question.update(
++    {
++        "id": "matlab_water_design_unit_cost",
++        "category": "water resources",
++        "difficulty": "medium",
++        "metadata": {
++            "source": "examples/matlab",
++            "flow_mgd": float(flow_mgd),
++            "cost_usd": float(cost_usd),
++            "reliability": float(reliability),
++        },
++    }
++)
++
++question_bank = {
++    "categories": ["water resources"],
++    "questions": [question],
++}
++
++errors, warnings = validate(question_bank)
++if errors:
++    raise ValueError("Generated PromptuKit question bank is invalid: " + "; ".join(errors))
++
++question_bank_json = json.dumps(
++    {
++        **question_bank,
++        "_validation": {
++            "errors": errors,
++            "warnings": warnings,
++        },
++    },
++    indent=2,
++)
++
++
++if __name__ == "__main__":
++    print(question_bank_json)
