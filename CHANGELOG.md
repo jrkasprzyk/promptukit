@@ -8,6 +8,14 @@ breaking changes).
 
 ## [Unreleased]
 
+### Fixed
+- `FillInTheBlank.BLANK_TOKEN` changed from `___` (three underscores) to `[blank]` — avoids conflict with other underscore uses in code and data; `add_question.py` and `validate_question.py` now use the constant; 8 JSON bank entries, all docs, and tests updated
+- Stale `block-doku-questions.json` filename references updated across `README.md`, `docs/DATASETS.md`, and three source files to match the actual filename
+- Missing `__init__.py` imports that caused `pytest` failures
+
+### Added
+- `dev/promptukit_matlab_interop.patch` — MATLAB interoperability patch
+
 ## [0.5.2] — 2026-04-24
 
 ### Changed
