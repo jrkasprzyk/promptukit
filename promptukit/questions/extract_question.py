@@ -3,7 +3,7 @@
 
 Usage examples:
   python -m promptukit.questions.extract_question --list-categories
-    python -m promptukit.questions.extract_question --file promptukit/data/question_banks/block-doku-questions.json --category music --fields prompt,answer
+    python -m promptukit.questions.extract_question --file promptukit/data/question_banks/block-doku-sample.json --category music --fields prompt,answer
   python -m promptukit.questions.extract_question -i    # interactive picker
 
 The script is permissive about JSON shape: it supports the project's
@@ -24,7 +24,7 @@ from typing import Any, Dict, Iterable, List, Tuple
 from promptukit.utils.cli_helpers import load, pick, confirm
 
 
-DEFAULT_BANK_PATH = Path(__file__).resolve().parent.parent / "data" / "question_banks" / "block-doku-questions.json"
+DEFAULT_BANK_PATH = Path(__file__).resolve().parent.parent / "data" / "question_banks" / "block-doku-sample.json"
 
 
 def build_category_map(data: Any) -> Dict[str, List[dict]]:

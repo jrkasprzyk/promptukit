@@ -20,7 +20,7 @@ from typing import Any
 from promptukit.questions.question_models import FillInTheBlank
 from promptukit.utils.json_tools import flatten_questions, infer_question_type
 
-DEFAULT_BANK_PATH = Path(__file__).resolve().parent.parent / "data" / "question_banks" / "block-doku-questions.json"
+DEFAULT_BANK_PATH = Path(__file__).resolve().parent.parent / "data" / "question_banks" / "block-doku-sample.json"
 
 BLOCK_DOKU_CATEGORIES = {"motorsport", "music", "film-and-tv", "general", "meta", "asia", "books", "science and math", "linguistics", "pop"}
 VALID_DIFFICULTIES = {"easy", "medium", "hard"}
