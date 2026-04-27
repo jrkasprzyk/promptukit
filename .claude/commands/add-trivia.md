@@ -17,7 +17,7 @@ The repo now supports multiple question types. Each question carries a `question
 | `MultipleChoice`  | `prompt`, `choices` (list), `answer`     | `answer` is 0-based index, or letter `"A"..`, or choice text. |
 | `TrueFalse`       | `prompt`, `answer` (bool)                | `true` / `false`. |
 | `ShortAnswer`     | `prompt`, `answer` (string)              | Free-text expected answer. |
-| `FillInTheBlank`  | `prompt` (uses `___`), `answers` (list)  | One answer per blank, in order. |
+| `FillInTheBlank`  | `prompt` (uses `[blank]`), `answers` (list)  | One answer per blank, in order. |
 | `Matching`        | `prompt`, `pairs` (list of `[l, r]`)     | Pair order is the canonical match. |
 | `Calculation`     | `prompt`, `answer` (number)              | Optional `tolerance` (number), `unit` (string). |
 
@@ -108,12 +108,12 @@ Type-specific shapes:
 ```json
 {
   "question_type": "FillInTheBlank",
-  "prompt":  "The ___ is the largest ___ of the Solar System.",
+  "prompt":  "The [blank] is the largest [blank] of the Solar System.",
   "answers": ["Sun", "star"]
 }
 ```
 
-- Each `___` in `prompt` corresponds to one entry in `answers`, in order. Counts must match.
+- Each `[blank]` in `prompt` corresponds to one entry in `answers`, in order. Counts must match.
 
 **Matching**
 

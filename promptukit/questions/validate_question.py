@@ -17,6 +17,7 @@ from collections import Counter
 from pathlib import Path
 from typing import Any
 
+from promptukit.questions.question_models import FillInTheBlank
 from promptukit.utils.json_tools import flatten_questions, infer_question_type
 
 DEFAULT_BANK_PATH = Path(__file__).resolve().parent.parent / "data" / "question_banks" / "block-doku-questions.json"
@@ -108,10 +109,10 @@ def _check_fill_in_the_blank(q: dict, label: str, errors: list[str], warnings: l
     if not all(isinstance(a, str) and a.strip() for a in answers):
         errors.append(f"{label} [FillInTheBlank]: every answer must be a non-empty string")
     prompt_text = q.get("prompt") or ""
-    blanks = prompt_text.count("___")
+    blanks = prompt_text.count(FillInTheBlank.BLANK_TOKEN)
     if blanks != len(answers):
         errors.append(
-            f"{label} [FillInTheBlank]: prompt has {blanks} '___' blank(s) but answers has {len(answers)} entry(ies)"
+            f"{label} [FillInTheBlank]: prompt has {blanks} '[blank]' token(s) but answers has {len(answers)} entry(ies)"
         )
 
 

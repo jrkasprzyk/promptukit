@@ -322,7 +322,7 @@
       "id": "music_012",
       "category": "music",
       "difficulty": "easy",
-      "prompt": "Once upon a time wrote Beethoven the ___ Sonata.",
+      "prompt": "Once upon a time wrote Beethoven the [blank] Sonata.",
       "choices": [
         "Spaceflight",
         "Keep Tight",
@@ -1322,7 +1322,7 @@
       "id": "books_013",
       "category": "books",
       "difficulty": "medium",
-      "prompt": "The Stength of the Few is a book in James Islington's ____ series.",
+      "prompt": "The Stength of the Few is a book in James Islington's [blank] series.",
       "choices": [
         "Matriarchy",
         "Oligarchy",
@@ -2687,7 +2687,7 @@
       "id": "pop_021",
       "category": "pop",
       "difficulty": "easy",
-      "prompt": "The advertising slogan 'Can you see why kids love the taste of ___?' belongs to which cereal?",
+      "prompt": "The advertising slogan 'Can you see why kids love the taste of [blank]?' belongs to which cereal?",
       "choices": [
         "Cinnamon Toast Crunch",
         "Lucky Charms",
@@ -3032,7 +3032,7 @@
       "id": "music_016",
       "category": "music",
       "difficulty": "medium",
-      "prompt": "Elvis Presley's 1969 hit 'In the Ghetto' opens with the line 'As the snow flies, on a cold and gray ___ mornin'.' Which city?",
+      "prompt": "Elvis Presley's 1969 hit 'In the Ghetto' opens with the line 'As the snow flies, on a cold and gray [blank] mornin'.' Which city?",
       "choices": [
         "Memphis",
         "Detroit",
@@ -3137,7 +3137,7 @@
       "id": "film-and-tv_022",
       "category": "film-and-tv",
       "difficulty": "medium",
-      "prompt": "'Seinfeld' was famously pitched to NBC executives as 'a show about ___.'",
+      "prompt": "'Seinfeld' was famously pitched to NBC executives as 'a show about [blank].'",
       "choices": [
         "New York",
         "Friendship",
@@ -3317,7 +3317,7 @@
       "id": "linguistics_017",
       "category": "linguistics",
       "difficulty": "easy",
-      "prompt": "Languages change, says linguist John McWhorter. For instance, a v can become a ___ when translating your paternal figure from German to English",
+      "prompt": "Languages change, says linguist John McWhorter. For instance, a v can become a [blank] when translating your paternal figure from German to English",
       "choices": [
         "b",
         "d",
@@ -3647,7 +3647,7 @@
       "id": "books_024",
       "category": "books",
       "difficulty": "medium",
-      "prompt": "A Keith Olbermann skit on SNL boasted that he read Animal Farm by _______ also known as Eric Blair.",
+      "prompt": "A Keith Olbermann skit on SNL boasted that he read Animal Farm by [blank] also known as Eric Blair.",
       "choices": [
         "George Orwell",
         "Aldous Huxley",

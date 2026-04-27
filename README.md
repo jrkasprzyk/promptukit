@@ -499,7 +499,7 @@ batch mode) and `validate-question` accept these non-MCQ types:
 
 - `TrueFalse` - boolean `answer`
 - `ShortAnswer` - free-text `answer`
-- `FillInTheBlank` - `prompt` with `___` placeholders + ordered `answers`
+- `FillInTheBlank` - `prompt` with `[blank]` placeholders + ordered `answers`
 - `Matching` - ordered `pairs` as `[left, right]`
 - `Calculation` - numeric `answer` with optional `tolerance` and `unit`
 
