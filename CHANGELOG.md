@@ -8,6 +8,8 @@ breaking changes).
 
 ## [Unreleased]
 
+## [0.5.3] — 2026-04-27
+
 ### Fixed
 - `FillInTheBlank.BLANK_TOKEN` changed from `___` (three underscores) to `[blank]` — avoids conflict with other underscore uses in code and data; `add_question.py` and `validate_question.py` now use the constant; 8 JSON bank entries, all docs, and tests updated
 - Stale `block-doku-questions.json` filename references updated across `README.md`, `docs/DATASETS.md`, and three source files to match the actual filename
@@ -82,7 +84,8 @@ breaking changes).
 ### Fixed
 - `RuntimeWarning` from eager subpackage imports in top-level `__init__.py`
 
-[Unreleased]: https://github.com/jrkasprzyk/promptukit/compare/v0.5.2...HEAD
+[Unreleased]: https://github.com/jrkasprzyk/promptukit/compare/v0.5.3...HEAD
+[0.5.3]: https://github.com/jrkasprzyk/promptukit/compare/v0.5.2...v0.5.3
 [0.5.2]: https://github.com/jrkasprzyk/promptukit/compare/v0.5.1...v0.5.2
 [0.5.1]: https://github.com/jrkasprzyk/promptukit/compare/v0.5.0...v0.5.1
 [0.5.0]: https://github.com/jrkasprzyk/promptukit/compare/v0.4.0...v0.5.0
