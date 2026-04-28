@@ -36,12 +36,14 @@ twine = "^6.2.0"
 build = "^1.4.3"
 nicegui = "^3.10.0"
 parasolpy = "^0.1.1"
+python-pptx = "^1.0.2"
 
 [tool.poetry.scripts]
 add-question = "promptukit.questions.add_question:main"
 extract-question = "promptukit.questions.extract_question:main"
 validate-question = "promptukit.questions.validate_question:main"
 question-bank = "promptukit.questions.question_bank:main"
+create-pptx = "promptukit.exams.create_pptx:main"
 promptukit-gui = "promptukit.gui:main"
 promptukit-claude-commands = "promptukit.claude_commands:main"
 
