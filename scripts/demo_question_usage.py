@@ -74,7 +74,7 @@ def _demo_new_types() -> None:
     _print_obj("ShortAnswer", sa)
 
     fitb = FillInTheBlank(
-        text="The ___ is the powerhouse of the cell.",
+        text="The [blank] is the powerhouse of the cell.",
         answers=["mitochondria"],
     )
     _print_obj("FillInTheBlank", fitb)

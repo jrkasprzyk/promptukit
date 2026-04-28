@@ -7,7 +7,7 @@ Banks may contain mixed types. Check the `question_type` field on each question.
 - `MultipleChoice` — `choices` (list), `answer` (int index / letter / text)
 - `TrueFalse` — `answer` (bool)
 - `ShortAnswer` — `answer` (string)
-- `FillInTheBlank` — `prompt` with `___`, `answers` (list)
+- `FillInTheBlank` — `prompt` with `[blank]` tokens, `answers` (list)
 - `Matching` — `pairs` (list of `[left, right]`)
 - `Calculation` — `answer` (number), optional `tolerance`, `unit`
 
@@ -73,7 +73,7 @@ The category list grows over time. Don't flag new categories, but verify the fil
 - Answer is unambiguous — if multiple spellings / phrasings are equally valid, note in `quip_correct` or flag for a metadata-level alt-answers field.
 
 **FillInTheBlank**
-- Count of `___` tokens in `prompt` equals `len(answers)` exactly.
+- Count of `[blank]` tokens in `prompt` equals `len(answers)` exactly.
 - Each blank has a defensible single answer (not open-ended).
 - Answers are reasonably short (single word / short phrase).
 

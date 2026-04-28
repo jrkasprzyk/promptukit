@@ -234,10 +234,11 @@ class ShortAnswer(Question):
 class FillInTheBlank(Question):
     """Fill-in-the-blank question.
 
-    ``text`` contains blanks marked with ``___`` (one or more underscores).
+    ``text`` contains blanks marked with ``[blank]`` tokens.
     ``answers`` is an ordered list of strings, one per blank.
     """
 
+    BLANK_TOKEN = "[blank]"
     QUESTION_TYPE = "FillInTheBlank"
 
     def __init__(self, text: str, answers: Optional[List[str]] = None,

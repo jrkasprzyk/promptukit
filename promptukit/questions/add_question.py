@@ -27,6 +27,7 @@ import sys
 from pathlib import Path
 from typing import Any
 
+from promptukit.questions.question_models import FillInTheBlank
 from promptukit.utils.cli_helpers import confirm, load, pick, save
 from promptukit.utils.json_tools import infer_question_type
 
@@ -277,10 +278,10 @@ def collect_prompt(qtype: str) -> str:
         return prompt("Prompt (the question text)")
 
     while True:
-        value = prompt("Prompt (use ___ for each blank)")
-        if value.count("___") > 0:
+        value = prompt("Prompt (use [blank] for each blank)")
+        if value.count(FillInTheBlank.BLANK_TOKEN) > 0:
             return value
-        print("    FillInTheBlank prompts need at least one ___ placeholder.")
+        print("    FillInTheBlank prompts need at least one [blank] placeholder.")
 
 
 def collect_multiple_choice() -> dict[str, Any]:
@@ -301,7 +302,7 @@ def collect_multiple_choice() -> dict[str, Any]:
 
 
 def collect_fill_in_the_blank(prompt_text: str) -> dict[str, Any]:
-    blanks = prompt_text.count("___")
+    blanks = prompt_text.count(FillInTheBlank.BLANK_TOKEN)
     print(f"\n  Detected {blanks} blank(s).")
     answers = [prompt(f"Answer for blank {i + 1}") for i in range(blanks)]
     return {"answers": answers}

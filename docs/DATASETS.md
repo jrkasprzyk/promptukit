@@ -78,7 +78,7 @@ wheel. When adding binary or non-JSON resources, prefer to extend
 Questions or next steps
 -----------------------
 
-- Want me to also bundle the full `block-doku-questions.json` and other
+- Want me to also bundle the full `block-doku-sample.json` and other
   large banks verbatim into the package? I can add them, but note this will
   increase package size and may not be necessary for example usage.
 - I can add a quick test that verifies `pk.load_resource(...)` returns JSON

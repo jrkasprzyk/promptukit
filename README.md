@@ -214,7 +214,7 @@ Extracting data:
 poetry run extract-question --list-categories
 
 # Print prompt and answer fields for the 'music' category
-poetry run extract-question --file promptukit/data/question_banks/block-doku-questions.json --category music --fields prompt,answer
+poetry run extract-question --file promptukit/data/question_banks/block-doku-sample.json --category music --fields prompt,answer
 
 # Interactive picker
 poetry run extract-question -i
@@ -241,7 +241,7 @@ Validate a trivia file:
 poetry run validate-question
 
 # Validate a specific file
-poetry run validate-question promptukit/data/question_banks/block-doku-questions.json
+poetry run validate-question promptukit/data/question_banks/block-doku-sample.json
 ```
 
 Manage files with `question-bank` (create/copy/extract):
@@ -251,13 +251,13 @@ Manage files with `question-bank` (create/copy/extract):
 poetry run question-bank create --dest promptukit/data/question_banks/new.json --categories music,film-and-tv
 
 # Copy an existing file
-poetry run question-bank copy --src promptukit/data/question_banks/block-doku-questions.json --dest promptukit/data/question_banks/backup.json
+poetry run question-bank copy --src promptukit/data/question_banks/block-doku-sample.json --dest promptukit/data/question_banks/backup.json
 
 # Extract a subset (easy music questions)
-poetry run question-bank extract --src promptukit/data/question_banks/block-doku-questions.json --dest promptukit/data/question_banks/music_easy.json --categories music --difficulty easy
+poetry run question-bank extract --src promptukit/data/question_banks/block-doku-sample.json --dest promptukit/data/question_banks/music_easy.json --categories music --difficulty easy
 
 # Interactive extract
-poetry run question-bank extract -i --src promptukit/data/question_banks/block-doku-questions.json --dest promptukit/data/question_banks/pick.json
+poetry run question-bank extract -i --src promptukit/data/question_banks/block-doku-sample.json --dest promptukit/data/question_banks/pick.json
 ```
 
 Alternative: run modules with `python -m` when not using Poetry:
@@ -368,17 +368,17 @@ Usage (from the repository root):
 python -m promptukit.exams.create_exam
 
 # Load questions from a JSON bank and write a PDF
-python -m promptukit.exams.create_exam -q promptukit/data/question_banks/block-doku-questions.json -o cven4333_from_json.pdf
+python -m promptukit.exams.create_exam -q promptukit/data/question_banks/block-doku-sample.json -o cven4333_from_json.pdf
 
 # Save reproducible artifacts while creating the PDF
 python -m promptukit.exams.create_exam \
-  -q promptukit/data/question_banks/block-doku-questions.json \
+  -q promptukit/data/question_banks/block-doku-sample.json \
   --save-questions exam_questions.json \
   --save-setup exam_setup.json \
   -o cven4333_from_json.pdf
 
 # With Poetry (runs the module inside the virtualenv)
-poetry run python -m promptukit.exams.create_exam -q promptukit/data/question_banks/block-doku-questions.json -o cven4333_from_json.pdf
+poetry run python -m promptukit.exams.create_exam -q promptukit/data/question_banks/block-doku-sample.json -o cven4333_from_json.pdf
 ```
 
 You can also create the editable two-file artifact pair with the extraction
@@ -386,7 +386,7 @@ tool, then render from those files:
 
 ```bash
 poetry run question-bank extract \
-  --src promptukit/data/question_banks/block-doku-questions.json \
+  --src promptukit/data/question_banks/block-doku-sample.json \
   --dest exam_questions.json \
   --categories music \
   --setup-dest exam_setup.json \
@@ -499,7 +499,7 @@ batch mode) and `validate-question` accept these non-MCQ types:
 
 - `TrueFalse` - boolean `answer`
 - `ShortAnswer` - free-text `answer`
-- `FillInTheBlank` - `prompt` with `___` placeholders + ordered `answers`
+- `FillInTheBlank` - `prompt` with `[blank]` placeholders + ordered `answers`
 - `Matching` - ordered `pairs` as `[left, right]`
 - `Calculation` - numeric `answer` with optional `tolerance` and `unit`
 

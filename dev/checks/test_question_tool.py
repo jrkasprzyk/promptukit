@@ -254,7 +254,7 @@ def test_short_answer_from_json():
 
 
 def test_fill_in_the_blank_construction_and_serialization():
-    fitb = FillInTheBlank(text="___ is the powerhouse of the cell.", answers=["mitochondria"])
+    fitb = FillInTheBlank(text="[blank] is the powerhouse of the cell.", answers=["mitochondria"])
     assert fitb.question_type == "FillInTheBlank"
     d = fitb.to_dict()
     assert d["answers"] == ["mitochondria"]
@@ -264,7 +264,7 @@ def test_fill_in_the_blank_construction_and_serialization():
 def test_fill_in_the_blank_from_json():
     obj = Question.from_json({
         "question_type": "FillInTheBlank",
-        "prompt": "___ and ___ are noble gases.",
+        "prompt": "[blank] and [blank] are noble gases.",
         "answers": ["helium", "neon"],
     })
     assert isinstance(obj, FillInTheBlank)
@@ -324,7 +324,7 @@ def test_round_trip_all_types():
         MultipleChoice(text="MC?", choices=["A", "B", "C"], answer=0),
         TrueFalse(text="TF?", answer=True),
         ShortAnswer(text="SA?", answer="answer"),
-        FillInTheBlank(text="___ blank.", answers=["fill"]),
+        FillInTheBlank(text="[blank] blank.", answers=["fill"]),
         Matching(text="Match.", pairs=[["A", "1"], ["B", "2"]]),
         Calculation(text="Calc?", answer=9.81, tolerance=0.01, unit="m/s²"),
     ]

@@ -62,7 +62,7 @@
       "question_type": "FillInTheBlank",
       "category": "chem",
       "difficulty": "easy",
-      "prompt": "The symbol for ___ is Au.",
+      "prompt": "The symbol for [blank] is Au.",
       "answers": [
         "gold"
       ]
