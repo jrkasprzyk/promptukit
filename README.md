@@ -19,6 +19,7 @@ add-question
 extract-question --help
 validate-question
 question-bank --help
+create-exam-md --help           # export question bank to editable Markdown (optional PDF via pandoc)
 promptukit-gui                  # launch the browser-based authoring GUI
 promptukit-claude-commands      # list/show/install bundled Claude Code slash commands
 ```
@@ -428,6 +429,73 @@ Supported JSON formats
 - Question objects support multiple common field names: `prompt`, `q`, `question`, or `text` for the question text; `choices` or `answers` for the answer options; optional `category` to group flat lists into sections.
 
 - If choices are not already labeled (for example "Oceans" instead of "A) Oceans"), the script will prefix them with `A)`, `B)`, etc. Prompts without a leading number will be auto-numbered sequentially.
+
+Create exam Markdown
+--------------------
+
+The `create_exam_md.py` module exports a question bank to an editable
+Markdown file.  Because the Markdown is the intermediate format, a professor
+can tweak questions, reorder sections, or adjust wording before producing the
+final PDF — without being constrained by what promptukit's PDF renderer
+directly supports.
+
+Typical workflow:
+
+```
+JSON bank  →  Markdown (.md)  →  [edit]  →  PDF
+```
+
+Usage:
+
+```bash
+# Basic export
+create-exam-md -q bank.json -o exam.md
+
+# Include a numbered answer key at the end
+create-exam-md -q bank.json -o exam.md --answers key
+
+# Show answers inline after each question (instructor preview)
+create-exam-md -q bank.json -o exam.md --answers inline
+
+# Export Markdown and convert to PDF in one step (requires pandoc)
+create-exam-md -q bank.json -o exam.md --to-pdf
+
+# Specify a custom PDF output path
+create-exam-md -q bank.json -o exam.md --to-pdf /path/to/final.pdf
+
+# With a metadata/setup file
+create-exam-md -q bank.json -m setup.json -o exam.md --to-pdf
+
+# Using python -m (no Poetry activation required)
+python -m promptukit.exams.create_exam_md -q bank.json -o exam.md --answers key
+```
+
+`--to-pdf` shells out to [pandoc](https://pandoc.org/installing.html), which
+must be installed separately (`pip install promptukit` does **not** install
+pandoc).  The `.md` file is always kept — it is the editable intermediate.
+
+You can also call the public API directly:
+
+```python
+from promptukit.exams.create_exam_md import build_exam_md
+
+# Returns the Path to the written .md file
+build_exam_md("bank.json", "exam.md", answers="key")
+
+# With metadata dict
+build_exam_md(data, "exam.md", metadata={"title": "Midterm 1"}, answers="none")
+```
+
+Supported answer modes:
+
+| `--answers` | Output |
+|-------------|--------|
+| `none` (default) | No answers — student-facing exam |
+| `inline` | Answer printed after each question |
+| `key` | Numbered answer key appended at the end |
+
+All question types are supported: `MultipleChoice`, `TrueFalse`,
+`ShortAnswer`, `FillInTheBlank`, `Matching`, `Calculation`.
 
 Create pub quiz PDF
 -------------------
