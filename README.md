@@ -2,7 +2,7 @@ PromptuKit
 ==========
 
 Utilities for building and managing multiple-choice question banks and
-generating exam PDFs.
+generating exam PDFs and slide decks.
 
 Install from PyPI
 -----------------
@@ -20,6 +20,7 @@ extract-question --help
 validate-question
 question-bank --help
 create-exam-md --help           # export question bank to editable Markdown (optional PDF via pandoc)
+create-pptx --help             # generate a PPTX deck from a question bank
 promptukit-gui                  # launch the browser-based authoring GUI
 promptukit-claude-commands      # list/show/install bundled Claude Code slash commands
 ```
@@ -73,9 +74,8 @@ if errors:
 else:
    print('Bank valid — warnings:', warnings)
 
-# 5) Generate a PDF exam from the same bank (we already have `data` loaded
-# above as a dict, so pass it directly). Note: PDF generation requires
-# the `reportlab` package: `pip install reportlab`.
+# 5) Generate a PDF exam from the same bank. We already have `data` loaded
+# above as a dict, so pass it directly.
 create_exam.build_exam_pdf(data, 'notebooks/output_exam.pdf')
 
 ```
@@ -85,7 +85,8 @@ Notes
 - If you only want to run the library functions without Poetry activation, you
   can run modules with `python -m promptukit.questions.extract_question` or
   `python -m promptukit.exams.create_exam` as shown elsewhere in this README.
-- Generating PDFs requires `reportlab` (install with `pip install reportlab`).
+- PDF generation uses `reportlab`, which is installed automatically with
+  `promptukit`.
 
 Try the interactive Colab demo
 ------------------------------
@@ -100,7 +101,7 @@ Quick tips for Colab:
 - To use the published package on PyPI:
 
 ```python
-!pip install promptukit reportlab
+!pip install promptukit
 ```
 
 - To run the repository version (latest changes), clone and install from GitHub:
@@ -123,7 +124,8 @@ Getting started (Poetry, for development)
    pip install --user poetry
    ```
 
-2. Create the virtual environment and install dependencies:
+2. Use a compatible Python interpreter (`>=3.12,<4.0`) and create the virtual
+   environment with dependencies:
 
    ```bash
    poetry install
@@ -136,7 +138,14 @@ Getting started (Poetry, for development)
    poetry run extract-question --help
    poetry run validate-question
    poetry run question-bank --help
+   poetry run create-pptx --help
+   poetry run promptukit-gui --help
+   poetry run promptukit-claude-commands --help
    ```
+
+If you change dependencies or `[tool.poetry.scripts]` in `pyproject.toml`, run
+`poetry install` again so Poetry refreshes the local environment and console
+scripts.
 
 Activating the virtualenv
 -------------------------
@@ -183,6 +192,10 @@ Alternatives (no manual activation required):
 poetry run <cmd>    # e.g. poetry run pytest
 ```
 
+For development from a source checkout, prefer `poetry run <cmd>` unless you
+have activated the Poetry virtualenv. After activation, the bare console-script
+names work in that shell.
+
 Poetry 2.x note:
 
 - The `poetry shell` command (which previously spawned a new shell) is not
@@ -206,6 +219,7 @@ poetry run add-question path/to/mybank.json
 poetry run extract-question --list-categories
 poetry run validate-question
 poetry run question-bank extract --help
+poetry run create-pptx --help
 ```
 
 Extracting data:
@@ -261,6 +275,15 @@ poetry run question-bank extract --src promptukit/data/question_banks/block-doku
 poetry run question-bank extract -i --src promptukit/data/question_banks/block-doku-sample.json --dest promptukit/data/question_banks/pick.json
 ```
 
+Additional maintenance subcommands are available for schema and text cleanup:
+
+```bash
+poetry run question-bank migrate --help
+poetry run question-bank audit-text --help
+poetry run question-bank fix-text --help
+poetry run question-bank render-audit --help
+```
+
 Alternative: run modules with `python -m` when not using Poetry:
 
 ```bash
@@ -278,12 +301,20 @@ format used by the rest of the package (the one validated by
 `validate-question`), so you can open any existing bank in
 `promptukit/data/question_banks/` (or your own) and edit it in place.
 
-Launch from the shell:
+Launch from the shell after installing the package or activating the Poetry
+virtualenv:
 
 ```bash
 promptukit-gui                                  # opens http://localhost:8080 in a browser tab
 promptukit-gui -f my_bank.json                  # load (or create) this working file
 promptukit-gui -p 9000 --no-browser             # custom port, don't auto-open a tab
+```
+
+From a source checkout without activation, prefix the same commands with
+`poetry run`, for example:
+
+```bash
+poetry run promptukit-gui -f my_bank.json
 ```
 
 `-f/--file` points at the GUI's *working file* — if it exists it's loaded on
@@ -362,24 +393,21 @@ The `create_exam.py` script can generate a printable exam PDF. It accepts
 an external JSON question bank so you can build exams from your existing
 `promptukit/data/question_banks/` files.
 
-Usage (from the repository root):
+Usage (from the repository root with Poetry):
 
 ```bash
 # Use the built-in hard-coded exam
-python -m promptukit.exams.create_exam
+poetry run python -m promptukit.exams.create_exam
 
 # Load questions from a JSON bank and write a PDF
-python -m promptukit.exams.create_exam -q promptukit/data/question_banks/block-doku-sample.json -o cven4333_from_json.pdf
+poetry run python -m promptukit.exams.create_exam -q promptukit/data/question_banks/block-doku-sample.json -o cven4333_from_json.pdf
 
 # Save reproducible artifacts while creating the PDF
-python -m promptukit.exams.create_exam \
+poetry run python -m promptukit.exams.create_exam \
   -q promptukit/data/question_banks/block-doku-sample.json \
   --save-questions exam_questions.json \
   --save-setup exam_setup.json \
   -o cven4333_from_json.pdf
-
-# With Poetry (runs the module inside the virtualenv)
-poetry run python -m promptukit.exams.create_exam -q promptukit/data/question_banks/block-doku-sample.json -o cven4333_from_json.pdf
 ```
 
 You can also create the editable two-file artifact pair with the extraction
@@ -394,7 +422,7 @@ poetry run question-bank extract \
   --artifact-kind exam \
   -f
 
-python -m promptukit.exams.create_exam \
+poetry run python -m promptukit.exams.create_exam \
   -q exam_questions.json \
   -m exam_setup.json \
   -o exam.pdf
@@ -505,15 +533,15 @@ with one printable sheet per round so a grader can split a stack of rounds
 and score them in parallel. Each sheet carries its own team-name / date /
 score header.
 
-Usage (from the repository root):
+Usage (from the repository root with Poetry):
 
 ```bash
-python -m promptukit.exams.create_pub_quiz \
+poetry run python -m promptukit.exams.create_pub_quiz \
   -q promptukit/data/question_banks/pub-quiz-sample.json \
   -o pub_quiz.pdf
 
 # With custom metadata (title, host, instructions, labels)
-python -m promptukit.exams.create_pub_quiz \
+poetry run python -m promptukit.exams.create_pub_quiz \
   -q my_quiz.json -m my_quiz_meta.json -o pub_quiz.pdf
 
 # Extract an editable subset and setup file, then render from them
@@ -524,7 +552,7 @@ poetry run question-bank extract \
   --artifact-kind pub_quiz \
   -f
 
-python -m promptukit.exams.create_pub_quiz \
+poetry run python -m promptukit.exams.create_pub_quiz \
   -q pub_quiz_questions.json \
   -m pub_quiz_setup.json \
   -o pub_quiz.pdf
@@ -558,6 +586,38 @@ writes the letter); `question_type: "TrueFalse"` renders `T / F`.
 
 See [promptukit/data/question_banks/pub-quiz-sample.json](promptukit/data/question_banks/pub-quiz-sample.json)
 for a 3-round example.
+
+Create PPTX deck
+----------------
+
+The `create-pptx` console script generates a PowerPoint deck from a question
+bank. It accepts the same section-based and flat question layouts as the exam
+PDF generator.
+
+Usage (from the repository root with Poetry):
+
+```bash
+# Generate one slide per question
+poetry run create-pptx \
+  -q promptukit/data/question_banks/block-doku-sample.json \
+  -o questions.pptx
+
+# Add answer reveal slides after each question
+poetry run create-pptx \
+  -q promptukit/data/question_banks/block-doku-sample.json \
+  -o questions_with_answers.pptx \
+  --answers after
+
+# Save reproducible artifacts while creating the deck
+poetry run create-pptx \
+  -q promptukit/data/question_banks/block-doku-sample.json \
+  --save-questions pptx_questions.json \
+  --save-setup pptx_setup.json \
+  -o questions.pptx
+```
+
+After installing the package or activating the Poetry virtualenv, the same
+commands can be run without the `poetry run` prefix.
 
 Question types
 --------------
@@ -600,8 +660,7 @@ command will not resolve from a fresh shell. Pick one:
 # 1. Prefix every call (no install changes)
 poetry run promptukit-claude-commands install --dest ~/.claude/commands
 
-# 2. Activate the venv first (then bare command works)
-poetry shell
+# 2. Activate the venv first using one of the commands above
 promptukit-claude-commands install --dest ~/.claude/commands
 
 # 3. Install globally so the command is on PATH everywhere

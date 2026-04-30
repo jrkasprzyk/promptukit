@@ -11,6 +11,10 @@ breaking changes).
 ### Added
 - `promptukit.exams.create_exam_md` — export a question bank to an editable Markdown file; supports all question types (multiple-choice, true/false, short-answer, fill-in-the-blank, matching, calculation) and three answer modes (`none` / `inline` / `key`); `--to-pdf` flag shells out to pandoc for a full JSON → Markdown → PDF pipeline
 - `create-exam-md` CLI entry point (mirrors `create_exam.py` CLI shape; adds `--answers` and `--to-pdf` flags)
+- Implemented the README update in README.md:117. It now documents poetry install, clarifies when to use poetry run,
+  adds the missing create-pptx CLI, updates repo-root examples to run through Poetry, softens the stale reportlab
+  install note, and fixes the Claude command PATH guidance.
+
 
 ## [0.5.3] — 2026-04-27
 
