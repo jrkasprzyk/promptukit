@@ -525,6 +525,11 @@ Supported answer modes:
 All question types are supported: `MultipleChoice`, `TrueFalse`,
 `ShortAnswer`, `FillInTheBlank`, `Matching`, `Calculation`.
 
+Student-facing Markdown uses scannable answer markers: open circles for
+choose-one questions and empty boxes for choose-multiple style records. The
+legacy default `Multiple Choice Examination` subtitle is not printed unless a
+metadata/setup file explicitly sets a different `exam_type`.
+
 Create pub quiz PDF
 -------------------
 

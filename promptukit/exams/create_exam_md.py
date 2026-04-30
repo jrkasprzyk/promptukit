@@ -42,6 +42,7 @@ from pathlib import Path
 from typing import Any, List, Optional, Tuple
 
 from promptukit.exams.create_exam import (
+    DEFAULT_METADATA,
     effective_metadata,
     load_metadata_from_json,
     questions_artifact,
@@ -58,6 +59,17 @@ from promptukit.questions.question_models import (
 )
 
 ANSWER_MODES = ("none", "inline", "key")
+CHOOSE_ONE_MARK = "\u25cb"
+CHOOSE_MULTIPLE_MARK = "\u2610"
+FILL_BLANK_LINE = "____________________"
+SHORT_ANSWER_LINE = "________________________________________________________________________________"
+CHOOSE_MULTIPLE_TYPES = {
+    "choosemultiple",
+    "multipleanswer",
+    "multipleresponse",
+    "multipleselect",
+    "selectallthatapply",
+}
 
 _TAG_RE = re.compile(r"<[^>]+>")
 _ENTITY_MAP: dict[str, str] = {
@@ -160,6 +172,64 @@ def _answer_text(q: Any) -> Optional[str]:
 
 # --- Per-question rendering -------------------------------------------------
 
+def _letter(idx: int) -> str:
+    return chr(ord("A") + idx)
+
+
+def _format_choice(idx: int, raw: Any, *, label: bool = True) -> str:
+    raw_text = str(raw).strip()
+    safe = md_safe_text(raw_text)
+    if not label:
+        return safe
+    if _LETTER_PREFIX_RE.match(raw_text):
+        return safe
+    return f"{_letter(idx)}) {safe}"
+
+
+def _raw_question_dict(q: Any) -> dict[str, Any]:
+    raw = getattr(q, "_raw", None)
+    return raw if isinstance(raw, dict) else q if isinstance(q, dict) else {}
+
+
+def _is_choose_multiple(q: Any) -> bool:
+    raw = _raw_question_dict(q)
+    qtype = str(raw.get("question_type") or raw.get("type") or "").lower()
+    qtype = re.sub(r"[^a-z]", "", qtype)
+    if qtype in CHOOSE_MULTIPLE_TYPES:
+        return True
+    if raw.get("multiple") is True or raw.get("multi_select") is True:
+        return True
+    return isinstance(raw.get("answer"), list) and bool(raw.get("choices"))
+
+
+def _choice_marker(q: Any) -> str:
+    return CHOOSE_MULTIPLE_MARK if _is_choose_multiple(q) else CHOOSE_ONE_MARK
+
+
+def _render_choice_lines(q: Any, raw_choices: List[Any], *, label: bool = True) -> List[str]:
+    marker = _choice_marker(q)
+    lines: List[str] = []
+    for j, choice in enumerate(raw_choices):
+        lines.extend([f"{marker} {_format_choice(j, choice, label=label)}", ""])
+    return lines
+
+
+def _render_answer_space_lines(unit: str = "") -> List[str]:
+    suffix = f" {unit}" if unit else ""
+    return [
+        "*Answer:*",
+        "",
+        f"{SHORT_ANSWER_LINE}{suffix}",
+        "",
+        SHORT_ANSWER_LINE,
+        "",
+    ]
+
+
+def _render_fill_blank_text(text: str) -> str:
+    return text.replace(FillInTheBlank.BLANK_TOKEN, FILL_BLANK_LINE)
+
+
 def _render_question_lines(q: Any, number: int, answers: str = "none") -> List[str]:
     """Return Markdown lines for one question."""
     lines: List[str] = []
@@ -172,15 +242,16 @@ def _render_question_lines(q: Any, number: int, answers: str = "none") -> List[s
             q.get("q") or q.get("prompt") or q.get("question") or q.get("text") or ""
         )
     q_text = _LEADING_NUMBER_RE.sub("", q_text).strip()
+    if isinstance(q, FillInTheBlank):
+        q_text = _render_fill_blank_text(q_text)
     lines.append(f"**{number}.** {q_text}")
     lines.append("")
 
     if isinstance(q, TrueFalse):
-        lines += ["- True", "- False", ""]
+        lines += _render_choice_lines(q, ["True", "False"], label=False)
     elif isinstance(q, ShortAnswer):
-        lines += ["*Answer:* _______________", ""]
+        lines += _render_answer_space_lines()
     elif isinstance(q, FillInTheBlank):
-        # [blank] markers are preserved in the prompt text; nothing extra needed
         pass
     elif isinstance(q, Matching) and q.pairs:
         lines.append("| | Left | Right |")
@@ -191,29 +262,14 @@ def _render_question_lines(q: Any, number: int, answers: str = "none") -> List[s
         lines.append("")
     elif isinstance(q, Calculation):
         unit = getattr(q, "unit", None)
-        unit_str = f" {md_safe_text(unit)}" if unit else ""
-        lines += [f"*Answer:* _______________{unit_str}", ""]
+        lines += _render_answer_space_lines(md_safe_text(unit) if unit else "")
     else:
         # MultipleChoice or plain dict with choices
         if isinstance(q, MultipleChoice):
             raw_choices = q.choices
-            choice_lines = [
-                f"- {chr(ord('A') + j)}) {md_safe_text(c)}"
-                for j, c in enumerate(raw_choices)
-            ]
         else:
             raw_choices = q.get("choices") or []
-            choice_lines = []
-            for j, c in enumerate(raw_choices):
-                raw = str(c).strip()
-                safe = md_safe_text(raw)
-                if _LETTER_PREFIX_RE.match(raw):
-                    choice_lines.append(f"- {safe}")
-                else:
-                    choice_lines.append(f"- {chr(ord('A') + j)}) {safe}")
-        lines += choice_lines
-        if choice_lines:
-            lines.append("")
+        lines += _render_choice_lines(q, raw_choices)
 
     if answers == "inline":
         ans = _answer_text(q)
@@ -258,9 +314,7 @@ def _read_question_bank(path: str) -> Any:
     Accepts the same top-level layouts as ``create_exam.load_questions_from_json``
     but does *not* normalise per-question dicts so that answer data is retained.
     """
-    p = Path(path)
-    with p.open("r", encoding="utf-8") as fh:
-        data = json.load(fh)
+    data = _read_json_file(path, "Question bank file")
 
     if isinstance(data, list):
         return {"questions": [q for q in data if isinstance(q, dict)]}
@@ -271,6 +325,46 @@ def _read_question_bank(path: str) -> Any:
     if "questions" in data and isinstance(data["questions"], list):
         return {"questions": [q for q in data["questions"] if isinstance(q, dict)]}
     return {"questions": []}
+
+
+def _read_metadata_file(path: str) -> dict:
+    p = _ensure_input_file(path, "Metadata file")
+    try:
+        return load_metadata_from_json(str(p))
+    except json.JSONDecodeError as exc:
+        raise ValueError(
+            f"Metadata file is not valid JSON: {p} "
+            f"(line {exc.lineno}, column {exc.colno}: {exc.msg})"
+        ) from exc
+
+
+def _ensure_input_file(path: str, label: str) -> Path:
+    p = Path(path)
+    if not p.exists():
+        raise FileNotFoundError(f"{label} not found: {p}")
+    if not p.is_file():
+        raise FileNotFoundError(f"{label} is not a file: {p}")
+    return p
+
+
+def _read_json_file(path: str, label: str) -> Any:
+    p = _ensure_input_file(path, label)
+    try:
+        with p.open("r", encoding="utf-8") as fh:
+            return json.load(fh)
+    except json.JSONDecodeError as exc:
+        raise ValueError(
+            f"{label} is not valid JSON: {p} "
+            f"(line {exc.lineno}, column {exc.colno}: {exc.msg})"
+        ) from exc
+
+
+def _display_exam_type(meta: dict) -> str:
+    exam_type = md_safe_text(meta.get("exam_type") or "")
+    default_exam_type = md_safe_text(DEFAULT_METADATA.get("exam_type") or "")
+    if exam_type == default_exam_type:
+        return ""
+    return exam_type
 
 
 # --- Public API -------------------------------------------------------------
@@ -320,7 +414,7 @@ def build_exam_md(
     if subtitle:
         lines.append(subtitle)
         lines.append("")
-    exam_type = md_safe_text(meta.get("exam_type") or "")
+    exam_type = _display_exam_type(meta)
     if exam_type:
         lines.append(f"*{exam_type}*")
         lines.append("")
@@ -446,8 +540,12 @@ def main(argv: Optional[List[str]] = None) -> int:
     parser.add_argument("--save-setup", help="Write the effective metadata artifact", default=None)
     args = parser.parse_args(argv)
 
-    questions_to_use = _read_question_bank(args.questions)
-    meta = load_metadata_from_json(args.metadata) if args.metadata else None
+    try:
+        questions_to_use = _read_question_bank(args.questions)
+        meta = _read_metadata_file(args.metadata) if args.metadata else None
+    except (FileNotFoundError, OSError, ValueError) as e:
+        print(f"Error: {e}", file=sys.stderr)
+        return 1
 
     if args.save_questions:
         save_json_artifact(args.save_questions, questions_artifact(questions_to_use))
