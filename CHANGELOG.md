@@ -8,6 +8,8 @@ breaking changes).
 
 ## [Unreleased]
 
+## [0.5.6] — 2026-04-30
+
 ### Removed
 - `create_exam_md` module and `create-exam-md` CLI entry point — markdown rendering was unreliable and the pandoc conversion workflow did not function correctly in real-world testing; `create_exam` (ReportLab PDF) is the supported output path
 
@@ -127,7 +129,8 @@ breaking changes).
 ### Fixed
 - `RuntimeWarning` from eager subpackage imports in top-level `__init__.py`
 
-[Unreleased]: https://github.com/jrkasprzyk/promptukit/compare/v0.5.5...HEAD
+[Unreleased]: https://github.com/jrkasprzyk/promptukit/compare/v0.5.6...HEAD
+[0.5.6]: https://github.com/jrkasprzyk/promptukit/compare/v0.5.5...v0.5.6
 [0.5.5]: https://github.com/jrkasprzyk/promptukit/compare/v0.5.4...v0.5.5
 [0.5.4]: https://github.com/jrkasprzyk/promptukit/compare/v0.5.3...v0.5.4
 [0.5.3]: https://github.com/jrkasprzyk/promptukit/compare/v0.5.2...v0.5.3
