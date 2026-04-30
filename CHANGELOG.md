@@ -8,6 +8,8 @@ breaking changes).
 
 ## [Unreleased]
 
+## [0.5.4] — 2026-04-30
+
 ### Added
 - `promptukit.exams.create_exam_md` — export a question bank to an editable Markdown file; supports all question types (multiple-choice, true/false, short-answer, fill-in-the-blank, matching, calculation) and three answer modes (`none` / `inline` / `key`); `--to-pdf` flag shells out to pandoc for a full JSON → Markdown → PDF pipeline
 - `create-exam-md` CLI entry point (mirrors `create_exam.py` CLI shape; adds `--answers` and `--to-pdf` flags)
@@ -91,7 +93,8 @@ breaking changes).
 ### Fixed
 - `RuntimeWarning` from eager subpackage imports in top-level `__init__.py`
 
-[Unreleased]: https://github.com/jrkasprzyk/promptukit/compare/v0.5.3...HEAD
+[Unreleased]: https://github.com/jrkasprzyk/promptukit/compare/v0.5.4...HEAD
+[0.5.4]: https://github.com/jrkasprzyk/promptukit/compare/v0.5.3...v0.5.4
 [0.5.3]: https://github.com/jrkasprzyk/promptukit/compare/v0.5.2...v0.5.3
 [0.5.2]: https://github.com/jrkasprzyk/promptukit/compare/v0.5.1...v0.5.2
 [0.5.1]: https://github.com/jrkasprzyk/promptukit/compare/v0.5.0...v0.5.1
