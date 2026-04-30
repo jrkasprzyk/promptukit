@@ -8,6 +8,21 @@ breaking changes).
 
 ## [Unreleased]
 
+### Added
+- `promptukit-claude-commands-install` console script — direct alias for `promptukit-claude-commands install` (fixes #7; the hyphenated form is a natural guess and the README's "list/show/install" comment made it look like a separate script)
+- `dev/checks/test_create_exam_md.py` — test coverage for the create_exam_md fixes
+
+### Changed
+- README clarifies that `promptukit-claude-commands` is a multi-subcommand CLI and lists the new `-install` alias
+
+### Fixed
+- `create_exam_md` now matches expected exam-paper formatting (fixes #8):
+  - Drops the default `Multiple Choice Examination` subtitle unless metadata explicitly sets a different `exam_type`
+  - Choices render with scannable answer markers — open circle (`○`) for choose-one, empty box (`☐`) for choose-multiple — replacing bullet lists
+  - `FillInTheBlank` now substitutes the `[blank]` token with a visible answer line in student-facing output
+  - `ShortAnswer` blanks render a longer underscore line for handwriting room
+  - File-not-found / invalid-JSON cases raise clear errors and the CLI prints them to stderr instead of tracing back
+
 ## [0.5.4] — 2026-04-30
 
 ### Added

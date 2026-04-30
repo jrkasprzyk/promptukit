@@ -10,10 +10,14 @@ CLI:
     promptukit-claude-commands list
     promptukit-claude-commands show <name>
     promptukit-claude-commands install [--dest DIR] [--force] [name ...]
+    promptukit-claude-commands-install [--dest DIR] [--force] [name ...]
 
 `install` defaults to writing into `./.claude/commands/` under the current
 working directory (project-local). Pass `--dest` to override (e.g.
 `~/.claude/commands` for user-global).
+
+The `promptukit-claude-commands-install` script is a direct alias for the
+`install` subcommand for callers who prefer a single hyphenated command.
 """
 
 from __future__ import annotations
@@ -149,8 +153,20 @@ def _cli(argv: list[str] | None = None) -> int:
     return 2
 
 
+def _install_cli(argv: list[str] | None = None) -> int:
+    """CLI entry point for the `promptukit-claude-commands-install` alias.
+
+    Equivalent to `promptukit-claude-commands install ...`.
+    """
+    return _cli(["install", *(argv if argv is not None else sys.argv[1:])])
+
+
 def main() -> None:  # entry-point shim
     raise SystemExit(_cli())
+
+
+def install_main() -> None:  # entry-point shim for the `-install` alias
+    raise SystemExit(_install_cli())
 
 
 __all__ = [
@@ -159,4 +175,5 @@ __all__ = [
     "get_command_path",
     "install",
     "main",
+    "install_main",
 ]

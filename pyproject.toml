@@ -47,6 +47,7 @@ create-exam-md = "promptukit.exams.create_exam_md:main"
 create-pptx = "promptukit.exams.create_pptx:main"
 promptukit-gui = "promptukit.gui:main"
 promptukit-claude-commands = "promptukit.claude_commands:main"
+promptukit-claude-commands-install = "promptukit.claude_commands:install_main"
 
 [build-system]
 requires = ["poetry-core>=1.5.0"]

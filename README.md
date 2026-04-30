@@ -22,7 +22,8 @@ question-bank --help
 create-exam-md --help           # export question bank to editable Markdown (optional PDF via pandoc)
 create-pptx --help             # generate a PPTX deck from a question bank
 promptukit-gui                  # launch the browser-based authoring GUI
-promptukit-claude-commands      # list/show/install bundled Claude Code slash commands
+promptukit-claude-commands      # list/show/install bundled Claude Code slash commands (multi-subcommand CLI)
+promptukit-claude-commands-install  # alias for `promptukit-claude-commands install`
 ```
 
 You can also import the library in Python or a Jupyter notebook:
@@ -651,6 +652,10 @@ promptukit-claude-commands list                 # show available command names
 promptukit-claude-commands show add-trivia      # print markdown to stdout
 promptukit-claude-commands install              # copy into ./.claude/commands/
 promptukit-claude-commands install --dest ~/.claude/commands  # user-level install
+
+# Equivalent direct alias (no subcommand needed):
+promptukit-claude-commands-install              # same as `... install`
+promptukit-claude-commands-install --dest ~/.claude/commands
 ```
 
 For local development, `scripts/sync_claude_commands.py` mirrors the same
