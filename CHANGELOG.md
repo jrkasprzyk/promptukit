@@ -8,6 +8,8 @@ breaking changes).
 
 ## [Unreleased]
 
+## [0.5.5] — 2026-04-30
+
 ### Added
 - `promptukit-claude-commands-install` console script — direct alias for `promptukit-claude-commands install` (fixes #7; the hyphenated form is a natural guess and the README's "list/show/install" comment made it look like a separate script)
 - `dev/checks/test_create_exam_md.py` — test coverage for the create_exam_md fixes
@@ -108,7 +110,8 @@ breaking changes).
 ### Fixed
 - `RuntimeWarning` from eager subpackage imports in top-level `__init__.py`
 
-[Unreleased]: https://github.com/jrkasprzyk/promptukit/compare/v0.5.4...HEAD
+[Unreleased]: https://github.com/jrkasprzyk/promptukit/compare/v0.5.5...HEAD
+[0.5.5]: https://github.com/jrkasprzyk/promptukit/compare/v0.5.4...v0.5.5
 [0.5.4]: https://github.com/jrkasprzyk/promptukit/compare/v0.5.3...v0.5.4
 [0.5.3]: https://github.com/jrkasprzyk/promptukit/compare/v0.5.2...v0.5.3
 [0.5.2]: https://github.com/jrkasprzyk/promptukit/compare/v0.5.1...v0.5.2
