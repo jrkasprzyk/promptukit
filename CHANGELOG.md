@@ -8,6 +8,25 @@ breaking changes).
 
 ## [Unreleased]
 
+## [0.5.6] — 2026-04-30
+
+### Removed
+- `create_exam_md` module and `create-exam-md` CLI entry point — markdown rendering was unreliable and the pandoc conversion workflow did not function correctly in real-world testing; `create_exam` (ReportLab PDF) is the supported output path
+
+### Fixed
+- `create_exam` (`build_exam_pdf`) now renders all question types correctly:
+  - `TrueFalse` — renders A) True / B) False choices
+  - `ShortAnswer` — renders blank vertical space for handwriting
+  - `FillInTheBlank` — replaces `[blank]` tokens with underscore lines
+  - `Matching` — renders a two-column table with answer blanks
+  - `Calculation` — renders an answer line with optional unit
+- `load_questions_from_json` now preserves all original question fields (previously stripped everything except `q`, `choices`, `category`, discarding `question_type`, `answer`, `pairs`, etc.)
+- Choice label detection regex tightened (`[\)\.]\s*` instead of `[\)\.\s]+`) — choices starting with a word like "X dominates…" or "Y dominates…" no longer treated as pre-labeled
+
+### Changed
+- Question spacing increased (`spaceBefore` 8 → 18) and choice spacing increased (`spaceBefore`/`spaceAfter` 1 → 4) for improved readability
+- `ShortAnswer` renders blank space (~4 in) with no underlines
+
 ## [0.5.5] — 2026-04-30
 
 ### Added

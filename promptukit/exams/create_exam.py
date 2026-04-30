@@ -35,9 +35,9 @@ subtitle_style = ParagraphStyle('ExamSubtitle', parent=styles['Normal'],
 instructions_style = ParagraphStyle('Instructions', parent=styles['Normal'],
     fontSize=9, spaceAfter=6, leftIndent=18, rightIndent=18, alignment=TA_JUSTIFY)
 question_style = ParagraphStyle('Question', parent=styles['Normal'],
-    fontSize=10, spaceBefore=8, spaceAfter=2, fontName='Helvetica-Bold')
+    fontSize=10, spaceBefore=18, spaceAfter=2, fontName='Helvetica-Bold')
 choice_style = ParagraphStyle('Choice', parent=styles['Normal'],
-    fontSize=10, spaceBefore=1, spaceAfter=1, leftIndent=24)
+    fontSize=10, spaceBefore=4, spaceAfter=4, leftIndent=24)
 section_style = ParagraphStyle('Section', parent=styles['Heading2'],
     fontSize=12, spaceBefore=14, spaceAfter=6, fontName='Helvetica-Bold',
     textColor=colors.HexColor('#1a1a1a'))
@@ -490,28 +490,81 @@ def build_exam_pdf(sections_or_questions, output_path, metadata=None):
     question_counter = 1
     for sec in processed_sections:
         sec_title = sec.get('title') or ''
-        if sec_title:
-            story.append(Paragraph(reportlab_safe_text(sec_title), section_style))
         for q_data in sec.get('questions', []):
             if isinstance(q_data, dict):
                 q_text = q_data.get('q') or q_data.get('prompt') or q_data.get('question') or q_data.get('text') or ''
-                choices_iter = q_data.get('choices') or []
+                choices_iter = q_data.get('choices') or q_data.get('options') or []
+                raw_qtype = (q_data.get('question_type') or '').lower().replace('_', '').replace(' ', '')
+                if not raw_qtype:
+                    if choices_iter:
+                        raw_qtype = 'multiplechoice'
+                    elif q_data.get('pairs'):
+                        raw_qtype = 'matching'
+                    elif isinstance(q_data.get('answers'), list):
+                        raw_qtype = 'fillintheblank'
+                    elif 'answer' in q_data:
+                        ans = q_data['answer']
+                        if isinstance(ans, bool):
+                            raw_qtype = 'truefalse'
+                        elif isinstance(ans, (int, float)):
+                            raw_qtype = 'calculation'
+                        else:
+                            raw_qtype = 'shortanswer'
             else:
                 q_text = str(q_data)
                 choices_iter = []
+                raw_qtype = 'multiplechoice'
+
+            if raw_qtype == 'fillintheblank':
+                q_text = q_text.replace('[blank]', '________________________')
 
             if re.match(r'^\s*\d+\.', str(q_text).strip()) is None:
                 q_text = f"{question_counter}. {q_text}"
             question_counter += 1
 
             block = [Paragraph(reportlab_safe_text(q_text), question_style)]
-            for j, c in enumerate(choices_iter):
-                raw_choice = str(c).strip()
-                chs = reportlab_safe_text(raw_choice)
-                if re.match(r'^[A-Za-z][\)\.\s]+', raw_choice):
-                    block.append(Paragraph(chs, choice_style))
-                else:
-                    block.append(Paragraph(f"{chr(ord('A') + j)}) {chs}", choice_style))
+
+            if raw_qtype == 'truefalse':
+                block.append(Paragraph('A) True', choice_style))
+                block.append(Paragraph('B) False', choice_style))
+            elif raw_qtype == 'shortanswer':
+                block.append(Spacer(1, 4.0 * inch))
+            elif raw_qtype == 'matching':
+                pairs = q_data.get('pairs') or []
+                if pairs:
+                    table_data = [['Answer', 'Left', 'Right']]
+                    for pair in pairs:
+                        if isinstance(pair, (list, tuple)) and len(pair) == 2:
+                            table_data.append([
+                                '_______',
+                                reportlab_safe_text(str(pair[0])),
+                                reportlab_safe_text(str(pair[1])),
+                            ])
+                    t = Table(table_data, colWidths=[1.0 * inch, 2.75 * inch, 2.75 * inch])
+                    t.setStyle(TableStyle([
+                        ('FONTNAME', (0, 0), (-1, -1), 'Helvetica'),
+                        ('FONTSIZE', (0, 0), (-1, -1), 10),
+                        ('INNERGRID', (0, 0), (-1, -1), 0.25, colors.grey),
+                        ('BOX', (0, 0), (-1, -1), 0.5, colors.black),
+                        ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#e0e0e0')),
+                        ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
+                        ('TOPPADDING', (0, 0), (-1, -1), 3),
+                        ('BOTTOMPADDING', (0, 0), (-1, -1), 3),
+                    ]))
+                    block.append(t)
+            elif raw_qtype == 'calculation':
+                unit = reportlab_safe_text(str(q_data.get('unit') or '')) if isinstance(q_data, dict) else ''
+                suffix = f' {unit}' if unit else ''
+                block.append(Paragraph(f"Answer: {'_' * 40}{suffix}", choice_style))
+            elif raw_qtype != 'fillintheblank':
+                for j, c in enumerate(choices_iter):
+                    raw_choice = str(c).strip()
+                    chs = reportlab_safe_text(raw_choice)
+                    if re.match(r'^[A-Za-z][\)\.]\s*', raw_choice):
+                        block.append(Paragraph(chs, choice_style))
+                    else:
+                        block.append(Paragraph(f"{chr(ord('A') + j)}) {chs}", choice_style))
+
             story.append(KeepTogether(block))
 
     # Footer
@@ -550,14 +603,11 @@ def load_questions_from_json(path):
             normalized_questions = []
             for it in flat_questions:
                 if isinstance(it, str):
-                    prompt = it
-                    choices = []
-                    category = None
+                    out = {'q': it}
                 else:
-                    prompt = it.get('prompt') or it.get('q') or it.get('question') or it.get('text') or ''
-                    choices = it.get('choices') or it.get('answers') or []
-                    category = it.get('category') or None
-                normalized_questions.append({'q': prompt, 'choices': choices, 'category': category})
+                    out = dict(it)
+                    out['q'] = it.get('prompt') or it.get('q') or it.get('question') or it.get('text') or ''
+                normalized_questions.append(out)
 
             groups = OrderedDict((name, []) for name in sections_raw)
             for q in normalized_questions:
@@ -586,14 +636,11 @@ def load_questions_from_json(path):
             normalized_qs = []
             for it in qitems:
                 if isinstance(it, str):
-                    prompt = it
-                    choices = []
-                    category = None
+                    out = {'q': it}
                 else:
-                    prompt = it.get('prompt') or it.get('q') or it.get('question') or it.get('text') or ''
-                    choices = it.get('choices') or it.get('answers') or []
-                    category = it.get('category') or None
-                normalized_qs.append({'q': prompt, 'choices': choices, 'category': category})
+                    out = dict(it)
+                    out['q'] = it.get('prompt') or it.get('q') or it.get('question') or it.get('text') or ''
+                normalized_qs.append(out)
             out_sections.append({'title': title, 'questions': normalized_qs})
         return {'sections': out_sections}
 
@@ -608,14 +655,11 @@ def load_questions_from_json(path):
     normalized = []
     for item in qlist:
         if isinstance(item, str):
-            prompt = item
-            choices = []
-            category = None
+            out = {'q': item}
         else:
-            prompt = item.get('prompt') or item.get('q') or item.get('question') or item.get('text') or ''
-            choices = item.get('choices') or item.get('answers') or []
-            category = item.get('category') or None
-        normalized.append({'q': prompt, 'choices': choices, 'category': category})
+            out = dict(item)
+            out['q'] = item.get('prompt') or item.get('q') or item.get('question') or item.get('text') or ''
+        normalized.append(out)
     return {'questions': normalized}
 
 
