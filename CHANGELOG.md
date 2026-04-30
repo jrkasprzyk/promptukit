@@ -8,8 +8,6 @@ breaking changes).
 
 ## [Unreleased]
 
-## [0.5.6] — 2026-04-30
-
 ### Removed
 - `create_exam_md` module and `create-exam-md` CLI entry point — markdown rendering was unreliable and the pandoc conversion workflow did not function correctly in real-world testing; `create_exam` (ReportLab PDF) is the supported output path
 
