@@ -64,14 +64,39 @@
         "difficulty": { "type": "string", "enum": ["easy", "medium", "hard"], "description": "Optional difficulty tag used by some tools." },
 
         "prompt": { "type": "string", "description": "Primary canonical question text." },
-        "q": { "type": "string", "description": "Alias for question text (\" q \")." },
+        "q": { "type": "string", "description": "Alias for question text (\"q\")." },
         "question": { "type": "string", "description": "Alias for question text." },
         "text": { "type": "string", "description": "Alias for question text." },
 
-        "choices": { "type": "array", "items": { "type": "string" }, "description": "Answer choices (commonly 4 items for MCQ banks)." },
-        "answers": { "type": "array", "items": { "type": "string" }, "description": "Alias for choices." },
+        "question_type": {
+          "type": "string",
+          "enum": ["MultipleChoice", "TrueFalse", "ShortAnswer", "FillInTheBlank", "Matching", "Calculation", "Code", "Question"],
+          "description": "Canonical question type. Inferred from structure when absent."
+        },
 
-        "answer": { "oneOf": [ { "type": "integer" }, { "type": "string" } ], "description": "Canonical correct-answer indicator (often 0-based integer index)." },
+        "choices": { "type": "array", "items": { "type": "string" }, "description": "Answer choices for MultipleChoice questions (commonly 4 items)." },
+        "options": { "type": "array", "items": { "type": "string" }, "description": "Alias for choices." },
+        "answers": { "type": "array", "items": { "type": "string" }, "description": "Ordered blank answers for FillInTheBlank questions." },
+        "pairs": { "type": "array", "items": { "type": "array" }, "description": "Matching pairs: list of [left, right] two-element arrays." },
+
+        "answer": { "description": "Correct answer. Type varies: int index (MultipleChoice), bool (TrueFalse), string (ShortAnswer/Code), or number (Calculation)." },
+
+        "tolerance": { "type": "number", "description": "Optional tolerance for Calculation answers (±value)." },
+        "unit": { "type": "string", "description": "Optional unit label for Calculation answers (e.g. 'm/s', 'kg')." },
+
+        "answer_space": {
+          "description": "Controls blank answer space in exam PDFs for ShortAnswer and Calculation questions. Use 'small' (1 in), 'medium' (2 in, default), 'large' (4 in), or a positive number of inches.",
+          "oneOf": [
+            { "type": "string", "enum": ["small", "medium", "large"] },
+            { "type": "number", "exclusiveMinimum": 0 }
+          ]
+        },
+
+        "has_stimulus": { "type": "boolean", "description": "True when an external image or table accompanies this question." },
+        "stimulus_location": { "type": "string", "description": "Filepath or URL pointing at the stimulus asset (image, table, etc.). Used when has_stimulus is true." },
+
+        "code": { "type": "string", "description": "Code snippet for Code questions." },
+        "language": { "type": "string", "description": "Programming language label for Code questions (e.g. 'python', 'javascript'). Used for display." },
 
         "quip_correct": { "type": "string", "description": "Optional short message shown when answer is correct." },
         "quip_wrong": { "type": "string", "description": "Optional short message shown when answer is wrong." },
@@ -81,11 +106,9 @@
         "group_id": { "type": "string", "description": "Optional id used to group multi-part questions." },
         "weight": { "type": "number", "description": "Optional numeric weight for sampling or scoring." },
 
-        "type": { "type": "string", "description": "Optional question type, e.g. 'mcq', 'tf', 'fill_blank', 'essay', 'numeric', 'matching'." },
+        "type": { "type": "string", "description": "Optional question type alias (e.g. 'mcq', 'tf', 'fill_blank', 'essay', 'numeric', 'matching', 'code')." },
         "rubric": { "type": "string", "description": "Optional grading rubric or guidance." },
-        "expression": { "type": "string", "description": "Optional expression for numeric or computed answers." },
-        "tolerance": { "type": "number", "description": "Optional tolerance for numeric answers." },
-        "pairs": { "type": "array", "items": { "type": "array" }, "description": "Optional pairs for matching-type questions." }
+        "expression": { "type": "string", "description": "Optional expression for numeric or computed answers." }
       },
       "additionalProperties": true
     }

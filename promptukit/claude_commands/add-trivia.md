@@ -16,10 +16,13 @@ The repo now supports multiple question types. Each question carries a `question
 |-------------------|------------------------------------------|-------|
 | `MultipleChoice`  | `prompt`, `choices` (list), `answer`     | `answer` is 0-based index, or letter `"A"..`, or choice text. |
 | `TrueFalse`       | `prompt`, `answer` (bool)                | `true` / `false`. |
-| `ShortAnswer`     | `prompt`, `answer` (string)              | Free-text expected answer. |
+| `ShortAnswer`     | `prompt`, `answer` (string)              | Free-text expected answer. Optional `answer_space` ("small"/"medium"/"large" or inches). |
 | `FillInTheBlank`  | `prompt` (uses `[blank]`), `answers` (list)  | One answer per blank, in order. |
 | `Matching`        | `prompt`, `pairs` (list of `[l, r]`)     | Pair order is the canonical match. |
-| `Calculation`     | `prompt`, `answer` (number)              | Optional `tolerance` (number), `unit` (string). |
+| `Calculation`     | `prompt`, `answer` (number)              | Optional `tolerance` (number), `unit` (string), `answer_space`. |
+| `Code`            | `prompt`, `code` (string)                | Optional `language` (string), `answer` (string). |
+
+All types support optional stimulus fields: `has_stimulus` (bool) and `stimulus_location` (filepath or URL).
 
 The `jrb_industries_trivia.json` bank is currently all `MultipleChoice`; other banks may mix types. If the target file has no `question_type` tags, run migration first:
 
@@ -142,6 +145,37 @@ Type-specific shapes:
 
 - `tolerance` accepts an absolute margin of error. Default 0 if omitted.
 - Put the expected unit in the prompt as well; `unit` is metadata.
+- Use `answer_space` to control blank size in exam PDFs: `"small"` (1 in), `"medium"` (2 in, default), `"large"` (4 in), or a positive number of inches.
+
+**Code**
+
+```json
+{
+  "question_type": "Code",
+  "prompt": "What is printed when this code runs?",
+  "code":   "x = [1, 2, 3]\nprint(sum(x))",
+  "language": "python",
+  "answer": "6"
+}
+```
+
+- `code` is the snippet to display (required).
+- `language` is optional — used as a display label (e.g. `"python"`, `"javascript"`).
+- `answer` is the expected output or answer (optional string).
+
+**Stimulus fields (all types)**
+
+Any question can reference an external image, table, or figure:
+
+```json
+{
+  "has_stimulus": true,
+  "stimulus_location": "figures/graph1.png"
+}
+```
+
+- `has_stimulus` — set `true` when the question requires referring to an external asset.
+- `stimulus_location` — filepath or URL to the asset. Displayed as a reference note in exam PDFs.
 
 ### 4. Show and get approval
 

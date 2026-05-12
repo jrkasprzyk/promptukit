@@ -39,6 +39,7 @@ QUESTION_TYPES = (
     "FillInTheBlank",
     "Matching",
     "Calculation",
+    "Code",
 )
 
 QUESTION_TYPE_ALIASES = {
@@ -62,6 +63,7 @@ QUESTION_TYPE_ALIASES = {
     "calc": "Calculation",
     "calculation": "Calculation",
     "numeric": "Calculation",
+    "code": "Code",
 }
 
 BATCH_COMMON_REQUIRED = {"category", "difficulty", "prompt"}
@@ -73,15 +75,17 @@ BATCH_TYPE_REQUIRED: dict[str, set[str]] = {
     "FillInTheBlank": {"answers"},
     "Matching": {"pairs"},
     "Calculation": {"answer"},
+    "Code": {"code"},
 }
 
 BATCH_TYPE_FIELDS: dict[str, tuple[str, ...]] = {
     "MultipleChoice": ("choices", "answer"),
     "TrueFalse": ("answer",),
-    "ShortAnswer": ("answer",),
+    "ShortAnswer": ("answer", "answer_space"),
     "FillInTheBlank": ("answers",),
     "Matching": ("pairs",),
-    "Calculation": ("answer", "tolerance", "unit"),
+    "Calculation": ("answer", "tolerance", "unit", "answer_space"),
+    "Code": ("code", "language", "answer"),
 }
 
 # Kept for backward compatibility; older callers may import this.
@@ -225,6 +229,17 @@ def preview(q: dict) -> None:
             print(f"  tolerance     : {q['tolerance']}")
         if q.get("unit"):
             print(f"  unit          : {q['unit']}")
+        if q.get("answer_space") is not None:
+            print(f"  answer_space  : {q['answer_space']}")
+    elif qtype == "Code":
+        print(f"  language      : {q.get('language', '(none)')}")
+        code_lines = (q.get("code") or "").splitlines()
+        for line in code_lines[:5]:
+            print(f"    | {line}")
+        if len(code_lines) > 5:
+            print(f"    ... ({len(code_lines) - 5} more lines)")
+        if q.get("answer"):
+            print(f"  answer        : {q['answer']!r}")
 
     if q.get("quip_correct"):
         print(f"  quip_correct  : {q['quip_correct']}")
@@ -320,6 +335,25 @@ def collect_matching() -> dict[str, Any]:
     return {"pairs": pairs}
 
 
+def collect_code() -> dict[str, Any]:
+    language = prompt_optional("Language (e.g. python, javascript; optional)")
+    print("  Enter the code snippet. Type '---' on its own line to finish:")
+    lines: list[str] = []
+    while True:
+        line = input()
+        if line.strip() == "---":
+            break
+        lines.append(line)
+    code = "\n".join(lines)
+    answer = prompt_optional("Answer / expected output (optional)")
+    fields: dict[str, Any] = {"code": code}
+    if language:
+        fields["language"] = language
+    if answer:
+        fields["answer"] = answer
+    return fields
+
+
 def collect_calculation() -> dict[str, Any]:
     answer = prompt_number("Answer")
     tolerance = prompt_number("Tolerance (optional, blank for none)", required=False)
@@ -345,6 +379,8 @@ def collect_type_fields(qtype: str, prompt_text: str) -> dict[str, Any]:
         return collect_matching()
     if qtype == "Calculation":
         return collect_calculation()
+    if qtype == "Code":
+        return collect_code()
     raise ValueError(f"unsupported question_type: {qtype}")
 
 

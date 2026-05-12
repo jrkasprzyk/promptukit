@@ -41,6 +41,115 @@ choice_style = ParagraphStyle('Choice', parent=styles['Normal'],
 section_style = ParagraphStyle('Section', parent=styles['Heading2'],
     fontSize=12, spaceBefore=14, spaceAfter=6, fontName='Helvetica-Bold',
     textColor=colors.HexColor('#1a1a1a'))
+code_style = ParagraphStyle('Code', parent=styles['Normal'],
+    fontSize=9, spaceBefore=4, spaceAfter=4, leftIndent=18,
+    fontName='Courier', leading=12,
+    backColor=colors.HexColor('#f5f5f5'))
+
+# --- LaTeX-to-unicode substitution table ---
+# Converts common inline LaTeX math patterns to readable Unicode equivalents.
+# This covers the most frequently used math symbols in exam questions.
+_LATEX_SUBS = [
+    # Greek letters
+    (re.compile(r'\\alpha\b'), 'α'), (re.compile(r'\\beta\b'), 'β'),
+    (re.compile(r'\\gamma\b'), 'γ'), (re.compile(r'\\Gamma\b'), 'Γ'),
+    (re.compile(r'\\delta\b'), 'δ'), (re.compile(r'\\Delta\b'), 'Δ'),
+    (re.compile(r'\\epsilon\b'), 'ε'), (re.compile(r'\\varepsilon\b'), 'ε'),
+    (re.compile(r'\\zeta\b'), 'ζ'), (re.compile(r'\\eta\b'), 'η'),
+    (re.compile(r'\\theta\b'), 'θ'), (re.compile(r'\\Theta\b'), 'Θ'),
+    (re.compile(r'\\lambda\b'), 'λ'), (re.compile(r'\\Lambda\b'), 'Λ'),
+    (re.compile(r'\\mu\b'), 'μ'), (re.compile(r'\\nu\b'), 'ν'),
+    (re.compile(r'\\xi\b'), 'ξ'), (re.compile(r'\\pi\b'), 'π'),
+    (re.compile(r'\\Pi\b'), 'Π'), (re.compile(r'\\rho\b'), 'ρ'),
+    (re.compile(r'\\sigma\b'), 'σ'), (re.compile(r'\\Sigma\b'), 'Σ'),
+    (re.compile(r'\\tau\b'), 'τ'), (re.compile(r'\\phi\b'), 'φ'),
+    (re.compile(r'\\Phi\b'), 'Φ'), (re.compile(r'\\chi\b'), 'χ'),
+    (re.compile(r'\\psi\b'), 'ψ'), (re.compile(r'\\Psi\b'), 'Ψ'),
+    (re.compile(r'\\omega\b'), 'ω'), (re.compile(r'\\Omega\b'), 'Ω'),
+    # Operators and symbols
+    (re.compile(r'\\times\b'), '×'), (re.compile(r'\\cdot\b'), '·'),
+    (re.compile(r'\\div\b'), '÷'), (re.compile(r'\\pm\b'), '±'),
+    (re.compile(r'\\mp\b'), '∓'), (re.compile(r'\\leq\b'), '≤'),
+    (re.compile(r'\\geq\b'), '≥'), (re.compile(r'\\neq\b'), '≠'),
+    (re.compile(r'\\approx\b'), '≈'), (re.compile(r'\\equiv\b'), '≡'),
+    (re.compile(r'\\infty\b'), '∞'), (re.compile(r'\\sum\b'), 'Σ'),
+    (re.compile(r'\\int\b'), '∫'), (re.compile(r'\\partial\b'), '∂'),
+    (re.compile(r'\\nabla\b'), '∇'), (re.compile(r'\\sqrt\{([^}]+)\}'), r'√(\1)'),
+    (re.compile(r'\\frac\{([^}]+)\}\{([^}]+)\}'), r'(\1)/(\2)'),
+    # Superscripts/subscripts — braced forms before bare numeric shortcuts
+    (re.compile(r'\^\{([^}]+)\}'), r'^(\1)'),
+    (re.compile(r'_\{([^}]+)\}'), r'_(\1)'),
+    (re.compile(r'\^2\b'), '²'), (re.compile(r'\^3\b'), '³'),
+    (re.compile(r'\^n\b'), 'ⁿ'),
+    # Strip remaining braces and backslash commands
+    (re.compile(r'\\[a-zA-Z]+'), ''), (re.compile(r'[{}]'), ''),
+]
+
+# Matches inline LaTeX: $...$ or \(...\)
+_LATEX_INLINE_RE = re.compile(r'\$([^$]+?)\$|\\\((.+?)\\\)', re.DOTALL)
+
+
+def latex_to_reportlab(text: str) -> str:
+    """Convert inline LaTeX math (``$...$`` or ``\\(...\\)``) in *text* to a
+    plain-text Unicode approximation suitable for ReportLab Paragraph markup.
+
+    Unrecognised commands are stripped so output is always printable.
+    """
+    def _replace(m: re.Match) -> str:
+        inner = m.group(1) or m.group(2) or ''
+        for pattern, repl in _LATEX_SUBS:
+            inner = pattern.sub(repl, inner)
+        return inner
+
+    return _LATEX_INLINE_RE.sub(_replace, text)
+
+
+# --- Choice marker helpers ---
+# Mapping from metadata ``choice_marker`` value to a callable that formats
+# a lettered choice. "letter" is the default legacy style.
+def _choice_label_letter(idx: int) -> str:
+    """Return 'A) ', 'B) ', … label."""
+    return f"{chr(ord('A') + idx)}) "
+
+
+def _choice_label_circle(idx: int) -> str:
+    """Return '○ A  ' Gradescope-style circle marker."""
+    return f"○ {chr(ord('A') + idx)}  "
+
+
+def _choice_label_square(idx: int) -> str:
+    """Return '□ A  ' Gradescope-style square marker."""
+    return f"□ {chr(ord('A') + idx)}  "
+
+
+_CHOICE_LABEL_FNS = {
+    "letter": _choice_label_letter,
+    "circle": _choice_label_circle,
+    "square": _choice_label_square,
+}
+
+
+def _get_choice_label_fn(metadata: dict):
+    """Return the appropriate choice-label function for the exam metadata."""
+    marker = (metadata.get("choice_marker") or "letter").lower().strip()
+    return _CHOICE_LABEL_FNS.get(marker, _choice_label_letter)
+
+
+# --- Answer-space helper ---
+_ANSWER_SPACE_INCHES = {"small": 1.0, "medium": 2.0, "large": 4.0}
+
+
+def _answer_space_inches(answer_space) -> float:
+    """Convert an answer_space value to a float number of inches."""
+    if answer_space is None:
+        return 2.0  # default
+    if isinstance(answer_space, str):
+        return _ANSWER_SPACE_INCHES.get(answer_space.lower(), 2.0)
+    try:
+        val = float(answer_space)
+        return max(0.25, val)
+    except (TypeError, ValueError):
+        return 2.0
 
 # --- Questions ---
 # Each entry: {"q": "N. question text", "choices": ["A) ...", "B) ...", ...]}
@@ -370,6 +479,7 @@ DEFAULT_METADATA = {
         "Each question has exactly one correct answer. There is no penalty for guessing."
     ),
     "footer": "<b>END OF EXAM</b>",
+    "choice_marker": "letter",
 }
 
 
@@ -488,6 +598,7 @@ def build_exam_pdf(sections_or_questions, output_path, metadata=None):
 
     # Render sections and questions in order; number questions sequentially
     question_counter = 1
+    choice_label_fn = _get_choice_label_fn(meta)
     for sec in processed_sections:
         sec_title = sec.get('title') or ''
         for q_data in sec.get('questions', []):
@@ -502,6 +613,8 @@ def build_exam_pdf(sections_or_questions, output_path, metadata=None):
                         raw_qtype = 'matching'
                     elif isinstance(q_data.get('answers'), list):
                         raw_qtype = 'fillintheblank'
+                    elif q_data.get('code') is not None:
+                        raw_qtype = 'code'
                     elif 'answer' in q_data:
                         ans = q_data['answer']
                         if isinstance(ans, bool):
@@ -515,6 +628,9 @@ def build_exam_pdf(sections_or_questions, output_path, metadata=None):
                 choices_iter = []
                 raw_qtype = 'multiplechoice'
 
+            # Apply LaTeX conversion before any other text processing
+            q_text = latex_to_reportlab(q_text)
+
             if raw_qtype == 'fillintheblank':
                 q_text = q_text.replace('[blank]', '________________________')
 
@@ -524,11 +640,23 @@ def build_exam_pdf(sections_or_questions, output_path, metadata=None):
 
             block = [Paragraph(reportlab_safe_text(q_text), question_style)]
 
+            # Render stimulus reference if present
+            if isinstance(q_data, dict) and q_data.get('has_stimulus'):
+                stim_loc = q_data.get('stimulus_location') or ''
+                stim_text = f"[Refer to stimulus: {stim_loc}]" if stim_loc else "[Refer to accompanying stimulus]"
+                block.append(Paragraph(
+                    reportlab_safe_text(stim_text),
+                    ParagraphStyle('Stimulus', parent=styles['Normal'],
+                                   fontSize=9, leftIndent=18, fontName='Helvetica-Oblique',
+                                   textColor=colors.HexColor('#555555')),
+                ))
+
             if raw_qtype == 'truefalse':
-                block.append(Paragraph('A) True', choice_style))
-                block.append(Paragraph('B) False', choice_style))
+                block.append(Paragraph(f"{choice_label_fn(0)}True", choice_style))
+                block.append(Paragraph(f"{choice_label_fn(1)}False", choice_style))
             elif raw_qtype == 'shortanswer':
-                block.append(Spacer(1, 4.0 * inch))
+                space_in = _answer_space_inches(q_data.get('answer_space') if isinstance(q_data, dict) else None)
+                block.append(Spacer(1, space_in * inch))
             elif raw_qtype == 'matching':
                 pairs = q_data.get('pairs') or []
                 if pairs:
@@ -537,8 +665,8 @@ def build_exam_pdf(sections_or_questions, output_path, metadata=None):
                         if isinstance(pair, (list, tuple)) and len(pair) == 2:
                             table_data.append([
                                 '_______',
-                                reportlab_safe_text(str(pair[0])),
-                                reportlab_safe_text(str(pair[1])),
+                                reportlab_safe_text(latex_to_reportlab(str(pair[0]))),
+                                reportlab_safe_text(latex_to_reportlab(str(pair[1]))),
                             ])
                     t = Table(table_data, colWidths=[1.0 * inch, 2.75 * inch, 2.75 * inch])
                     t.setStyle(TableStyle([
@@ -555,15 +683,35 @@ def build_exam_pdf(sections_or_questions, output_path, metadata=None):
             elif raw_qtype == 'calculation':
                 unit = reportlab_safe_text(str(q_data.get('unit') or '')) if isinstance(q_data, dict) else ''
                 suffix = f' {unit}' if unit else ''
+                space_in = _answer_space_inches(q_data.get('answer_space') if isinstance(q_data, dict) else None)
                 block.append(Paragraph(f"Answer: {'_' * 40}{suffix}", choice_style))
+                if space_in > 0.5:
+                    block.append(Spacer(1, (space_in - 0.5) * inch))
+            elif raw_qtype == 'code':
+                code_text = q_data.get('code') or '' if isinstance(q_data, dict) else ''
+                language = q_data.get('language') or '' if isinstance(q_data, dict) else ''
+                if language:
+                    block.append(Paragraph(
+                        reportlab_safe_text(f"[{language}]"),
+                        ParagraphStyle('CodeLang', parent=styles['Normal'],
+                                       fontSize=8, leftIndent=18, fontName='Helvetica-Oblique',
+                                       textColor=colors.HexColor('#888888')),
+                    ))
+                for code_line in code_text.splitlines():
+                    block.append(Paragraph(
+                        reportlab_safe_text(code_line) if code_line.strip() else '&nbsp;',
+                        code_style,
+                    ))
+                block.append(Spacer(1, 1.5 * inch))
             elif raw_qtype != 'fillintheblank':
                 for j, c in enumerate(choices_iter):
                     raw_choice = str(c).strip()
-                    chs = reportlab_safe_text(raw_choice)
+                    chs = reportlab_safe_text(latex_to_reportlab(raw_choice))
+                    # If the choice already has a letter prefix (A) or A.) don't add another
                     if re.match(r'^[A-Za-z][\)\.]\s*', raw_choice):
                         block.append(Paragraph(chs, choice_style))
                     else:
-                        block.append(Paragraph(f"{chr(ord('A') + j)}) {chs}", choice_style))
+                        block.append(Paragraph(f"{choice_label_fn(j)}{chs}", choice_style))
 
             story.append(KeepTogether(block))
 
@@ -581,6 +729,161 @@ def build_exam_pdf(sections_or_questions, output_path, metadata=None):
         print(f"Failed to build PDF at {output_path}: {e}")
         raise
     print(f"Exam PDF created at: {output_path}")
+
+
+def _collect_answer_key(sections_or_questions) -> list[dict]:
+    """Flatten sections/questions into a list of dicts that have an answer field."""
+    flat: list[dict] = []
+    processed_sections = []
+    if isinstance(sections_or_questions, dict):
+        if 'sections' in sections_or_questions:
+            processed_sections = sections_or_questions['sections']
+        elif 'questions' in sections_or_questions:
+            processed_sections = [{'title': '', 'questions': sections_or_questions['questions']}]
+    elif isinstance(sections_or_questions, list):
+        if sections_or_questions and isinstance(sections_or_questions[0], dict) and 'questions' in sections_or_questions[0]:
+            processed_sections = sections_or_questions
+        else:
+            processed_sections = [{'title': '', 'questions': sections_or_questions}]
+    for sec in processed_sections:
+        for q in sec.get('questions', []):
+            flat.append(q if isinstance(q, dict) else {'q': str(q)})
+    return flat
+
+
+def build_answer_key_pdf(sections_or_questions, output_path, metadata=None):
+    """Generate a compact answer-key PDF from the same question data used by
+    ``build_exam_pdf``.
+
+    For each numbered question the key shows:
+    - MultipleChoice: the letter of the correct answer
+    - TrueFalse: True / False
+    - ShortAnswer: the answer string
+    - FillInTheBlank: the ordered list of blank answers
+    - Matching: the left→right pairs
+    - Calculation: the numeric answer, unit, and tolerance if any
+    - Code: the expected answer / output string if provided
+    """
+    p = Path(output_path)
+    parent = p.parent
+    if not parent.exists():
+        try:
+            parent.mkdir(parents=True, exist_ok=True)
+        except Exception as e:
+            raise OSError(f"Unable to create parent directory '{parent}': {e}") from e
+
+    doc = SimpleDocTemplate(str(p), pagesize=letter,
+        topMargin=0.6 * inch, bottomMargin=0.6 * inch,
+        leftMargin=0.75 * inch, rightMargin=0.75 * inch)
+
+    meta = effective_metadata(metadata)
+    story = []
+
+    key_title_style = ParagraphStyle('KeyTitle', parent=styles['Title'],
+        fontSize=14, spaceAfter=4, alignment=TA_CENTER)
+    key_subtitle_style = ParagraphStyle('KeySubtitle', parent=styles['Normal'],
+        fontSize=10, spaceAfter=6, alignment=TA_CENTER)
+    key_row_style = ParagraphStyle('KeyRow', parent=styles['Normal'],
+        fontSize=10, spaceBefore=2, spaceAfter=2)
+
+    story.append(Paragraph(reportlab_safe_text(f"ANSWER KEY — {meta['title']}"), key_title_style))
+    story.append(Paragraph(
+        reportlab_safe_text(f"{meta['institution']} — {meta['instructor']}"),
+        key_subtitle_style,
+    ))
+    story.append(Spacer(1, 12))
+    story.append(Paragraph("<b>CONFIDENTIAL — FOR INSTRUCTOR USE ONLY</b>", key_subtitle_style))
+    story.append(Spacer(1, 12))
+
+    flat_qs = _collect_answer_key(sections_or_questions)
+
+    table_data = [['#', 'Type', 'Answer']]
+    for i, q_data in enumerate(flat_qs, 1):
+        choices_iter = q_data.get('choices') or q_data.get('options') or []
+        raw_qtype = (q_data.get('question_type') or '').lower().replace('_', '').replace(' ', '')
+        if not raw_qtype:
+            if choices_iter:
+                raw_qtype = 'multiplechoice'
+            elif q_data.get('pairs'):
+                raw_qtype = 'matching'
+            elif isinstance(q_data.get('answers'), list):
+                raw_qtype = 'fillintheblank'
+            elif q_data.get('code') is not None:
+                raw_qtype = 'code'
+            elif 'answer' in q_data:
+                ans = q_data['answer']
+                if isinstance(ans, bool):
+                    raw_qtype = 'truefalse'
+                elif isinstance(ans, (int, float)):
+                    raw_qtype = 'calculation'
+                else:
+                    raw_qtype = 'shortanswer'
+
+        if raw_qtype == 'multiplechoice':
+            ans = q_data.get('answer')
+            if isinstance(ans, int) and 0 <= ans < len(choices_iter):
+                answer_str = f"{chr(ord('A') + ans)} — {choices_iter[ans]}"
+            elif isinstance(ans, str) and len(ans) == 1 and ans.upper() in 'ABCDE':
+                idx = ord(ans.upper()) - ord('A')
+                answer_str = f"{ans.upper()}" + (f" — {choices_iter[idx]}" if idx < len(choices_iter) else '')
+            else:
+                answer_str = str(ans) if ans is not None else '(none)'
+        elif raw_qtype == 'truefalse':
+            answer_str = str(q_data.get('answer'))
+        elif raw_qtype == 'shortanswer':
+            answer_str = str(q_data.get('answer') or '')
+        elif raw_qtype == 'fillintheblank':
+            answers = q_data.get('answers') or []
+            answer_str = '; '.join(str(a) for a in answers)
+        elif raw_qtype == 'matching':
+            pairs = q_data.get('pairs') or []
+            answer_str = ', '.join(f"{p[0]}→{p[1]}" for p in pairs if len(p) == 2)
+        elif raw_qtype == 'calculation':
+            ans = q_data.get('answer')
+            unit = q_data.get('unit') or ''
+            tol = q_data.get('tolerance')
+            parts = [str(ans)]
+            if unit:
+                parts.append(unit)
+            if tol:
+                parts.append(f'±{tol}')
+            answer_str = ' '.join(parts)
+        elif raw_qtype == 'code':
+            answer_str = str(q_data.get('answer') or '(see code)')
+        else:
+            answer_str = str(q_data.get('answer') or '')
+
+        table_data.append([str(i), raw_qtype.capitalize(), answer_str])
+
+    col_widths = [0.5 * inch, 1.25 * inch, 5.0 * inch]
+    t = Table(table_data, colWidths=col_widths, repeatRows=1)
+    t.setStyle(TableStyle([
+        ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+        ('FONTNAME', (0, 1), (-1, -1), 'Helvetica'),
+        ('FONTSIZE', (0, 0), (-1, -1), 10),
+        ('BACKGROUND', (0, 0), (-1, 0), colors.HexColor('#d0d0d0')),
+        ('INNERGRID', (0, 0), (-1, -1), 0.25, colors.grey),
+        ('BOX', (0, 0), (-1, -1), 0.5, colors.black),
+        ('VALIGN', (0, 0), (-1, -1), 'MIDDLE'),
+        ('TOPPADDING', (0, 0), (-1, -1), 4),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 4),
+        ('ROWBACKGROUNDS', (0, 1), (-1, -1), [colors.white, colors.HexColor('#f8f8f8')]),
+    ]))
+    story.append(t)
+
+    story.append(Spacer(1, 20))
+    story.append(Paragraph(
+        reportlab_safe_text("<b>END OF ANSWER KEY</b>"),
+        ParagraphStyle('EndKey', parent=styles['Normal'],
+                       fontSize=10, alignment=TA_CENTER, fontName='Helvetica-Bold'),
+    ))
+
+    try:
+        doc.build(story)
+    except Exception as e:
+        print(f"Failed to build answer key PDF at {output_path}: {e}")
+        raise
+    print(f"Answer key PDF created at: {output_path}")
 
 
 def load_questions_from_json(path):
@@ -670,6 +973,10 @@ if __name__ == '__main__':
     parser.add_argument('-m', '--metadata', '--setup', help='Path to JSON exam metadata/setup file', default=None)
     parser.add_argument('--save-questions', help='Write the normalized question artifact used for this PDF', default=None)
     parser.add_argument('--save-setup', help='Write the effective metadata/setup artifact used for this PDF', default=None)
+    parser.add_argument('--answer-key', metavar='FILE',
+                        help='Also generate an answer-key PDF at this path', default=None)
+    parser.add_argument('--choice-marker', choices=['letter', 'circle', 'square'], default=None,
+                        help='Style for multiple-choice option markers (default: letter)')
     args = parser.parse_args()
     if args.questions:
         raw = load_questions_from_json(args.questions)
@@ -710,6 +1017,12 @@ if __name__ == '__main__':
 
     exam_metadata = load_metadata_from_json(args.metadata) if args.metadata else None
 
+    # Apply CLI choice-marker override
+    if args.choice_marker:
+        if exam_metadata is None:
+            exam_metadata = {}
+        exam_metadata['choice_marker'] = args.choice_marker
+
     if args.save_questions:
         save_json_artifact(args.save_questions, questions_artifact(questions_to_use))
         print(f"Exam question artifact written to: {args.save_questions}")
@@ -722,3 +1035,10 @@ if __name__ == '__main__':
     except Exception as e:
         print(f"Error creating exam PDF: {e}")
         sys.exit(1)
+
+    if args.answer_key:
+        try:
+            build_answer_key_pdf(questions_to_use, args.answer_key, metadata=exam_metadata)
+        except Exception as e:
+            print(f"Error creating answer key PDF: {e}")
+            sys.exit(1)
