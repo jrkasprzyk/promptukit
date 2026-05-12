@@ -15,7 +15,7 @@ from promptukit.utils.cli_helpers import load, save
 from promptukit.questions.question_models import Question
 
 
-_KNOWN_TYPES = {"MultipleChoice", "TrueFalse", "ShortAnswer", "FillInTheBlank", "Matching", "Calculation", "Question"}
+_KNOWN_TYPES = {"MultipleChoice", "TrueFalse", "ShortAnswer", "FillInTheBlank", "Matching", "Calculation", "Code", "Question"}
 
 
 def infer_question_type(item: Dict[str, Any]) -> str:
@@ -26,10 +26,11 @@ def infer_question_type(item: Dict[str, Any]) -> str:
 	2. ``choices``/``options`` → MultipleChoice.
 	3. ``pairs`` → Matching.
 	4. ``answers`` (list) → FillInTheBlank.
-	5. ``answer`` bool → TrueFalse.
-	6. ``answer`` numeric → Calculation.
-	7. ``answer`` string → ShortAnswer.
-	8. Default → MultipleChoice.
+	5. ``code`` field present → Code.
+	6. ``answer`` bool → TrueFalse.
+	7. ``answer`` numeric → Calculation.
+	8. ``answer`` string → ShortAnswer.
+	9. Default → MultipleChoice.
 	"""
 	if not isinstance(item, dict):
 		return "Question"
@@ -42,6 +43,8 @@ def infer_question_type(item: Dict[str, Any]) -> str:
 		return "Matching"
 	if "answers" in item and isinstance(item["answers"], list):
 		return "FillInTheBlank"
+	if "code" in item:
+		return "Code"
 	if "answer" in item:
 		answer = item["answer"]
 		if isinstance(answer, bool):

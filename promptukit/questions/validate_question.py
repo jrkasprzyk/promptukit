@@ -34,6 +34,7 @@ TYPE_REQUIRED: dict[str, set[str]] = {
     "FillInTheBlank": {"answers"},
     "Matching":       {"pairs"},
     "Calculation":    {"answer"},
+    "Code":           {"code"},
 }
 
 
@@ -99,6 +100,7 @@ def _check_short_answer(q: dict, label: str, errors: list[str], warnings: list[s
         return
     if not ans.strip():
         errors.append(f"{label} [ShortAnswer]: answer is empty")
+    _check_answer_space(q, label, "ShortAnswer", errors, warnings)
 
 
 def _check_fill_in_the_blank(q: dict, label: str, errors: list[str], warnings: list[str]) -> None:
@@ -156,6 +158,42 @@ def _check_calculation(q: dict, label: str, errors: list[str], warnings: list[st
     unit = q.get("unit")
     if unit is not None and not isinstance(unit, str):
         errors.append(f"{label} [Calculation]: unit must be a string, got {unit!r}")
+    _check_answer_space(q, label, "Calculation", errors, warnings)
+
+
+def _check_answer_space(q: dict, label: str, qtype: str, errors: list[str], warnings: list[str]) -> None:
+    """Validate the optional answer_space field shared by ShortAnswer and Calculation."""
+    space = q.get("answer_space")
+    if space is None:
+        return
+    valid_strings = {"small", "medium", "large"}
+    if isinstance(space, str):
+        if space not in valid_strings:
+            errors.append(
+                f"{label} [{qtype}]: answer_space string must be one of {sorted(valid_strings)}, got '{space}'"
+            )
+    elif isinstance(space, (int, float)) and not isinstance(space, bool):
+        if space <= 0:
+            errors.append(f"{label} [{qtype}]: answer_space number must be positive, got {space}")
+    else:
+        errors.append(
+            f"{label} [{qtype}]: answer_space must be 'small', 'medium', 'large', or a positive number; got {space!r}"
+        )
+
+
+def _check_code(q: dict, label: str, errors: list[str], warnings: list[str]) -> None:
+    code = q.get("code")
+    if not isinstance(code, str):
+        errors.append(f"{label} [Code]: code must be a string, got {code!r}")
+        return
+    if not code.strip():
+        errors.append(f"{label} [Code]: code must not be empty")
+    language = q.get("language")
+    if language is not None and not isinstance(language, str):
+        errors.append(f"{label} [Code]: language must be a string, got {language!r}")
+    answer = q.get("answer")
+    if answer is not None and not isinstance(answer, str):
+        errors.append(f"{label} [Code]: answer must be a string, got {answer!r}")
 
 
 _VALIDATORS = {
@@ -165,6 +203,7 @@ _VALIDATORS = {
     "FillInTheBlank": _check_fill_in_the_blank,
     "Matching":       _check_matching,
     "Calculation":    _check_calculation,
+    "Code":           _check_code,
 }
 
 
@@ -244,7 +283,7 @@ def print_stats(data: Any) -> None:
     print(f"\n  Total questions: {len(questions)}")
 
     print("\n  By question_type:")
-    for t in ("MultipleChoice", "TrueFalse", "ShortAnswer", "FillInTheBlank", "Matching", "Calculation"):
+    for t in ("MultipleChoice", "TrueFalse", "ShortAnswer", "FillInTheBlank", "Matching", "Calculation", "Code"):
         if types.get(t, 0):
             print(f"    {t:<16} {types.get(t, 0)}")
     other = sum(v for k, v in types.items() if k not in _VALIDATORS)

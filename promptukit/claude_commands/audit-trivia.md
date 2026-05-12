@@ -6,10 +6,13 @@ Banks may contain mixed types. Check the `question_type` field on each question.
 
 - `MultipleChoice` — `choices` (list), `answer` (int index / letter / text)
 - `TrueFalse` — `answer` (bool)
-- `ShortAnswer` — `answer` (string)
+- `ShortAnswer` — `answer` (string), optional `answer_space` ("small"/"medium"/"large"/inches)
 - `FillInTheBlank` — `prompt` with `[blank]` tokens, `answers` (list)
 - `Matching` — `pairs` (list of `[left, right]`)
-- `Calculation` — `answer` (number), optional `tolerance`, `unit`
+- `Calculation` — `answer` (number), optional `tolerance`, `unit`, `answer_space`
+- `Code` — `code` (string snippet), optional `language`, `answer` (expected output)
+
+All types support optional `has_stimulus` (bool) and `stimulus_location` (filepath/URL).
 
 Questions without a `question_type` field can be inferred (see `promptukit/utils/json_tools.py:infer_question_type`). If many are missing the tag, recommend running migration before auditing:
 
