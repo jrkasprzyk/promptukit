@@ -63,9 +63,9 @@ class Question:
 
     def _stimulus_fields(self) -> Dict[str, Any]:
         """Return stimulus fields to include in to_dict output (non-default only)."""
-        out: Dict[str, Any] = {}
-        if self.has_stimulus:
-            out["has_stimulus"] = True
+        if not self.has_stimulus:
+            return {}
+        out: Dict[str, Any] = {"has_stimulus": True}
         if self.stimulus_location:
             out["stimulus_location"] = self.stimulus_location
         return out

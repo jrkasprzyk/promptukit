@@ -76,10 +76,11 @@ _LATEX_SUBS = [
     (re.compile(r'\\int\b'), '∫'), (re.compile(r'\\partial\b'), '∂'),
     (re.compile(r'\\nabla\b'), '∇'), (re.compile(r'\\sqrt\{([^}]+)\}'), r'√(\1)'),
     (re.compile(r'\\frac\{([^}]+)\}\{([^}]+)\}'), r'(\1)/(\2)'),
-    # Superscripts/subscripts — simplified
-    (re.compile(r'\^2\b'), '²'), (re.compile(r'\^3\b'), '³'),
-    (re.compile(r'\^n\b'), 'ⁿ'), (re.compile(r'\^\{([^}]+)\}'), r'^(\1)'),
+    # Superscripts/subscripts — braced forms before bare numeric shortcuts
+    (re.compile(r'\^\{([^}]+)\}'), r'^(\1)'),
     (re.compile(r'_\{([^}]+)\}'), r'_(\1)'),
+    (re.compile(r'\^2\b'), '²'), (re.compile(r'\^3\b'), '³'),
+    (re.compile(r'\^n\b'), 'ⁿ'),
     # Strip remaining braces and backslash commands
     (re.compile(r'\\[a-zA-Z]+'), ''), (re.compile(r'[{}]'), ''),
 ]
