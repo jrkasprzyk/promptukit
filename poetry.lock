@@ -2472,6 +2472,17 @@ files = [
 ]
 
 [[package]]
+name = "minisom"
+version = "2.3.6"
+description = "Minimalistic implementation of the Self Organizing Maps (SOM)"
+optional = false
+python-versions = "*"
+groups = ["main"]
+files = [
+    {file = "minisom-2.3.6.tar.gz", hash = "sha256:1fca9cfeef62b221a89930ad3422b7a24a2bd66ae43ef97332e165f5975c09f1"},
+]
+
+[[package]]
 name = "more-itertools"
 version = "11.0.2"
 description = "More routines for operating on iterables, beyond itertools"
@@ -3033,28 +3044,33 @@ xml = ["lxml (>=5.3.0)"]
 
 [[package]]
 name = "parasolpy"
-version = "0.1.1"
+version = "0.5.0"
 description = "Python tools for multi-objective decision analysis and visualization"
 optional = false
 python-versions = ">=3.12"
 groups = ["main"]
 files = [
-    {file = "parasolpy-0.1.1-py3-none-any.whl", hash = "sha256:0ab72c886abb1af98e33e6948b709d0dde0cebd10968b14b6ae93b2db146eb17"},
-    {file = "parasolpy-0.1.1.tar.gz", hash = "sha256:d2f3e9b8e1cf3a0f13990e7db452fc938c5ab8c1b2ba3d00be0275ce240aaf15"},
+    {file = "parasolpy-0.5.0-py3-none-any.whl", hash = "sha256:b670c99ea828bcae50ca2289f211daa354969028c07bd4bf0a74948de8643f86"},
+    {file = "parasolpy-0.5.0.tar.gz", hash = "sha256:f21cb444fb828f9eae4a87820e2f5ed5a05ff6bfb4ef899022c76e10abb53904"},
 ]
 
 [package.dependencies]
-beautifulsoup4 = ">=4.14.3,<5.0.0"
-dash = ">=4.1.0,<5.0.0"
+beautifulsoup4 = ">=4.12.0,<5.0.0"
+dash = ">=2.0.0,<5.0.0"
 hiplot = ">=0.1.33,<0.2.0"
-matplotlib = ">=3.10.8,<4.0.0"
-numpy = ">=2.4.4,<3.0.0"
+lxml = ">=4.9.0"
+matplotlib = ">=3.7.0,<4.0.0"
+minisom = ">=2.3.6,<3.0.0"
+numpy = ">=1.24.0,<3.0.0"
 pandas = ">=2.0.2,<4.0.0"
 platypus-opt = ">=1.4.1,<2.0.0"
-plotly = ">=6.7.0,<7.0.0"
-scikit-learn = ">=1.8.0,<2.0.0"
-scipy = ">=1.17.1,<2.0.0"
-seaborn = ">=0.13.2,<0.14.0"
+plotly = ">=5.0.0,<7.0.0"
+scikit-learn = ">=1.3.0,<2.0.0"
+scipy = ">=1.11.0,<2.0.0"
+seaborn = ">=0.12.0,<0.14.0"
+
+[package.extras]
+docs = ["myst-parser (>=2.0,<5.0)", "sphinx (>=7.2,<9.0)", "sphinx-autodoc-typehints (>=1.25,<4.0)", "sphinx-copybutton (>=0.5,<1.0)", "sphinx-rtd-theme (>=2.0,<4.0)"]
 
 [[package]]
 name = "parso"
@@ -5062,4 +5078,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.12,<4.0"
-content-hash = "82816b60bb73c61b67e7c14e1f2b1661466cc823f84d089ddb7c8e75dc1be10e"
+content-hash = "abf9850277f5af6a84a718c2be13334785c4011534236a6901ebfbb4005353ef"
