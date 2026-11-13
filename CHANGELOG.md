@@ -8,6 +8,9 @@ breaking changes).
 
 ## [Unreleased]
 
+### Changed
+- Updated the parasolpy dependency to reflect updates in that package (it is now on version 0.5.0
+
 ## [0.5.6] — 2026-04-30
 
 ### Removed
