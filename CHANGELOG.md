@@ -8,6 +8,8 @@ breaking changes).
 
 ## [Unreleased]
 
+## [0.5.7] — 2026-11-13
+
 ### Changed
 - Updated the parasolpy dependency to reflect updates in that package (it is now on version 0.5.0
 
@@ -132,7 +134,8 @@ breaking changes).
 ### Fixed
 - `RuntimeWarning` from eager subpackage imports in top-level `__init__.py`
 
-[Unreleased]: https://github.com/jrkasprzyk/promptukit/compare/v0.5.6...HEAD
+[Unreleased]: https://github.com/jrkasprzyk/promptukit/compare/v0.5.7...HEAD
+[0.5.7]: https://github.com/jrkasprzyk/promptukit/compare/v0.5.6...v0.5.7
 [0.5.6]: https://github.com/jrkasprzyk/promptukit/compare/v0.5.5...v0.5.6
 [0.5.5]: https://github.com/jrkasprzyk/promptukit/compare/v0.5.4...v0.5.5
 [0.5.4]: https://github.com/jrkasprzyk/promptukit/compare/v0.5.3...v0.5.4
